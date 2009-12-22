@@ -1,0 +1,49 @@
+body {
+  background-color: #ced5cb;
+  text-align: center;
+  font-family: verdana,helvetica,arial,sans-serif; }
+
+#navigation {
+  text-align: right; }
+
+#container, #navigation {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#container {
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #555555; }
+
+#header {
+  text-align: left;
+  padding: 20px; }
+
+#logo {
+  font-size: 200%;
+  width: 400px; }
+
+#content, #howto {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #555555; }
+
+.howto-step {
+  width: 150px;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top; }
+
+#cleaners, #search {
+  display: inline-block; }
+
+#search {
+  width: 200px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #555555; }
+
+#cleaners {
+  width: 590px; }
