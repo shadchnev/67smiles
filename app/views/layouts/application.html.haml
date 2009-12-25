@@ -1,6 +1,7 @@
 !!! Strict
 %html
   %head
+    = stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css'
     = stylesheet_link_tag '67smiles'
     %title
       67 Smiles
@@ -8,24 +9,28 @@
   #navigation
     About | Help
   #container
-    #header
+    #lady
+      %img{:src => 'images/smiling_lady.png'}
+    #summary
       #logo
         67 Smiles
       #strapline
         You need a cleaner, not an agency.
-    #howto
-      How it works
-      %br
-      %br
-      .howto-step
-        Choose a cleaner and click 'book online'
-      .howto-step        
-        A cleaner receives an sms with the assignment details
-      .howto-step        
-        The cleaner accepts the job by sms or on the web-site
-      .howto-step
-        You get an sms and an email with the confirmation
-      .howto-step
-        You pay the self-employed cleaner directly.
+      #howto
+        %br
+        %br
+        .howto-step
+          1. You book a cleaner online
+        .howto-step        
+          2. The cleaner confirms the availability by SMS
+        .howto-step
+          3. We send you an SMS and an email confirming the booking
+        .howto-step
+          4. The self-employed cleaner is paid by cash when the job is done
+        .howto-step
+          5. You leave feedback online and earn points to spend on free cleaning
+    .clearer
     #content
       = yield
+    #footer
+      Copyright &copy; 2010 67 smiles
