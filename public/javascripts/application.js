@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $("#search-when").datepicker();
+  $("#calendar").datepicker();
 })

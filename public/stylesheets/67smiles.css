@@ -11,6 +11,9 @@ body {
 #navigation-container {
   text-align: right; }
 
+.search-block {
+  margin: 25px 0; }
+
 #navigation {
   width: 200px;
   float: right;
@@ -19,41 +22,51 @@ body {
   border-bottom-style: solid;
   border-bottom-color: #6ea7d1; }
 
-#container, #navigation-container {
+#container {
   width: 996px;
   margin-left: auto;
   margin-right: auto; }
 
+#navigation-container {
+  display: inline-block;
+  vertical-align: top; }
+
 #lady {
-  display: inline;
+  display: inline-block;
   width: 300px;
-  float: left;
   text-align: center; }
 
-#lady, #lady img {
-  height: 348px; }
+#header {
+  display: inline-block;
+  width: 696px;
+  vertical-align: top; }
+
+#lady {
+  height: 348px;
+  text-align: center;
+  vertical-align: top; }
 
 #summary {
-  text-align: left; }
+  text-align: left;
+  display: inline-block;
+  width: 696px; }
 
 h1 {
   font-size: 110%;
-  padding-bottom: 20px;
-  padding-top: 15px;
-  color: #db530f; }
+  color: #db530f;
+  padding-bottom: 10px; }
 
-/* font-weight: bold */
-#header {
-  text-align: left;
-  padding: 20px; }
+#logo {
+  width: 480px;
+  display: inline-block;
+  text-align: left; }
 
-#logo img {
-  width: 400px;
-  float: left;
-  padding-top: 8px; }
+#howto-left, #howto-right {
+  display: inline-block;
+  width: 348px; }
 
-#howto {
-  padding-top: 50px; }
+.howto-icon {
+  display: inline-block; }
 
 #content, #footer {
   border-top-width: 1px;
@@ -62,8 +75,7 @@ h1 {
 
 .howto-step {
   vertical-align: top;
-  line-height: 45px;
-  font-size: 18px;
+  font-size: 14px;
   color: #484848; }
 
 #cleaners, #search {
@@ -72,31 +84,25 @@ h1 {
 #search {
   width: 300px;
   vertical-align: top;
-  padding-top: 10px;
   text-align: center; }
 
 #search-where input {
   border: 1px solid #6ea7d1;
-  width: 250px;
-  font-size: 200%;
+  width: 150px;
+  font-size: 110%;
   color: #6ea7d1; }
 
-#search-what {
+
+#search-activities {
   text-align: left;
-  margin-left: 50px;
-  margin-top: 30px; }
+  margin-left: 67px; }
 
-#search-when {
-  padding-left: 26px;
-  margin-top: 30px; }
 
-#search-submit {
-  margin-top: 20px;
-  border: 1px solid #db530f;
-  padding: 5px; }
+#calendar {
+  padding-left: 25px; }
 
 #cleaners {
-  width: 689px; }
+  width: 696px; }
 
 #footer {
   color: #484848;
@@ -105,6 +111,8 @@ h1 {
 .cleaner {
   background-color: #eaf4fd;
   margin: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
   border-bottom: 1px solid #6ea7d1; }
 
 .cleaner .photo, .cleaner .photo img {
@@ -114,7 +122,7 @@ h1 {
   display: block; }
 
 .cleaner .details {
-  width: 429px; }
+  width: 436px; }
 
 .cleaner .hourly-rate {
   color: #db530f;
@@ -129,16 +137,9 @@ h1 {
   padding: 15px;
   color: #6ea7d1; }
 
-.cleaner .details .name {
-  font-size: 120%;
-  margin-bottom: 10px;
-  color: #db530f; }
-
 .book-online {
   font-size: 120%;
   font-style: bold;
   text-decoration: underline;
   vertical-align: middle;
-  color: #eaf4fd;
-  background-color: #6ea7d1;
   height: 30px; }

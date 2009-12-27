@@ -3,7 +3,7 @@
     %td.photo{:rowspan => 2}
       %img{:src => 'images/emma_small.png'}<>
     %td.details
-      .name
+      %h1.name
         = name
       .jobs-done
         5 Jobs Done
@@ -15,4 +15,4 @@
   %tr
     %td
     %td.book-online
-      Book online
+      %input{:value => 'Book online', :type => 'submit'}

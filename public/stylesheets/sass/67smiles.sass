@@ -7,7 +7,7 @@
 
 !master_width = 996px
 !left_column = 300px
-!right_column = !master_width - !left_column - 7px
+!right_column = !master_width - !left_column
 !lady_height = 348px
 !cleaner_height = 160px
 !photo_width = 110px
@@ -26,6 +26,9 @@ body
 #navigation-container
   text-align: right
   
+.search-block
+  margin: 25px 0    
+  
 =thick_border(!side = top)
   border-#{!side}:
     width: 1px
@@ -38,49 +41,58 @@ body
   padding: 3px
   +thick_border(bottom)
     
-#container, #navigation-container
+#container
   width = !master_width
   margin-left: auto
   margin-right: auto
+  
+#navigation-container
+  display: inline-block
+  vertical-align: top
 
 #lady
-  display: inline
+  display: inline-block
   width = !left_column
-  float: left
   text-align: center
-
-#lady, #lady img
+  
+#header
+  display: inline-block
+  width = !right_column
+  vertical-align: top
+  
+#lady
   height = !lady_height
-
+  text-align: center
+  vertical-align: top
+  
 #summary
   text-align: left
-  
+  display: inline-block
+  width = !right_column
+
 h1
   font-size: 110%
-  padding-bottom: 20px
-  padding-top: 15px
   color = !clay
-/*  font-weight: bold*/
-    
-#header
+  padding-bottom: 10px
+        
+#logo
+  width: 480px  
+  display: inline-block
   text-align: left
-  padding: 20px
-    
-#logo img
-  width: 400px  
-  float: left
-  padding-top: 8px
   
-#howto
-  padding-top: 50px
+#howto-left, #howto-right
+  display: inline-block
+  width = !right_column / 2
+
+.howto-icon
+  display: inline-block
   
 #content, #footer
   +thick_border(top)
   
 .howto-step
   vertical-align: top
-  line-height: 45px
-  font-size: 18px
+  font-size: 14px
   color = !black
   
 #cleaners, #search
@@ -89,29 +101,26 @@ h1
 #search
   width = !left_column  
   vertical-align: top
-  padding-top: 10px
   text-align: center
 
 #search-where input
-  border: 1px solid #{!dark_marine}
-  width: 250px
-  font-size: 200%
+  border: 1px solid #{!dark_marine}  
+  width: 150px
+  font-size: 110%
   color = !dark_marine
 
 #search-what
+
+#search-activities
   text-align: left
-  margin-left: 50px
-  margin-top: 30px
+  margin-left: 67px
+  
   
 #search-when
-  padding-left: 26px
-  margin-top: 30px
-  
-#search-submit
-  margin-top: 20px
-  border: 1px solid #{!clay}
-  padding: 5px
-  
+
+#calendar
+  padding-left: 25px
+    
 #cleaners
   width = !right_column
 
@@ -122,6 +131,8 @@ h1
 .cleaner
   background-color = !light_marine
   margin: 10px
+  margin-left: 0px
+  margin-right: 0px
   border-bottom: 1px solid #{!dark_marine}
   
 .cleaner .photo, .cleaner .photo img
@@ -146,18 +157,11 @@ h1
   padding: 15px
   color = !dark_marine
   
-.cleaner .details .name
-  font-size: 120%
-  margin-bottom: 10px
-  color = !clay
-  
 .book-online
   font-size: 120%
   font-style: bold
   text-decoration: underline
   vertical-align: middle
-  color = !light_marine
-  background-color = !dark_marine
   height: 30px
   
   

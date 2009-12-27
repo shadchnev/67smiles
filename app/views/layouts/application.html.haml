@@ -10,30 +10,28 @@
     %title
       Innocent Cleaners
   %body
-  #navigation-container
-    #navigation
-      About | Help
-  #container
-    #lady
-      %img{:src => 'images/smiling_lady.png'}
-    #summary
+  #container<>
+    #lady<>
+      %img{:src => 'images/smiling_lady.png'}<>
+    #header<>
       #logo
         %img{:src => "images/logo_scruff.png"}
-      #howto
-        %br
-        %br
-        .howto-step
-          1. You book a cleaner online for free
-        .howto-step        
-          2. The cleaner confirms the availability by SMS
-        .howto-step
-          3. We send you an SMS confirming the booking
-        .howto-step
-          4. You pay the self-employed cleaner when the job is done
-        .howto-step
-          5. You earn points to spend on free cleaning when you leave feedback
-    .clearer
-    #content
+      #navigation-container
+        #navigation
+          About | Help
+      #summary
+        #howto<>
+          #howto-left<>
+            Clients
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Book a self-employed cleaner online for free'}
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Get a confirmation by email'}
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Leave feedback when the job is done and earn points to spend on free cleaning'}
+          #howto-right<>
+            Cleaners
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Advertise yourself for free'}
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Receive jobs by sms'}
+            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'We do not charge a commission'}
+    #content<>
       = yield
     #footer
       Copyright &copy; 2010 Innocent Cleaners
