@@ -3,34 +3,37 @@
   %head
     = stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css'
     = stylesheet_link_tag '67smiles'
+    = stylesheet_link_tag 'redmond/jquery-ui-1.7.2.custom'
+    = javascript_include_tag 'jquery-1.3.2.min'
+    = javascript_include_tag 'jquery-ui-1.7.2.custom.min'
+    = javascript_include_tag 'application'
     %title
-      67 Smiles
+      Innocent Cleaners
   %body
-  #navigation
-    About | Help
+  #navigation-container
+    #navigation
+      About | Help
   #container
     #lady
       %img{:src => 'images/smiling_lady.png'}
     #summary
       #logo
-        67 Smiles
-      #strapline
-        You need a cleaner, not an agency.
+        %img{:src => "images/logo_scruff.png"}
       #howto
         %br
         %br
         .howto-step
-          1. You book a cleaner online
+          1. You book a cleaner online for free
         .howto-step        
           2. The cleaner confirms the availability by SMS
         .howto-step
-          3. We send you an SMS and an email confirming the booking
+          3. We send you an SMS confirming the booking
         .howto-step
-          4. The self-employed cleaner is paid by cash when the job is done
+          4. You pay the self-employed cleaner when the job is done
         .howto-step
-          5. You leave feedback online and earn points to spend on free cleaning
+          5. You earn points to spend on free cleaning when you leave feedback
     .clearer
     #content
       = yield
     #footer
-      Copyright &copy; 2010 67 smiles
+      Copyright &copy; 2010 Innocent Cleaners

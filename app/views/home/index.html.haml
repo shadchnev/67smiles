@@ -1,11 +1,26 @@
 #search
-  #search-where
-    Where: London
-  #search-what
-    What: Domestic Cleaning
-  #search-when
-    When: Today
-  
+  %h1
+    Enter your postcode
+  %form
+    #search-where
+      %input{:value => 'Postcode'}        
+    %h1
+      Select what you need
+    #search-what
+      .search-activity
+        %input{:type => 'checkbox'}
+        Domestic cleaning
+      .search-activity
+        %input{:type => 'checkbox'}
+        Ironing
+      .search-activity
+        %input{:type => 'checkbox'}
+        Dog-walking
+    %h1
+      Select a date
+    #search-when        
+    %input#search-submit{:type => 'submit', :value => 'Search'}
 #cleaners
   = render :partial => 'cleaner', :locals => {:name => 'Emma'}
   = render :partial => 'cleaner', :locals => {:name => 'Sonya'}
+  = render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}

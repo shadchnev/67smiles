@@ -2,21 +2,27 @@ body {
   background-color: white;
   text-align: center;
   font-family: verdana,helvetica,arial,sans-serif;
-  margin-top: 20px; }
+  margin-top: 25px;
+  color: #6ea7d1; }
 
 .clearer {
   clear: both; }
 
-#navigation {
+#navigation-container {
   text-align: right; }
 
-#container, #navigation {
+#navigation {
+  width: 200px;
+  float: right;
+  padding: 3px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #6ea7d1; }
+
+#container, #navigation-container {
   width: 996px;
   margin-left: auto;
   margin-right: auto; }
-
-#container {
-  background: white; }
 
 #lady {
   display: inline;
@@ -28,34 +34,111 @@ body {
   height: 348px; }
 
 #summary {
-  display: inline;
-  padding-left: 300px;
   text-align: left; }
 
+h1 {
+  font-size: 110%;
+  padding-bottom: 20px;
+  padding-top: 15px;
+  color: #db530f; }
+
+/* font-weight: bold */
 #header {
   text-align: left;
   padding: 20px; }
 
-#logo {
-  font-size: 200%; }
+#logo img {
+  width: 400px;
+  float: left;
+  padding-top: 8px; }
+
+#howto {
+  padding-top: 50px; }
 
 #content, #footer {
   border-top-width: 1px;
   border-top-style: solid;
-  border-top-color: #555555; }
+  border-top-color: #6ea7d1; }
 
 .howto-step {
-  vertical-align: top; }
+  vertical-align: top;
+  line-height: 45px;
+  font-size: 18px;
+  color: #484848; }
 
 #cleaners, #search {
   display: inline-block; }
 
 #search {
-  width: 300px; }
+  width: 300px;
+  vertical-align: top;
+  padding-top: 10px;
+  text-align: center; }
+
+#search-where input {
+  border: 1px solid #6ea7d1;
+  width: 250px;
+  font-size: 200%;
+  color: #6ea7d1; }
+
+#search-what {
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 30px; }
+
+#search-when {
+  padding-left: 26px;
+  margin-top: 30px; }
+
+#search-submit {
+  margin-top: 20px;
+  border: 1px solid #db530f;
+  padding: 5px; }
 
 #cleaners {
   width: 689px; }
 
 #footer {
-  color: #aaaaaa;
+  color: #484848;
   font-size: 70%; }
+
+.cleaner {
+  background-color: #eaf4fd;
+  margin: 10px;
+  border-bottom: 1px solid #6ea7d1; }
+
+.cleaner .photo, .cleaner .photo img {
+  height: 160px; }
+
+.cleaner .photo img {
+  display: block; }
+
+.cleaner .details {
+  width: 429px; }
+
+.cleaner .hourly-rate {
+  color: #db530f;
+  font-weight: normal;
+  font-size: 60px;
+  text-align: center;
+  width: 150px; }
+
+.cleaner .details {
+  text-align: left;
+  vertical-align: top;
+  padding: 15px;
+  color: #6ea7d1; }
+
+.cleaner .details .name {
+  font-size: 120%;
+  margin-bottom: 10px;
+  color: #db530f; }
+
+.book-online {
+  font-size: 120%;
+  font-style: bold;
+  text-decoration: underline;
+  vertical-align: middle;
+  color: #eaf4fd;
+  background-color: #6ea7d1;
+  height: 30px; }

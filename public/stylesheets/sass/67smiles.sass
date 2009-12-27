@@ -1,29 +1,47 @@
-!black = #555
-!gray = #AAA
+!light_marine = #EAF4FD
+!dark_marine = #6EA7D1
+!clay = #DB530F
+!brick = #BF200A
+!black = #484848
+!white = #FFFFFF
+
 !master_width = 996px
 !left_column = 300px
 !right_column = !master_width - !left_column - 7px
 !lady_height = 348px
+!cleaner_height = 160px
+!photo_width = 110px
+!hourly_rate_width = 150px
 
 body
-  background-color: white
+  background-color = !white
   text-align: center
   font-family: verdana,helvetica,arial,sans-serif
-  margin-top: 20px
+  margin-top: 25px
+  color = !dark_marine
 
 .clearer
   clear: both
 
-#navigation
+#navigation-container
   text-align: right
+  
+=thick_border(!side = top)
+  border-#{!side}:
+    width: 1px
+    style: solid
+    color = !dark_marine
+  
+#navigation
+  width: 200px
+  float: right
+  padding: 3px
+  +thick_border(bottom)
     
-#container, #navigation
+#container, #navigation-container
   width = !master_width
   margin-left: auto
   margin-right: auto
-
-#container
-  background: white
 
 #lady
   display: inline
@@ -35,37 +53,120 @@ body
   height = !lady_height
 
 #summary
-  display: inline
-  padding-left = !left_column
   text-align: left
+  
+h1
+  font-size: 110%
+  padding-bottom: 20px
+  padding-top: 15px
+  color = !clay
+/*  font-weight: bold*/
     
 #header
   text-align: left
   padding: 20px
     
-#logo
-  font-size: 200%
+#logo img
+  width: 400px  
+  float: left
+  padding-top: 8px
+  
+#howto
+  padding-top: 50px
   
 #content, #footer
-  border:
-    top:
-      width: 1px
-      style: solid
-      color = !black
-    
+  +thick_border(top)
+  
 .howto-step
   vertical-align: top
+  line-height: 45px
+  font-size: 18px
+  color = !black
   
 #cleaners, #search
   display: inline-block
 
 #search
   width = !left_column  
+  vertical-align: top
+  padding-top: 10px
+  text-align: center
+
+#search-where input
+  border: 1px solid #{!dark_marine}
+  width: 250px
+  font-size: 200%
+  color = !dark_marine
+
+#search-what
+  text-align: left
+  margin-left: 50px
+  margin-top: 30px
+  
+#search-when
+  padding-left: 26px
+  margin-top: 30px
+  
+#search-submit
+  margin-top: 20px
+  border: 1px solid #{!clay}
+  padding: 5px
   
 #cleaners
   width = !right_column
 
 #footer
-  color = !gray
+  color = !black
   font-size: 70%
+  
+.cleaner
+  background-color = !light_marine
+  margin: 10px
+  border-bottom: 1px solid #{!dark_marine}
+  
+.cleaner .photo, .cleaner .photo img
+  height = !cleaner_height
+  
+.cleaner .photo img
+  display: block
+  
+.cleaner .details
+  width = !right_column - !photo_width - !hourly_rate_width
+  
+.cleaner .hourly-rate
+  color = !clay
+  font-weight: normal
+  font-size: 60px
+  text-align: center
+  width = !hourly_rate_width
+
+.cleaner .details
+  text-align: left
+  vertical-align: top
+  padding: 15px
+  color = !dark_marine
+  
+.cleaner .details .name
+  font-size: 120%
+  margin-bottom: 10px
+  color = !clay
+  
+.book-online
+  font-size: 120%
+  font-style: bold
+  text-decoration: underline
+  vertical-align: middle
+  color = !light_marine
+  background-color = !dark_marine
+  height: 30px
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
