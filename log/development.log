@@ -40,6 +40,7 @@ Completed in 25ms (View: 24, DB: 0) | 200 OK [http://localhost/]
   [4;35;1mSQL (150.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
 
 
+
 Processing HomeController#index (for 127.0.0.1 at 2009-12-22 21:22:17) [GET]
 Rendering template within layouts/application
 Rendering home/index
