@@ -19,18 +19,28 @@
       #navigation-container
         #navigation
           About | Help
-      #summary
+      #summary<>
         #howto<>
           #howto-left<>
-            Clients
+            .howto-title
+              Homeowners
             = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Book a self-employed cleaner online for free'}
-            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Get a confirmation by email'}
-            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Leave feedback when the job is done and earn points to spend on free cleaning'}
+            = render :partial => 'howto', :locals => {:image => 'at', :text => 'Get the confirmation by email'}
+            = render :partial => 'howto', :locals => {:image => 'tick', :text => 'Leave feedback when the job is done'}
+            .register
+              Homeowners, Register Now!
+            .register-hint
+              It takes less than 30 seconds
           #howto-right<>
-            Cleaners
-            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Advertise yourself for free'}
-            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Receive jobs by sms'}
-            = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'We do not charge a commission'}
+            .howto-title
+              Cleaners
+            = render :partial => 'howto', :locals => {:image => 'free', :text => 'Advertise yourself for free'}
+            = render :partial => 'howto', :locals => {:image => 'text', :text => 'Receive jobs by sms'}
+            = render :partial => 'howto', :locals => {:image => 'percent', :text => 'Don\'t pay any commission'}
+            .register
+              Cleaners, Join Now!
+            .register-hint
+              You don't need an agency to find work for you
     #content<>
       = yield
     #footer

@@ -3,10 +3,17 @@ body {
   text-align: center;
   font-family: verdana,helvetica,arial,sans-serif;
   margin-top: 25px;
-  color: #6ea7d1; }
+  color: #484848; }
 
 .clearer {
   clear: both; }
+
+/* input[type='submit']
+ * background-color = !dark_marine
+ * color: white
+ * border: 1px solid #{!light_marine}
+ * padding: 5px
+ * border-radius: 25px */
 
 #navigation-container {
   text-align: right; }
@@ -17,10 +24,7 @@ body {
 #navigation {
   width: 200px;
   float: right;
-  padding: 3px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #6ea7d1; }
+  padding: 3px; }
 
 #container {
   width: 996px;
@@ -61,12 +65,30 @@ h1 {
   display: inline-block;
   text-align: left; }
 
+#howto {
+  margin-top: 10px; }
+
 #howto-left, #howto-right {
+  height: 247px;
   display: inline-block;
-  width: 348px; }
+  vertical-align: top;
+  padding: 15px;
+  border-left: 1px solid #6ea7d1;
+  border-top: 1px solid #6ea7d1;
+  border-top-left-radius: 20px;
+  text-align: left; }
+
+#howto-left {
+  width: 308px;
+  margin-right: 30px; }
+
+#howto-right {
+  width: 288px; }
 
 .howto-icon {
-  display: inline-block; }
+  float: left;
+  width: 40px;
+  height: 40px; }
 
 #content, #footer {
   border-top-width: 1px;
@@ -74,9 +96,36 @@ h1 {
   border-top-color: #6ea7d1; }
 
 .howto-step {
-  vertical-align: top;
-  font-size: 14px;
-  color: #484848; }
+  font-size: 16px;
+  color: #484848;
+  vertical-align: middle;
+  height: 40px;
+  display: table;
+  margin-bottom: 15px;
+  margin-top: 15px; }
+
+.howto-title {
+  font-size: 140%;
+  color: #6ea7d1; }
+
+.howto-title {
+  text-align: center; }
+
+.howto-text {
+  vertical-align: middle;
+  display: table-cell;
+  padding-left: 15px; }
+
+.register {
+  color: #F30;
+  text-decoration: underline;
+  font-size: 130%;
+  text-align: center; }
+
+.register-hint {
+  font-size: 60%;
+  text-align: center;
+  color: #999; }
 
 #cleaners, #search {
   display: inline-block; }
