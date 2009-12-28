@@ -21,6 +21,14 @@ body {
 .search-block {
   margin: 25px 0; }
 
+a {
+  color: #db530f;
+  text-decoration: underline; }
+  a:hover {
+    color: #db530f; }
+  a:visited {
+    color: #db530f; }
+
 #navigation {
   width: 200px;
   float: right;
@@ -48,7 +56,7 @@ body {
 #lady {
   height: 348px;
   text-align: center;
-  vertical-align: top; }
+  vertical-align: bottom; }
 
 #summary {
   text-align: left;
@@ -69,21 +77,20 @@ h1 {
   margin-top: 10px; }
 
 #howto-left, #howto-right {
-  height: 247px;
+  height: 300px;
   display: inline-block;
   vertical-align: top;
-  padding: 15px;
   border-left: 1px solid #6ea7d1;
   border-top: 1px solid #6ea7d1;
   border-top-left-radius: 20px;
-  text-align: left; }
+  text-align: center;
+  padding: 5px 10px;
+  margin-top: 15px;
+  width: 297px; }
 
 #howto-left {
-  width: 308px;
-  margin-right: 30px; }
+  margin-right: 40px; }
 
-#howto-right {
-  width: 288px; }
 
 .howto-icon {
   float: left;
@@ -102,11 +109,13 @@ h1 {
   height: 40px;
   display: table;
   margin-bottom: 15px;
-  margin-top: 15px; }
+  margin-top: 15px;
+  text-align: left; }
 
 .howto-title {
   font-size: 140%;
-  color: #6ea7d1; }
+  color: #6ea7d1;
+  margin-top: 10px; }
 
 .howto-title {
   text-align: center; }
@@ -117,14 +126,15 @@ h1 {
   padding-left: 15px; }
 
 .register {
-  color: #F30;
-  text-decoration: underline;
-  font-size: 130%;
-  text-align: center; }
+  font-size: 120%;
+  text-align: center;
+  margin-top: 30px;
+  display: block; }
 
 .register-hint {
   font-size: 60%;
   text-align: center;
+  margin-top: 5px;
   color: #999; }
 
 #cleaners, #search {
@@ -154,8 +164,9 @@ h1 {
   width: 696px; }
 
 #footer {
-  color: #484848;
-  font-size: 70%; }
+  color: #999;
+  font-size: 70%;
+  padding: 10px; }
 
 .cleaner {
   background-color: #eaf4fd;

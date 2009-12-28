@@ -36,6 +36,14 @@ body
 .search-block
   margin: 25px 0    
   
+a
+  color = !clay
+  text-decoration: underline
+  &:hover
+    color = !clay
+  &:visited
+    color = !clay
+  
 =thick_border(!side = top)
   border-#{!side}:
     width: 1px
@@ -69,7 +77,7 @@ body
 #lady
   height = !lady_height
   text-align: center
-  vertical-align: top
+  vertical-align: bottom
   
 #summary
   text-align: left
@@ -90,23 +98,22 @@ h1
   margin-top: 10px
   
 #howto-left, #howto-right
-  height: 247px
+  height: 300px
   display: inline-block
   vertical-align: top
-  padding: 15px
   border-left: 1px solid #{!dark_marine}
   border-top: 1px solid #{!dark_marine}
   border-top-left-radius: 20px
-  text-align: left
+  text-align: center
+  padding: 5px 10px
+  margin-top: 15px
+  width = !right_column / 2 - 1px - 50px
   
 #howto-left
-  width = !right_column / 2 - 40px
-  margin-right: 30px
+  margin-right: 40px
   
-  
+    
 #howto-right
-  width = !right_column / 2 - 60px
-  
   
 .howto-icon
   float: left
@@ -124,10 +131,12 @@ h1
   display: table
   margin-bottom: 15px
   margin-top: 15px
+  text-align: left
 
 .howto-title
   font-size: 140%
   color = !dark_marine
+  margin-top: 10px
   
 .howto-title
   text-align: center
@@ -138,14 +147,15 @@ h1
   padding-left: 15px
   
 .register
-  color: #F30
-  text-decoration: underline
-  font-size: 130%
+  font-size: 120%
   text-align: center
+  margin-top: 30px
+  display: block
   
 .register-hint
   font-size: 60%
   text-align: center
+  margin-top: 5px
   color: #999
   
 #cleaners, #search
@@ -178,8 +188,9 @@ h1
   width = !right_column
 
 #footer
-  color = !black
+  color: #999
   font-size: 70%
+  padding: 10px  
   
 .cleaner
   background-color = !light_marine
