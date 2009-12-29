@@ -1,0 +1,21 @@
+#howto<>
+  #howto-left<>
+    .howto-title
+      Homeowners
+    = render :partial => 'howto', :locals => {:image => 'arrow', :text => 'Book a self-employed cleaner online for free'}
+    = render :partial => 'howto', :locals => {:image => 'at', :text => 'Get the confirmation by email'}
+    = render :partial => 'howto', :locals => {:image => 'tick', :text => 'Leave feedback when the job is done'}
+    .register
+      Choose a Cleaner Now!
+    .register-hint
+      You need a cleaner, not an agency
+  #howto-right<>
+    .howto-title
+      Cleaners
+    = render :partial => 'howto', :locals => {:image => 'free', :text => 'Advertise yourself for free'}
+    = render :partial => 'howto', :locals => {:image => 'text', :text => 'Receive jobs by sms'}
+    = render :partial => 'howto', :locals => {:image => 'percent', :text => 'Don\'t pay any commission'}
+    %a.register{:href => '#'}
+      Join Now!
+    .register-hint
+      You don't need an agency to find work

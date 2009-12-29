@@ -3,17 +3,11 @@ body {
   text-align: center;
   font-family: verdana,helvetica,arial,sans-serif;
   margin-top: 25px;
-  color: #484848; }
+  color: #484848;
+  font-size: 12px; }
 
 .clearer {
   clear: both; }
-
-/* input[type='submit']
- * background-color = !dark_marine
- * color: white
- * border: 1px solid #{!light_marine}
- * padding: 5px
- * border-radius: 25px */
 
 #navigation-container {
   text-align: right; }
@@ -64,7 +58,7 @@ a {
   width: 696px; }
 
 h1 {
-  font-size: 110%;
+  font-size: 130%;
   color: #db530f;
   padding-bottom: 10px; }
 
@@ -113,7 +107,7 @@ h1 {
   text-align: left; }
 
 .howto-title {
-  font-size: 140%;
+  font-size: 150%;
   color: #6ea7d1;
   margin-top: 10px; }
 
@@ -126,21 +120,22 @@ h1 {
   padding-left: 15px; }
 
 .register {
-  font-size: 120%;
+  font-size: 160%;
   text-align: center;
   margin-top: 30px;
-  display: block; }
+  display: block;
+  color: #db530f; }
 
 .register-hint {
-  font-size: 60%;
+  font-size: 80%;
   text-align: center;
   margin-top: 5px;
   color: #999; }
 
-#cleaners, #search {
+#right-block, #left-block {
   display: inline-block; }
 
-#search {
+#left-block {
   width: 300px;
   vertical-align: top;
   text-align: center; }
@@ -154,52 +149,68 @@ h1 {
 
 #search-activities {
   text-align: left;
-  margin-left: 67px; }
+  margin-left: 77px; }
 
 
 #calendar {
-  padding-left: 25px; }
+  padding-left: 35px;
+  font-size: 120%; }
 
-#cleaners {
+#right-block {
   width: 696px; }
 
 #footer {
   color: #999;
-  font-size: 70%;
+  font-size: 90%;
   padding: 10px; }
 
 .cleaner {
   background-color: #eaf4fd;
-  margin: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin: 10px 0;
   border-bottom: 1px solid #6ea7d1; }
 
-.cleaner .photo, .cleaner .photo img {
+.photo, .details, .booking {
+  display: inline-block;
   height: 160px; }
 
-.cleaner .photo img {
-  display: block; }
+.cleaner .photo {
+  vertical-align: bottom; }
 
-.cleaner .details {
-  width: 436px; }
+.cleaner .photo img {
+  display: inline; }
 
 .cleaner .hourly-rate {
   color: #db530f;
   font-weight: normal;
-  font-size: 60px;
+  font-size: 40px;
   text-align: center;
-  width: 150px; }
+  width: 150px;
+  line-height: 125px; }
+
+.cleaner .details .name {
+  margin-top: 10px; }
 
 .cleaner .details {
+  padding-left: 10px;
+  width: 426px;
   text-align: left;
-  vertical-align: top;
-  padding: 15px;
-  color: #6ea7d1; }
+  color: #6ea7d1;
+  vertical-align: top; }
+
+.booking {
+  height: 160px; }
 
 .book-online {
-  font-size: 120%;
-  font-style: bold;
-  text-decoration: underline;
-  vertical-align: middle;
-  height: 30px; }
+  height: 60px; }
+
+.introduction, .stats {
+  display: inline-block;
+  vertical-align: top; }
+
+.stats {
+  width: 116px;
+  font-size: 100%; }
+
+.introduction {
+  width: 300px;
+  color: #484848; }

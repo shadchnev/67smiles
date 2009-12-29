@@ -1,4 +1,8 @@
-#search<>
+= content_for :photo do
+  %img{:src => '/images/smiling_lady.png'}<>
+= content_for :summary do
+  = render :partial => 'summary'  
+= content_for :left_block do
   %form
     #search-where.search-block
       %h1
@@ -21,8 +25,8 @@
       %h1
         Select a date
       #calendar
-    %input#search-submit{:type => 'submit', :value => 'Search'}
-#cleaners
-  = render :partial => 'cleaner', :locals => {:name => 'Emma'}
-  = render :partial => 'cleaner', :locals => {:name => 'Sonya'}
-  = render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}
+    %input#search-submit{:type => 'submit', :value => 'Search'}  
+
+= render :partial => 'cleaner', :locals => {:name => 'Emma'}
+= render :partial => 'cleaner', :locals => {:name => 'Sonya'}
+= render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}

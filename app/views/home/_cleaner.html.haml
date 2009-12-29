@@ -1,18 +1,20 @@
-%table.cleaner
-  %tr
-    %td.photo{:rowspan => 2}
-      %img{:src => 'images/emma_small.png'}<>
-    %td.details
-      %h1.name
-        = name
+.cleaner
+  .photo>
+    %img{:src => 'images/emma_small.png'}
+  .details>
+    %h1.name      
+      = link_to name, :controller => "cleaners", :action => "show", :id => 1
+    .stats
       .jobs-done
-        5 Jobs Done
+        %a{:href => '#'}
+          5 Jobs Done
       .reviews
-        2 Reviews    
-    %td
-      .hourly-rate
-        £10
-  %tr
-    %td
-    %td.book-online
+        %a{:href => '#'}
+          2 Reviews
+    .introduction
+      Hi Dear, I can do whatever it takes to make you satisfied! I'm proficient in using mops and cleaning cloths, should you require this as well :) Don't hesitate to contact me! Bye-bye, baby!
+  .booking>
+    .hourly-rate
+      &pound;10
+    .book-online
       %input{:value => 'Book online', :type => 'submit'}
