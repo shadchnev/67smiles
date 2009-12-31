@@ -1,7 +1,7 @@
 = content_for :photo do
-  %img{:src => '/images/smiling_lady.png'}<>
+  %img.portrait_border{:src => '/images/emma_profile.png'}<>
 = content_for :summary do
-  Description and skills
+  = render :partial => 'summary'
 = content_for :left_block do
   Hints
 

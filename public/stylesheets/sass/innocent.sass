@@ -8,7 +8,7 @@
 !master_width = 996px
 !left_column = 300px
 !right_column = !master_width - !left_column
-!lady_height = 348px
+!lady_height = 316px
 !cleaner_height = 160px
 !photo_width = 110px
 !hourly_rate_width = 150px
@@ -43,7 +43,10 @@ a
     width: 1px
     style: solid
     color = !dark_marine
-  
+
+p
+  margin: 5px 0
+
 #navigation
   width: 200px
   float: right
@@ -58,20 +61,21 @@ a
   display: inline-block
   vertical-align: top
 
-#lady
-  display: inline-block
-  width = !left_column
-  text-align: center
-  
 #header
   display: inline-block
   width = !right_column
   vertical-align: top
+  height: 396px
   
 #lady
+  display: inline-block
+  width = !left_column  
   height = !lady_height
   text-align: center
   vertical-align: bottom
+  
+.portrait_border
+  border-right: 1px solid #{!dark_marine}
   
 #summary
   text-align: left
@@ -79,7 +83,12 @@ a
   width = !right_column
 
 h1
+  font-size: 170%
+  
+h2
   font-size: 130%
+
+h1, h2, h3, h4, h5, h6
   color = !clay
   padding-bottom: 10px
         
@@ -87,9 +96,7 @@ h1
   width: 480px  
   display: inline-block
   text-align: left
-  
-#howto
-  margin-top: 10px
+  margin-bottom: 25px
   
 #howto-left, #howto-right
   height: 300px
@@ -100,13 +107,11 @@ h1
   border-top-left-radius: 20px
   text-align: center
   padding: 5px 10px
-  margin-top: 15px
   width = !right_column / 2 - 1px - 50px
   
 #howto-left
   margin-right: 40px
-  
-    
+      
 #howto-right
   
 .howto-icon
@@ -237,8 +242,14 @@ h1
   font-size: 100%
 
 .introduction
-  width: 300px
   color = !black
+
+div.introduction
+  width: 300px  
+  
+p#introduction
+  width: 500px
+  
   
   
   

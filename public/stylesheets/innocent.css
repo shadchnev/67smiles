@@ -23,6 +23,9 @@ a {
   a:visited {
     color: #db530f; }
 
+p {
+  margin: 5px 0; }
+
 #navigation {
   width: 200px;
   float: right;
@@ -37,20 +40,21 @@ a {
   display: inline-block;
   vertical-align: top; }
 
-#lady {
-  display: inline-block;
-  width: 300px;
-  text-align: center; }
-
 #header {
   display: inline-block;
   width: 696px;
-  vertical-align: top; }
+  vertical-align: top;
+  height: 396px; }
 
 #lady {
-  height: 348px;
+  display: inline-block;
+  width: 300px;
+  height: 316px;
   text-align: center;
   vertical-align: bottom; }
+
+.portrait_border {
+  border-right: 1px solid #6ea7d1; }
 
 #summary {
   text-align: left;
@@ -58,17 +62,20 @@ a {
   width: 696px; }
 
 h1 {
-  font-size: 130%;
+  font-size: 170%; }
+
+h2 {
+  font-size: 130%; }
+
+h1, h2, h3, h4, h5, h6 {
   color: #db530f;
   padding-bottom: 10px; }
 
 #logo {
   width: 480px;
   display: inline-block;
-  text-align: left; }
-
-#howto {
-  margin-top: 10px; }
+  text-align: left;
+  margin-bottom: 25px; }
 
 #howto-left, #howto-right {
   height: 300px;
@@ -79,7 +86,6 @@ h1 {
   border-top-left-radius: 20px;
   text-align: center;
   padding: 5px 10px;
-  margin-top: 15px;
   width: 297px; }
 
 #howto-left {
@@ -212,5 +218,10 @@ h1 {
   font-size: 100%; }
 
 .introduction {
-  width: 300px;
   color: #484848; }
+
+div.introduction {
+  width: 300px; }
+
+p#introduction {
+  width: 500px; }
