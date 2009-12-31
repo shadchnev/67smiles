@@ -2,7 +2,7 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
-  database: 67smiles
+  database: innocent_cleaners_development
   pool: 5
   timeout: 5000
 
@@ -11,12 +11,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql
-  database: 67smiles
+  database: innocent_cleaners_test
   pool: 5
   timeout: 5000
 
 production:
   adapter: mysql
-  database: 67smiles
+  database: innocent_cleaners_production
   pool: 5
   timeout: 5000

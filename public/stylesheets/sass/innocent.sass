@@ -82,16 +82,20 @@ p
   display: inline-block
   width = !right_column
 
+h1, h2, h3, h4, h5, h6
+  color = !clay
+  padding-bottom: 10px
+        
 h1
   font-size: 170%
   
 h2
   font-size: 130%
+  
+h3
+  font-size: 110%
+  padding-bottom: 3px
 
-h1, h2, h3, h4, h5, h6
-  color = !clay
-  padding-bottom: 10px
-        
 #logo
   width: 480px  
   display: inline-block
@@ -166,11 +170,15 @@ h1, h2, h3, h4, h5, h6
   vertical-align: top
   text-align: center
 
-#search-where input
+#search-where input, #available-date input
   border: 1px solid #{!dark_marine}  
   width: 150px
   font-size: 110%
   color = !dark_marine
+  
+#availability *
+  margin-top: 5px
+  margin-bottom: 5px
 
 #search-what
 
@@ -193,7 +201,30 @@ h1, h2, h3, h4, h5, h6
   font-size: 90%
   padding: 10px  
   
-.cleaner
+#reviews
+  text-align: left
+  
+#reviews, #availability
+  margin-top: 15px
+
+#hints-list
+  text-align: left
+  margin: 0 50px
+  
+.review
+  padding: 5px 15px
+  text-align: left
+
+.review .signature, .review .timestamp
+  color = !clay
+  
+.review .signature
+  font-size: 80%
+  
+.review .timestamp
+  font-size: 80%
+
+.cleaner, .review
   background-color = !light_marine
   margin: 10px 0
   border-bottom: 1px solid #{!dark_marine}  
@@ -248,7 +279,27 @@ div.introduction
   width: 300px  
   
 p#introduction
-  width: 500px
+  height: 95px
+  overflow: hidden 
+  
+p#skills, p#introduction
+  margin-top: 10px
+
+#skills-list
+  margin-left: 20px
+
+li span
+  color = !black
+  font-size: 12px
+
+li
+  list-style-type: square
+  color = !clay
+  font-size: 18px
+  line-height: 16px
+  
+#phone-prefix
+  color = !clay
   
   
   
