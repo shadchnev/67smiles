@@ -176,6 +176,12 @@ h3
   font-size: 110%
   color = !dark_marine
   
+#availability
+  margin-bottom: 15px
+  
+#available-date *
+  vertical-align: bottom
+
 #availability *
   margin-top: 5px
   margin-bottom: 5px
@@ -240,13 +246,17 @@ h3
   display: inline
 
   
-.cleaner .hourly-rate
+.hourly-rate
   color = !clay
   font-weight: normal
   font-size: 40px
   text-align: center
   width = !hourly_rate_width
   line-height: 125px
+
+.hour
+  font-size: 15px
+  color: #999
 
 .cleaner .details .name
   margin-top: 10px
@@ -279,13 +289,13 @@ div.introduction
   width: 300px  
   
 p#introduction
-  height: 95px
+  height: 85px
   overflow: hidden 
   
-p#skills, p#introduction
+#skills, p#introduction, #stats
   margin-top: 10px
 
-#skills-list
+#skills-list, #info
   margin-left: 20px
 
 li span
@@ -301,9 +311,24 @@ li
 #phone-prefix
   color = !clay
   
+#hiring
+  font-size: 150%
+  float: right
+  text-align: center
   
+#second-half
+  width = !right_column
+
+#second-half #skills, #second-half #stats
+  width = !right_column / 2 - 100px
+
+#second-half #skills, #second-half #hiring, #second-half #stats
+  display: inline-block
+  vertical-align: top
   
-  
+#jobs-done
+  color = !clay
+  font-size: 90%
   
   
   

@@ -1,3 +1,6 @@
 $(document).ready(function() {
-  $("#calendar").datepicker({firstDay: 1});
+  var datepickerOptions = {firstDay: 1, dateFormat: 'dd MM'};
+  $("#calendar").datepicker(datepickerOptions);
+  $("#available-date input").datepicker(datepickerOptions);
+  
 })

@@ -5,11 +5,11 @@
 = content_for :left_block do
   %form
     #search-where.search-block
-      %h1
+      %h2
         Enter your postcode
       %input{:value => ''}
     #search-what.search-block
-      %h1
+      %h2
         Select what you need 
       #search-activities     
         .search-activity
@@ -22,7 +22,7 @@
           %input{:type => 'checkbox'}
           Dog-walking
     #search-when.search-block
-      %h1
+      %h2
         Select a date
       #calendar
     %input#search-submit{:type => 'submit', :value => 'Search'}  

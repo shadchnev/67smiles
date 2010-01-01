@@ -1,13 +1,13 @@
 #cleaner_summary
   %h1
     Joanne
-  %p#email
-    %a{:href => '#'}
-      joanne@auntyjane.co.uk
-  %p#phone
-    %span#phone-prefix
-      mob:
-    +447912345678
+  / %p#email
+  /   %a{:href => '#'}
+  /     joanne@auntyjane.co.uk
+  / %p#phone
+  /   %span#phone-prefix
+  /     mob:
+  /   +447912345678
   %p#introduction
     Hello, my darling! You will not regret if you ask me to come to your house...
     I will clean every nook and cranny in your kitchen, gently working with your mop...
@@ -18,17 +18,36 @@
     Hello, my darling! You will not regret if you ask me to come to your house...
     I will clean every nook and cranny in your kitchen, gently working with your mop...
     You'll be left satisfied...
-  %p#skills
-    %h3
-      I'm happy to help you with
-    %ul#skills-list
-      %li 
-        %span Domestic cleaning
-      %li 
-        %span Commercial cleaning
-      %li 
-        %span Looking after pets
-      %li 
-        %span Ironing
-      %li 
-        %span Groceries shopping
+  #second-half
+    #skills
+      %h3
+        I'm happy to help you with
+      %ul#skills-list
+        %li 
+          %span Domestic cleaning
+        %li 
+          %span Commercial cleaning
+        %li 
+          %span Looking after pets
+        %li 
+          %span Ironing
+        %li 
+          %span Groceries shopping
+        %li 
+          %span Laundry
+    #stats
+      %h3
+        Info
+      %ul#info
+        %li
+          %span 5 Jobs done          
+        %li 
+          %span 29 years old
+        %li
+          %span Member since 23 January 2010            
+    #hiring
+      .hourly-rate
+        &pound;10
+        %span.hour<>
+          \/hour
+      %input{:type => "Submit", :value => "Hire me online!"}

@@ -1,10 +1,14 @@
 #availability
   %h2
-    Availability
-  %h3
-    Choose the date
+    Check when I'm available
+  / %h3
+  /   Date
   #available-date
-    %input{:type => 'text', :value => '01/01/10'}      
+    %input{:type => 'text', :value => '14 February'}
+    %img{:src => '/images/calendar_icon.gif'}
+  %input{:type => 'submit', :value => 'Check this date'}
+  %h3
+    14 February
   %h3
     Morning
   #morning
@@ -19,7 +23,7 @@
   #evening
     .timespan 18:00 &mdash; 21:00
   #book-specific-date
-    %input{:type => "submit", :value => 'Book Joanne for 1 January'}
+    %input{:type => "submit", :value => 'Hire me for 14 February'}
       
   
   

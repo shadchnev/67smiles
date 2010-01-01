@@ -156,6 +156,12 @@ h3 {
   font-size: 110%;
   color: #6ea7d1; }
 
+#availability {
+  margin-bottom: 15px; }
+
+#available-date * {
+  vertical-align: bottom; }
+
 #availability * {
   margin-top: 5px;
   margin-bottom: 5px; }
@@ -216,13 +222,17 @@ h3 {
 .cleaner .photo img {
   display: inline; }
 
-.cleaner .hourly-rate {
+.hourly-rate {
   color: #db530f;
   font-weight: normal;
   font-size: 40px;
   text-align: center;
   width: 150px;
   line-height: 125px; }
+
+.hour {
+  font-size: 15px;
+  color: #999; }
 
 .cleaner .details .name {
   margin-top: 10px; }
@@ -255,13 +265,13 @@ div.introduction {
   width: 300px; }
 
 p#introduction {
-  height: 95px;
+  height: 85px;
   overflow: hidden; }
 
-p#skills, p#introduction {
+#skills, p#introduction, #stats {
   margin-top: 10px; }
 
-#skills-list {
+#skills-list, #info {
   margin-left: 20px; }
 
 li span {
@@ -276,3 +286,22 @@ li {
 
 #phone-prefix {
   color: #db530f; }
+
+#hiring {
+  font-size: 150%;
+  float: right;
+  text-align: center; }
+
+#second-half {
+  width: 696px; }
+
+#second-half #skills, #second-half #stats {
+  width: 248px; }
+
+#second-half #skills, #second-half #hiring, #second-half #stats {
+  display: inline-block;
+  vertical-align: top; }
+
+#jobs-done {
+  color: #db530f;
+  font-size: 90%; }
