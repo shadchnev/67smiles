@@ -1,8 +1,7 @@
-= content_for :photo do
-  %img{:src => '/images/smiling_lady.png'}<>
-= content_for :summary do
-  = render :partial => 'summary'  
-= content_for :left_block do
+= content_for :lady do
+  %img#illustration{:src => '/images/smiling_lady.png'}<>
+
+= content_for :left_content do
   %form
     #search-where.search-block
       %h2
@@ -27,6 +26,8 @@
       #calendar
     %input#search-submit{:type => 'submit', :value => 'Search'}  
 
-= render :partial => 'cleaner', :locals => {:name => 'Emma'}
-= render :partial => 'cleaner', :locals => {:name => 'Sonya'}
-= render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}
+= render :partial => 'welcome'
+#cleaners
+  = render :partial => 'cleaner', :locals => {:name => 'Emma'}
+  = render :partial => 'cleaner', :locals => {:name => 'Sonya'}
+  = render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}

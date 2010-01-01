@@ -1,9 +1,9 @@
-= content_for :photo do
+= content_for :lady do
   %img.portrait_border{:src => '/images/emma_profile.png'}<>
-= content_for :summary do
-  = render :partial => 'summary'
-= content_for :left_block do
+  
+= content_for :left_content do
   = render :partial => 'availability'
 
+= render :partial => 'summary'
 = render :partial => 'reviews'
   

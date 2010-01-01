@@ -6,6 +6,16 @@ body {
   color: #484848;
   font-size: 12px; }
 
+#left-column {
+  width: 250px; }
+
+#right-column {
+  width: 746px; }
+
+#left-column, #right-column {
+  display: inline-block;
+  vertical-align: top; }
+
 .clearer {
   clear: both; }
 
@@ -41,25 +51,38 @@ p {
   vertical-align: top; }
 
 #header {
-  display: inline-block;
-  width: 696px;
-  vertical-align: top;
-  height: 396px; }
+  display: inline-block; }
 
 #lady {
-  display: inline-block;
-  width: 300px;
-  height: 316px;
+  display: table;
+  width: 250px;
+  height: 396px;
   text-align: center;
-  vertical-align: bottom; }
+  border-bottom: 1px solid #6ea7d1; }
+
+#lady-container {
+  display: table-cell;
+  text-align: right;
+  vertical-align: bottom;
+  height: 319px;
+  line-height: 0; }
+
+#lady-container #portrait {
+  border-right: 1px solid #6ea7d1; }
 
 .portrait_border {
   border-right: 1px solid #6ea7d1; }
 
-#summary {
+#cleaner-summary, #reviews {
   text-align: left;
-  display: inline-block;
-  width: 696px; }
+  display: inline-block; }
+
+#cleaner-summary {
+  padding-left: 20px;
+  width: 726px; }
+
+#reviews {
+  width: 706px; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #db530f;
@@ -90,18 +113,21 @@ h3 {
   border-top-left-radius: 20px;
   text-align: center;
   padding: 5px 10px;
-  width: 297px; }
+  width: 322px; }
 
 #howto-left {
   margin-right: 40px; }
 
+#howto, #cleaner-summary {
+  border-bottom: 1px solid #6ea7d1;
+  height: 310px; }
 
 .howto-icon {
   float: left;
   width: 40px;
   height: 40px; }
 
-#content, #footer {
+#footer {
   border-top-width: 1px;
   border-top-style: solid;
   border-top-color: #6ea7d1; }
@@ -146,7 +172,7 @@ h3 {
   display: inline-block; }
 
 #left-block {
-  width: 300px;
+  width: 250px;
   vertical-align: top;
   text-align: center; }
 
@@ -169,23 +195,20 @@ h3 {
 
 #search-activities {
   text-align: left;
-  margin-left: 77px; }
+  margin-left: 50px; }
 
 
 #calendar {
-  padding-left: 35px;
+  padding-left: 12px;
   font-size: 120%; }
 
 #right-block {
-  width: 696px; }
+  width: 746px; }
 
 #footer {
   color: #999;
   font-size: 90%;
   padding: 10px; }
-
-#reviews {
-  text-align: left; }
 
 #reviews, #availability {
   margin-top: 15px; }
@@ -222,12 +245,15 @@ h3 {
 .cleaner .photo img {
   display: inline; }
 
+#cleaners, #reviews {
+  padding: 0 20px; }
+
 .hourly-rate {
   color: #db530f;
   font-weight: normal;
   font-size: 40px;
   text-align: center;
-  width: 150px;
+  width: 180px;
   line-height: 125px; }
 
 .hour {
@@ -239,7 +265,7 @@ h3 {
 
 .cleaner .details {
   padding-left: 10px;
-  width: 426px;
+  width: 406px;
   text-align: left;
   color: #6ea7d1;
   vertical-align: top; }
@@ -255,14 +281,14 @@ h3 {
   vertical-align: top; }
 
 .stats {
-  width: 116px;
+  width: 90px;
   font-size: 100%; }
 
 .introduction {
   color: #484848; }
 
 div.introduction {
-  width: 300px; }
+  width: 310px; }
 
 p#introduction {
   height: 85px;
@@ -293,12 +319,12 @@ li {
   text-align: center; }
 
 #second-half {
-  width: 696px; }
+  width: 746px; }
 
-#second-half #skills, #second-half #stats {
-  width: 248px; }
+#skills, #stats {
+  width: 273px; }
 
-#second-half #skills, #second-half #hiring, #second-half #stats {
+#skills, #hiring, #stats {
   display: inline-block;
   vertical-align: top; }
 

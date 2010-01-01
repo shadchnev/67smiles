@@ -10,26 +10,26 @@
     %title
       Innocent Cleaners
   %body
-  #container<>
-    #lady<>
-      = yield :photo
-    #header<>
-      #logo
-        %a{:href => '/'}
-          %img{:src => "/images/logo_scruff.png"}
-      #navigation-container
-        #navigation
-          %a{:href => '#'}<
-            About
-          |
-          %a{:href => '#'}<
-            Help
-      #summary<>
-        = yield :summary
-    #content<>
-      #left-block<>
-        = yield :left_block
-      #right-block
-        = yield
-    #footer
-      Copyright &copy; 2010 Innocent Cleaners
+    #container<>
+      #left-column<>
+        #lady<>
+          #lady-container
+            = yield :lady
+        #left-content
+          = yield :left_content        
+      #right-column<>
+        #header<>
+          #logo
+            %a{:href => '/'}
+              %img{:src => "/images/logo_scruff.png"}
+          #navigation-container
+            #navigation
+              %a{:href => '#'}<
+                About
+              |
+              %a{:href => '#'}<
+                Help
+        #content<>
+          = yield
+      #footer
+        Copyright &copy; 2010 Innocent Cleaners
