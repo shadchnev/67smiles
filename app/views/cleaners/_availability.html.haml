@@ -1,29 +1,10 @@
 #availability
   %h2
-    Check my availability
-  / %h3
-  /   Date
-  #available-date
-    %input{:type => 'text', :value => '14 February'}
-    %img{:src => '/images/calendar_icon.gif'}
-  %input{:type => 'submit', :value => 'Check this date'}
-  %h3
-    14 February
-  %h3
-    Morning
-  #morning
-    .timespan 08:00 &mdash; 11:00
-  %h3
-    Afternoon
-  #afternoon
-    .timespan 12:00 &mdash; 14:00
-    .timespan 16:00 &mdash; 18:00
-  %h3
-    Evening  
-  #evening
-    .timespan 18:00 &mdash; 21:00
-  #book-specific-date
-    %input{:type => "submit", :value => 'Hire me for 14 February'}
-      
+    My availability
+  #available-date.small-gap-after
+    #calendar
+    / %img#calendar-icon{:src => '/images/calendar_icon.gif'}
+  / %input{:type => 'submit', :value => 'Check this date'}
+  = render :partial => 'shared/hours'
   
   

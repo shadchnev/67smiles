@@ -1,0 +1,65 @@
+= content_for :lady do
+  %img.portrait_border{:src => '/images/emma_profile.png'}<>
+  
+= content_for :left_content do
+  = render :partial => 'hints'
+
+#hire
+  .hourly-rate
+    &pound;10
+    %span.hour<>
+      \/hour  
+  %h1
+    Hire Joanne      
+  #hire-description.gap-after
+    You are about to hire Joanne for one-off cleaning. When you complete the form, we'll get in touch with Joanne to confirm the availability. Then we'll send you a confirmation email. 
+    You'll hear from us within 15 minutes from completing the form.
+  #hire-what-day.gap-after
+    %h2
+      What day?
+    #calendar
+    #hours
+      %h3 Available hours
+      = render :partial => 'shared/hours'
+    
+  #hire-what-time.gap-after
+    %h2
+      What time?
+    %select#time-from
+      %option 06:00
+      %option 06:30
+      %option 07:00
+      %option 07:30
+      %option 08:00
+      %option 08:30
+      %option 09:00
+      %option 09:30
+      %option 10:00
+      %option 10:30
+      %option 11:00
+      %option 11:30
+      %option 12:00
+      %option 12:30
+    &mdash;
+    %select#time-to
+      %option 07:00
+      %option 08:00
+      %option 09:00
+      %option 10:00
+      %option 11:00
+      %option 12:00
+  
+  #hire-cleaning-materials.gap-after
+    %h2
+      Will you provide cleaning materials?
+    %select
+      %option Yes (no extra charge)
+      %option No (&pound;2/hour extra)
+    %p
+      In any case, please have your vacuum cleaner ready.
+  #hire-total-cost
+    #total-cost
+      (&pound;10 + &pound;2) &times; 3 hours = &pound;36
+    
+  #hire-submit.gap-after
+    %input{:type => "submit", :value => 'Hire Joanne'}

@@ -40,7 +40,7 @@ body
   text-align: right
   
 .search-block
-  margin: 25px 0    
+  margin-bottom: 25px
   
 a
   color = !clay
@@ -198,34 +198,67 @@ h3
   vertical-align: top
   text-align: center
 
+#search-where
+  margin-top: 5px
+
 #search-where input, #available-date input
   border: 1px solid #{!dark_marine}  
   width: 150px
   font-size: 110%
   color = !dark_marine
   
+#hire input
+  font-size: 150%
+  
+#hire .hourly-rate
+  float: right
 #availability
   margin-bottom: 15px
   
 #available-date *
   vertical-align: bottom
 
-#availability *
-  margin-top: 5px
-  margin-bottom: 5px
+.small-gap-after
+  margin-bottom: 10px
+  
+#hire-what-day #calendar
+  display: inline-block
+  width: 300px
+
+#hire-what-day #hours
+  display: inline-block
+  vertical-align: top
+  text-align: center
 
 #search-what
 
 #search-activities
   text-align: left
   margin-left: 50px
+
+.gap-after
+  margin-bottom: 30px
+
+#hire-what-day #calendar
+  padding-left: 0
   
+#total-cost
+  font-size: 200%
+  color = !clay
+  padding: 15px
+  border-top: 1px solid #{!clay}
+  width: 50%
+  
+#hire-total-cost
   
 #search-when
 
 #calendar
   padding-left: 12px
   font-size: 120%
+  
+#calendar-icon
+  vertical-align: bottom
     
 #right-block
   width = !right_column
@@ -235,7 +268,7 @@ h3
   font-size: 90%
   padding: 10px  
   
-#reviews, #availability
+#reviews
   margin-top: 15px
 
 #hints-list
@@ -314,6 +347,15 @@ h3
 
 div.introduction
   width: 310px
+  
+#left-content
+  padding-top: 15px
+  
+#content
+  text-align: left
+  
+#hire
+  padding-left = !column_interspace
   
 p#introduction
   height: 85px
