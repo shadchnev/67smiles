@@ -201,7 +201,7 @@ h3
 #search-where
   margin-top: 5px
 
-#search-where input, #available-date input
+#search-where input, #available-date input, #new input[type='text']
   border: 1px solid #{!dark_marine}  
   width: 150px
   font-size: 110%
@@ -312,7 +312,7 @@ h3
   font-size: 40px
   text-align: center
   width = !hourly_rate_width
-  line-height: 125px
+  line-height: 100px
 
 .hour
   font-size: 15px
@@ -330,6 +330,7 @@ h3
   
 .booking
   height = !cleaner_height
+  text-align: center
 
 .book-online
   height: 60px
@@ -354,7 +355,7 @@ div.introduction
 #content
   text-align: left
   
-#hire
+#hire, #new
   padding-left = !column_interspace
   
 p#introduction
@@ -398,8 +399,29 @@ li
 #jobs-done
   color = !clay
   font-size: 90%
+
+.my-skill
+  margin-bottom: 5px
   
+#new #first-name, #new #last-name, #new #my-hourly-rate, #new #my-surcharge
+  display: inline-block
   
+#new #sex *
+  display: inline-block
+
+#new #my-photo div
+  vertical-align: top
+
+#photo-uploader, #uploaded-photo
+  display: inline-block
   
+#photo-uploader
+  width: 600px
   
-  
+#intro-example
+  font-style: italic
+  margin: 10px 50px
+
+#description textarea
+  width: 400px
+  height: 100px

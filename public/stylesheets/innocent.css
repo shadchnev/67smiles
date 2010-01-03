@@ -179,7 +179,7 @@ h3 {
 #search-where {
   margin-top: 5px; }
 
-#search-where input, #available-date input {
+#search-where input, #available-date input, #new input[type='text'] {
   border: 1px solid #6ea7d1;
   width: 150px;
   font-size: 110%;
@@ -288,7 +288,7 @@ h3 {
   font-size: 40px;
   text-align: center;
   width: 180px;
-  line-height: 125px; }
+  line-height: 100px; }
 
 .hour {
   font-size: 15px;
@@ -305,7 +305,8 @@ h3 {
   vertical-align: top; }
 
 .booking {
-  height: 160px; }
+  height: 160px;
+  text-align: center; }
 
 .book-online {
   height: 60px; }
@@ -330,7 +331,7 @@ div.introduction {
 #content {
   text-align: left; }
 
-#hire {
+#hire, #new {
   padding-left: 20px; }
 
 p#introduction {
@@ -374,3 +375,29 @@ li {
 #jobs-done {
   color: #db530f;
   font-size: 90%; }
+
+.my-skill {
+  margin-bottom: 5px; }
+
+#new #first-name, #new #last-name, #new #my-hourly-rate, #new #my-surcharge {
+  display: inline-block; }
+
+#new #sex * {
+  display: inline-block; }
+
+#new #my-photo div {
+  vertical-align: top; }
+
+#photo-uploader, #uploaded-photo {
+  display: inline-block; }
+
+#photo-uploader {
+  width: 600px; }
+
+#intro-example {
+  font-style: italic;
+  margin: 10px 50px; }
+
+#description textarea {
+  width: 400px;
+  height: 100px; }

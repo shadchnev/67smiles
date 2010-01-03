@@ -1,0 +1,126 @@
+#new
+  #new-intro.gap-after
+    %h1 Join Innocent Cleaners
+  
+    %p
+      This form will take only a minute or two to fill out. After that you'll be available for hire on the website.
+  
+  #personal.gap-after
+    %h2 Personal information
+    %p.small-gap-after
+      Please provide your real name. Only your first name will be shown on the website, though.
+    
+    #name.small-gap-after
+      #first-name
+        %h4 First name
+        %input.small-gap-after{:type => 'text'}
+    
+      #last-name
+        %h4 Last name
+        %input{:type => 'text'}
+    
+    #sex.small-gap-after
+      %h4
+        I'm a
+      %select
+        %option Woman
+        %option Man      
+    #my-postcode
+      %h4 My postcode
+      %input{:type => 'text'}
+    
+  #my-skills.gap-after
+    %h2 What can you do?
+          
+    .my-skill
+      %input{:type => 'checkbox'}
+      Domestic Cleaning
+    .my-skill
+      %input{:type => 'checkbox'}
+      Ironing
+    .my-skill
+      %input{:type => 'checkbox'}
+      Groceries shopping
+    .my-skill
+      %input{:type => 'checkbox'}
+      Dog-walking
+  
+  #my-photo.gap-after
+    #photo-uploader
+      %h2 Your photo
+      %p
+        Uploading your photo greatly increases your chances of finding a job. Please upload a photo of yourself where your face is clearly visible.
+      %a{:href => ''}
+        %input{:type => 'button', :value => 'Upload a photo'}
+    #uploaded-photo
+      %img{:src => '/images/emma_small.png'}
+      
+  #description.gap-after
+    %h2 Tell clients about yourself
+    
+    %p
+      Please write a short introductory paragraph about youself. Tell the clients why they should hire you and not other cleaners. Below is an example of such an introduction but please don't copy it.
+      
+    %p#intro-example
+      I am friendly and punctual, so don't worry about me being too early or too late. I have several happy clients I can provide references from should you require them.
+      I have over 5 years of experience, so I know how to provide a service of a very high quality. Don't hesitate to hire me!
+      
+    %textarea
+      I am...
+  
+  #price.gap-after
+    %h2 How much do you charge?
+    %p
+      The clients need to know upfront how much they'll pay. At Innocent Cleaners we use a very simple pricing structure: an hourly fee for any kind of work (be it cleaning or dog-walking) and a surcharge for using your own cleaning materials.
+    %p
+      The hourly fee is what the client will pay you when you do your job (that includes the tax, so if you ask for &pound;7/hour and work for 4 hours, you'll receive &pound;28).
+      
+    #rates.small-gap-after
+      #my-hourly-rate
+        %h4 Hourly rate
+        %input.small-gap-after{:type => 'text'}
+        for example, 7.50
+
+      %p
+        The surcharge is paid when the client does not provide cleaning materials and you have to bring your own cleaning cloths, detergents etc. For example, if your surcharge is &pound;2/hour and your hourly rate is &pound;7/hour, 
+        then for a 4-hour job you will receive (7 + 2) * 4 = &pound;36.
+
+      #my-surcharge
+        %h4 My cleaning materials surcharge
+        %input{:type => 'text'}
+        for example, 2.00
+
+  #my-availability.gap-after
+    %h2
+      My availability
+    
+    %p
+      Please indicate when you're available for work every week. For example, if you can work from Monday to Friday from 08:00 to 20:00 except Thursday afternoon when you do regular weekly cleaning for your client, indicate it here.
+      
+    %p
+      If you're unavailable for work due to one-off assignments, please don't indicate it here as you'll be able to enter it later in your profile.
+      
+    #my-availability-chart
+      %table
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+      
+      
+  
+    
+  
+  
