@@ -1,0 +1,9 @@
+#set-availability
+  %ul
+    - hours = [0] + (6..22).to_a
+    - days = %w(&nbsp; Mon Tue Wed Thu Fri Sat Sun)
+    - for hour in hours
+      - for day in days
+        - cell = day == days[0] ? '%2s:00' % hour : '&nbsp;'
+        %li
+          = hour == hours[0] ? day : cell

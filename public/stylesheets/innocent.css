@@ -401,3 +401,29 @@ li {
 #description textarea {
   width: 400px;
   height: 100px; }
+
+#set-availability li {
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999; }
+
+#set-availability .ui-selecting {
+  background: #FECA40; }
+
+#set-availability .ui-selected {
+  background: #F39814;
+  color: white; }
+
+#set-availability li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+#set-availability {
+  width: 420px; }
+
+#set-availability li {
+  float: left;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  font-size: 9px; }
