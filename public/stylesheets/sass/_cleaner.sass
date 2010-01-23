@@ -1,0 +1,35 @@
+#cleaner-summary
+  padding: 0 #{!column_interspace}
+
+  #details
+    & > div
+      margin-top: 10px
+      display: inline-block
+      vertical-align: top
+    #skills, #stats
+      width = !right_column / 2 - 100px        
+  
+  .booking
+    float: right
+    
+  #introduction, #stats
+    display: inline-block
+  
+  #introduction
+    height: 85px
+    overflow: hidden 
+    margin-top: 10px
+    
+#reviews
+  .review
+    padding: 5px 15px
+    +coloured-block-in-a-stack
+
+    .signature, .timestamp
+      color = !clay
+      font-size: 80%
+
+  
+
+
+  

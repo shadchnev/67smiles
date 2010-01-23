@@ -1,3 +1,8 @@
+!hourly_rate_width = 180px
+!cleaner_height = 160px
+!photo_width = 110px
+
+
 #find-a-cleaner
   padding-top: 5px
   
@@ -62,6 +67,43 @@
   .hint
     font-size: 80%
     margin-top: 5px
-    color: #999
+    color = !medium_gray
 
+#cleaners
 
+  .cleaner
+    +coloured-block-in-a-stack
+
+    .photo, .details, .booking
+      display: inline-block
+      height = !cleaner_height
+
+    .photo
+      vertical-align: bottom
+
+      img
+        display: inline
+
+    .details
+      padding-left: 10px
+      width = !right_column - !photo_width - !hourly_rate_width - 10px - !column_interspace * 2
+      text-align: left  
+      color = !dark_marine
+      vertical-align: top
+      
+      .name
+        margin-top: 10px      
+        
+      .stats
+        vertical-align: top
+        width: 90px
+        
+      .introduction, .stats
+        display: inline-block
+      
+      .introduction
+        width: 310px
+        color = !black
+
+    .booking
+      width = !hourly_rate_width

@@ -1,0 +1,8 @@
+.booking>
+  .hourly-rate
+    &pound;
+    = (rand * 5 + 7).round
+    %span.hour<>
+      \/hour
+  .book-online
+    %input{:value => 'Hire me!', :type => 'submit'}

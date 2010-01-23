@@ -25,6 +25,9 @@ body
 #left-column, #right-column
   display: inline-block
   vertical-align: top
+  
+#left-content
+  padding-top = !column_interspace
 
 #header
   display: inline-block
@@ -64,6 +67,29 @@ body
 #summary-block
   border-bottom: 1px solid #{!dark_marine}
   height = !summary_block_height
+  text-align: left
+  
+#right-container
+  padding = !column_interspace
+  
+.booking
+  text-align: center  
+  input
+    font-size: 150%
+  
+  .hourly-rate
+    color = !clay      
+    font-size: 40px
+    text-align: center
+    line-height: 100px
+
+  .hour
+    font-size: 15px
+    color= !medium_gray
+    
+  .book-online
+    height: 60px
+  
 
 #footer
   border-top:
@@ -73,3 +99,8 @@ body
 
 .clearer
   clear: both
+  
+=coloured-block-in-a-stack
+  background-color = !light_marine
+  margin: 10px 0
+  border-bottom: 1px solid #{!dark_marine}

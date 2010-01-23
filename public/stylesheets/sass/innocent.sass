@@ -4,42 +4,17 @@
 !brick = #BF200A
 !black = #484848
 !white = #FFFFFF
+!medium_gray = #999
 
 !master_width = 996px
 !left_column = 250px
 !column_interspace = 20px
 !right_column = !master_width - !left_column
-!cleaner_height = 160px
-!photo_width = 110px
-!hourly_rate_width = 180px
 
 @import general.sass
 @import homepage.sass
+@import cleaner.sass
 
-#cleaner-summary, #reviews
-  text-align: left
-  display: inline-block
-
-#cleaner-summary
-  padding-left = !column_interspace
-  width = !right_column - !column_interspace
-  
-#reviews
-  width = !right_column - !column_interspace * 2
-  
-#right-block, #left-block
-  display: inline-block
-
-#left-block
-  width = !left_column  
-  vertical-align: top
-  text-align: center
-  
-#hire input
-  font-size: 150%
-  
-#hire .hourly-rate
-  float: right
 #availability
   margin-bottom: 15px
   
@@ -78,142 +53,21 @@
 #calendar-icon
   vertical-align: bottom
     
-#right-block
-  width = !right_column
-
 #footer
-  color: #999
+  color= !medium_gray
   font-size: 90%
   padding: 10px  
   
-#reviews
-  margin-top: 15px
-
 #hints-list
   text-align: left
   margin: 0 50px
-  
-.review
-  padding: 5px 15px
-  text-align: left
-
-.review .signature, .review .timestamp
-  color = !clay
-  
-.review .signature
-  font-size: 80%
-  
-.review .timestamp
-  font-size: 80%
-
-.cleaner, .review
-  background-color = !light_marine
-  margin: 10px 0
-  border-bottom: 1px solid #{!dark_marine}  
-
-.photo, .details, .booking
-  display: inline-block
-  height = !cleaner_height
-  
-.cleaner .photo
-  vertical-align: bottom
-  
-.cleaner .photo img
-  display: inline
-  
-#cleaners, #reviews
-  padding: 0 #{!column_interspace}
-  
-.hourly-rate
-  color = !clay
-  font-weight: normal
-  font-size: 40px
-  text-align: center
-  width = !hourly_rate_width
-  line-height: 100px
-
-.hour
-  font-size: 15px
-  color: #999
-
-.cleaner .details .name
-  margin-top: 10px
-
-.cleaner .details
-  padding-left: 10px
-  width = !right_column - !photo_width - !hourly_rate_width - 10px - !column_interspace * 2
-  text-align: left  
-  color = !dark_marine
-  vertical-align: top
-  
-.booking
-  height = !cleaner_height
-  text-align: center
-
-.book-online
-  height: 60px
-
-.introduction, .stats
-  display: inline-block
-  vertical-align: top
-  
-.stats
-  width: 90px
-  font-size: 100%
-
-.introduction
-  color = !black
-
-div.introduction
-  width: 310px
-  
-#left-content
-  padding-top: 15px
-  
+    
 #content
   text-align: left
   
 #hire, #new
   padding-left = !column_interspace
-  
-p#introduction
-  height: 85px
-  overflow: hidden 
-  
-#skills, p#introduction, #stats
-  margin-top: 10px
-
-#skills-list, #info
-  margin-left: 20px
-
-li span
-  color = !black
-  font-size: 12px
-
-li
-  list-style-type: square
-  color = !clay
-  font-size: 18px
-  line-height: 16px
-  
-#phone-prefix
-  color = !clay
-  
-#hiring
-  font-size: 150%
-  float: right
-  text-align: center
-  
-#second-half
-  width = !right_column
-
-#skills, #stats
-  width = !right_column / 2 - 100px
-
-#skills, #hiring, #stats
-  display: inline-block
-  vertical-align: top
-  
+    
 #jobs-done
   color = !clay
   font-size: 90%
@@ -245,8 +99,8 @@ li
   height: 100px
   
 #set-availability li
-  border-right: 1px solid #999
-  border-bottom: 1px solid #999
+  border-right: 1px solid #{!medium_gray}
+  border-bottom: 1px solid #{!medium_gray}
   
 #set-availability .ui-selecting
   background: #FECA40

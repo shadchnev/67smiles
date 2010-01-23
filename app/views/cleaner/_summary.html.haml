@@ -1,55 +1,36 @@
-#cleaner-summary
-  %h1
-    Joanne
-  / %p#email
-  /   %a{:href => '#'}
-  /     joanne@auntyjane.co.uk
-  / %p#phone
-  /   %span#phone-prefix
-  /     mob:
-  /   +447912345678
-  %p#introduction
-    Hello, my darling! You will not regret if you ask me to come to your house...
-    I will clean every nook and cranny in your kitchen, gently working with your mop...
-    You'll be left satisfied...
-    Hello, my darling! You will not regret if you ask me to come to your house...
-    I will clean every nook and cranny in your kitchen, gently working with your mop...
-    You'll be left satisfied...
-    Hello, my darling! You will not regret if you ask me to come to your house...
-    I will clean every nook and cranny in your kitchen, gently working with your mop...
-    You'll be left satisfied...
-  #second-half
-    #skills
-      %h3
-        I'm happy to help you with
-      %ul#skills-list
-        %li 
-          %span Domestic cleaning
-        %li 
-          %span Commercial cleaning
-        %li 
-          %span Looking after pets
-        %li 
-          %span Ironing
-        %li 
-          %span Groceries shopping
-        %li 
-          %span Laundry
-    #stats
-      %h3
-        Info
-      %ul#info
-        %li
-          %span 5 Jobs done          
-        %li 
-          %span 29 years old
-        %li
-          %span Living in SE17
-        %li
-          %span Member since 23 January 2010            
-    #hiring
-      .hourly-rate
-        &pound;10
-        %span.hour<>
-          \/hour
-      %input{:type => "Submit", :value => "Hire me online!"}
+#summary-block
+  #cleaner-summary
+    %h1
+      Joanne
+    %p#introduction
+      I'm a professional and reliable cleaner with 3 years of cleaning experience in the UK. I'm happy to provide recommendations from several clients, including individuals and companies.
+    #details
+      #skills
+        %h3
+          I'm happy to help you with
+        %ul#list
+          %li 
+            %span Domestic cleaning
+          %li 
+            %span Commercial cleaning
+          %li 
+            %span Looking after pets
+          %li 
+            %span Ironing
+          %li 
+            %span Groceries shopping
+          %li 
+            %span Laundry
+      #stats
+        %h3
+          Info
+        %ul#info
+          %li
+            %span 5 Jobs done          
+          %li 
+            %span 29 years old
+          %li
+            %span Living in SE17
+          %li
+            %span Member since 23 January 2010            
+      = render :partial => 'shared/booking'
