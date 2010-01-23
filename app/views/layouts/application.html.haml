@@ -3,7 +3,7 @@
   %head
     = stylesheet_link_tag 'reset-min.css' # yahoo
     = stylesheet_link_tag 'innocent'
-    = stylesheet_link_tag 'redmond/jquery-ui-1.7.2.custom'
+    = stylesheet_link_tag 'jquery-ui/jquery-ui-1.7.2.custom'
     = javascript_include_tag 'jquery-1.3.2.min'
     = javascript_include_tag 'jquery-ui-1.7.2.custom.min'
     = javascript_include_tag 'application'
@@ -12,9 +12,9 @@
   %body
     #container<>
       #left-column<>
-        #lady<>
-          #lady-container
-            = yield :lady
+        #master-picture-container<>
+          #master-picture
+            = yield :master_picture
         #left-content
           = yield :left_content        
       #right-column<>
@@ -23,12 +23,7 @@
             %a{:href => '/'}
               %img{:src => "/images/logo_scruff.png"}
           #navigation-container
-            #navigation
-              %a{:href => '#'}<
-                About
-              |
-              %a{:href => '#'}<
-                Help
+            = render :partial => 'shared/navigation'
         #content<>
           = yield
       #footer

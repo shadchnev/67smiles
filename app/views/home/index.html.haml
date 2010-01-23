@@ -1,32 +1,11 @@
-= content_for :lady do
-  %img#illustration{:src => '/images/smiling_lady.png'}<>
+= content_for :master_picture do
+  %img{:src => '/images/smiling_lady.png'}
 
 = content_for :left_content do
-  %form
-    #search-where.search-block
-      %h2
-        Enter your postcode
-      %input{:value => ''}
-    #search-what.search-block
-      %h2
-        Select what you need 
-      #search-activities     
-        .search-activity
-          %input{:type => 'checkbox'}
-          Domestic cleaning
-        .search-activity
-          %input{:type => 'checkbox'}
-          Ironing
-        .search-activity
-          %input{:type => 'checkbox'}
-          Dog-walking
-    #search-when.search-block
-      %h2
-        Select a date
-      #calendar
-    %input#search-submit{:type => 'submit', :value => 'Search'}  
-
+  = render :partial => "find_a_cleaner"
+  
 = render :partial => 'welcome'
+
 #cleaners
   = render :partial => 'cleaner', :locals => {:name => 'Emma'}
   = render :partial => 'cleaner', :locals => {:name => 'Sonya'}

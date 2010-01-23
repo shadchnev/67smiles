@@ -25,9 +25,22 @@
       %select
         %option Woman
         %option Man      
-    #my-postcode
+    #my-postcode.small-gap-after
       %h4 My postcode
       %input{:type => 'text'}
+      e.g. W2 1TT
+    
+    #my-email.small-gap-after
+      %h4 My email
+      %input{:type => 'text'}
+      e.g. very.innocent.cleaner@gmail.com
+      
+    #my-phone-number
+      %h4 My phone number
+      %p
+        We'll text you immediately when somebody tries to hire you on the website.
+      %input{:type => 'text'}
+      e.g. 07912345678
     
   #my-skills.gap-after
     %h2 What can you do?
@@ -49,7 +62,7 @@
     #photo-uploader
       %h2 Your photo
       %p
-        Uploading your photo greatly increases your chances of finding a job. Please upload a photo of yourself where your face is clearly visible.
+        Please upload a photo of yourself where your face is clearly visible.
       %a{:href => ''}
         %input{:type => 'button', :value => 'Upload a photo'}
     #uploaded-photo
@@ -59,7 +72,7 @@
     %h2 Tell clients about yourself
     
     %p
-      Please write a short introductory paragraph about youself. Tell the clients why they should hire you and not other cleaners. Below is an example of such an introduction but please don't copy it.
+      Please write a short introductory paragraph about youself. An example follows.
       
     %p#intro-example
       I am friendly and punctual, so don't worry about me being too early or too late. I have several happy clients I can provide references from should you require them.
@@ -69,39 +82,48 @@
       I am...
   
   #price.gap-after
-    %h2 How much do you charge?
-    %p
-      The clients need to know upfront how much they'll pay. At Innocent Cleaners we use a very simple pricing structure: an hourly fee for any kind of work (be it cleaning or dog-walking) and a surcharge for using your own cleaning materials.
-    %p
-      The hourly fee is what the client will pay you when you do your job (that includes the tax, so if you ask for &pound;7/hour and work for 4 hours, you'll receive &pound;28).
-      
+    %h2 How much do you charge?      
     #rates.small-gap-after
       #my-hourly-rate
         %h4 Hourly rate
+        &pound;
         %input.small-gap-after{:type => 'text'}
-        for example, 7.50
-
+        for example, 7.5
       %p
-        The surcharge is paid when the client does not provide cleaning materials and you have to bring your own cleaning cloths, detergents etc. For example, if your surcharge is &pound;2/hour and your hourly rate is &pound;7/hour, 
-        then for a 4-hour job you will receive (7 + 2) * 4 = &pound;36.
-
       #my-surcharge
-        %h4 My cleaning materials surcharge
+        %h4 Extra charge for using my own cleaning materials
+        &pound;
         %input{:type => 'text'}
-        for example, 2.00
-
+        for example, 2
+    #minumum-hire.small-gap-after
+      %h4 What's the minimum number of hours you can be hired for?
+      %select
+        %option 1 hour
+        %option 2 hours
+        %option 3 hours
+        %option 4 hours
+        
   #my-availability.gap-after
     %h2
       My availability
     
     %p
-      Please indicate when you're available for work every week. For example, if you can work from Monday to Friday from 08:00 to 20:00 except Thursday afternoon when you do regular weekly cleaning for your client, indicate it here.
-      
-    %p
-      If you're unavailable for work due to one-off assignments, please don't indicate it here as you'll be able to enter it later in your profile.
+      Please indicate when you're normally available for work every week (e.g. 08:00 to 18:00, Mon-Fri, except Wed)
+            
+    %p.small-gap-after
+      You can drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
       
     #my-availability-chart.gap-after
       = render :partial => 'availability_table'
+    
+    %hr
+    #terms-and-conditions.small-gap-after
+      %p.small-gap-after
+        Please take time to read Terms and Conditions for this website and check the following box if you agree with them.
+      %input.small-gap-after{:type => 'checkbox'} I agree with the Terms and Conditions
+      
+    #i-am-ready
+      %input{:type => 'button', :value => 'Join Innocent Cleaners'}
       
   
     

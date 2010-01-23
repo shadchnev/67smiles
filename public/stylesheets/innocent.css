@@ -1,30 +1,3 @@
-body {
-  background-color: white;
-  text-align: center;
-  font-family: verdana,helvetica,arial,sans-serif;
-  margin-top: 25px;
-  color: #484848;
-  font-size: 12px; }
-
-#left-column {
-  width: 250px; }
-
-#right-column {
-  width: 746px; }
-
-#left-column, #right-column {
-  display: inline-block;
-  vertical-align: top; }
-
-.clearer {
-  clear: both; }
-
-#navigation-container {
-  text-align: right; }
-
-.search-block {
-  margin-bottom: 25px; }
-
 a {
   color: #db530f;
   text-decoration: underline; }
@@ -32,57 +5,6 @@ a {
     color: #db530f; }
   a:visited {
     color: #db530f; }
-
-p {
-  margin: 5px 0; }
-
-#navigation {
-  width: 200px;
-  float: right;
-  padding: 3px; }
-
-#container {
-  width: 996px;
-  margin-left: auto;
-  margin-right: auto; }
-
-#navigation-container {
-  display: inline-block;
-  vertical-align: top; }
-
-#header {
-  display: inline-block; }
-
-#lady {
-  display: table;
-  width: 250px;
-  height: 396px;
-  text-align: center;
-  border-bottom: 1px solid #6ea7d1; }
-
-#lady-container {
-  display: table-cell;
-  text-align: right;
-  vertical-align: bottom;
-  height: 319px;
-  line-height: 0; }
-
-#lady-container #portrait {
-  border-right: 1px solid #6ea7d1; }
-
-.portrait_border {
-  border-right: 1px solid #6ea7d1; }
-
-#cleaner-summary, #reviews {
-  text-align: left;
-  display: inline-block; }
-
-#cleaner-summary {
-  padding-left: 20px;
-  width: 726px; }
-
-#reviews {
-  width: 706px; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #db530f;
@@ -98,75 +20,147 @@ h3 {
   font-size: 110%;
   padding-bottom: 3px; }
 
+p {
+  margin: 5px 0; }
+
+input[type='text'] {
+  border: 1px solid #6ea7d1;
+  font-size: 110%;
+  color: #6ea7d1; }
+
+body {
+  background-color: white;
+  text-align: center;
+  font-family: verdana,helvetica,arial,sans-serif;
+  margin-top: 25px;
+  color: #484848;
+  font-size: 12px; }
+
+#container {
+  width: 996px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#left-column {
+  width: 250px; }
+
+#right-column {
+  width: 746px; }
+
+#left-column, #right-column {
+  display: inline-block;
+  vertical-align: top; }
+
+#header {
+  display: inline-block; }
+
+#master-picture-container {
+  display: table;
+  width: 250px;
+  height: 396px;
+  text-align: center;
+  border-bottom: 1px solid #6ea7d1; }
+
+#master-picture {
+  display: table-cell;
+  text-align: right;
+  vertical-align: bottom;
+  line-height: 0; }
+
+.with_right_border {
+  border-right: 1px solid #6ea7d1; }
+
+#navigation {
+  width: 200px;
+  float: right;
+  padding: 3px; }
+
+#navigation-container {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right; }
+
 #logo {
   width: 480px;
   display: inline-block;
   text-align: left;
   margin-bottom: 25px; }
 
-#howto-left, #howto-right {
-  height: 300px;
-  display: inline-block;
-  vertical-align: top;
-  border-left: 1px solid #6ea7d1;
-  border-top: 1px solid #6ea7d1;
-  border-top-left-radius: 20px;
-  text-align: center;
-  padding: 5px 10px;
-  width: 322px; }
-
-#howto-left {
-  margin-right: 40px; }
-
-#howto, #cleaner-summary {
+#summary-block {
   border-bottom: 1px solid #6ea7d1;
   height: 310px; }
-
-.howto-icon {
-  float: left;
-  width: 40px;
-  height: 40px; }
 
 #footer {
   border-top-width: 1px;
   border-top-style: solid;
   border-top-color: #6ea7d1; }
 
-.howto-step {
-  font-size: 16px;
-  color: #484848;
-  vertical-align: middle;
-  height: 40px;
-  display: table;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  text-align: left; }
+.clearer {
+  clear: both; }
 
-.howto-title {
-  font-size: 150%;
-  color: #6ea7d1;
-  margin-top: 10px; }
+#find-a-cleaner {
+  padding-top: 5px; }
+  #find-a-cleaner > form > div {
+    margin-bottom: 25px; }
+  #find-a-cleaner input[type='text'] {
+    width: 150px; }
+  #find-a-cleaner #activities {
+    text-align: left;
+    margin-left: 50px; }
 
-.howto-title {
+#welcome {
   text-align: center; }
+  #welcome * {
+    vertical-align: middle; }
+  #welcome #clients, #welcome #cleaners {
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    border-left: 1px solid #6ea7d1;
+    border-top: 1px solid #6ea7d1;
+    border-top-left-radius: 20px;
+    padding: 5px 10px;
+    width: 323px; }
+  #welcome #clients {
+    margin-right: 40px; }
+  #welcome .icon {
+    float: left;
+    width: 40px; }
+  #welcome .step {
+    font-size: 130%;
+    color: #484848;
+    display: table;
+    margin: 15px 0;
+    text-align: left; }
+  #welcome .icon, #welcome .step {
+    height: 40px; }
+  #welcome .title {
+    font-size: 150%;
+    color: #6ea7d1;
+    margin-top: 10px; }
+  #welcome .text {
+    display: table-cell;
+    padding-left: 15px; }
+  #welcome .action {
+    font-size: 160%;
+    margin-top: 30px;
+    display: block;
+    color: #db530f; }
+  #welcome .hint {
+    font-size: 80%;
+    margin-top: 5px;
+    color: #999; }
 
-.howto-text {
-  vertical-align: middle;
-  display: table-cell;
-  padding-left: 15px; }
+#cleaner-summary, #reviews {
+  text-align: left;
+  display: inline-block; }
 
-.register {
-  font-size: 160%;
-  text-align: center;
-  margin-top: 30px;
-  display: block;
-  color: #db530f; }
+#cleaner-summary {
+  padding-left: 20px;
+  width: 726px; }
 
-.register-hint {
-  font-size: 80%;
-  text-align: center;
-  margin-top: 5px;
-  color: #999; }
+#reviews {
+  width: 706px; }
 
 #right-block, #left-block {
   display: inline-block; }
@@ -175,15 +169,6 @@ h3 {
   width: 250px;
   vertical-align: top;
   text-align: center; }
-
-#search-where {
-  margin-top: 5px; }
-
-#search-where input, #available-date input, #new input[type='text'] {
-  border: 1px solid #6ea7d1;
-  width: 150px;
-  font-size: 110%;
-  color: #6ea7d1; }
 
 #hire input {
   font-size: 150%; }
@@ -209,11 +194,6 @@ h3 {
   vertical-align: top;
   text-align: center; }
 
-
-#search-activities {
-  text-align: left;
-  margin-left: 50px; }
-
 .gap-after {
   margin-bottom: 30px; }
 
@@ -226,8 +206,6 @@ h3 {
   padding: 15px;
   border-top: 1px solid #db530f;
   width: 50%; }
-
-
 
 #calendar {
   padding-left: 12px;
@@ -419,7 +397,8 @@ li {
   padding: 0; }
 
 #set-availability {
-  width: 420px; }
+  width: 420px;
+  height: 370px; }
 
 #set-availability li {
   float: left;
@@ -427,3 +406,6 @@ li {
   height: 20px;
   text-align: center;
   font-size: 9px; }
+
+#terms-and-conditions input {
+  margin-right: 10px; }

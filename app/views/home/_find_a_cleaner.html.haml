@@ -1,0 +1,20 @@
+#find-a-cleaner
+  %form
+    #where
+      %h2
+        Enter your postcode
+      %input{:type => 'text', :value => ''}
+    #what
+      %h2
+        Select what you need 
+      #activities
+        = render :partial => 'activity', :locals => {:activity => 'Domestic Cleaning'}
+        = render :partial => 'activity', :locals => {:activity => 'Ironing'}
+        = render :partial => 'activity', :locals => {:activity => 'Dog-walking'}
+    #when
+      %h2
+        Select a date
+      #calendar
+    #submit
+      %input{:type => 'submit', :value => 'Search'}  
+

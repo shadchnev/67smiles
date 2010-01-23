@@ -1,0 +1,75 @@
+!master_picture_height = 396px
+!summary_block_height = 310px
+
+@import tags.sass
+
+body
+  background-color = !white
+  text-align: center
+  font-family: verdana,helvetica,arial,sans-serif
+  margin-top: 25px
+  color = !black
+  font-size: 12px
+  
+#container
+  width = !master_width
+  margin-left: auto
+  margin-right: auto
+
+#left-column
+  width = !left_column  
+  
+#right-column
+  width = !right_column
+  
+#left-column, #right-column
+  display: inline-block
+  vertical-align: top
+
+#header
+  display: inline-block
+
+#master-picture-container
+  display: table
+  width = !left_column  
+  height = !master_picture_height
+  text-align: center
+  border-bottom: 1px solid #{!dark_marine}  
+
+#master-picture
+  display: table-cell
+  text-align: right
+  vertical-align: bottom
+  line-height: 0 
+
+.with_right_border
+  border-right: 1px solid #{!dark_marine}
+
+#navigation
+  width: 200px
+  float: right
+  padding: 3px
+
+#navigation-container
+  display: inline-block
+  vertical-align: top
+  text-align: right
+
+#logo
+  width: 480px  
+  display: inline-block
+  text-align: left
+  margin-bottom: 25px
+  
+#summary-block
+  border-bottom: 1px solid #{!dark_marine}
+  height = !summary_block_height
+
+#footer
+  border-top:
+    width: 1px
+    style: solid
+    color = !dark_marine
+
+.clearer
+  clear: both

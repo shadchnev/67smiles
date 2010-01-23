@@ -9,93 +9,13 @@
 !left_column = 250px
 !column_interspace = 20px
 !right_column = !master_width - !left_column
-!lady_height = 396px
 !cleaner_height = 160px
 !photo_width = 110px
 !hourly_rate_width = 180px
-!summary_block_height = 310px
 
-body
-  background-color = !white
-  text-align: center
-  font-family: verdana,helvetica,arial,sans-serif
-  margin-top: 25px
-  color = !black
-  font-size: 12px
-  
-#left-column
-  width = !left_column  
-  
-#right-column
-  width = !right_column
-  
-#left-column, #right-column
-  display: inline-block
-  vertical-align: top
-  
-.clearer
-  clear: both
+@import general.sass
+@import homepage.sass
 
-#navigation-container
-  text-align: right
-  
-.search-block
-  margin-bottom: 25px
-  
-a
-  color = !clay
-  text-decoration: underline
-  &:hover
-    color = !clay
-  &:visited
-    color = !clay
-  
-=thick_border(!side = top)
-  border-#{!side}:
-    width: 1px
-    style: solid
-    color = !dark_marine
-
-p
-  margin: 5px 0
-
-#navigation
-  width: 200px
-  float: right
-  padding: 3px
-    
-#container
-  width = !master_width
-  margin-left: auto
-  margin-right: auto
-  
-#navigation-container
-  display: inline-block
-  vertical-align: top
-
-#header
-  display: inline-block
-  
-#lady
-  display: table
-  width = !left_column  
-  height = !lady_height
-  text-align: center
-  border-bottom: 1px solid #{!dark_marine}  
-
-#lady-container
-  display: table-cell
-  text-align: right
-  vertical-align: bottom
-  height: 319px  
-  line-height: 0
-
-#lady-container #portrait
-  border-right: 1px solid #{!dark_marine}
-  
-.portrait_border
-  border-right: 1px solid #{!dark_marine}
-  
 #cleaner-summary, #reviews
   text-align: left
   display: inline-block
@@ -107,89 +27,6 @@ p
 #reviews
   width = !right_column - !column_interspace * 2
   
-
-h1, h2, h3, h4, h5, h6
-  color = !clay
-  padding-bottom: 10px
-        
-h1
-  font-size: 170%
-  
-h2
-  font-size: 130%
-  
-h3
-  font-size: 110%
-  padding-bottom: 3px
-
-#logo
-  width: 480px  
-  display: inline-block
-  text-align: left
-  margin-bottom: 25px
-  
-#howto-left, #howto-right
-  height: 300px
-  display: inline-block
-  vertical-align: top
-  border-left: 1px solid #{!dark_marine}
-  border-top: 1px solid #{!dark_marine}
-  border-top-left-radius: 20px
-  text-align: center
-  padding: 5px 10px
-  width = !right_column / 2 - 1px - 50px
-  
-#howto-left
-  margin-right: 40px
-      
-#howto, #cleaner-summary
-  border-bottom: 1px solid #{!dark_marine}
-  height = !summary_block_height
-  
-.howto-icon
-  float: left
-  width: 40px
-  height: 40px
-  
-#footer
-  +thick_border(top)
-  
-.howto-step
-  font-size: 16px
-  color = !black
-  vertical-align: middle
-  height: 40px
-  display: table
-  margin-bottom: 15px
-  margin-top: 15px
-  text-align: left
-
-.howto-title
-  font-size: 150%
-  color = !dark_marine
-  margin-top: 10px
-  
-.howto-title
-  text-align: center
-  
-.howto-text
-  vertical-align: middle
-  display: table-cell
-  padding-left: 15px
-  
-.register
-  font-size: 160%
-  text-align: center
-  margin-top: 30px
-  display: block
-  color = !clay
-  
-.register-hint
-  font-size: 80%
-  text-align: center
-  margin-top: 5px
-  color: #999
-  
 #right-block, #left-block
   display: inline-block
 
@@ -197,15 +34,6 @@ h3
   width = !left_column  
   vertical-align: top
   text-align: center
-
-#search-where
-  margin-top: 5px
-
-#search-where input, #available-date input, #new input[type='text']
-  border: 1px solid #{!dark_marine}  
-  width: 150px
-  font-size: 110%
-  color = !dark_marine
   
 #hire input
   font-size: 150%
@@ -230,12 +58,6 @@ h3
   vertical-align: top
   text-align: center
 
-#search-what
-
-#search-activities
-  text-align: left
-  margin-left: 50px
-
 .gap-after
   margin-bottom: 30px
 
@@ -249,10 +71,6 @@ h3
   border-top: 1px solid #{!clay}
   width: 50%
   
-#hire-total-cost
-  
-#search-when
-
 #calendar
   padding-left: 12px
   font-size: 120%
@@ -443,7 +261,8 @@ li
   padding: 0
   
 #set-availability
-  width = 60px * 7  
+  width = 60px * 7
+  height: 370px
   
 #set-availability li 
   float: left
@@ -451,3 +270,6 @@ li
   height: 20px
   text-align: center
   font-size: 9px
+  
+#terms-and-conditions input
+  margin-right: 10px

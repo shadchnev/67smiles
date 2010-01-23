@@ -5,5 +5,6 @@
     - for hour in hours
       - for day in days
         - cell = day == days[0] ? '%2s:00' % hour : '&nbsp;'
-        %li
+        - klass = (day == days[0] || hour == hours[0]) ? 'non-selectable' : 'selectable'
+        %li{:class => klass}
           = hour == hours[0] ? day : cell
