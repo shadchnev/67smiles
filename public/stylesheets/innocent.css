@@ -253,19 +253,22 @@ body {
   text-align: left;
   margin: 0 50px; }
 
-#reviews .review {
-  padding: 5px 15px;
-  background-color: #eaf4fd;
-  margin: 10px 0;
-  border-bottom: 1px solid #6ea7d1; }
-  #reviews .review .signature, #reviews .review .timestamp {
-    color: #db530f;
-    font-size: 80%; }
+#reviews {
+  padding-top: 20px; }
+  #reviews .review {
+    padding: 5px 15px;
+    background-color: #eaf4fd;
+    margin: 10px 0;
+    border-bottom: 1px solid #6ea7d1; }
+    #reviews .review .signature, #reviews .review .timestamp {
+      color: #db530f;
+      font-size: 80%; }
 
 #new > div {
   margin-bottom: 30px; }
 #new > div > div {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  padding-left: 20px; }
 #new #honorific, #new #first-name, #new #last-name {
   display: inline-block; }
 #new input[type='text'] {
@@ -276,6 +279,8 @@ body {
 #new #set-availability {
   width: 430px;
   height: 370px; }
+  #new #set-availability ul {
+    margin-left: 0; }
   #new #set-availability li {
     float: left;
     width: 50px;
@@ -296,6 +301,11 @@ body {
     color: #484848; }
 #new #terms-and-conditions input {
   margin-right: 10px; }
+#new #submit {
+  font-size: 150%; }
+
+#availability #calendar {
+  margin-bottom: 40px; }
 
 #available-date * {
   vertical-align: bottom; }

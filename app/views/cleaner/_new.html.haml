@@ -7,16 +7,17 @@
   #personal    
     %hr
     %h2 1. Tell us about yourself
-    #honorific
-      %select
-        %option Mr
-        %option Mrs
-        %option Ms
-    #first-name
-      %input{:type => 'text', :value => 'First name'}
+    #name
+      #honorific
+        %select
+          %option Mr
+          %option Mrs
+          %option Ms
+      #first-name
+        %input{:type => 'text', :value => 'First name'}
   
-    #last-name
-      %input{:type => 'text', :value => 'Last name'}
+      #last-name
+        %input{:type => 'text', :value => 'Last name'}
   
     #postcode
       %input{:type => 'text', :value => 'Postcode'}
@@ -56,17 +57,20 @@
       %input{:type => 'text', :value => 'Hourly rate'}
       for example, 7.5
     
-    %h4 You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
     #surcharge
       &pound;
       %input{:type => 'text', :value => 'Cleaning materials surcharge'}
       for example, 2.5      
+    .hint
+      %h4
+        You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
         
   #availability
     %hr
     %h2 3. Tell us when you're available for work
     
-    %h4 Drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
+    .hint
+      %h4 Drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
       
     #availability-chart
       = render :partial => 'availability_table'
@@ -74,7 +78,8 @@
   #terms-and-conditions
     %hr
     %h4 Please take time to read Terms and Conditions for this website and check the following box if you agree with them.
-    %input{:type => 'checkbox'} I agree with the Terms and Conditions
+    .i-agree
+      %input{:type => 'checkbox'} I agree with the Terms and Conditions
     
   #submit
     %input{:type => 'button', :value => 'Join Innocent Cleaners'}
