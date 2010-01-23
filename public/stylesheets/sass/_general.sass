@@ -21,13 +21,14 @@ body
   
 #right-column
   width = !right_column
+  text-align: left
   
 #left-column, #right-column
   display: inline-block
   vertical-align: top
   
 #left-content
-  padding-top = !column_interspace
+  padding = !column_interspace 0
 
 #header
   display: inline-block
@@ -71,6 +72,7 @@ body
   
 #right-container
   padding = !column_interspace
+  padding-top: 0
   
 .booking
   text-align: center  
@@ -90,8 +92,16 @@ body
   .book-online
     height: 60px
   
+#calendar
+  font-size: 120%
+  
+#calendar-icon
+  vertical-align: bottom
 
 #footer
+  color= !medium_gray
+  font-size: 80%
+  padding: 10px    
   border-top:
     width: 1px
     style: solid

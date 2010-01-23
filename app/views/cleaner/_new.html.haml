@@ -1,129 +1,83 @@
-#new
-  #new-intro.gap-after
+#new  
+  #intro
     %h1 Join Innocent Cleaners
   
-    %p
-      This form will take only a minute or two to fill out. After that you'll be available for hire on the website.
+    %p You're just 60 seconds away from being available for hire on Innocent Cleaners!
   
-  #personal.gap-after
-    %h2 Personal information
-    %p.small-gap-after
-      Please provide your real name. Only your first name will be shown on the website, though.
-    
-    #name.small-gap-after
-      #first-name
-        %h4 First name
-        %input.small-gap-after{:type => 'text'}
-    
-      #last-name
-        %h4 Last name
-        %input{:type => 'text'}
-    
-    #sex.small-gap-after
-      %h4
-        I'm a
+  #personal    
+    %hr
+    %h2 1. Tell us about yourself
+    #honorific
       %select
-        %option Woman
-        %option Man      
-    #my-postcode.small-gap-after
-      %h4 My postcode
-      %input{:type => 'text'}
+        %option Mr
+        %option Mrs
+        %option Ms
+    #first-name
+      %input{:type => 'text', :value => 'First name'}
+  
+    #last-name
+      %input{:type => 'text', :value => 'Last name'}
+  
+    #postcode
+      %input{:type => 'text', :value => 'Postcode'}
       e.g. W2 1TT
     
-    #my-email.small-gap-after
-      %h4 My email
-      %input{:type => 'text'}
+    #email
+      %input{:type => 'text', :value => 'E-mail'}
       e.g. very.innocent.cleaner@gmail.com
       
-    #my-phone-number
-      %h4 My phone number
-      %p
-        We'll text you immediately when somebody tries to hire you on the website.
-      %input{:type => 'text'}
+    #phone-number
+      %input{:type => 'text', :value => 'Mobile phone number'}
       e.g. 07912345678
+      
+    #description
+      %h4 Please write a short paragraph about yourself. 
+      %textarea I am...
     
-  #my-skills.gap-after
-    %h2 What can you do?
-          
-    .my-skill
-      %input{:type => 'checkbox'}
-      Domestic Cleaning
-    .my-skill
-      %input{:type => 'checkbox'}
-      Ironing
-    .my-skill
-      %input{:type => 'checkbox'}
-      Groceries shopping
-    .my-skill
-      %input{:type => 'checkbox'}
-      Dog-walking
-  
-  #my-photo.gap-after
-    #photo-uploader
-      %h2 Your photo
-      %p
-        Please upload a photo of yourself where your face is clearly visible.
-      %a{:href => ''}
-        %input{:type => 'button', :value => 'Upload a photo'}
-    #uploaded-photo
-      %img{:src => '/images/emma_small.png'}
-      
-  #description.gap-after
-    %h2 Tell clients about yourself
+  #skills
+    %hr
+    %h2 2. Tell us about your skills and expectations
     
-    %p
-      Please write a short introductory paragraph about youself. An example follows.
-      
-    %p#intro-example
-      I am friendly and punctual, so don't worry about me being too early or too late. I have several happy clients I can provide references from should you require them.
-      I have over 5 years of experience, so I know how to provide a service of a very high quality. Don't hesitate to hire me!
-      
-    %textarea
-      I am...
-  
-  #price.gap-after
-    %h2 How much do you charge?      
-    #rates.small-gap-after
-      #my-hourly-rate
-        %h4 Hourly rate
-        &pound;
-        %input.small-gap-after{:type => 'text'}
-        for example, 7.5
-      %p
-      #my-surcharge
-        %h4 Extra charge for using my own cleaning materials
-        &pound;
-        %input{:type => 'text'}
-        for example, 2
-    #minumum-hire.small-gap-after
-      %h4 What's the minimum number of hours you can be hired for?
+    %div
+      = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Domestic cleaning'}
+      = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Ironing'}
+      = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Groceries shopping'}
+      = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Dog-walking'}
+    
+    #minumum-hire
       %select
-        %option 1 hour
-        %option 2 hours
-        %option 3 hours
-        %option 4 hours
-        
-  #my-availability.gap-after
-    %h2
-      My availability
+        %option I can be hired for no less than 1 hour
+        %option I can be hired for no less than 2 hours
+        %option I can be hired for no less than 3 hours
+        %option I can be hired for no less than 4 hours
+
+    #hourly-rate
+      &pound;
+      %input{:type => 'text', :value => 'Hourly rate'}
+      for example, 7.5
     
-    %p
-      Please indicate when you're normally available for work every week (e.g. 08:00 to 18:00, Mon-Fri, except Wed)
-            
-    %p.small-gap-after
-      You can drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
+    %h4 You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
+    #surcharge
+      &pound;
+      %input{:type => 'text', :value => 'Cleaning materials surcharge'}
+      for example, 2.5      
+        
+  #availability
+    %hr
+    %h2 3. Tell us when you're available for work
+    
+    %h4 Drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
       
-    #my-availability-chart.gap-after
+    #availability-chart
       = render :partial => 'availability_table'
     
+  #terms-and-conditions
     %hr
-    #terms-and-conditions.small-gap-after
-      %p.small-gap-after
-        Please take time to read Terms and Conditions for this website and check the following box if you agree with them.
-      %input.small-gap-after{:type => 'checkbox'} I agree with the Terms and Conditions
-      
-    #i-am-ready
-      %input{:type => 'button', :value => 'Join Innocent Cleaners'}
+    %h4 Please take time to read Terms and Conditions for this website and check the following box if you agree with them.
+    %input{:type => 'checkbox'} I agree with the Terms and Conditions
+    
+  #submit
+    %input{:type => 'button', :value => 'Join Innocent Cleaners'}
       
   
     

@@ -1,3 +1,6 @@
+!yellow = #FECA40
+!orange = #F39814
+
 #cleaner-summary
   padding: 0 #{!column_interspace}
 
@@ -20,6 +23,15 @@
     overflow: hidden 
     margin-top: 10px
     
+#availability
+  #calendar
+    padding-left: 12px
+    
+#hints
+  ul
+    text-align: left
+    margin: 0 50px    
+    
 #reviews
   .review
     padding: 5px 15px
@@ -29,7 +41,51 @@
       color = !clay
       font-size: 80%
 
-  
+#new
+  & > div
+    margin-bottom: 30px
+    
+  & > div > div
+    margin-bottom: 15px
+
+  #honorific, #first-name, #last-name
+    display: inline-block
+    
+  & input[type='text']
+    width: 250px
+
+  #description textarea
+    width: 400px
+    height: 50px
+
+  #set-availability
+    width = 430px
+    height: 370px    
+    li
+      float: left
+      width: 50px
+      height: 20px
+      text-align: center
+      font-size: 9px    
+      list-style-type: none
+      margin: 0
+      padding: 0      
+      border:
+        right: 1px solid #{!medium_gray}
+        bottom: 1px solid #{!medium_gray}
+
+    li.ui-selecting
+      background = !yellow
+
+    li.ui-selected
+      background = !orange
+      color: white
+    
+    li.non-selectable
+      color = !black
+
+  #terms-and-conditions input
+    margin-right: 10px
 
 
-  
+

@@ -58,14 +58,15 @@ body {
   width: 250px; }
 
 #right-column {
-  width: 746px; }
+  width: 746px;
+  text-align: left; }
 
 #left-column, #right-column {
   display: inline-block;
   vertical-align: top; }
 
 #left-content {
-  padding-top: 20px; }
+  padding: 20px 0; }
 
 #header {
   display: inline-block; }
@@ -108,7 +109,8 @@ body {
   text-align: left; }
 
 #right-container {
-  padding: 20px; }
+  padding: 20px;
+  padding-top: 0; }
 
 .booking {
   text-align: center; }
@@ -125,7 +127,16 @@ body {
   .booking .book-online {
     height: 60px; }
 
+#calendar {
+  font-size: 120%; }
+
+#calendar-icon {
+  vertical-align: bottom; }
+
 #footer {
+  color: #999999;
+  font-size: 80%;
+  padding: 10px;
   border-top-width: 1px;
   border-top-style: solid;
   border-top-color: #6ea7d1; }
@@ -142,6 +153,8 @@ body {
   #find-a-cleaner #activities {
     text-align: left;
     margin-left: 50px; }
+  #find-a-cleaner #calendar {
+    padding-left: 12px; }
 
 #welcome {
   text-align: center; }
@@ -233,6 +246,13 @@ body {
     overflow: hidden;
     margin-top: 10px; }
 
+#availability #calendar {
+  padding-left: 12px; }
+
+#hints ul {
+  text-align: left;
+  margin: 0 50px; }
+
 #reviews .review {
   padding: 5px 15px;
   background-color: #eaf4fd;
@@ -242,14 +262,43 @@ body {
     color: #db530f;
     font-size: 80%; }
 
-#availability {
+#new > div {
+  margin-bottom: 30px; }
+#new > div > div {
   margin-bottom: 15px; }
+#new #honorific, #new #first-name, #new #last-name {
+  display: inline-block; }
+#new input[type='text'] {
+  width: 250px; }
+#new #description textarea {
+  width: 400px;
+  height: 50px; }
+#new #set-availability {
+  width: 430px;
+  height: 370px; }
+  #new #set-availability li {
+    float: left;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    font-size: 9px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid #999999;
+    border-bottom: 1px solid #999999; }
+  #new #set-availability li.ui-selecting {
+    background: #feca40; }
+  #new #set-availability li.ui-selected {
+    background: #f39814;
+    color: white; }
+  #new #set-availability li.non-selectable {
+    color: #484848; }
+#new #terms-and-conditions input {
+  margin-right: 10px; }
 
 #available-date * {
   vertical-align: bottom; }
-
-.small-gap-after {
-  margin-bottom: 10px; }
 
 #hire-what-day #calendar {
   display: inline-block;
@@ -259,9 +308,6 @@ body {
   display: inline-block;
   vertical-align: top;
   text-align: center; }
-
-.gap-after {
-  margin-bottom: 30px; }
 
 #hire-what-day #calendar {
   padding-left: 0; }
@@ -273,84 +319,5 @@ body {
   border-top: 1px solid #db530f;
   width: 50%; }
 
-#calendar {
-  padding-left: 12px;
-  font-size: 120%; }
-
-#calendar-icon {
-  vertical-align: bottom; }
-
-#footer {
-  color: #999999;
-  font-size: 90%;
-  padding: 10px; }
-
-#hints-list {
-  text-align: left;
-  margin: 0 50px; }
-
-#content {
-  text-align: left; }
-
-#hire, #new {
+#hire {
   padding-left: 20px; }
-
-#jobs-done {
-  color: #db530f;
-  font-size: 90%; }
-
-.my-skill {
-  margin-bottom: 5px; }
-
-#new #first-name, #new #last-name, #new #my-hourly-rate, #new #my-surcharge {
-  display: inline-block; }
-
-#new #sex * {
-  display: inline-block; }
-
-#new #my-photo div {
-  vertical-align: top; }
-
-#photo-uploader, #uploaded-photo {
-  display: inline-block; }
-
-#photo-uploader {
-  width: 600px; }
-
-#intro-example {
-  font-style: italic;
-  margin: 10px 50px; }
-
-#description textarea {
-  width: 400px;
-  height: 100px; }
-
-#set-availability li {
-  border-right: 1px solid #999999;
-  border-bottom: 1px solid #999999; }
-
-#set-availability .ui-selecting {
-  background: #FECA40; }
-
-#set-availability .ui-selected {
-  background: #F39814;
-  color: white; }
-
-#set-availability li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-#set-availability {
-  width: 420px;
-  height: 370px; }
-
-#set-availability li {
-  float: left;
-  width: 50px;
-  height: 20px;
-  text-align: center;
-  font-size: 9px; }
-
-#terms-and-conditions input {
-  margin-right: 10px; }
