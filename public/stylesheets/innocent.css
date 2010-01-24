@@ -1,3 +1,11 @@
+body {
+  background-color: white;
+  text-align: center;
+  font-family: verdana,helvetica,arial,sans-serif;
+  margin-top: 25px;
+  color: #484848;
+  font-size: 12px; }
+
 a {
   color: #db530f;
   text-decoration: underline; }
@@ -38,14 +46,6 @@ li {
   line-height: 16px; }
 
 li span {
-  color: #484848;
-  font-size: 12px; }
-
-body {
-  background-color: white;
-  text-align: center;
-  font-family: verdana,helvetica,arial,sans-serif;
-  margin-top: 25px;
   color: #484848;
   font-size: 12px; }
 
@@ -112,18 +112,19 @@ body {
   padding: 20px;
   padding-top: 0; }
 
+.hourly-rate {
+  color: #db530f;
+  font-size: 40px;
+  text-align: center;
+  line-height: 100px; }
+  .hourly-rate .hour {
+    font-size: 15px;
+    color: #999999; }
+
 .booking {
   text-align: center; }
   .booking input {
     font-size: 150%; }
-  .booking .hourly-rate {
-    color: #db530f;
-    font-size: 40px;
-    text-align: center;
-    line-height: 100px; }
-  .booking .hour {
-    font-size: 15px;
-    color: #999999; }
   .booking .book-online {
     height: 60px; }
 
@@ -264,24 +265,15 @@ body {
       color: #db530f;
       font-size: 80%; }
 
-#new > div {
-  margin-bottom: 30px; }
-#new > div > div {
-  margin-bottom: 15px;
-  padding-left: 20px; }
-#new #honorific, #new #first-name, #new #last-name {
-  display: inline-block; }
-#new input[type='text'] {
-  width: 250px; }
-#new #description textarea {
+#new-cleaner #description textarea {
   width: 400px;
   height: 50px; }
-#new #set-availability {
+#new-cleaner #set-availability {
   width: 430px;
   height: 370px; }
-  #new #set-availability ul {
+  #new-cleaner #set-availability ul {
     margin-left: 0; }
-  #new #set-availability li {
+  #new-cleaner #set-availability li {
     float: left;
     width: 50px;
     height: 20px;
@@ -292,42 +284,55 @@ body {
     padding: 0;
     border-right: 1px solid #999999;
     border-bottom: 1px solid #999999; }
-  #new #set-availability li.ui-selecting {
+  #new-cleaner #set-availability li.ui-selecting {
     background: #feca40; }
-  #new #set-availability li.ui-selected {
+  #new-cleaner #set-availability li.ui-selected {
     background: #f39814;
     color: white; }
-  #new #set-availability li.non-selectable {
+  #new-cleaner #set-availability li.non-selectable {
     color: #484848; }
-#new #terms-and-conditions input {
-  margin-right: 10px; }
-#new #submit {
-  font-size: 150%; }
 
 #availability #calendar {
   margin-bottom: 40px; }
 
-#available-date * {
-  vertical-align: bottom; }
-
-#hire-what-day #calendar {
+#new-client #country-name {
   display: inline-block;
-  width: 300px; }
+  width: 250px;
+  border: 1px solid #484848; }
 
-#hire-what-day #hours {
-  display: inline-block;
-  vertical-align: top;
-  text-align: center; }
-
-#hire-what-day #calendar {
-  padding-left: 0; }
-
-#total-cost {
-  font-size: 200%;
-  color: #db530f;
-  padding: 15px;
-  border-top: 1px solid #db530f;
-  width: 50%; }
-
-#hire {
+#booking {
   padding-left: 20px; }
+  #booking > div {
+    margin-bottom: 30px; }
+  #booking .hourly-rate {
+    float: right; }
+  #booking #calendar {
+    display: inline-block;
+    width: 300px;
+    padding-left: 0; }
+  #booking #hours {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center; }
+  #booking #cost {
+    font-size: 200%;
+    color: #db530f;
+    padding: 15px;
+    border-top: 1px solid #db530f;
+    width: 50%; }
+  #booking #submit {
+    font-size: 150%; }
+
+.long-form > div {
+  margin-bottom: 30px; }
+.long-form > div > div {
+  margin-bottom: 15px;
+  padding-left: 20px; }
+.long-form #honorific, .long-form #first-name, .long-form #last-name {
+  display: inline-block; }
+.long-form input[type='text'] {
+  width: 250px; }
+.long-form #terms-and-conditions input {
+  margin-right: 10px; }
+.long-form #submit {
+  font-size: 150%; }

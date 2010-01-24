@@ -1,8 +1,4 @@
 .booking>
-  .hourly-rate
-    &pound;
-    = (rand * 5 + 7).round
-    %span.hour<>
-      \/hour
+  = render :partial => 'shared/hourly_rate'
   .book-online
     %input{:value => 'Hire me!', :type => 'submit'}

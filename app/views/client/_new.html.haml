@@ -1,0 +1,46 @@
+#new-client.long-form
+  #intro
+    %h1 Create a new account
+    %p
+      You need to create an account to hire cleaners and leave reviews.
+    
+  #personal
+    %hr
+    %h2 1. Tell us about yourself
+    = render :partial => "shared/name"
+    
+    #email
+      %input{:type => 'text', :value => 'E-mail'}
+      e.g. very.responsible.homeowner@gmail.com
+  
+    #phone
+      %input{:type => 'text', :value => 'Mobile phone'}
+      e.g. 07912345678
+  
+  #address
+    %hr
+    %h2 2. Tell us where's the property you need to clean
+    
+    #first-line
+      %input{:type => 'text', :value => 'Address'}
+      e.g. Flat 15
+    #second-line
+      %input{:type => 'text', :value => ''} 
+      e.g. 23 Happiness Crescent
+    #third-line
+      %input{:type => 'text', :value => ''}      
+      e.g. Westminster
+    #city
+      %input{:type => 'text', :value => 'City'}
+      e.g. London
+    #postcode
+      %input{:type => 'text', :value => 'Postcode'}
+      e.g. W2 1TT
+    #country
+      #country-name United Kingdom
+      We operate only in the UK
+      
+  = render :partial => 'shared/terms_and_conditions'
+  
+  #submit
+    %input{:type => 'button', :value => 'Create an account'}

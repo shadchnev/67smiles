@@ -1,4 +1,4 @@
-#new  
+#new-cleaner.long-form  
   #intro
     %h1 Join Innocent Cleaners
   
@@ -7,17 +7,8 @@
   #personal    
     %hr
     %h2 1. Tell us about yourself
-    #name
-      #honorific
-        %select
-          %option Mr
-          %option Mrs
-          %option Ms
-      #first-name
-        %input{:type => 'text', :value => 'First name'}
-  
-      #last-name
-        %input{:type => 'text', :value => 'Last name'}
+    
+    = render :partial => "shared/name"
   
     #postcode
       %input{:type => 'text', :value => 'Postcode'}
@@ -75,12 +66,8 @@
     #availability-chart
       = render :partial => 'availability_table'
     
-  #terms-and-conditions
-    %hr
-    %h4 Please take time to read Terms and Conditions for this website and check the following box if you agree with them.
-    .i-agree
-      %input{:type => 'checkbox'} I agree with the Terms and Conditions
-    
+  = render :partial => 'shared/terms_and_conditions'
+  
   #submit
     %input{:type => 'button', :value => 'Join Innocent Cleaners'}
       

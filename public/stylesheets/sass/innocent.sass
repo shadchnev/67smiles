@@ -11,31 +11,10 @@
 !column_interspace = 20px
 !right_column = !master_width - !left_column
 
+@import tags.sass
 @import general.sass
 @import homepage.sass
 @import cleaner.sass
-
-#available-date *
-  vertical-align: bottom
-
-#hire-what-day #calendar
-  display: inline-block
-  width: 300px
-
-#hire-what-day #hours
-  display: inline-block
-  vertical-align: top
-  text-align: center
-
-#hire-what-day #calendar
-  padding-left: 0
-  
-#total-cost
-  font-size: 200%
-  color = !clay
-  padding: 15px
-  border-top: 1px solid #{!clay}
-  width: 50%
-            
-#hire
-  padding-left = !column_interspace
+@import client.sass
+@import booking.sass
+@import long_form.sass
