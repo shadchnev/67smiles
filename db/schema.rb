@@ -9,6 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 2) do
+
+  create_table "cleaners", :force => true do |t|
+    t.integer  "name_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "names", :force => true do |t|
+    t.string   "honorific"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

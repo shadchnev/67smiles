@@ -1,11 +1,7 @@
 #name
   #honorific
-    %select
-      %option Mr
-      %option Mrs
-      %option Ms
+    = f.select :honorific, %w(Mr Mrs Ms).map{|h| [h, h]}
   #first-name
-    %input{:type => 'text', :value => 'First name'}
-
+    = f.text_field :first_name, :value => 'First name'
   #last-name
-    %input{:type => 'text', :value => 'Last name'}
+    = f.text_field :last_name, :value => 'Last name'

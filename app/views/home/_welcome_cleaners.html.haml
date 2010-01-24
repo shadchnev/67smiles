@@ -4,7 +4,6 @@
 = render :partial => 'how_to', :locals => {:image => 'text', :text => 'Receive jobs by sms'}
 = render :partial => 'how_to', :locals => {:image => 'percent', :text => 'Don\'t pay any commission'}
 .action
-  %a{:href => '#'}
-    Join Now!
+  = link_to "Join Now!", :controller => :cleaner, :action => :new
 .hint
   You don't need an agency to find work

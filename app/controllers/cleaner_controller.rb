@@ -1,2 +1,0 @@
-class CleanerController < ApplicationController
-end
