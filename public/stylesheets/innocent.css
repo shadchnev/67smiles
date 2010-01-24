@@ -131,9 +131,6 @@ li span {
 #calendar {
   font-size: 120%; }
 
-#calendar-icon {
-  vertical-align: bottom; }
-
 #footer {
   color: #999999;
   font-size: 80%;
@@ -300,28 +297,24 @@ li span {
 #availability #calendar {
   margin-bottom: 40px; }
 
-#booking {
-  padding-left: 20px; }
-  #booking > div {
-    margin-bottom: 30px; }
-  #booking .hourly-rate {
-    float: right; }
-  #booking #calendar {
-    display: inline-block;
-    width: 300px;
-    padding-left: 0; }
-  #booking #hours {
-    display: inline-block;
-    vertical-align: top;
-    text-align: center; }
-  #booking #cost {
-    font-size: 200%;
-    color: #db530f;
-    padding: 15px;
-    border-top: 1px solid #db530f;
-    width: 50%; }
-  #booking #submit {
-    font-size: 150%; }
+#new-booking .hourly-rate {
+  float: right; }
+#new-booking #calendar {
+  display: inline-block;
+  width: 300px;
+  padding-left: 0; }
+#new-booking #hours {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center; }
+#new-booking #cost {
+  font-size: 200%;
+  color: #db530f;
+  padding: 15px;
+  border-top: 1px solid #db530f;
+  width: 50%; }
+#new-booking #submit {
+  font-size: 150%; }
 
 .long-form > div {
   margin-bottom: 30px; }
