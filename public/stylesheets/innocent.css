@@ -230,6 +230,11 @@ li span {
   #cleaners .cleaner .booking {
     width: 180px; }
 
+#new-client #country-name {
+  display: inline-block;
+  width: 250px;
+  border: 1px solid #484848; }
+
 #cleaner-summary {
   padding: 0 20px; }
   #cleaner-summary #details > div {
@@ -294,11 +299,6 @@ li span {
 
 #availability #calendar {
   margin-bottom: 40px; }
-
-#new-client #country-name {
-  display: inline-block;
-  width: 250px;
-  border: 1px solid #484848; }
 
 #booking {
   padding-left: 20px; }
