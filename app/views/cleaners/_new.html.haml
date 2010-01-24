@@ -16,7 +16,8 @@
         = render :partial => "shared/name", :locals => {:f => name_fields}
   
       #postcode
-        %input{:type => 'text'}
+        - cleaner_form.fields_for :postcode do |postcode_fields|
+          = postcode_fields.text_field :value
         e.g. W2 1TT
     
       #email

@@ -12,6 +12,7 @@ class CleanersController < ApplicationController
   def new
     @cleaner = Cleaner.new
     @cleaner.name = Name.new
+    @cleaner.postcode = Postcode.new
   end
   
 end
