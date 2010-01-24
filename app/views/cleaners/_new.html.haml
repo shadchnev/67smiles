@@ -1,26 +1,30 @@
-- form_for Cleaner.new do |cleaner_form|
+- form_for @cleaner do |cleaner_form|
   #new-cleaner.long-form  
     #intro
       %h1 Join Innocent Cleaners
     
       %p You're just 60 seconds away from being available for hire on Innocent Cleaners!
+      
+    - unless @cleaner.errors.empty?
+      #errors
+        = error_messages_for :cleaner, :header_message => "Sorry, there were problems with this form:", :message => nil
   
     #personal    
       %hr
-      %h2 1. Tell us about yourself
-      - cleaner_form.fields_for :name_attributes do |name_form|
-        = render :partial => "shared/name", :locals => {:f => name_form}
+      %h2 1. Tell us about yourself      
+      - cleaner_form.fields_for :name do |name_fields|
+        = render :partial => "shared/name", :locals => {:f => name_fields}
   
       #postcode
-        %input{:type => 'text', :value => 'Postcode'}
+        %input{:type => 'text'}
         e.g. W2 1TT
     
       #email
-        %input{:type => 'text', :value => 'E-mail'}
+        %input{:type => 'text'}
         e.g. very.innocent.cleaner@gmail.com
       
       #phone-number
-        %input{:type => 'text', :value => 'Mobile phone number'}
+        %input{:type => 'text'}
         e.g. 07912345678
       
       #description

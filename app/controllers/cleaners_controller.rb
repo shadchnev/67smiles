@@ -5,4 +5,13 @@ class CleanersController < ApplicationController
     @cleaner.save ? redirect_to(cleaner_path(@cleaner)) : render(:action => :new)
   end
   
+  def show
+    @cleaner = Cleaner.find(params[:id])
+  end
+  
+  def new
+    @cleaner = Cleaner.new
+    @cleaner.name = Name.new
+  end
+  
 end

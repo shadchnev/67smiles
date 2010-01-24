@@ -142,6 +142,20 @@ li span {
 .clearer {
   clear: both; }
 
+.fieldWithErrors input {
+  border: 1px solid red; }
+
+#errors {
+  border-left: 15px solid red;
+  border-top: 1px solid red;
+  padding: 10px; }
+
+.errorExplanation h2 {
+  color: red; }
+.errorExplanation ul li {
+  color: black;
+  font-size: 120%; }
+
 #find-a-cleaner {
   padding-top: 5px; }
   #find-a-cleaner > form > div {
