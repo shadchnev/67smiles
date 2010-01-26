@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 7) do
 
   create_table "cleaners", :force => true do |t|
     t.integer  "name_id"
@@ -17,6 +17,11 @@ ActiveRecord::Schema.define(:version => 6) do
     t.datetime "updated_at"
     t.integer  "postcode_id"
     t.integer  "contact_details_id"
+    t.text     "description"
+    t.binary   "skills"
+    t.integer  "minimum_hire"
+    t.decimal  "rate",               :precision => 4, :scale => 2
+    t.binary   "availability"
   end
 
   create_table "contact_details", :force => true do |t|
