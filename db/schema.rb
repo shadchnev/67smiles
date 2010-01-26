@@ -9,13 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "cleaners", :force => true do |t|
     t.integer  "name_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "postcode_id"
+    t.integer  "contact_details_id"
+  end
+
+  create_table "contact_details", :force => true do |t|
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "names", :force => true do |t|

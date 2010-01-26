@@ -20,13 +20,14 @@
           = postcode_fields.text_field :value
         e.g. W2 1TT
     
-      #email
-        %input{:type => 'text'}
-        e.g. very.innocent.cleaner@gmail.com
+      - cleaner_form.fields_for :contact_details do |contact_details_fields|
+        #email
+          = contact_details_fields.text_field :email
+          e.g. very.innocent.cleaner@gmail.com
       
-      #phone-number
-        %input{:type => 'text'}
-        e.g. 07912345678
+        #phone-number
+          = contact_details_fields.text_field :phone
+          e.g. 07912345678
       
       #description
         %h4 Please write a short paragraph about yourself. 
