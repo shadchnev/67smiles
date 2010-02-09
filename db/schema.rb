@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 9) do
+
+  create_table "availabilities", :force => true do |t|
+    t.integer  "monday",     :limit => 3
+    t.integer  "tuesday",    :limit => 3
+    t.integer  "wednesday",  :limit => 3
+    t.integer  "thursday",   :limit => 3
+    t.integer  "friday",     :limit => 3
+    t.integer  "saturday",   :limit => 3
+    t.integer  "sunday",     :limit => 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cleaners", :force => true do |t|
     t.integer  "name_id"
@@ -18,10 +30,11 @@ ActiveRecord::Schema.define(:version => 7) do
     t.integer  "postcode_id"
     t.integer  "contact_details_id"
     t.text     "description"
-    t.binary   "skills"
     t.integer  "minimum_hire"
     t.decimal  "rate",               :precision => 4, :scale => 2
-    t.binary   "availability"
+    t.decimal  "surcharge",          :precision => 4, :scale => 2
+    t.integer  "availability_id"
+    t.integer  "skills_id"
   end
 
   create_table "contact_details", :force => true do |t|
@@ -41,6 +54,15 @@ ActiveRecord::Schema.define(:version => 7) do
 
   create_table "postcodes", :force => true do |t|
     t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills", :force => true do |t|
+    t.boolean  "domestic_cleaning"
+    t.boolean  "ironing"
+    t.boolean  "groceries"
+    t.boolean  "pets"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

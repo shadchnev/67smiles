@@ -284,6 +284,8 @@ li span {
 #new-cleaner #description textarea {
   width: 400px;
   height: 50px; }
+#new-cleaner #skills .fieldWithErrors {
+  display: inline; }
 #new-cleaner #set-availability {
   width: 430px;
   height: 370px; }

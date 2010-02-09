@@ -38,26 +38,23 @@
       %h2 2. Tell us about your skills and expectations
     
       %div
-        = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Domestic cleaning'}
-        = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Ironing'}
-        = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Groceries shopping'}
-        = render :partial => 'shared/checkbox_with_label', :locals => {:label => 'Dog-walking'}
+        - cleaner_form.fields_for :skills do |skills_fields|
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :domestic_cleaning, :label => 'Domestic cleaning', :disabled => true, :checked => true}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :ironing, :label => 'Ironing'}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :groceries, :label => 'Groceries shopping'}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :pets, :label => 'Dog-walking'}
     
       #minumum-hire
-        %select
-          %option I can be hired for no less than 1 hour
-          %option I can be hired for no less than 2 hours
-          %option I can be hired for no less than 3 hours
-          %option I can be hired for no less than 4 hours
-
+        = cleaner_form.select :minimum_hire,  Hash[*(1..4).map{|hours| ["I can be hired for no less than #{pluralize(hours, 'hour')}", hours]}.flatten]
+        
       #hourly-rate
         &pound;
-        %input{:type => 'text', :value => 'Hourly rate'}
+        = cleaner_form.text_field :rate, :value => 'Hourly rate'
         for example, 7.5
     
       #surcharge
         &pound;
-        %input{:type => 'text', :value => 'Cleaning materials surcharge'}
+        = cleaner_form.text_field :surcharge, :value => 'Cleaning materials surcharge'
         for example, 2.5      
       .hint
         %h4
