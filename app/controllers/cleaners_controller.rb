@@ -15,6 +15,7 @@ class CleanersController < ApplicationController
     @cleaner.postcode = Postcode.new
     @cleaner.contact_details = ContactDetails.new
     @cleaner.skills = Skills.new
+    @cleaner.availability = Availability.new
   end
   
 end

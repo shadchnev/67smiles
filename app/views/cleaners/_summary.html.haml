@@ -1,9 +1,9 @@
 #summary-block
   #cleaner-summary
     %h1
-      = h @cleaner.first_name
+      = @cleaner.first_name
     %p#introduction
-      I'm a professional and reliable cleaner with 3 years of cleaning experience in the UK. I'm happy to provide recommendations from several clients, including individuals and companies.
+      = @cleaner.description
     #details
       #skills
         %h3

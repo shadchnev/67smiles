@@ -49,12 +49,12 @@
         
       #hourly-rate
         &pound;
-        = cleaner_form.text_field :rate, :value => 'Hourly rate'
+        = cleaner_form.text_field :rate
         for example, 7.5
     
       #surcharge
         &pound;
-        = cleaner_form.text_field :surcharge, :value => 'Cleaning materials surcharge'
+        = cleaner_form.text_field :surcharge
         for example, 2.5      
       .hint
         %h4
@@ -68,9 +68,12 @@
         %p Drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
       
       #availability-chart
+        - cleaner_form.fields_for :availability do |availability_fields|
+          - %w[monday tuesday wednesday thursday friday saturday sunday].each do |day|
+            = availability_fields.hidden_field day        
         = render :partial => 'availability_table'
     
-    = render :partial => 'shared/terms_and_conditions'
+    = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
     #submit
       = cleaner_form.submit "Join Innocent Cleaners"
