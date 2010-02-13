@@ -8,6 +8,5 @@
 
 #right-container
   #cleaners
-    = render :partial => 'cleaner', :locals => {:name => 'Emma'}
-    = render :partial => 'cleaner', :locals => {:name => 'Sonya'}
-    = render :partial => 'cleaner', :locals => {:name => 'Elizabeth'}
+    - @cleaners.each do |cleaner|    
+      = render :partial => 'cleaner', :locals => {:cleaner => cleaner}

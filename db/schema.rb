@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "availabilities", :force => true do |t|
     t.integer  "monday",     :limit => 3
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 9) do
     t.integer  "friday",     :limit => 3
     t.integer  "saturday",   :limit => 3
     t.integer  "sunday",     :limit => 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookings", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +40,11 @@ ActiveRecord::Schema.define(:version => 9) do
     t.decimal  "surcharge",          :precision => 4, :scale => 2
     t.integer  "availability_id"
     t.integer  "skills_id"
+  end
+
+  create_table "clients", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contact_details", :force => true do |t|

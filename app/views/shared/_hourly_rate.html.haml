@@ -1,5 +1,5 @@
 .hourly-rate
   &pound;
-  = rate || (rand * 5 + 7).round
+  = (rate - rate.round).abs < 0.1 ? rate.round.to_i : rate
   %span.hour<>
     \/hour

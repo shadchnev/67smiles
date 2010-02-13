@@ -3,7 +3,7 @@
     %img{:src => 'images/emma_small.png'}
   .details>
     %h2.name      
-      = link_to name, :controller => "cleaner", :action => "show", :id => 1
+      = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
     .stats
       .jobs-done
         %a{:href => '#'}
@@ -12,5 +12,5 @@
         %a{:href => '#'}
           2 Reviews
     .introduction
-      I'm a professional and reliable cleaner with 3 years of cleaning experience in the UK. I'm happy to provide recommendations from several clients, including individuals and companies.
-  = render :partial => 'shared/booking'
+      = cleaner.description
+  = render :partial => 'shared/booking', :locals => {:cleaner => cleaner}

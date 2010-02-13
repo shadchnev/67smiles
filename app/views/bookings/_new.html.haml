@@ -1,9 +1,13 @@
 #new-booking.long-form
-  = render :partial => 'shared/hourly_rate'
+  %input{:type => 'hidden', :id => 'cleaner-id', :value => @cleaner.id}
+  = render :partial => 'shared/hourly_rate', :locals => {:rate => @cleaner.rate}
   %h1
-    Hire Joanne      
+    Hire
+    = @cleaner.first_name
   #intro
-    When you submit the form, we'll contact Joanne to confirm the availability and email you.
+    When you submit the form, we'll contact 
+    = @cleaner.first_name
+    to confirm the availability and email you.
   #day
     %hr
     %h2 1. What day?

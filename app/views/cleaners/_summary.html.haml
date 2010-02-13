@@ -30,4 +30,4 @@
               Created an account
               = time_ago_in_words @cleaner.created_at
               ago
-      = render :partial => 'shared/booking', :locals => {:rate => @cleaner.rate}
+      = render :partial => 'shared/booking', :locals => {:cleaner => @cleaner}

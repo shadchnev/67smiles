@@ -40,6 +40,7 @@ function haveDailyAvailability() {
 function updateDailyAvailability() {
   var date = $("#calendar").datepicker('getDate');
   var availability = $('#daily-availability').data('availability');
+  if (!availability) return;
   $('#daily-availability .timespan').remove();
   var periods = {morning: MORNING, afternoon: AFTERNOON, evening: EVENING};
   for (period in periods)
@@ -47,7 +48,6 @@ function updateDailyAvailability() {
       $('#daily-availability #' + period).show();
       showAvailableHours(availability, date, $('#daily-availability #' + period), periods[period]);
     } else {
-      // alert('n/a: ' + period);
       $('#daily-availability #' + period).append("<div class='timespan'>Not available</div>");
     }
 }
@@ -73,8 +73,7 @@ function showAvailableHours(availability, date, node, period) {
 }
 
 function pad (character) {
-  if (character.length == 1)
-    return '0' + character;
+  if (character.length == 1) return '0' + character;
   return character;
 }
 
