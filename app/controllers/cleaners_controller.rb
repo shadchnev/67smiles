@@ -18,4 +18,13 @@ class CleanersController < ApplicationController
     @cleaner.availability = Availability.new
   end
   
+  def availability
+    @cleaner = Cleaner.find(params[:id])
+    respond_to do |wants|
+      wants.json {
+        render :json => @cleaner.availability.to_hash.to_json
+      }
+    end
+  end
+  
 end

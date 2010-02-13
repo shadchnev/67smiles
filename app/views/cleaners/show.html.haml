@@ -2,9 +2,9 @@
   %img.with_right_border{:src => '/images/emma_profile.png'}<>
   
 = content_for :left_content do
-  = render :partial => 'availability'
+  = render :partial => 'availability', :locals => {:availability => @cleaner.availability}
 
 = render :partial => 'summary'
-#right-container
+#right-container  
   = render :partial => 'reviews'
   

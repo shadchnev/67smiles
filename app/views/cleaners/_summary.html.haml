@@ -1,4 +1,5 @@
 #summary-block
+  %input{:type => "hidden", :value => @cleaner.id, :id => 'cleaner-id'}
   #cleaner-summary
     %h1
       = @cleaner.first_name
@@ -9,28 +10,24 @@
         %h3
           I'm happy to help you with
         %ul#list
-          %li 
-            %span Domestic cleaning
-          %li 
-            %span Commercial cleaning
-          %li 
-            %span Looking after pets
-          %li 
-            %span Ironing
-          %li 
-            %span Groceries shopping
-          %li 
-            %span Laundry
+        - {:domestic_cleaning => 'Domestic Cleaning'}.each_pair do |key, value|
+          - if @cleaner.skills.send(key)
+            %li 
+              %span 
+                = value
       #stats
         %h3
           Info
         %ul#info
           %li
             %span 5 Jobs done          
-          %li 
-            %span 29 years old
           %li
-            %span Living in SE17
+            %span 
+              Living in
+              = @cleaner.area
           %li
-            %span Member since 23 January 2010            
-      = render :partial => 'shared/booking'
+            %span 
+              Created an account
+              = time_ago_in_words @cleaner.created_at
+              ago
+      = render :partial => 'shared/booking', :locals => {:rate => @cleaner.rate}

@@ -1,4 +1,4 @@
 .booking>
-  = render :partial => 'shared/hourly_rate'
+  = render :partial => 'shared/hourly_rate', :locals => {:rate => rate}
   .book-online
     %input{:value => 'Hire me!', :type => 'submit'}

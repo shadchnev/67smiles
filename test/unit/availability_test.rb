@@ -20,4 +20,12 @@ class AvailabilityTest < ActiveSupport::TestCase
     assert a.valid?
   end
   
+  test "it can save itself to a hash" do
+    a = Availability.new
+    a.monday = 0b00110011
+    a.friday = 0b11001100
+    hash = {"monday" => 0b00110011, "tuesday" => 0, "wednesday" => 0, "thursday" => 0, "friday" => 0b11001100, "saturday" => 0, "sunday" => 0}
+    assert_equal hash, a.to_hash
+  end
+  
 end

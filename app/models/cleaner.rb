@@ -26,4 +26,8 @@ class Cleaner < ActiveRecord::Base
     name.first_name
   end
   
+  def area
+    postcode.area
+  end
+  
 end
