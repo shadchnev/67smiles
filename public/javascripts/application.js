@@ -13,9 +13,80 @@ $(document).ready(function() {
   prepareFormFields();    
   addFormSubmitHandlers();
   fillAvailabilityTable();
-  if ($('#daily-availability').length)
-    haveDailyAvailability();
+  haveDailyAvailability();
+  fillTimeSelectors();
+  addCostCalculationHandlers();
+  updateBookingCost();
 });
+
+function addCostCalculationHandlers() {
+  $('#new-booking #calendar').datepicker('option', 'onSelect', function(dateText, instance) {updateBookingCost()});
+  $('#new-booking #surcharge, #new-booking #time-from, #new-booking #time-to').change(function() {updateBookingCost()});
+}
+
+function updateBookingCost() {
+  $('#new-booking #cost').empty();
+  var error;
+  var rate = $('.hourly-rate-value').val();
+  if (!rate)
+    error = 'Cannot determine the current hourly rate';
+  var timeFrom = $('#new-booking #time-from').val();
+  var timeTo = $('#new-booking #time-to').val();
+
+  var timeDiff = timeDifference(timeFrom, timeTo);
+
+  if (timeDiff <= 0)
+    error = 'Please check the selected time:' + timeDiff;
+    
+  var surcharge = $('#new-booking #surcharge').val();  
+  var message;
+  if (error)
+    message = error;
+  else {
+    var parsedRate = rate.match(/^\d+\.0$/) ? parseInt(rate) : parseFloat(rate);    
+    var hourly_value = parseFloat(surcharge) ? '(&pound;' + parsedRate + ' + &pound;' + surcharge + ')' : '&pound;' + parsedRate;
+    var total = (parseFloat(rate) + parseFloat(surcharge)) * timeDiff;
+    var s = timeDiff > 1 ? 's' : '';
+    message = hourly_value + ' &times; ' + timeDiff + ' hour' + s + ' = &pound;' + total;
+  }
+  $('#new-booking #cost').append(message);
+}
+
+function timeDifference(from, to) {
+  const MINUTES_IN_AN_HOUR = 60.0;
+  var fromTime = parseTimeValue(from);
+  var toTime = parseTimeValue(to);
+  if (!(fromTime && toTime)) return;
+  return ((toTime.hour * MINUTES_IN_AN_HOUR + toTime.minutes) - (fromTime.hour * MINUTES_IN_AN_HOUR + fromTime.minutes)) / MINUTES_IN_AN_HOUR;
+}
+
+function parseTimeValue(time) {
+  var regex = /(0(\d)|(\d\d)):(\d0)/; 
+  match = time.match(regex);
+  if (!match) return;
+  var hour = parseInt(match[2] || match[1]); // because parseInt('06') == 6, while parseInt('08') == 0
+  var minutes = parseInt(match[4]);
+  return {hour: hour, minutes: minutes};
+}
+
+function fillTimeSelectors() {
+  if ($('#time-selectors').length == 0)
+    return;
+  addDropdownOptionsToTimeSelector('#time-from', MINIMUM_WORKING_HOUR, MAXIMUM_WORKING_HOUR - 1);
+  addDropdownOptionsToTimeSelector('#time-to', MINIMUM_WORKING_HOUR + 1, MAXIMUM_WORKING_HOUR );
+}
+
+function addDropdownOptionsToTimeSelector(selector, minimumTime, maximumTime) {
+  for (var i = minimumTime; i <= maximumTime; i++) {
+    addDropdownOption('#time-selectors ' + selector, pad(i) + ':00');
+    if (i < maximumTime)
+      addDropdownOption('#time-selectors ' + selector, pad(i) + ':30');
+  }  
+}
+
+function addDropdownOption(selector, value) {
+  $(selector).append($('<option>' + value + '</option>'));
+}
 
 function prepareCalendar() {
   $("#calendar").datepicker({
@@ -28,6 +99,8 @@ function prepareCalendar() {
 }
 
 function haveDailyAvailability() {
+  if ($('#daily-availability').length == 0)
+    return;
   var cleanerId = $('#cleaner-id').val();
   if (cleanerId) {
     $.getJSON('/cleaners/availability', {id: cleanerId}, function(data) {
@@ -73,7 +146,7 @@ function showAvailableHours(availability, date, node, period) {
 }
 
 function pad (character) {
-  if (character.length == 1) return '0' + character;
+  if (character.toString().length == 1) return '0' + character;
   return character;
 }
 

@@ -1,5 +1,6 @@
 .hourly-rate
+  %input{:type => 'hidden', :value => rate, :class => 'hourly-rate-value'}
   &pound;
-  = (rate - rate.round).abs < 0.1 ? rate.round.to_i : rate
+  = round_if_possible(rate)
   %span.hour<>
     \/hour
