@@ -14,14 +14,18 @@ $(document).ready(function() {
   addFormSubmitHandlers();
   fillAvailabilityTable();
   haveDailyAvailability();
+  updateTimeHiddenField();
   fillTimeSelectors();
-  addCostCalculationHandlers();
-  updateBookingCost();
 });
 
 function addCostCalculationHandlers() {
-  $('#new-booking #calendar').datepicker('option', 'onSelect', function(dateText, instance) {updateBookingCost()});
-  $('#new-booking #surcharge, #new-booking #time-from, #new-booking #time-to').change(function() {updateBookingCost()});
+  $('#new-booking #booking_cleaning_materials_provided, #new-booking #booking_start_time, #new-booking #booking_end_time').change(function() {updateBookingCost()});
+}
+
+function updateTimeHiddenField() {
+  var date = $('#calendar').datepicker('getDate');
+  var formattedDate = date.getDate() + '/' + pad(date.getMonth() + 1) + '/' + date.getFullYear();
+  $('#booking_date').val(formattedDate);
 }
 
 function updateBookingCost() {
@@ -30,57 +34,62 @@ function updateBookingCost() {
   var rate = $('.hourly-rate-value').val();
   if (!rate)
     error = 'Cannot determine the current hourly rate';
-  var timeFrom = $('#new-booking #time-from').val();
-  var timeTo = $('#new-booking #time-to').val();
+  var timeFrom = $('#new-booking #booking_start_time').val();
+  var timeTo = $('#new-booking #booking_end_time').val();
 
   var timeDiff = timeDifference(timeFrom, timeTo);
 
   if (timeDiff <= 0)
-    error = 'Please check the selected time:' + timeDiff;
-    
-  var surcharge = $('#new-booking #surcharge').val();  
-  var message;
-  if (error)
-    message = error;
+    error = 'Please correct the time';
   else {
+    var availability =  $('#daily-availability').data('availability');
+    var date = $("#calendar").datepicker('getDate');
+    if (!isAvailableIn(availability, date, {start: parseTimeValue(timeFrom), end: parseTimeValue(timeTo)}, true))
+      error = 'The selected time is not available';
+  }
+      
+  var surcharge = 0;
+  if ($('#new-booking #booking_cleaning_materials_provided').val() == 0)
+    surcharge = parseFloat($('#new-booking #cleaning_materials_surcharge').val());  
+  var message;
+  if (error) {
+    message = error;
+    $('#booking_submit').attr("disabled","disabled");
+  } else {
     var parsedRate = rate.match(/^\d+\.0$/) ? parseInt(rate) : parseFloat(rate);    
-    var hourly_value = parseFloat(surcharge) ? '(&pound;' + parsedRate + ' + &pound;' + surcharge + ')' : '&pound;' + parsedRate;
+    var hourly_value = surcharge ? '(&pound;' + parsedRate + ' + &pound;' + surcharge.toString() + ')' : '&pound;' + parsedRate;
     var total = (parseFloat(rate) + parseFloat(surcharge)) * timeDiff;
     var s = timeDiff > 1 ? 's' : '';
     message = hourly_value + ' &times; ' + timeDiff + ' hour' + s + ' = &pound;' + total;
+    $('#booking_submit').removeAttr("disabled");
   }
   $('#new-booking #cost').append(message);
 }
 
 function timeDifference(from, to) {
-  const MINUTES_IN_AN_HOUR = 60.0;
   var fromTime = parseTimeValue(from);
   var toTime = parseTimeValue(to);
   if (!(fromTime && toTime)) return;
-  return ((toTime.hour * MINUTES_IN_AN_HOUR + toTime.minutes) - (fromTime.hour * MINUTES_IN_AN_HOUR + fromTime.minutes)) / MINUTES_IN_AN_HOUR;
+  return toTime - fromTime;
 }
 
 function parseTimeValue(time) {
   var regex = /(0(\d)|(\d\d)):(\d0)/; 
   match = time.match(regex);
   if (!match) return;
-  var hour = parseInt(match[2] || match[1]); // because parseInt('06') == 6, while parseInt('08') == 0
-  var minutes = parseInt(match[4]);
-  return {hour: hour, minutes: minutes};
+  return hour = parseInt(match[2] || match[1]);
 }
 
 function fillTimeSelectors() {
   if ($('#time-selectors').length == 0)
     return;
-  addDropdownOptionsToTimeSelector('#time-from', MINIMUM_WORKING_HOUR, MAXIMUM_WORKING_HOUR - 1);
-  addDropdownOptionsToTimeSelector('#time-to', MINIMUM_WORKING_HOUR + 1, MAXIMUM_WORKING_HOUR );
+  addDropdownOptionsToTimeSelector('#booking_start_time', MINIMUM_WORKING_HOUR, MAXIMUM_WORKING_HOUR - 1);
+  addDropdownOptionsToTimeSelector('#booking_end_time', MINIMUM_WORKING_HOUR + 1, MAXIMUM_WORKING_HOUR );
 }
 
 function addDropdownOptionsToTimeSelector(selector, minimumTime, maximumTime) {
   for (var i = minimumTime; i <= maximumTime; i++) {
     addDropdownOption('#time-selectors ' + selector, pad(i) + ':00');
-    if (i < maximumTime)
-      addDropdownOption('#time-selectors ' + selector, pad(i) + ':30');
   }  
 }
 
@@ -92,8 +101,10 @@ function prepareCalendar() {
   $("#calendar").datepicker({
     firstDay: 1, 
     dateFormat: 'dd MM',
-    onSelect: function(date, instance) {
+    onSelect: function(date, instance) {      
       updateDailyAvailability();
+      updateTimeHiddenField();
+      updateBookingCost();      
     }
   });
 }
@@ -105,6 +116,8 @@ function haveDailyAvailability() {
   if (cleanerId) {
     $.getJSON('/cleaners/availability', {id: cleanerId}, function(data) {
       $('#daily-availability').data('availability', data)
+      addCostCalculationHandlers();
+      updateBookingCost();      
       updateDailyAvailability();
     });
   }
@@ -125,9 +138,12 @@ function updateDailyAvailability() {
     }
 }
 
-function isAvailableIn(availability, date, period) {
+function isAvailableIn(availability, date, period, complete) {  
   var mask = ((Math.pow(2, period.end - period.start)  - 1) << period.start);
-  return mask & availability[WEEKDAYS[date.getDay()]];
+  var partialAvailability = mask & availability[WEEKDAYS[date.getDay()]];
+  if (complete)
+    return partialAvailability == mask;
+  return partialAvailability;
 }
 
 function showAvailableHours(availability, date, node, period) {
@@ -207,7 +223,7 @@ function iterateOverInputLabels(strategy) {
           '#new-cleaner #email input': 'E-mail',
           '#new-cleaner #phone-number input': 'Phone number',
           '#new-cleaner #rate input': 'Hourly rate',
-          '#new-cleaner #surcharge input': 'Cleaning materials surcharge',
+          '#new-cleaner #booking_cleaning_materials_provided input': 'Cleaning materials surcharge',
           };
   for (var selector in selectors) {
     var value = selectors[selector];

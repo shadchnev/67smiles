@@ -70,7 +70,7 @@
       #availability-chart
         - cleaner_form.fields_for :availability do |availability_fields|
           - %w[monday tuesday wednesday thursday friday saturday sunday].each do |day|
-            = availability_fields.hidden_field day        
+            = availability_fields.hidden_field day                
         = render :partial => 'availability_table'
     
     = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}

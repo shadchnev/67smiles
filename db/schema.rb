@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(:version => 11) do
   end
 
   create_table "bookings", :force => true do |t|
+    t.integer  "cleaner_id"
+    t.integer  "client_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "cleaning_materials_provided"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

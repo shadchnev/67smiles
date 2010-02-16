@@ -8,35 +8,35 @@
     When you submit the form, we'll text 
     = @cleaner.first_name
     to confirm the availability and email you.
-  #day
-    %hr
-    %h2 1. What day?
-    #current-availability
-      #calendar
-      #hours
-        %h3 Available hours
-        = render :partial => 'shared/hours'
+  - form_for [@cleaner, @booking] do |booking_form|
+    #day
+      %hr
+      %h2 1. What day?
+      #current-availability
+        %input{:type => 'hidden', :id => 'booking_date', :name => 'booking_date', :value => 'dummy'}
+        #calendar
+        #hours
+          %h3 Available hours
+          = render :partial => 'shared/hours'
     
-  #time
-    %hr
-    %h2 2. What time?
-    #time-selectors
-      %select#time-from        
-      &mdash;
-      %select#time-to
+    #time
+      %hr
+      %h2 2. What time?
+      #time-selectors
+        = booking_form.select :start_time, []
+        &mdash;
+        = booking_form.select :end_time, []
   
-  #cleaning-materials
-    %hr
-    %h2 3. Will you provide cleaning materials?
-    #cleaning-materials-selector
-      %select#surcharge
-        %option{:value => 0} Yes (no extra charge)
-        %option{:value => round_if_possible(@cleaner.surcharge)}
-          = "No (&pound;#{round_if_possible(@cleaner.surcharge)}/hour extra)"
-      %p
-        In any case, please have your vacuum cleaner ready.
-  #cost
+    #cleaning-materials
+      %hr
+      %h2 3. Will you provide cleaning materials?
+      #cleaning-materials-selector
+        %input{:type => "hidden", :id => "cleaning_materials_surcharge", :value => @cleaner.surcharge}
+        = booking_form.select :cleaning_materials_provided, [['Yes (no extra charge)', 1], [raw("No (£#{round_if_possible(@cleaner.surcharge)}/hour extra)"), 0]]        
+        %p
+          In any case, please have your vacuum cleaner ready.
+    #cost
     
     
-  #submit
-    = button_to "Hire #{@cleaner.first_name}", 
+    #submit
+      = booking_form.submit "Hire #{@cleaner.first_name}"
