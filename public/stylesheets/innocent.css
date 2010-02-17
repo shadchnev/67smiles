@@ -156,6 +156,17 @@ li span {
   color: black;
   font-size: 120%; }
 
+#flash div {
+  margin: 10px 30px;
+  padding: 10px;
+  background-color: #fcf75e;
+  border-left: 15px solid #6ea7d1;
+  border-top: 1px solid #6ea7d1; }
+
+#flash div.error {
+  border-left: 15px solid red;
+  border-top: 1px solid red; }
+
 #find-a-cleaner {
   padding-top: 5px; }
   #find-a-cleaner > form > div {

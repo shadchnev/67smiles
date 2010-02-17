@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   
   def new
-    @cleaner = Cleaner.find(params[:cleaner_id])
     @booking = Booking.new
+    @booking.cleaner = Cleaner.find(params[:cleaner_id])
   end
   
   def create
@@ -13,7 +13,12 @@ class BookingsController < ApplicationController
       end
       b.cleaning_materials_provided = params[:cleaning_materials_provided] == '0'
     end
-    @booking.save ? redirect_to(cleaner_booking_path(@booking.cleaner.id, @booking)) : render(:action => :new)    
+    if @booking.save
+      redirect_to(cleaner_path(@booking.cleaner))
+      flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive an email from us when #{@booking.cleaner.first_name} replies."
+    else
+      render(:action => :new)    
+    end
   end
   
 end

@@ -16,7 +16,12 @@ $(document).ready(function() {
   haveDailyAvailability();
   updateTimeHiddenField();
   fillTimeSelectors();
+  removeNotice();
 });
+
+function removeNotice() {
+  setTimeout(function() {$("#flash .notice").slideUp()}, 20000);
+}
 
 function addCostCalculationHandlers() {
   $('#new-booking #booking_cleaning_materials_provided, #new-booking #booking_start_time, #new-booking #booking_end_time').change(function() {updateBookingCost()});
@@ -42,9 +47,7 @@ function updateBookingCost() {
   if (timeDiff <= 0)
     error = 'Please correct the time';
   else {
-    var availability =  $('#daily-availability').data('availability');
-    var date = $("#calendar").datepicker('getDate');
-    if (!isAvailableIn(availability, date, {start: parseTimeValue(timeFrom), end: parseTimeValue(timeTo)}, true))
+    if (!isAvailableInSelectedTime())
       error = 'The selected time is not available';
   }
       
@@ -64,6 +67,14 @@ function updateBookingCost() {
     $('#booking_submit').removeAttr("disabled");
   }
   $('#new-booking #cost').append(message);
+}
+
+function isAvailableInSelectedTime() {
+  var availability =  $('#daily-availability').data('availability');
+  var date = $("#calendar").datepicker('getDate');
+  var timeFrom = $('#new-booking #booking_start_time').val();
+  var timeTo = $('#new-booking #booking_end_time').val();  
+  return isAvailableIn(availability, date, {start: parseTimeValue(timeFrom), end: parseTimeValue(timeTo)}, true)  
 }
 
 function timeDifference(from, to) {
@@ -119,8 +130,29 @@ function haveDailyAvailability() {
       addCostCalculationHandlers();
       updateBookingCost();      
       updateDailyAvailability();
+      setCorrectTimeSelectorValues();
     });
   }
+}
+
+function setCorrectTimeSelectorValues() {
+  if (!isAvailableInSelectedTime()) {
+    var availability =  $('#daily-availability').data('availability');
+    var date = $("#calendar").datepicker('getDate');
+    var selected_availability = availability[WEEKDAYS[date.getDay()]];
+    var first_available_hour;
+    for (var j=MINIMUM_WORKING_HOUR; j <= MAXIMUM_WORKING_HOUR; j++) {
+      if (selected_availability >> j & 1) {
+        first_available_hour = j;
+        break;
+      }
+    }
+    if (first_available_hour) {
+      $('#booking_start_time').val(pad(first_available_hour) + ':00');
+      $('#booking_end_time').val(pad(first_available_hour + 1) + ':00');
+      updateBookingCost();
+    }
+  }  
 }
 
 function updateDailyAvailability() {

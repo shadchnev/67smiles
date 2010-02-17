@@ -28,4 +28,14 @@ class AvailabilityTest < ActiveSupport::TestCase
     assert_equal hash, a.to_hash
   end
   
+  test "it knows when it's available" do
+    a = Availability.new
+    a.monday = 0b00110011
+    from = Time.parse("15/02/2010 01:00")
+    to = Time.parse("15/02/2010 02:00")
+    assert a.available?(from, to)
+    assert !a.available?(from, to + 1.hour)
+    assert !a.available?(from + 1.day, to + 1.day)
+  end
+  
 end

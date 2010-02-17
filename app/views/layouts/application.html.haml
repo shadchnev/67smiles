@@ -24,6 +24,11 @@
               %img{:src => "/images/logo_scruff.png"}
           #navigation-container
             = render :partial => 'shared/navigation'
+        #flash
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:error]
+            .error= flash[:error]
         #content<>
           = yield
       #footer

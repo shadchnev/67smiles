@@ -1,14 +1,14 @@
 #new-booking.long-form
-  %input{:type => 'hidden', :id => 'cleaner-id', :value => @cleaner.id}
-  = render :partial => 'shared/hourly_rate', :locals => {:rate => @cleaner.rate}
+  %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
+  = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
   %h1
     Hire
-    = @cleaner.first_name
+    = @booking.cleaner.first_name
   #intro
     When you submit the form, we'll text 
-    = @cleaner.first_name
+    = @booking.cleaner.first_name
     to confirm the availability and email you.
-  - form_for [@cleaner, @booking] do |booking_form|
+  - form_for [@booking.cleaner, @booking] do |booking_form|
     #day
       %hr
       %h2 1. What day?
@@ -31,12 +31,12 @@
       %hr
       %h2 3. Will you provide cleaning materials?
       #cleaning-materials-selector
-        %input{:type => "hidden", :id => "cleaning_materials_surcharge", :value => @cleaner.surcharge}
-        = booking_form.select :cleaning_materials_provided, [['Yes (no extra charge)', 1], [raw("No (£#{round_if_possible(@cleaner.surcharge)}/hour extra)"), 0]]        
+        %input{:type => "hidden", :id => "cleaning_materials_surcharge", :value => @booking.cleaner.surcharge}
+        = booking_form.select :cleaning_materials_provided, [['Yes (no extra charge)', 1], [raw("No (£#{round_if_possible(@booking.cleaner.surcharge)}/hour extra)"), 0]]        
         %p
           In any case, please have your vacuum cleaner ready.
     #cost
     
     
     #submit
-      = booking_form.submit "Hire #{@cleaner.first_name}"
+      = booking_form.submit "Hire #{@booking.cleaner.first_name}"

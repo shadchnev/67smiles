@@ -35,4 +35,8 @@ class Cleaner < ActiveRecord::Base
     self[:rate] = (value.to_f * 10).round / 10.0
   end
   
+  def available?(from, to)
+    availability.available?(from, to)
+  end
+  
 end
