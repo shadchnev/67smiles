@@ -1,0 +1,52 @@
+- form_for @client do |client_form|
+  #new-client.long-form
+    #intro
+      %h1 Create a new account
+      %p
+        You need to create an account to hire cleaners and leave reviews.
+    
+  
+    #personal
+      %hr
+      %h2 1. Tell us about yourself
+      - client_form.fields_for :name do |name_fields|
+        = render :partial => "shared/name", :locals => {:f => name_fields}
+    
+      - client_form.fields_for :contact_details do |contact_details_fields|
+        #email
+          = contact_details_fields.text_field :email
+          e.g. very.responsible.homeowner@gmail.com
+  
+        #phone
+          = contact_details_fields.text_field :phone
+          e.g. 07912345678
+  
+    #address
+      %hr
+      %h2 2. Tell us where's the property you need to clean
+      
+      - client_form.fields_for :address do |address_fields|
+        #first-line
+          = address_fields.text_field :first_line
+          e.g. Flat 15
+        #second-line
+          = address_fields.text_field :second_line
+          e.g. 23 Happiness Crescent
+        #third-line
+          = address_fields.text_field :third_line
+          e.g. Westminster
+        #city
+          = address_fields.text_field :city
+          e.g. London
+        - address_fields.fields_for :postcode do |postcode_fields|
+          #postcode
+            = postcode_fields.text_field :value
+            e.g. W2 1TT
+      #country
+        #country-name United Kingdom
+        We operate only in the UK
+      
+    = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
+  
+    #submit
+      = client_form.submit "Create an account"

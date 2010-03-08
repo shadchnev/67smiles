@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 12) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "first_line"
+    t.string   "second_line"
+    t.string   "third_line"
+    t.string   "city"
+    t.integer  "postcode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "availabilities", :force => true do |t|
     t.integer  "monday",     :limit => 3

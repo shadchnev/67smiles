@@ -256,6 +256,11 @@ function iterateOverInputLabels(strategy) {
           '#new-cleaner #phone-number input': 'Phone number',
           '#new-cleaner #rate input': 'Hourly rate',
           '#new-cleaner #booking_cleaning_materials_provided input': 'Cleaning materials surcharge',
+          // to add more!
+          '#new-client #first-name input': 'First name',
+          '#new-client #last-name input': 'Last name',
+          '#new-client #postcode input': 'Postcode',
+          '#new-client #email input': 'E-mail',          
           };
   for (var selector in selectors) {
     var value = selectors[selector];
