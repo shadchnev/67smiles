@@ -31,7 +31,7 @@ h3 {
 p {
   margin: 5px 0; }
 
-input[type='text'] {
+input[type='text'], input[type='password'] {
   border: 1px solid #6ea7d1;
   font-size: 110%;
   color: #6ea7d1; }
@@ -69,12 +69,11 @@ li span {
   padding: 20px 0; }
 
 #header {
-  display: inline-block; }
+  text-align: right; }
 
 #master-picture-container {
   display: table;
   width: 250px;
-  height: 396px;
   text-align: center;
   border-bottom: 1px solid #6ea7d1; }
 
@@ -91,6 +90,13 @@ li span {
   width: 200px;
   float: right;
   padding: 3px; }
+
+#welcome-line {
+  vertical-align: top;
+  width: 150px;
+  display: inline-block;
+  padding: 3px;
+  text-align: right; }
 
 #navigation-container {
   display: inline-block;
@@ -142,6 +148,9 @@ li span {
 .clearer {
   clear: both; }
 
+body > #login-form {
+  display: none; }
+
 .fieldWithErrors input {
   border: 1px solid red; }
 
@@ -156,6 +165,10 @@ li span {
   color: black;
   font-size: 120%; }
 
+#flash {
+  width: 746px;
+  margin-left: 250px; }
+
 #flash div {
   margin: 10px 30px;
   padding: 10px;
@@ -167,12 +180,17 @@ li span {
   border-left: 15px solid red;
   border-top: 1px solid red; }
 
+div.fieldWithErrors {
+  display: inline; }
+
 #find-a-cleaner {
   padding-top: 5px; }
   #find-a-cleaner > form > div {
     margin-bottom: 25px; }
   #find-a-cleaner input[type='text'] {
     width: 150px; }
+  #find-a-cleaner input[type='submit'] {
+    font-size: 150%; }
   #find-a-cleaner #activities {
     text-align: left;
     margin-left: 50px; }
@@ -323,6 +341,13 @@ li span {
 
 #availability #calendar {
   margin-bottom: 40px; }
+
+#reviews #new-review textarea {
+  width: 100%;
+  height: 50px; }
+
+#reviews #new-review {
+  margin-bottom: 10px; }
 
 #new-booking .hourly-rate {
   float: right; }

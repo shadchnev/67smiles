@@ -1,4 +1,3 @@
-!master_picture_height = 396px
 !summary_block_height = 310px
 
 #container
@@ -21,12 +20,11 @@
   padding = !column_interspace 0
 
 #header
-  display: inline-block
+  text-align: right
 
 #master-picture-container
   display: table
   width = !left_column  
-  height = !master_picture_height
   text-align: center
   border-bottom: 1px solid #{!dark_marine}  
 
@@ -43,6 +41,13 @@
   width: 200px
   float: right
   padding: 3px
+
+#welcome-line
+  vertical-align: top
+  width: 150px
+  display: inline-block
+  padding: 3px
+  text-align: right
 
 #navigation-container
   display: inline-block
@@ -100,6 +105,9 @@
   background-color = !light_marine
   margin: 10px 0
   border-bottom: 1px solid #{!dark_marine}
+  
+body > #login-form
+  display: none
 
 .fieldWithErrors input
   border: 1px solid red
@@ -118,6 +126,10 @@
       font-size: 120%
       
       
+#flash
+  width = !right_column
+  margin-left = !left_column    
+
 #flash div
   margin: 10px 30px
   padding: 10px
@@ -129,7 +141,8 @@
   border-left: 15px solid red
   border-top: 1px solid red
   
-  
+div.fieldWithErrors
+  display: inline
   
   
   

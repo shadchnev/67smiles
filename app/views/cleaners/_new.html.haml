@@ -72,7 +72,13 @@
           - %w[monday tuesday wednesday thursday friday saturday sunday].each do |day|
             = availability_fields.hidden_field day                
         = render :partial => 'availability_table'
-    
+
+    #account
+      %hr
+      %h2 4. Choose a password
+      
+      = render :partial => 'shared/new_account', :locals => {:f => cleaner_form}
+      
     = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
     #submit

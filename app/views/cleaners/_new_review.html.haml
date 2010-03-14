@@ -1,0 +1,5 @@
+- form_for @review, :url => reviews_path do |review_form|
+  = review_form.hidden_field :cleaner_id, :value => @cleaner.id
+  #new-review
+    = review_form.text_area :text
+  = review_form.submit 'Add review'

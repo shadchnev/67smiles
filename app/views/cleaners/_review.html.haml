@@ -1,7 +1,7 @@
 .review
   %p
-    = text
+    = review.text
   %p.signature
-    = name
+    = "#{review.client.first_name} from #{review.client.area}"
   %p.timestamp
-    = date
+    = review.timestamp

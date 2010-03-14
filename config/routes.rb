@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   #   map.resources :products
   map.resources :cleaners, :collection => {:availability => :get}, :has_many => :bookings
   map.resources :clients, :has_many => :bookings
+  map.resources :reviews
+  map.resource :user_sessions
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }

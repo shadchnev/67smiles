@@ -28,12 +28,16 @@ function addCostCalculationHandlers() {
 }
 
 function updateTimeHiddenField() {
+  if ($('#calendar').length == 0)
+    return;
   var date = $('#calendar').datepicker('getDate');
   var formattedDate = date.getDate() + '/' + pad(date.getMonth() + 1) + '/' + date.getFullYear();
   $('#booking_date').val(formattedDate);
 }
 
 function updateBookingCost() {
+  if ($('#new-booking').length == 0)
+    return;
   $('#new-booking #cost').empty();
   var error;
   var rate = $('.hourly-rate-value').val();
@@ -70,6 +74,8 @@ function updateBookingCost() {
 }
 
 function isAvailableInSelectedTime() {
+  if ($('#new-booking').length == 0)
+    return;  
   var availability =  $('#daily-availability').data('availability');
   var date = $("#calendar").datepicker('getDate');
   var timeFrom = $('#new-booking #booking_start_time').val();
@@ -203,6 +209,9 @@ function addFormSubmitHandlers() {
     removeDefaultValuesFromFields();
     saveAvailabilityTableToHiddenFields();    
   });  
+  $('form#new_client').submit(function() {
+    removeDefaultValuesFromFields();
+  });  
 }
 
 function prepareAvailabilityTable() {  
@@ -256,11 +265,12 @@ function iterateOverInputLabels(strategy) {
           '#new-cleaner #phone-number input': 'Phone number',
           '#new-cleaner #rate input': 'Hourly rate',
           '#new-cleaner #booking_cleaning_materials_provided input': 'Cleaning materials surcharge',
-          // to add more!
           '#new-client #first-name input': 'First name',
           '#new-client #last-name input': 'Last name',
+          '#new-client #phone input': 'Mobile phone',
+          '#new-client #first-line input': 'First line of address',
           '#new-client #postcode input': 'Postcode',
-          '#new-client #email input': 'E-mail',          
+          '#new-client #email input': 'E-mail',
           };
   for (var selector in selectors) {
     var value = selectors[selector];
@@ -291,4 +301,47 @@ function handleFocusChange(selector, value) {
       $(this).val(value);
     }
   })    
+}
+
+function selectRegistrationType() {
+  var callback = function(choice,m,f) {
+    if (choice == 'homeowner')
+      document.location = '/clients/new'
+    else if (choice == 'cleaner')
+      document.location = '/cleaners/new'    
+  }
+  $.prompt('Are you a homeowner or a cleaner?', {buttons: {Homeowner: 'homeowner', Cleaner: 'cleaner'}, callback: callback});
+}
+
+function collapseTopPart() {
+  var callback = function() {
+    $('#find-a-cleaner').color_fade();
+    $('#find-a-cleaner #where input').focus();    
+  }
+  $('#left-column #master-picture-container').slideUp(500);
+  $('#right-column #content #summary-block').slideUp(500, callback);
+}
+
+function showLoginPrompt(error) {
+  var text = $('body > #login-form').html(); // to make the js less messy
+  if (error)
+    text = "<span class='error'>" + error + '</span>' + '<br/>' + text;
+  var callback = function(choice,m,form) {
+    var callback = function(data) {
+      if (data == 'success')
+        window.location.reload();
+      else
+        showLoginPrompt(data);
+    }
+    if (choice)
+      $.post('/user_sessions/create', {login: form.login, password: form.password}, callback);
+  }
+  $.prompt(text, {buttons:{Ok: true, Cancel: false}, callback: callback});
+  $(".jqicontainer input[type='text']").focus();
+}
+
+function loginKeyDown(e) {
+  if (e.keyCode == 13)
+    $('#jqi_state0_buttonOk').click();
+  return false;
 }

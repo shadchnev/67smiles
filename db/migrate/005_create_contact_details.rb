@@ -6,9 +6,11 @@ class CreateContactDetails < ActiveRecord::Migration
 
       t.timestamps
     end
+    create_index :index_contact_details_on_email, :unique => true
   end
 
   def self.down
     drop_table :contact_details
   end
+  
 end

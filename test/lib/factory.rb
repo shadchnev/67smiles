@@ -25,7 +25,8 @@ module Factory
       :description => "I am the best cleaner ever! I won British Cleaner of the Year award twice!",
       :minimum_hire => 1,
       :rate => 10,
-      :surcharge => 2,      
+      :surcharge => 2,
+      :user => User.build      
     }
   end
   
@@ -65,6 +66,14 @@ module Factory
   def factory_skills
     {
       :domestic_cleaning => true
+    }
+  end
+  
+  def factory_user
+    {
+      :login => "test@test.com",
+      :password => 'test12',
+      :password_confirmation => 'test12'
     }
   end
 

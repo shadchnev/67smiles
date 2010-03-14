@@ -3,14 +3,37 @@
   %head
     = stylesheet_link_tag 'reset-min.css' # yahoo
     = stylesheet_link_tag 'innocent'
+    = stylesheet_link_tag 'impromptu'
     = stylesheet_link_tag 'jquery-ui/jquery-ui-1.7.2.custom'
     = javascript_include_tag 'jquery-1.3.2.min'
     = javascript_include_tag 'jquery-ui-1.7.2.custom.min'
+    = javascript_include_tag 'jquery-impromptu.3.0.min'
+    = javascript_include_tag 'jquery.color_fade'
     = javascript_include_tag 'application'
     %title
       Innocent Cleaners
   %body
+    #login-form
+      Please enter your email and password
+      %br
+      = text_field_tag :login, '', :onkeypress => 'loginKeyDown(event);'
+      %br
+      = password_field_tag :password, '', :onkeypress => 'loginKeyDown(event);'
     #container<>
+      #header<>
+        #logo
+          %a{:href => '/'}
+            %img{:src => "/images/logo_scruff.png"}
+        #welcome-line
+          - if current_user
+            ==Hi, #{current_user.owner.first_name}!
+        #navigation-container
+          = render :partial => 'shared/navigation'      
+      #flash
+        - if flash[:notice]
+          .notice= flash[:notice]
+        - if flash[:error]
+          .error= flash[:error]  
       #left-column<>
         #master-picture-container<>
           #master-picture
@@ -18,17 +41,6 @@
         #left-content
           = yield :left_content        
       #right-column<>
-        #header<>
-          #logo
-            %a{:href => '/'}
-              %img{:src => "/images/logo_scruff.png"}
-          #navigation-container
-            = render :partial => 'shared/navigation'
-        #flash
-          - if flash[:notice]
-            .notice= flash[:notice]
-          - if flash[:error]
-            .error= flash[:error]
         #content<>
           = yield
       #footer

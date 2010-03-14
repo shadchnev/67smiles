@@ -4,6 +4,11 @@
       %h1 Create a new account
       %p
         You need to create an account to hire cleaners and leave reviews.
+        
+      - unless @client.errors.empty?
+        #errors
+          = error_messages_for :client, :header_message => "Sorry, there were problems with this form:", :message => nil
+      
     
   
     #personal
@@ -45,7 +50,13 @@
       #country
         #country-name United Kingdom
         We operate only in the UK
-      
+    #account
+      %hr
+      %h2 3. Choose a password
+
+      = render :partial => 'shared/new_account', :locals => {:f => client_form}
+
+   
     = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
   
     #submit

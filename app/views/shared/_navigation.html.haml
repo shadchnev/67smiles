@@ -1,6 +1,4 @@
 #navigation
-  - navigation_elements = {"About" => "/about", "Register" => "/register"} # must be defined in the controller
-  - navigation_elements.each_pair do |key, value|
-    %a{:href => value}<
-      = key
-    = '|' unless key == navigation_elements.keys.last # ordered hashed are introduced in 1.9
+  - navigation_elements.each do |element|
+    = navigational_link element
+    = '|' unless element == navigation_elements.last
