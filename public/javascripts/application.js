@@ -114,16 +114,24 @@ function addDropdownOption(selector, value) {
   $(selector).append($('<option>' + value + '</option>'));
 }
 
-function prepareCalendar() {
-  $("#calendar").datepicker({
+function prepareCalendarForPage(selector, strategy) {
+  var common_options = {
     firstDay: 1, 
     dateFormat: 'dd MM',
-    onSelect: function(date, instance) {      
-      updateDailyAvailability();
-      updateTimeHiddenField();
-      updateBookingCost();      
-    }
+  };
+  $(selector).datepicker($.extend({
+    onSelect: strategy
+  }, common_options));
+}
+
+function prepareCalendar() {  
+  prepareCalendarForPage('#new-booking #calendar', function(date, instance) {      
+    updateDailyAvailability();
+    updateTimeHiddenField();
+    updateBookingCost();      
   });
+  prepareCalendarForPage('#find-a-cleaner #calendar', function(date, instance) {updateTimeHiddenField();});
+  prepareCalendarForPage('#availability #calendar', function(date, instance) {updateDailyAvailability();});  
 }
 
 function haveDailyAvailability() {

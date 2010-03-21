@@ -19,4 +19,15 @@ class CleanerTest < ActiveSupport::TestCase
     assert cleaner.available?(from, to)
     assert !cleaner.available?(from + 1.day, to + 1.day)
   end
+  
+  test "cleaners can be found by postcode" do
+    Cleaner.build! :postcode => Postcode.build!(:value => 'e1w 3tj', :longitude => nil, :latitude => nil)
+    Cleaner.build! :postcode => Postcode.build!(:value => 'nw1 0du', :longitude => nil, :latitude => nil)
+    Cleaner.build! :postcode => Postcode.build!(:value => 'AB101AA', :longitude => nil, :latitude => nil)    
+    origin = Postcode.find_or_create_by_normalized_value('e1w 3tj')
+    assert_equal 1, Cleaner.find_within(1, :origin => origin).size
+    assert_equal 2, Cleaner.find_within(10, :origin => origin).size
+    assert_equal 3, Cleaner.find_within(500, :origin => origin).size
+  end
+  
 end

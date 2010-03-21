@@ -1,19 +1,21 @@
 #find-a-cleaner
-  %form
+  - form_tag '/' do
     #where
       %h2
         Enter your postcode
-      %input{:type => 'text', :value => ''}
+      %input{:name => 'postcode', :type => 'text', :value => ''}
     #what
       %h2
         Select what you need 
       #activities
-        = render :partial => 'activity', :locals => {:activity => 'Domestic Cleaning'}
-        = render :partial => 'activity', :locals => {:activity => 'Ironing'}
-        = render :partial => 'activity', :locals => {:activity => 'Dog-walking'}
+        = render :partial => 'activity', :locals => {:name => 'cleaning', :activity => 'Domestic Cleaning'}
+        = render :partial => 'activity', :locals => {:name => 'ironing', :activity => 'Ironing'}
+        = render :partial => 'activity', :locals => {:name => 'groceries', :activity => 'Groceries Shopping'}
+        = render :partial => 'activity', :locals => {:name => 'pets', :activity => 'Dog-walking'}
     #when
       %h2
         Select a date
+      = hidden_field_tag "booking_date"
       #calendar
     #submit
       %input{:type => 'submit', :value => 'Search'}  

@@ -29,6 +29,10 @@ class Cleaner < ActiveRecord::Base
   
   acts_as_mappable :through => :postcode
   
+  def find_near(postcode)
+    find_within(SEARCH_PROXIMITY, :origin => postcode, :bias => "uk")
+  end
+  
   def first_name
     name.first_name
   end

@@ -6,9 +6,9 @@ class Postcode < ActiveRecord::Base
   validates_presence_of :value, :message => "^Please enter your postcode"
   validates_format_of :value, :with => /^([A-PR-UWYZ][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]?[0-9][ABD-HJLN-UW-Z]{2}|GIR0AA)$/i, :message => "^Please correct the postcode"
   
-  acts_as_mappable
+  acts_as_mappable :lat_column_name => :latitude, :lng_column_name => :longitude
   
-  before_validation_on_create :geocode, :if => lambda{|p| p.latitude.nil? or p.longitude.nil?}
+  after_validation_on_create :geocode, :if => lambda{|p| !p.errors.invalid?(:value) and (p.latitude.nil? or p.longitude.nil?)}
   
   def value=(val)
     self[:value] = Postcode.normalize(val)
@@ -22,6 +22,10 @@ class Postcode < ActiveRecord::Base
   
   def self.find_by_normalized_value(val)
     find_by_value(normalize(val))
+  end
+  
+  def self.find_or_create_by_normalized_value(val)
+    find_or_create_by_value(normalize(val))
   end
   
 private

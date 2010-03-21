@@ -3,7 +3,7 @@ require 'test_helper'
 class ClientsControllerTest < ActionController::TestCase
   
   test "postcode isn't recreated if exists" do     
-    postcode = Postcode.build!(:value => 'e1w 3tj')    
+    postcode = Postcode.build!(:value => 'e1w 3tj')
     xhr :post, :create, new_client_params
     assert_equal postcode.id, Client.first.address.postcode.id
   end
