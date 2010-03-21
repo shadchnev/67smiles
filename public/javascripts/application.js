@@ -31,7 +31,7 @@ function updateTimeHiddenField() {
   if ($('#calendar').length == 0)
     return;
   var date = $('#calendar').datepicker('getDate');
-  var formattedDate = date.getDate() + '/' + pad(date.getMonth() + 1) + '/' + date.getFullYear();
+  var formattedDate = date.getDate() + '-' + pad(date.getMonth() + 1) + '-' + date.getFullYear();
   $('#booking_date').val(formattedDate);
 }
 

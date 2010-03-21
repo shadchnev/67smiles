@@ -5,3 +5,10 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+Postcode.connection.execute "LOAD DATA INFILE  
+  '#{RAILS_ROOT}/db/ukpostcodes.csv' IGNORE INTO TABLE postcodes 
+  FIELDS TERMINATED BY ',' 
+  IGNORE 1 LINES
+  (value, longitude, latitude)
+  SET created_at = NOW(), updated_at = NOW()"

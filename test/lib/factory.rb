@@ -40,7 +40,9 @@ module Factory
   
   def factory_postcode
     {
-      :value => 'E1W 3TJ'
+      :value => 'E1W 3TJ',
+      :latitude => '10',
+      :longitude => '10'      
     }
   end
   

@@ -2,8 +2,10 @@ class CleanersController < ApplicationController
   
   
   def create
+    params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_value(params[:cleaner][:postcode_attributes][:value])
     params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
     @cleaner = Cleaner.new(params[:cleaner])
+    @cleaner.postcode ||= existing_postcode
     @cleaner.save ? redirect_to(cleaner_path(@cleaner)) : render(:action => :new)
   end
   

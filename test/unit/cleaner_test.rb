@@ -14,8 +14,8 @@ class CleanerTest < ActiveSupport::TestCase
   
   test "is only available on monday by default" do
     cleaner = Cleaner.build
-    from = Time.parse("15/02/2010 10:00")
-    to = Time.parse("15/02/2010 12:00")
+    from = Time.parse("15-02-2010 10:00")
+    to = Time.parse("15-02-2010 12:00")
     assert cleaner.available?(from, to)
     assert !cleaner.available?(from + 1.day, to + 1.day)
   end

@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(:version => 14) do
     t.datetime "updated_at"
   end
 
+  add_index "contact_details", ["email"], :name => "index_contact_details_on_email", :unique => true
+
   create_table "names", :force => true do |t|
     t.string   "honorific"
     t.string   "first_name"
@@ -82,9 +84,14 @@ ActiveRecord::Schema.define(:version => 14) do
 
   create_table "postcodes", :force => true do |t|
     t.string   "value"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "postcodes", ["latitude", "longitude"], :name => "index_postcodes_on_latitude_and_longitude"
+  add_index "postcodes", ["value"], :name => "index_postcodes_on_value", :unique => true
 
   create_table "reviews", :force => true do |t|
     t.integer  "cleaner_id"
@@ -121,7 +128,7 @@ ActiveRecord::Schema.define(:version => 14) do
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end

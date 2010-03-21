@@ -27,6 +27,8 @@ class Cleaner < ActiveRecord::Base
   
   validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them"
   
+  acts_as_mappable :through => :postcode
+  
   def first_name
     name.first_name
   end

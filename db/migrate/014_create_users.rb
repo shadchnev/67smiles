@@ -16,10 +16,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :owner_type
       t.timestamps
     end
-    
-    add_index :users, :login
-    add_index :users, :persistence_token
-    add_index :users, :last_request_at
+    change_table :users do |t|
+      t.index :login, :unique => true
+      t.index :persistence_token
+      t.index :last_request_at
+    end
   end
 
   def self.down

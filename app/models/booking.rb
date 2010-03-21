@@ -10,7 +10,7 @@ class Booking < ActiveRecord::Base
   validate :time_available?, :if => Proc.new{|b| b.time_valid? and b.cleaner }
   
   def time_valid?
-    start_time.to_date == end_time.to_date and start_time.hour < end_time.hour
+    start_time and end_time and start_time.to_date == end_time.to_date and start_time.hour < end_time.hour
   end
   
   def time_available?
