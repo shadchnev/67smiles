@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
   end
   
   def create
-    params[:client][:address_attributes].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_value(params[:client][:address_attributes][:postcode_attributes][:value])
+    params[:client][:address_attributes].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:client][:address_attributes][:postcode_attributes][:value])
     params[:client][:user_attributes][:login] = params[:client][:contact_details_attributes][:email]
     @client = Client.new(params[:client])
     @client.address.postcode ||= existing_postcode    

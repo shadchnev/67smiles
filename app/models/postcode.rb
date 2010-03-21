@@ -20,8 +20,8 @@ class Postcode < ActiveRecord::Base
     $1
   end    
   
-  def self.find_by_value(val)
-    super(normalize(val))
+  def self.find_by_normalized_value(val)
+    find_by_value(normalize(val))
   end
   
 private
