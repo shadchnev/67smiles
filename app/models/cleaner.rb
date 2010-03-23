@@ -1,5 +1,7 @@
 class Cleaner < ActiveRecord::Base
   
+  SEARCH_PROXIMITY = 10
+  
   belongs_to :name
   belongs_to :postcode
   belongs_to :contact_details
@@ -29,8 +31,15 @@ class Cleaner < ActiveRecord::Base
   
   acts_as_mappable :through => :postcode
   
-  def find_near(postcode)
-    find_within(SEARCH_PROXIMITY, :origin => postcode, :bias => "uk")
+  def self.find_suitable!(options)
+    conditions = [options[:skills].search_conditions]
+    conditions << "#{Date::DAYNAMES[options[:date].wday].downcase} > 0"
+    cleaners = find(:all,
+                    :within => SEARCH_PROXIMITY, 
+                    :origin => options[:origin], 
+                    :joins => [:skills, :availability], 
+                    :conditions => conditions.join(" AND "))
+    !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area, please try using a different postcode")
   end
   
   def first_name

@@ -2,30 +2,44 @@ class HomeController < ApplicationController
   
   def index      
     begin
-      postcode, skill, date = [build_postcode, build_skill, build_date]
-      @cleaners = Cleaner.find_suitable(:origin => postcode, :skill => skill, :date => date)
-      # local_cleaners.empty? ? flash.now[:notice] = "Sorry, we don't have any cleaners registered in your area" : @cleaners = local_cleaners      
+      @cleaners = suitable_cleaners if search?
     rescue Exception => e
       flash.now[:error] = e.message 
     ensure
-      @cleaners = default_selection 
+      @cleaners ||= default_selection 
     end
   end
 
-private  
+private
+
+  def search?
+    request.post? and params[:postcode] and !params[:postcode].empty?
+  end
+
+  def suitable_cleaners
+    postcode, skills, date = [build_postcode, build_skills, build_date]
+    @cleaners = Cleaner.find_suitable!(:origin => postcode, :skills => skills, :date => date)    
+  end
 
   def build_postcode
     postcode = Postcode.find_or_create_by_normalized_value(params[:postcode])
     postcode.id ? postcode : raise("We couldn't locate your postcode. Please try a postcode near you instead")
   end
   
-  def build_skill
-    skill = Skill.new do |skill|
+  def build_skills
+    skills = Skills.new do |skills|
       [:domestic_cleaning, :ironing, :groceries, :pets].each do |s|
-        skill.send("#{s}=", params[s])
+        skills.send("#{s}=", params[s])
       end
+      skills.domestic_cleaning = true if skills.empty?
     end
-    skill.select_all! if skill.empty?
+  end
+  
+  def build_date
+    Date.parse params[:booking_date]
+  rescue
+    Rails.logger.warn "Couldn't parse the date: #{params[:booking_date]}" 
+    Date.today
   end
     
   def default_selection
