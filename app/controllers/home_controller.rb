@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   
   def index      
     begin
+      instantiate_query_params
       @cleaners = suitable_cleaners if search?
     rescue Exception => e
       flash.now[:error] = e.message 
@@ -11,6 +12,10 @@ class HomeController < ApplicationController
   end
 
 private
+
+  def instantiate_query_params
+    @postcode, @booking_date, @skills = params[:postcode], params[:booking_date], Hash[*Skills.skill_set.map{|s| [s.to_s, !params[s].nil?]}.flatten]
+  end
 
   def search?
     request.post? and params[:postcode] and !params[:postcode].empty?
@@ -27,23 +32,27 @@ private
   end
   
   def build_skills
-    skills = Skills.new do |skills|
-      [:domestic_cleaning, :ironing, :groceries, :pets].each do |s|
-        skills.send("#{s}=", params[s])
+    Skills.new do |skills|
+      Skills.skill_set.each do |s|
+        skills.send("#{s}=", !params[s].nil?)
       end
       skills.domestic_cleaning = true if skills.empty?
     end
   end
   
   def build_date
-    Date.parse params[:booking_date]
+    Time.at(params[:booking_date].to_i).to_date
   rescue
     Rails.logger.warn "Couldn't parse the date: #{params[:booking_date]}" 
     Date.today
   end
     
-  def default_selection
-    Cleaner.find(:all, :limit => 20, :order => 'created_at desc')
+  def default_selection    
+    location = Geokit::Geocoders::IpGeocoder.geocode($1) if request.env['REMOTE_ADDR'] =~ /((?:\d{1,3}\.){3}\d{1,3})/
+    params = {:limit => 20, :order => 'created_at desc'}
+    geo_params = params.merge({:origin => location, :within => 20}) if location.success and location.country_code == 'GB'
+    cleaners =  Cleaner.find(:all, geo_params)
+    cleaners.empty? ? Cleaner.find(:all, params) : cleaners
   end
 
   def search_params_present?

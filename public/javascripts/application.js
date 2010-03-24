@@ -13,7 +13,7 @@ $(document).ready(function() {
   prepareFormFields();    
   addFormSubmitHandlers();
   fillAvailabilityTable();
-  haveDailyAvailability();
+  haveDailyAvailability();  
   updateTimeHiddenField();
   fillTimeSelectors();
   removeNotice();
@@ -31,8 +31,7 @@ function updateTimeHiddenField() {
   if ($('#calendar').length == 0)
     return;
   var date = $('#calendar').datepicker('getDate');
-  var formattedDate = date.getDate() + '-' + pad(date.getMonth() + 1) + '-' + date.getFullYear();
-  $('#booking_date').val(formattedDate);
+  $('#booking_date').val(date.getTime() / 1000);
 }
 
 function updateBookingCost() {
@@ -132,6 +131,12 @@ function prepareCalendar() {
   });
   prepareCalendarForPage('#find-a-cleaner #calendar', function(date, instance) {updateTimeHiddenField();});
   prepareCalendarForPage('#availability #calendar', function(date, instance) {updateDailyAvailability();});  
+  var hiddenDate = $('#booking_date').val();
+  if (hiddenDate) {
+    console.log('Syncing calendar to ' + hiddenDate);
+    $('#calendar').datepicker('setDate', new Date(parseInt(hiddenDate)*1000));
+    console.log("Now calendar is " + $('#calendar').datepicker('getDate'));
+  }  
 }
 
 function haveDailyAvailability() {

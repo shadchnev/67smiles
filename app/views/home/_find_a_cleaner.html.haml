@@ -3,7 +3,7 @@
     #where
       %h2
         Enter your postcode
-      %input{:name => 'postcode', :type => 'text', :value => ''}
+      %input{:name => 'postcode', :type => 'text', :value => @postcode}
     #what
       %h2
         Select what you need 
@@ -15,7 +15,7 @@
     #when
       %h2
         Select a date
-      = hidden_field_tag "booking_date"
+      = hidden_field_tag "booking_date", @booking_date
       #calendar
     #submit
       %input{:type => 'submit', :value => 'Search'}  

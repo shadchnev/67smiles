@@ -39,7 +39,7 @@ class Cleaner < ActiveRecord::Base
                     :origin => options[:origin], 
                     :joins => [:skills, :availability], 
                     :conditions => conditions.join(" AND "))
-    !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area, please try using a different postcode")
+    !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode, selecting fewer skills or changing the date")
   end
   
   def first_name
