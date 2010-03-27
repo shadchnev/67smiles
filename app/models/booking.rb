@@ -3,6 +3,8 @@ class Booking < ActiveRecord::Base
   belongs_to :cleaner
   belongs_to :client
   
+  has_many :sms
+  
   validates_associated :cleaner
   # validates_associated :client
   
@@ -15,6 +17,20 @@ class Booking < ActiveRecord::Base
   
   def time_available?
     errors.add_to_base("#{cleaner.name} is not available for hire at the specified time") unless cleaner.available?(start_time, end_time)
+  end
+  
+  def before_create
+    # Sms.new do |sms|
+    #   sms.to = cleaner.phone
+    #   sms.booking = self
+    #   sms.text = booking_sms      
+    # end.dispatch
+  end
+  
+private
+  
+  def booking_sms
+    "Job: 30 March, 11:00-15:00 at E1W 3TJ with own cleaning stuff. Will pay 48 pounds. Accept? Reply yes or no before 14:56"
   end
   
   
