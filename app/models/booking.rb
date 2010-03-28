@@ -30,7 +30,6 @@ class Booking < ActiveRecord::Base
       errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again")
     end
     sms.sent?
-    # false
   end
   
 private
