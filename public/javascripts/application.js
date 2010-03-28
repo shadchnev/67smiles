@@ -91,12 +91,14 @@ function fillTimeSelectors() {
 
 function addDropdownOptionsToTimeSelector(selector, minimumTime, maximumTime) {
   for (var i = minimumTime; i <= maximumTime; i++) {
-    addDropdownOption('#time-selectors ' + selector, i, pad(i) + ':00');
+    var selected = $('#time-selectors ' + selector + '_value').val() == i.toString();
+    addDropdownOption('#time-selectors ' + selector, i, pad(i) + ':00', selected);
   }  
 }
 
-function addDropdownOption(selector, value, label) {
-  $(selector).append($('<option value="' + value + '">' + label + '</option>'));
+function addDropdownOption(selector, value, label, selected) {
+  var selected = selected ? 'selected="selected"' : '';
+  $(selector).append($('<option value="' + value + '" ' + selected + '>' + label + '</option>'));
 }
 
 function prepareCalendarForPage(selector, strategy) {
