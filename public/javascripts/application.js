@@ -45,7 +45,7 @@ function updateBookingCost() {
   var timeFrom = $('#new-booking #booking_start_time').val();
   var timeTo = $('#new-booking #booking_end_time').val();
 
-  var timeDiff = timeDifference(timeFrom, timeTo);
+  var timeDiff = timeTo - timeFrom;
 
   if (timeDiff <= 0)
     error = 'Please correct the time';
@@ -79,21 +79,7 @@ function isAvailableInSelectedTime() {
   var date = $("#calendar").datepicker('getDate');
   var timeFrom = $('#new-booking #booking_start_time').val();
   var timeTo = $('#new-booking #booking_end_time').val();  
-  return isAvailableIn(availability, date, {start: parseTimeValue(timeFrom), end: parseTimeValue(timeTo)}, true)  
-}
-
-function timeDifference(from, to) {
-  var fromTime = parseTimeValue(from);
-  var toTime = parseTimeValue(to);
-  if (!(fromTime && toTime)) return;
-  return toTime - fromTime;
-}
-
-function parseTimeValue(time) {
-  var regex = /(0(\d)|(\d\d)):(\d0)/; 
-  match = time.match(regex);
-  if (!match) return;
-  return hour = parseInt(match[2] || match[1]);
+  return isAvailableIn(availability, date, {start: timeFrom, end: timeTo}, true)  
 }
 
 function fillTimeSelectors() {
@@ -105,12 +91,12 @@ function fillTimeSelectors() {
 
 function addDropdownOptionsToTimeSelector(selector, minimumTime, maximumTime) {
   for (var i = minimumTime; i <= maximumTime; i++) {
-    addDropdownOption('#time-selectors ' + selector, pad(i) + ':00');
+    addDropdownOption('#time-selectors ' + selector, i, pad(i) + ':00');
   }  
 }
 
-function addDropdownOption(selector, value) {
-  $(selector).append($('<option>' + value + '</option>'));
+function addDropdownOption(selector, value, label) {
+  $(selector).append($('<option value="' + value + '">' + label + '</option>'));
 }
 
 function prepareCalendarForPage(selector, strategy) {

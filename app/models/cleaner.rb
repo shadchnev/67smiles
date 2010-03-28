@@ -24,6 +24,7 @@ class Cleaner < ActiveRecord::Base
   validates_numericality_of :surcharge, :message => "^Your surcharge seems to be invalid", :less_than_or_equal_to => 10, :more_than_or_equal_to => 1
   
   validates_presence_of :availability
+  validates_presence_of :contact_details
   
   validates_presence_of :user
   
@@ -46,6 +47,10 @@ class Cleaner < ActiveRecord::Base
     name.first_name
   end
   
+  def phone
+    contact_details.phone
+  end
+  
   def area
     postcode.area
   end
@@ -54,7 +59,7 @@ class Cleaner < ActiveRecord::Base
     self[:rate] = (value.to_f * 10).round / 10.0
   end
   
-  def available?(from, to)
+  def available?(from, to)    
     availability.available?(from, to)
   end
   

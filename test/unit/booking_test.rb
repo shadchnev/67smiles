@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class BookingTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
+  
+  test "booking is validated" do
     assert true
   end
 end

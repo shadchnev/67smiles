@@ -16,15 +16,21 @@ class Booking < ActiveRecord::Base
   end
   
   def time_available?
-    errors.add_to_base("#{cleaner.name} is not available for hire at the specified time") unless cleaner.available?(start_time, end_time)
+    errors.add_to_base("#{cleaner.first_name} is not available for hire at the specified time") unless cleaner.available?(start_time, end_time)
   end
   
   def before_create
-    # Sms.new do |sms|
-    #   sms.to = cleaner.phone
-    #   sms.booking = self
-    #   sms.text = booking_sms      
-    # end.dispatch
+    sms = Sms.create do |sms|
+      sms.to = cleaner.phone
+      sms.text = booking_sms      
+    end
+    if sms.sent?
+      self.sms << sms
+    else
+      errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again")
+    end
+    sms.sent?
+    # false
   end
   
 private

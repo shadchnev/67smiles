@@ -18,9 +18,10 @@ Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  config.gem "markcatley-advanced_errors", :lib => 'advanced_errors', :source => "http://gems.github.com"
-  config.gem "authlogic"
-  config.gem "geokit"
+  config.gem "markcatley-advanced_errors", :lib => 'advanced_errors', :source => "http://gems.github.com" # to avoid field names in messages
+  config.gem "authlogic" # to authenticate users
+  config.gem "geokit" # to search by postcode
+  config.gem "curb" # to send sms
   
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
@@ -45,3 +46,6 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+GATEWAY_ERROR = 'testmode - nothing sent'
+GATEWAY_TEST_MODE = 1

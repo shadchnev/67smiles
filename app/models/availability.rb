@@ -8,7 +8,7 @@ class Availability < ActiveRecord::Base
   
   def available?(from, to)
     raise "The cleaner cannot be booked overnight" unless from.to_date == to.to_date
-    mask = (2**(to.hour - from.hour) - 1) << from.hour
+    mask = (2**(to.hour - from.hour) - 1) << from.localtime.hour
     send(days[from.wday]) & mask == mask
   end
   

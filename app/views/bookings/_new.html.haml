@@ -1,3 +1,6 @@
+- unless @booking.errors.empty?
+  #errors
+    = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
 #new-booking.long-form
   %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
   = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
@@ -32,7 +35,7 @@
       %h2 3. Will you provide cleaning materials?
       #cleaning-materials-selector
         %input{:type => "hidden", :id => "cleaning_materials_surcharge", :value => @booking.cleaner.surcharge}
-        = booking_form.select :cleaning_materials_provided, [['Yes (no extra charge)', 1], [raw("No (£#{round_if_possible(@booking.cleaner.surcharge)}/hour extra)"), 0]]        
+        = booking_form.select :cleaning_materials_provided, surcharge_select_content(@booking) 
         %p
           In any case, please have your vacuum cleaner ready.
     #cost
