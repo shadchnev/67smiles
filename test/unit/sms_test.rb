@@ -12,13 +12,14 @@ class SmsTest < ActiveSupport::TestCase
     sms.stubs(:curl).returns(curl)
     silence_warnings {Sms.const_set('GATEWAY_ERROR', nil)} # we pretend we're production in this respect since we're stubbing curl with a production reply
     assert sms.send :dispatch
+    assert sms.outgoing?
   end
 
 private
   
   def curl
     curl = mock('curl')
-    curl.responds_like Curl::Easy.new(Sms::GATEWAY_API)
+    curl.responds_like Curl::Easy.new(Sms::GATEWAY_URL)
     curl.stubs(:http_post)                    
     curl.stubs(:body_str).returns('{"TestMode":0,"MessageReceived":"test","Custom":"13","MessageCount":1,"From":"InncntClnrs","CreditsAvailable":"9","MessageLength":1,"NumberContacts":1,"CreditsRequired":1,"CreditsRemaining":8}')
     curl    

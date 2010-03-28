@@ -111,10 +111,10 @@ ActiveRecord::Schema.define(:version => 15) do
   end
 
   create_table "sms", :force => true do |t|
-    t.integer  "from"
-    t.integer  "to"
+    t.string   "from",       :limit => 12
+    t.string   "to",         :limit => 12
     t.string   "text",       :limit => 612
-    t.string   "status",     :limit => 1
+    t.string   "state",      :limit => 1
     t.integer  "booking_id"
     t.datetime "created_at"
     t.datetime "updated_at"

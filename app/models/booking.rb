@@ -20,21 +20,24 @@ class Booking < ActiveRecord::Base
   end
   
   def before_create
-    sms = Sms.create do |sms|
-      sms.to = cleaner.phone
-      sms.text = booking_sms      
-    end
-    if sms.sent?
+    sms = booking_sms
+    if sms.dispatch
       self.sms << sms
     else
-      errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again")
+      errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again") and false # to return false and prevent the object from being created
     end
-    sms.sent?
   end
   
 private
-  
+
   def booking_sms
+    Sms.create do |sms|
+      sms.to = cleaner.phone
+      sms.text = booking_sms_text
+    end
+  end
+  
+  def booking_sms_text
     "Job: 30 March, 11:00-15:00 at E1W 3TJ with own cleaning stuff. Will pay 48 pounds. Accept? Reply yes or no before 14:56"
   end
   

@@ -15,7 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :clients, :has_many => :bookings
   map.resources :reviews
   map.resource :user_sessions
-
+  
+  map.connect 'sms/update/:id', :controller => :sms, :action => :update, :conditions => {:method => :post} # sms gateway requirement
+  
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 

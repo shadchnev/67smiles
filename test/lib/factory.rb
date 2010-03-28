@@ -71,6 +71,14 @@ module Factory
     }
   end
   
+  def factory_sms
+    {
+      :from => Sms::OWN_NUMBER,
+      :to => '447923374199',
+      :text => 'test'
+    }
+  end
+  
   def factory_user
     {
       :login => "test#{rand(1000000)}@test.com",

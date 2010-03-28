@@ -6,37 +6,85 @@ class Sms < ActiveRecord::Base
   DELIVERED_STATE = 'D'
   INVALID_STATE = 'I' 
   UNDELIVERED_STATE = 'U'
-  GATEWAY_API = 'http://www.txtlocal.com/sendsmspost.php'
+  INCOMING_STATE = 'R' # I don't want to use self.to == own_number because the inbound number may change in the future
+  GATEWAY_URL = 'http://www.txtlocal.com/sendsmspost.php'
   FROM_ID = 'InncntClnrs'
   USERNAME = 'evgeny.shadchnev@gmail.com'
   PASSWORD = '67mops!'
+  OWN_NUMBER = '447786202240'
   
   belongs_to :booking
   
   validates_presence_of :to
+  validates_presence_of :from
   validates_presence_of :text
   
   validates_format_of :to, :with => /^447\d{9}$/
-  
-  after_create :update_state
+  validates_format_of :from, :with => /^447\d{9}$/
   
   def sent?
-    status != UNSENT_STATE # sent? may also mean delivered, undelivered etc.
+    outgoing? and state != UNSENT_STATE # sent? may also mean delivered, undelivered etc.
   end
   
   def delivered?
-    status == DELIVERED_STATE
+    state == DELIVERED_STATE
   end
   
-private
-
-  def update_state
-    self.update_attributes!(:status => dispatch ? SENT_STATE : UNSENT_STATE)
+  def invalid?
+    state == INVALID_STATE
+  end
+  
+  def undelivered?
+    state = UNDELIVERED_STATE
+  end
+  
+  def to=(number)
+    number == OWN_NUMBER ? inbound! : outbound!
+    self[:to] = number
+  end
+  
+  def from=(number)
+    self[:from] = number
   end
   
   def dispatch    
     curl.http_post(*post_fields)
     success? curl.body_str
+  end
+  
+  def outgoing?    
+    state != INCOMING_STATE
+  end
+  
+  def incoming?
+    state == INCOMING_STATE
+  end
+  
+  def addressee?(number)
+    to == number
+  end
+  
+  def delivered!
+    self.state = DELIVERED_STATE
+  end
+  
+  def undelivered!
+    self.state = UNDELIVERED_STATE
+  end
+  
+  def invalid!
+    self.state = INVALID_STATE
+  end
+  
+private
+
+  def inbound!
+    self.state = INCOMING_STATE
+  end
+  
+  def outbound!
+    self.from ||= OWN_NUMBER
+    self.state = UNSENT_STATE
   end
   
   def post_fields
@@ -55,7 +103,7 @@ private
   end
   
   def curl
-    @curl ||= Curl::Easy.new(GATEWAY_API)    
+    @curl ||= Curl::Easy.new(GATEWAY_URL)    
   end
   
   def success?(reply)
