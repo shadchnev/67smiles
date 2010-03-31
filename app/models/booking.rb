@@ -9,10 +9,10 @@ class Booking < ActiveRecord::Base
   # validates_associated :client
   
   validate :time_valid?
-  validate :time_available?, :if => Proc.new{|b| b.time_valid? and b.cleaner }
+  validate :time_available?, :if => Proc.new{|b| b.errors.on_base.nil? and b.cleaner }
   
   def time_valid?
-    start_time and end_time and start_time.to_date == end_time.to_date and start_time.hour < end_time.hour
+    errors.add_to_base("The booking time is invalid") unless start_time and end_time and start_time.to_date == end_time.to_date and start_time.hour < end_time.hour
   end
   
   def time_available?
@@ -28,18 +28,27 @@ class Booking < ActiveRecord::Base
     end
   end
   
+  def cost
+    number_of_hours * (cleaner.rate + surcharge)
+  end
+  
 private
+
+  def number_of_hours
+    end_time.hour - start_time.hour
+  end
+
+  def surcharge
+    cleaning_materials_provided? ? cleaner.surcharge : 0
+  end
 
   def booking_sms
     Sms.create do |sms|
       sms.to = cleaner.phone
-      sms.text = booking_sms_text
+      sms.text = SmsContent.booking_enquiry(self)
     end
   end
   
-  def booking_sms_text
-    "Job: 30 March, 11:00-15:00 at E1W 3TJ with own cleaning stuff. Will pay 48 pounds. Accept? Reply yes or no before 14:56"
-  end
   
   
 end

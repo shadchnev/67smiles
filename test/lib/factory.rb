@@ -86,6 +86,34 @@ module Factory
       :password_confirmation => 'test12'
     }
   end
+  
+  def factory_booking
+    {
+      :client => Client.build,
+      :cleaner => Cleaner.build,
+      :cleaning_materials_provided => false,
+      :start_time => Time.parse('29 March 2010 10:00'),
+      :end_time => Time.parse('29 March 2010 14:00')
+    }
+  end
+  
+  def factory_client
+    {
+      :address => Address.build,
+      :name => Name.build,
+      :contact_details => ContactDetails.build
+    }
+  end
+  
+  def factory_address
+    {
+      :first_line => '60 Prospect Place',
+      :second_line => 'Wapping Wall',
+      :third_line => nil,
+      :city => 'London',
+      :postcode => Postcode.build
+    }
+  end
 
 end
 
