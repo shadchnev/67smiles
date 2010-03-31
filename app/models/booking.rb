@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
   has_many :sms
   
   validates_associated :cleaner
-  # validates_associated :client
+  validates_associated :client
   
   validate :time_valid?
   validate :time_available?, :if => Proc.new{|b| b.errors.on_base.nil? and b.cleaner }

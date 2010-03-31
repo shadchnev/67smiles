@@ -16,7 +16,7 @@
       %hr
       %h2 1. What day?
       #current-availability
-        %input{:type => 'hidden', :id => 'booking_date', :name => 'booking_date', :value => @booking.start_time.to_i}
+        %input{:type => 'hidden', :id => 'booking_date', :name => 'booking_date', :value => @booking_date}
         #calendar
         #hours
           %h3 Available hours
@@ -26,10 +26,10 @@
       %hr
       %h2 2. What time?
       #time-selectors
-        = hidden_field_tag :booking_start_time_value, @booking.start_time.localtime.hour
+        = hidden_field_tag :booking_start_time_value, @booking.start_time ? @booking.start_time.localtime.hour : nil
         = booking_form.select :start_time, []
         &mdash;
-        = hidden_field_tag :booking_end_time_value, @booking.end_time.localtime.hour
+        = hidden_field_tag :booking_end_time_value, @booking.end_time ? @booking.end_time.localtime.hour : nil
         = booking_form.select :end_time, []
   
     #cleaning-materials
