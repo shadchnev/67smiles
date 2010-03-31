@@ -1,14 +1,7 @@
 require 'test_helper'
 
 class CleanersControllerTest < ActionController::TestCase
-  
-  test "availability is available" do
-    cleaner = Cleaner.build!
-    xhr :get, :availability, {:id => cleaner.id}
-    assert_response :success
-    assert_equal cleaner.availability.to_hash, JSON.parse(@response.body)
-  end
-  
+    
   test "postcode isn't recreated if exists" do     
     postcode = Postcode.build!(:value => 'e1w 3tj')    
     xhr :post, :create, new_cleaner_params

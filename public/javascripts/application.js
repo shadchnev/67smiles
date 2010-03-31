@@ -130,16 +130,11 @@ function prepareCalendar() {
 function haveDailyAvailability() {
   if ($('#daily-availability').length == 0)
     return;
-  var cleanerId = $('#cleaner-id').val();
-  if (cleanerId) {
-    $.getJSON('/cleaners/availability', {id: cleanerId}, function(data) {
-      $('#daily-availability').data('availability', data)
-      addCostCalculationHandlers();
-      updateBookingCost();      
-      updateDailyAvailability();
-      setCorrectTimeSelectorValues();
-    });
-  }
+  $('#daily-availability').data('availability', JSON.parse($('#daily-availability #availability').val()));
+  addCostCalculationHandlers();
+  updateBookingCost();      
+  updateDailyAvailability();
+  setCorrectTimeSelectorValues();
 }
 
 function setCorrectTimeSelectorValues() {
