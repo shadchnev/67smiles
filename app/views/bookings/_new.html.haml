@@ -20,6 +20,7 @@
         #calendar
         #hours
           %h3 Available hours
+          = hidden_field_tag "minimum-hire", @booking.cleaner.minimum_hire
           = render :partial => 'shared/hours'
     
     #time
@@ -31,7 +32,7 @@
         &mdash;
         = hidden_field_tag :booking_end_time_value, @booking.end_time ? @booking.end_time.localtime.hour : nil
         = booking_form.select :end_time, []
-  
+        = "Minimum #{@booking.cleaner.minimum_hire} hour#{'s' if @booking.cleaner.minimum_hire > 1}"
     #cleaning-materials
       %hr
       %h2 3. Will you provide cleaning materials?

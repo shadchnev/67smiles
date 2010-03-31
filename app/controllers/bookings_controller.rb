@@ -3,7 +3,8 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @booking.cleaner = Cleaner.find(params[:cleaner_id])
-    @booking_date = (Time.now + 1.day).to_i
+    @cleaner = @booking.cleaner # for consistency in views
+    @booking_date = (Time.now + 1.day).to_i # default value
   end
   
   def create

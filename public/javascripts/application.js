@@ -13,9 +13,9 @@ $(document).ready(function() {
   prepareFormFields();    
   addFormSubmitHandlers();
   fillAvailabilityTable();
+  fillTimeSelectors();
   haveDailyAvailability();  
   updateTimeHiddenField();
-  fillTimeSelectors();
   removeNotice();
 });
 
@@ -172,11 +172,15 @@ function updateDailyAvailability() {
     }
 }
 
+function minimumHire() {
+  return $('#minimum-hire').val();
+}
+
 function isAvailableIn(availability, date, period, complete) {  
+  if (minimumHire() > period.end - period.start) return false;
   var mask = ((Math.pow(2, period.end - period.start)  - 1) << period.start);
   var partialAvailability = mask & availability[WEEKDAYS[date.getDay()]];
-  if (complete)
-    return partialAvailability == mask;
+  if (complete) return partialAvailability == mask;
   return partialAvailability;
 }
 
