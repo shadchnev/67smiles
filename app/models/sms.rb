@@ -76,9 +76,19 @@ class Sms < ActiveRecord::Base
     self.state = INVALID_STATE
   end
   
+  def before_create
+    incoming? ? process_incoming : true
+  end
+  
 private
 
-  def inbound!
+  def process_incoming
+    self.booking, meaning = Booking.first_pending_for(self.from), SmsMeaning.new(self.text)
+    meaning.accepted? ? self.booking.confirm! : self.booking.decline! if self.booking and meaning.understood?
+    true
+  end
+
+  def inbound!    
     self.state = INCOMING_STATE
   end
   
@@ -109,7 +119,7 @@ private
   def success?(reply)
     return false unless reply
     parsed_reply = JSON.parse reply
-    parsed_reply['Error'] == GATEWAY_ERROR and parsed_reply['MessageReceived'] == text
+    parsed_reply['Error'] == GATEWAY_NO_ERROR and parsed_reply['MessageReceived'] == text
   end
 
 end

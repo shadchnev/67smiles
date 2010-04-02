@@ -6,19 +6,25 @@ module Factory
 
   def build(params = {})
     raise "There are no default params for #{self.name}" unless self.respond_to?('factory_' + self.name.underscore)
+    Postcode.any_instance.stubs(:geocode)
     new(self.send('factory_' + self.name.underscore).merge(params))
   end
 
-  def build!(params = {})
+  def build!(params = {})    
     obj = build(params)
-    obj.save!
+    begin
+      obj.save!
+    rescue Exception => e
+      puts "#{obj.class} couldn't be saved: " + obj.errors.inspect
+      raise e
+    end
     obj
   end
 
   def factory_cleaner
     {
       :name => Name.build,
-      :postcode => Postcode.build,
+      :postcode => Postcode.find_or_create_by_normalized_value('E1W 3TJ'),
       :contact_details => ContactDetails.build,
       :availability => Availability.build,
       :skills => Skills.build,
@@ -49,7 +55,7 @@ module Factory
   def factory_contact_details
     {
       :email => "evita.peron#{rand(1000000)}@gmail.com",
-      :phone => '07923374199'
+      :phone => "07923#{'%06d' % rand(1000000)}"
     }
   end
   
@@ -101,7 +107,9 @@ module Factory
     {
       :address => Address.build,
       :name => Name.build,
-      :contact_details => ContactDetails.build
+      :contact_details => ContactDetails.build,
+      :terms_and_conditions => '1',
+      :user => User.build      
     }
   end
   
@@ -111,7 +119,7 @@ module Factory
       :second_line => 'Wapping Wall',
       :third_line => nil,
       :city => 'London',
-      :postcode => Postcode.build
+      :postcode => Postcode.find_or_create_by_normalized_value('E1W 3TJ')
     }
   end
 

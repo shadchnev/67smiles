@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 15) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean  "cleaning_materials_provided"
+    t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 15) do
   end
 
   add_index "contact_details", ["email"], :name => "index_contact_details_on_email", :unique => true
+  add_index "contact_details", ["phone"], :name => "index_contact_details_on_phone", :unique => true
 
   create_table "names", :force => true do |t|
     t.string   "honorific"

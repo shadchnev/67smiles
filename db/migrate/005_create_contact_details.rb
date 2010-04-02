@@ -7,6 +7,7 @@ class CreateContactDetails < ActiveRecord::Migration
     end 
     change_table :contact_details do |t|
       t.index :email, :unique => true
+      t.index :phone, :unique => true
     end
   end
 

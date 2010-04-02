@@ -3,7 +3,9 @@ require 'test_helper'
 class PostcodeTest < ActiveSupport::TestCase
   
   test "postcodes are auto-geocoded" do
-    p = Postcode.create!(:value => 'E1W 3TJ') # this hits google even in test env
+    geoloc = stub(:success => true, :lat => 51.5057971, :lng => -0.0542642)
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).returns(geoloc)
+    p = Postcode.create!(:value => 'E1W 3TJ')
     assert_equal 51.5057971, p.latitude
     assert_equal -0.0542642, p.longitude
   end

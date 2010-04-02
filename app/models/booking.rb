@@ -19,7 +19,7 @@ class Booking < ActiveRecord::Base
     errors.add_to_base("#{cleaner.first_name} is not available for hire at the specified time") unless cleaner.available?(start_time, end_time)
   end
   
-  def before_create
+  def sms!
     sms = booking_sms
     if sms.dispatch
       self.sms << sms
@@ -32,7 +32,26 @@ class Booking < ActiveRecord::Base
     number_of_hours * (cleaner.rate + surcharge)
   end
   
+  def self.first_pending_for(number)
+    return unless cleaner = Cleaner.find_by_phone(number)
+    find :first, :conditions => ["cleaner_id = ? AND accepted IS NULL AND created_at > ?", cleaner.id, expired_cutoff], :order => 'created_at ASC'
+  end
+  
+  def confirm!
+    self.accepted = true
+    save
+  end
+  
+  def decline!
+    self.accepted = false
+    save
+  end
+  
 private
+
+  def self.expired_cutoff
+    (Time.now.utc - CLEANER_REPLY_TIMEOUT).to_s :db
+  end
 
   def number_of_hours
     end_time.hour - start_time.hour
@@ -46,7 +65,7 @@ private
     Sms.create do |sms|
       sms.to = cleaner.phone
       sms.text = SmsContent.booking_enquiry(self)
-    end
+    end    
   end
   
   

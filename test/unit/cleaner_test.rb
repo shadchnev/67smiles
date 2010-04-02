@@ -19,5 +19,10 @@ class CleanerTest < ActiveSupport::TestCase
     assert cleaner.available?(from, to)
     assert !cleaner.available?(from + 1.day, to + 1.day)
   end
+  
+  test "can find by phone number" do
+    cleaner = Cleaner.build!
+    assert_equal cleaner, Cleaner.find_by_phone(cleaner.phone)
+  end
     
 end

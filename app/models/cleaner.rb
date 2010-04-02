@@ -43,6 +43,10 @@ class Cleaner < ActiveRecord::Base
     !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode, selecting fewer skills or changing the date")
   end
   
+  def self.find_by_phone(number)
+    find :first, :joins => :contact_details, :conditions => ['phone = ?', number]
+  end
+  
   def first_name
     name.first_name
   end

@@ -10,9 +10,33 @@ class SmsTest < ActiveSupport::TestCase
     sms.stubs(:update_state).returns(true)
     sms.save!
     sms.stubs(:curl).returns(curl)
-    silence_warnings {Sms.const_set('GATEWAY_ERROR', nil)} # we pretend we're production in this respect since we're stubbing curl with a production reply
+    silence_warnings {Sms.const_set('GATEWAY_NO_ERROR', nil)} # we pretend we're production in this respect since we're stubbing curl with a production reply
     assert sms.send :dispatch
     assert sms.outgoing?
+  end
+  
+  test "incoming messages are processed (yes)" do
+    booking = Booking.build!        
+    assert !booking.accepted?
+    sms = Sms.new do |s|
+      s.text = 'yes!!!'
+      s.to = Sms::OWN_NUMBER
+      s.from = booking.cleaner.phone
+    end
+    sms.save!
+    assert booking.reload.accepted?
+  end
+
+  test "incoming messages are processed (no)" do
+    booking = Booking.build!        
+    assert !booking.accepted?
+    sms = Sms.new do |s|
+      s.text = 'no, sorry'
+      s.to = Sms::OWN_NUMBER
+      s.from = booking.cleaner.phone
+    end
+    sms.save!
+    assert !booking.reload.accepted?
   end
 
 private

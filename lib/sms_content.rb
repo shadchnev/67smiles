@@ -1,3 +1,4 @@
+# Understands how to write a text to a user
 class SmsContent
   
   def self.booking_enquiry(booking)
@@ -19,7 +20,7 @@ private
   end
 
   def self.booking_reply_deadline
-    (Time.now + 15.minutes).to_s :time
+    (Time.now + CLEANER_REPLY_TIMEOUT).to_s :time
   end
   
 end
