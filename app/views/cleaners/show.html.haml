@@ -1,5 +1,5 @@
 = content_for :master_picture do
-  %img.with_right_border{:src => '/images/emma_profile.png'}<>
+  = render :partial => 'picture'
   
 = content_for :left_content do
   = render :partial => 'availability', :locals => {:availability => @cleaner.availability}

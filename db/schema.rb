@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(:version => 15) do
     t.decimal  "surcharge",          :precision => 4, :scale => 2
     t.integer  "availability_id"
     t.integer  "skills_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "clients", :force => true do |t|

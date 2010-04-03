@@ -349,6 +349,18 @@ div.fieldWithErrors {
 #reviews #new-review {
   margin-bottom: 10px; }
 
+#upload-picture {
+  display: inline-block;
+  width: 228px;
+  height: 310px;
+  text-align: center; }
+
+#upload-picture-hint {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  display: inline-block;
+  line-height: 20px; }
+
 #new-booking .hourly-rate {
   float: right; }
 #new-booking #calendar {

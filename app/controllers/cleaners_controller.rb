@@ -1,8 +1,9 @@
 class CleanersController < ApplicationController
   
+  before_filter :find_logged_in_cleaner, :only => :snap
   
   def create
-    params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value])
+    params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
     params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
     @cleaner = Cleaner.new(params[:cleaner])
     @cleaner.postcode ||= existing_postcode
@@ -11,10 +12,10 @@ class CleanersController < ApplicationController
   
   def show
     @cleaner = Cleaner.find(params[:id])
-    @review = Review.new
-    if @current_user
+    if current_user and current_user.client?
+      @review = Review.new
       @review.cleaner = @cleaner
-      @review.client = @current_user.owner
+      @review.client = current_user.owner
     end
   end
   
@@ -26,6 +27,28 @@ class CleanersController < ApplicationController
     @cleaner.skills = Skills.new
     @cleaner.availability = Availability.new
     @cleaner.user = User.new
+  end
+  
+  # uploads a photo of the cleaner
+  def snap
+    @cleaner.photo = params[:photo][:file]
+    content_type = content_type(@cleaner.photo_file_name)
+    @cleaner.photo_content_type = content_type if content_type
+    @cleaner.save!
+    render :text => ''
+  end
+  
+private
+
+  def content_type(filename)
+    types = MIME::Types.type_for(file_name)
+    return types.first.content_type unless types.empty?
+  end
+  
+  def find_logged_in_cleaner
+    raise "The user is not logged in" unless current_user
+    raise "Logged in user is #{current_user.owner.class}, not a cleaner" unless current_user.cleaner?
+    @cleaner = current_user.owner
   end
     
 end

@@ -21,6 +21,6 @@ else
 or you haven't told Rails to require it. If you're using a recent version of Rails: 
   config.gem "geokit" # in config/environment.rb
 and of course install the gem: sudo gem install geokit)
-  puts message
+  # puts message
   Rails.logger.error message
 end

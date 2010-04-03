@@ -11,16 +11,16 @@ class PostcodeTest < ActiveSupport::TestCase
   end
  
   test "invalid postcodes cannot be created" do
-    assert !Postcode.new(:value => 'r1265r').valid?    
-    assert !Postcode.new(:value => 'n1rdu').valid?    
-    assert !Postcode.new(:value => '').valid?    
-    assert !Postcode.new(:value => nil).valid?    
+    assert !Postcode.build(:value => 'r1265r').valid?    
+    assert !Postcode.build(:value => 'n1rdu').valid?    
+    assert !Postcode.build(:value => '').valid?    
+    assert !Postcode.build(:value => nil).valid?    
   end
   
   test "valid postcodes can be created" do
-    assert Postcode.new(:value => 'w21tt').valid?    
-    assert Postcode.new(:value => 'GIR 0AA').valid?    
-    assert Postcode.new(:value => 'w2 1tt').valid?    
+    assert Postcode.build(:value => 'w21tt').valid?    
+    assert Postcode.build(:value => 'GIR 0AA').valid?    
+    assert Postcode.build(:value => 'w2 1tt').valid?    
   end
   
   test "postcode knows its area" do

@@ -1,0 +1,30 @@
+- if current_user
+  #upload-picture
+    #upload-picture-hint
+      You haven't uploaded your picture. Upload your photo to show up higher in searches!
+    #upload-picture-controls
+      No pic!
+  :ruby
+    puts %Q[
+      <script type='text/javascript'> 
+        //<![CDATA[
+          $(document).ready(function() {
+            $('#upload-picture-controls').uploadify({
+              uploader:       '/flash/uploadify.swf',
+              script:         '/cleaners/#{@cleaner.id}/snap',
+              cancelImg:      '/images/cancel.png',
+              auto:           true,
+              fileExt:        '*.jpg;*.png;*.gif;*.tiff;*.bmp;*.jpeg',
+              fileDesc:       'fileDesc text',
+              sizeLimit:      3000000,
+              fileDataName:   'photo[file]',
+              scriptData:     {'#{session_key_name}': '#{u cookies[session_key_name]}',
+                                'authenticity_token': encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')
+                              }
+            });
+          });
+        //]]>
+      </script>
+    ]
+- else
+  %img.with_right_border{:src => '/images/emma_profile.png'}<>

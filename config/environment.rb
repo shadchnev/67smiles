@@ -13,15 +13,18 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
+  config.load_paths += %W( #{RAILS_ROOT}/app/middleware)
   
   # Use numbers 001, 002 etc for migrations instead of timestamps
   config.active_record.timestamped_migrations = false
 
   # Specify gems that this application depends on and have them installed with rake gems:install
+  config.gem "geokit" # to search by postcode
   config.gem "markcatley-advanced_errors", :lib => 'advanced_errors', :source => "http://gems.github.com" # to avoid field names in messages
   config.gem "authlogic" # to authenticate users
-  config.gem "geokit" # to search by postcode
   config.gem "curb" # to send sms
+  config.gem "paperclip" # to attach photos
+  config.gem 'mime-types', :lib => 'mime/types' # to detect the type of the uploaded photo
   
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"

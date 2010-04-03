@@ -17,29 +17,25 @@ class SmsTest < ActiveSupport::TestCase
   
   test "incoming messages are processed (yes)" do
     booking = Booking.build!        
-    assert !booking.accepted?
-    sms = Sms.new do |s|
-      s.text = 'yes!!!'
-      s.to = Sms::OWN_NUMBER
-      s.from = booking.cleaner.phone
-    end
-    sms.save!
+    receive_sms!(booking.cleaner.phone, 'Yes!!!')
     assert booking.reload.accepted?
   end
 
   test "incoming messages are processed (no)" do
-    booking = Booking.build!        
-    assert !booking.accepted?
-    sms = Sms.new do |s|
-      s.text = 'no, sorry'
-      s.to = Sms::OWN_NUMBER
-      s.from = booking.cleaner.phone
-    end
-    sms.save!
+    booking = Booking.build!
+    receive_sms!(booking.cleaner.phone, 'no, sorry')
     assert !booking.reload.accepted?
   end
 
 private
+
+  def receive_sms!(from, text)
+    Sms.create do |s|
+      s.text = text
+      s.to = Sms::OWN_NUMBER
+      s.from = from
+    end
+  end
   
   def curl
     curl = mock('curl')
