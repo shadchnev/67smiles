@@ -2,7 +2,7 @@
 - if @cleaner.photo.exists?
   - if current_user and current_user.owner == @cleaner
     :javascript
-      $(document).ready(function(){prepareDeletePhoto();});
+      $(document).ready(function(){$('#delete-photo').css('display', 'inline');});
   %img.with_right_border{:src => @cleaner.photo.url(:medium), :id => 'cleaner-photo'}<>
 - elsif current_user
   = render 'upload_picture'

@@ -1,13 +1,3 @@
-function prepareDeletePhoto() {
-  $('#delete-photo').css('display', 'inline');
-  // $('#master-picture img').mouseenter(function() {    
-  //   $('#delete-photo').css('display', 'inline');
-  // });
-  // $('#master-picture img').mouseout(function() {
-  //   $('#delete-photo').css('display', 'none');
-  // });
-}
-
 function deletePhoto(id) {
   callback = function(v,m,f) {
     if (v) {

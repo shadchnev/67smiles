@@ -1,6 +1,6 @@
 .cleaner
   .photo>
-    %img{:src => cleaner.photo.url(:thumb)}
+    =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
   .details>
     %h2.name      
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
