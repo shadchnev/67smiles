@@ -1,6 +1,6 @@
 .cleaner
   .photo>
-    %img{:src => 'images/emma_small.png'}
+    %img{:src => cleaner.photo ? cleaner.photo.url(:thumb) : 'http://dummyimage.com/110x160/000/fff.png&text=innocent%20cleaner'}
   .details>
     %h2.name      
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id

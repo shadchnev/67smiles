@@ -1,11 +1,13 @@
-- if current_user
-  #upload-picture
+- if @cleaner.photo?
+  %img.with_right_border{:src => @cleaner.photo.url(:medium)}<>
+- elsif current_user
+  #upload-picture  
     #upload-picture-hint
       You haven't uploaded your picture. Upload your photo to show up higher in searches!
     #upload-picture-controls
       No pic!
   :ruby
-    puts %Q[
+    print %Q[
       <script type='text/javascript'> 
         //<![CDATA[
           $(document).ready(function() {
@@ -17,6 +19,12 @@
               fileExt:        '*.jpg;*.png;*.gif;*.tiff;*.bmp;*.jpeg',
               fileDesc:       'fileDesc text',
               sizeLimit:      3000000,
+              onComplete:     function(event, queueId, fileObj, response, data) {                                
+                                $('#master-picture').empty();
+                                $('#master-picture').append($('<img/>'));
+                                $('#master-picture img').attr('src', response);
+                                $('#master-picture img').addClass('with_right_border');
+                              },
               fileDataName:   'photo[file]',
               scriptData:     {'#{session_key_name}': '#{u cookies[session_key_name]}',
                                 'authenticity_token': encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')
@@ -27,4 +35,4 @@
       </script>
     ]
 - else
-  %img.with_right_border{:src => '/images/emma_profile.png'}<>
+  %img.with_right_border{:src => 'http://dummyimage.com/228x310/000/fff.png&text=no%20profile%20picture'}<>

@@ -36,7 +36,7 @@ class Cleaner < ActiveRecord::Base
      :styles => {
        :thumb=> ["110x160", "png"],
        :medium  => ["228x310", "png"]},
-     :url => "/:class/:id/:attachment/:style_:basename.:extension",
+     :url => "/:attachment/:class/:id/:style/:basename.:extension",
      :path => ":rails_root/public/:attachment/:class/:id/:style/:basename.:extension"
   attr_protected :photo_file_name, :photo_content_type, :photo_size
   

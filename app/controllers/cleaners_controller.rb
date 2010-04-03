@@ -35,13 +35,13 @@ class CleanersController < ApplicationController
     content_type = content_type(@cleaner.photo_file_name)
     @cleaner.photo_content_type = content_type if content_type
     @cleaner.save!
-    render :text => ''
+    render :text => @cleaner.photo.url(:medium)
   end
   
 private
 
   def content_type(filename)
-    types = MIME::Types.type_for(file_name)
+    types = MIME::Types.type_for(filename)
     return types.first.content_type unless types.empty?
   end
   

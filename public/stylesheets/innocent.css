@@ -74,6 +74,7 @@ li span {
 #master-picture-container {
   display: table;
   width: 250px;
+  height: 311px;
   text-align: center;
   border-bottom: 1px solid #6ea7d1; }
 
@@ -246,7 +247,8 @@ div.fieldWithErrors {
   border-bottom: 1px solid #6ea7d1; }
   #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .booking {
     display: inline-block;
-    height: 160px; }
+    height: 160px;
+    width: 110px; }
   #cleaners .cleaner .photo {
     vertical-align: bottom; }
     #cleaners .cleaner .photo img {
@@ -353,7 +355,8 @@ div.fieldWithErrors {
   display: inline-block;
   width: 228px;
   height: 310px;
-  text-align: center; }
+  text-align: center;
+  border-right: 1px solid #6ea7d1; }
 
 #upload-picture-hint {
   margin-top: 100px;
