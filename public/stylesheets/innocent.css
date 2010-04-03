@@ -364,6 +364,17 @@ div.fieldWithErrors {
   display: inline-block;
   line-height: 20px; }
 
+.floating-button {
+  position: relative;
+  right: 0px;
+  float: right;
+  z-index: 3;
+  display: none; }
+
+#cleaner-photo {
+  left: 16px;
+  position: relative; }
+
 #new-booking .hourly-rate {
   float: right; }
 #new-booking #calendar {

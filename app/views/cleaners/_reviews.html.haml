@@ -2,8 +2,10 @@
   %h2
     - if @cleaner.reviews.count > 0
       Reviews from people who hired me
-    - else
+    - elsif current_user and current_user.client?
       Be the first to leave a review
+    - else
+      ==There are no reviews yet
   - @cleaner.reviews.each do |review|
     = render :partial => 'review', :locals => {:review => review}
   - if current_user and current_user.client?

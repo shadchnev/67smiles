@@ -1,6 +1,6 @@
 class CleanersController < ApplicationController
   
-  before_filter :find_logged_in_cleaner, :only => :snap
+  before_filter :find_logged_in_cleaner, :only => [:snap, :delete_photo]
   
   def create
     params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
@@ -36,6 +36,15 @@ class CleanersController < ApplicationController
     @cleaner.photo_content_type = content_type if content_type
     @cleaner.save!
     render :text => @cleaner.photo.url(:medium)
+  end
+  
+  def delete_photo
+    @cleaner.photo = nil
+    puts "#{@cleaner.first_name} has photo: #{@cleaner.photo}"
+    @cleaner.save!
+    @cleaner.reload
+    puts "#{@cleaner.first_name} has photo: #{@cleaner.photo}"
+    render :text => ''
   end
   
 private

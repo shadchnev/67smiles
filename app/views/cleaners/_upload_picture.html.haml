@@ -1,0 +1,34 @@
+#upload-picture  
+  #upload-picture-hint
+    You haven't uploaded your picture. Upload your photo to show up higher in searches!
+  #upload-picture-controls
+    No pic!
+:ruby
+  print %Q[
+    <script type='text/javascript'> 
+      //<![CDATA[
+        $(document).ready(function() {
+          $('#upload-picture-controls').uploadify({
+            uploader:       '/flash/uploadify.swf',
+            script:         '/cleaners/#{@cleaner.id}/snap',
+            cancelImg:      '/images/cancel.png',
+            auto:           true,
+            fileExt:        '*.jpg;*.png;*.gif;*.tiff;*.bmp;*.jpeg',
+            fileDesc:       'fileDesc text',
+            sizeLimit:      3000000,
+            onComplete:     function(event, queueId, fileObj, response, data) {
+                              $('#master-picture #upload-picture').remove();
+                              $('#master-picture').append($('<img id="profile-photo"/>'));
+                              $('#master-picture #profile-photo').attr('src', response);
+                              $('#master-picture #profile-photo').addClass('with_right_border');
+                              prepareDeletePhoto();
+                            },
+            fileDataName:   'photo[file]',
+            scriptData:     {'#{session_key_name}': '#{u cookies[session_key_name]}',
+                              'authenticity_token': encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')
+                            }
+          });
+        });
+      //]]>
+    </script>
+  ]
