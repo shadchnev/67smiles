@@ -7,6 +7,7 @@ class CreateBookings < ActiveRecord::Migration
       t.datetime  :end_time
       t.boolean   :cleaning_materials_provided
       t.boolean   :accepted
+      t.boolean   :cancelled
       t.timestamps
     end
   end

@@ -7,9 +7,13 @@ class Booking < ActiveRecord::Base
   
   validates_associated :cleaner
   validates_associated :client
+  validates_presence_of :cleaner
+  validates_presence_of :client
   
   validate :time_valid?
   validate :time_available?, :if => Proc.new{|b| b.errors.on_base.nil? and b.cleaner }
+  
+  CANCELLATION_DEADLINE = 1.hour
   
   def time_valid?
     errors.add_to_base("The booking time is invalid") unless start_time and end_time and start_time.to_date == end_time.to_date and start_time.hour < end_time.hour
@@ -37,7 +41,7 @@ class Booking < ActiveRecord::Base
     find :first, :conditions => ["cleaner_id = ? AND accepted IS NULL AND created_at > ?", cleaner.id, expired_cutoff], :order => 'created_at ASC'
   end
   
-  def confirm!
+  def accept!
     self.accepted = true
     save
   end
@@ -45,6 +49,46 @@ class Booking < ActiveRecord::Base
   def decline!
     self.accepted = false
     save
+  end
+  
+  def cancel!
+    self.cancelled = true
+    save
+  end
+  
+  def address
+    client.address
+  end
+  
+  def day
+    start_time.to_date
+  end
+  
+  def declined?
+    accepted == false
+  end
+  
+  def accepted?
+    accepted == true
+  end
+  
+  def cancelled?
+    cancelled == true
+  end
+  
+  # can still be cancelled
+  def cancellable?
+    (start_time - Time.now) < CANCELLATION_DEADLINE
+  end
+  
+  def missed?
+    return false unless accepted.nil?
+    (Time.now - created_at) > CLEANER_REPLY_TIMEOUT
+  end
+  
+  def time_left
+    difference = created_at + CLEANER_REPLY_TIMEOUT - Time.now
+    difference > 0 ? difference : 0
   end
   
 private
@@ -58,7 +102,7 @@ private
   end
 
   def surcharge
-    cleaning_materials_provided? ? cleaner.surcharge : 0
+    cleaning_materials_provided? ? 0 : cleaner.surcharge
   end
 
   def booking_sms

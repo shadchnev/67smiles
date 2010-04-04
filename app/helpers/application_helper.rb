@@ -11,11 +11,15 @@ module ApplicationHelper
     when :register then link_to "Register", '#', :onclick => "selectRegistrationType(); return false;"
     when :login then link_to "Login", '#', :onclick => "showLoginPrompt(); return false;"    
     when :logout then link_to "Logout", user_sessions_path, :method => :delete
+    when :cleaners_bookings then link_to "My Jobs", cleaner_bookings_path(current_user.owner)
+    when :clients_bookings then link_to "Bookings", client_bookings_path(current_user.owner)
     end
   end  
   
   def navigation_elements
-    elements = [:about]
+    elements = []
+    elements << :cleaners_bookings if current_user and current_user.cleaner?
+    elements << :clients_bookings  if current_user and current_user.client?
     elements += current_user ? [:logout] : [:register, :login] 
     elements
   end

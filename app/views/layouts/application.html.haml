@@ -31,12 +31,14 @@
             %img{:src => "/images/logo_scruff.png"}
         #welcome-line
           - if current_user
-            ==Hi, #{current_user.owner.first_name}!
+            ==Hi, #{link_to current_user.owner.first_name, (current_user.cleaner? ? cleaner_path(current_user.owner_id) : client_path(current_user.owner_id))}!
         #navigation-container
           = render :partial => 'shared/navigation'      
       #flash
         - if flash[:notice]
           .notice= flash[:notice]
+        - if flash[:warn]
+          .warn= flash[:warn]
         - if flash[:error]
           .error= flash[:error]  
       #left-column<>

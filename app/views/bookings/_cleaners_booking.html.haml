@@ -1,0 +1,49 @@
+- booking = cleaners_booking
+.booking.cleaners-booking
+  .personal-details  
+    %h2.client-name
+      = booking.client.first_name
+    .client-contact-details
+      %p.phone        
+        ==+#{booking.client.phone}
+      %p.email
+        = mail_to booking.client.email
+    .client-address
+      - booking.address.to_a.each do |line|
+        %p= line
+      %p.map-link
+        = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}"
+  .booking-details
+    .date
+      %h3= booking.day.strftime '%d %B, %A'
+    .time
+      %h3
+        = booking.start_time.strftime('%H:%M')
+        &mdash;
+        = booking.end_time.strftime('%H:%M')
+    .extra
+      - if booking.cleaning_materials_provided?
+        Cleaning stuff will be provided
+      - else
+        Bring your own cleaning stuff
+  .booking-deal
+    .price<
+      &pound;
+      = round_if_possible booking.cost
+    .controls
+      - if booking.declined?
+        %h2 Declined
+      - elsif booking.accepted?
+        %h2 Accepted
+        - if booking.cancellable?
+          = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
+      - else # neither declined, nor accepted
+        - if booking.missed?
+          %h2 You missed this job
+          (you have to accept or decline no later than 1 hour after we send you the sms)
+        - else
+          %p
+            = pluralize((booking.time_left / 1.minute).round, 'minute')
+            to make a decision
+          = button_to "Accept", accept_cleaner_booking_path(@cleaner, booking)
+          = button_to "Decline", decline_cleaner_booking_path(@cleaner, booking)

@@ -84,7 +84,7 @@ private
 
   def process_incoming
     self.booking, meaning = Booking.first_pending_for(self.from), SmsMeaning.new(self.text)
-    meaning.accepted? ? self.booking.confirm! : self.booking.decline! if self.booking and meaning.understood?
+    meaning.accepted? ? self.booking.accept! : self.booking.decline! if self.booking and meaning.understood?
     true
   end
 

@@ -1,3 +1,4 @@
+# Understands the format of a UK address
 class Address < ActiveRecord::Base
   
   belongs_to :postcode
@@ -8,5 +9,9 @@ class Address < ActiveRecord::Base
   validates_presence_of :city, :message => "^Please enter the city you live in"
   
   validates_presence_of :postcode
+
+  def to_a
+    [first_line, second_line, city, postcode.to_s]
+  end
   
 end

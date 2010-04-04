@@ -31,4 +31,12 @@ class PostcodeTest < ActiveSupport::TestCase
     assert_equal 'SE14', Postcode.build(:value => 'se145DN').area    
   end
   
+  test "postcode can be split" do
+    assert_equal ['E1W', '3TJ'],  Postcode.build(:value => 'e1w3tj').send(:split)
+  end
+  
+  test "postcode can be converted to string" do
+    assert_equal 'E1W 3TJ', Postcode.build(:value => 'e1w3tj').to_s
+  end
+  
 end

@@ -13,13 +13,7 @@ class Postcode < ActiveRecord::Base
   def value=(val)
     self[:value] = Postcode.normalize(val)
   end
-  
-  def area
-    return 'GIR' if value == 'GIR0AA'
-    value =~ /([a-z](?:[a-z]?\d{1,2}|\d[a-z]))\d[a-z]{2}/i 
-    $1
-  end    
-  
+    
   def self.find_by_normalized_value(val)
     find_by_value(normalize(val))
   end
@@ -28,7 +22,20 @@ class Postcode < ActiveRecord::Base
     find_or_create_by_value(normalize(val))
   end
   
+  def area
+    split.first
+  end
+  
+  def to_s
+    split.join ' '
+  end
+  
 private
+
+  def split
+    value =~ /(.+)(.{3})/i 
+    [$1, $2]
+  end      
 
   def geocode
     geo = Geokit::Geocoders::MultiGeocoder.geocode(value, :bias => 'uk')

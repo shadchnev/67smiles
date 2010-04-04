@@ -70,16 +70,19 @@
   padding = !column_interspace
   padding-top: 0
   
-.hourly-rate
+=big_orange_price
   color = !clay      
   font-size: 40px
   text-align: center
-  line-height: 100px
+  line-height: 100px  
+
+.hourly-rate
+  +big_orange_price
   .hour
     font-size: 15px
     color= !medium_gray
 
-.booking
+.make-a-booking
   text-align: center  
   input
     font-size: 150%      
@@ -141,6 +144,10 @@ body > #login-form
 #flash div.error
   border-left: 15px solid red
   border-top: 1px solid red
+  
+#flash div.warn
+  border-left: 15px solid orange
+  border-top: 1px solid orange
   
 div.fieldWithErrors
   display: inline

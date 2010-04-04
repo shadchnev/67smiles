@@ -128,11 +128,11 @@ li span {
     font-size: 15px;
     color: #999999; }
 
-.booking {
+.make-a-booking {
   text-align: center; }
-  .booking input {
+  .make-a-booking input {
     font-size: 150%; }
-  .booking .book-online {
+  .make-a-booking .book-online {
     height: 60px; }
 
 #calendar {
@@ -180,6 +180,10 @@ body > #login-form {
 #flash div.error {
   border-left: 15px solid red;
   border-top: 1px solid red; }
+
+#flash div.warn {
+  border-left: 15px solid orange;
+  border-top: 1px solid orange; }
 
 div.fieldWithErrors {
   display: inline; }
@@ -245,7 +249,7 @@ div.fieldWithErrors {
   background-color: #eaf4fd;
   margin: 10px 0;
   border-bottom: 1px solid #6ea7d1; }
-  #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .booking {
+  #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .make-a-booking {
     display: inline-block;
     height: 160px;
     width: 110px; }
@@ -269,7 +273,7 @@ div.fieldWithErrors {
     #cleaners .cleaner .details .introduction {
       width: 310px;
       color: #484848; }
-  #cleaners .cleaner .booking {
+  #cleaners .cleaner .make-a-booking {
     width: 180px; }
 
 #new-client #country-name {
@@ -285,7 +289,7 @@ div.fieldWithErrors {
     vertical-align: top; }
   #cleaner-summary #details #skills, #cleaner-summary #details #stats {
     width: 273px; }
-  #cleaner-summary .booking {
+  #cleaner-summary .make-a-booking {
     float: right; }
   #cleaner-summary #introduction, #cleaner-summary #stats {
     display: inline-block; }
@@ -393,6 +397,39 @@ div.fieldWithErrors {
   width: 75%; }
 #new-booking #submit {
   font-size: 150%; }
+
+.booking {
+  background-color: #eaf4fd;
+  margin: 10px 0;
+  border-bottom: 1px solid #6ea7d1; }
+
+.cleaners-booking {
+  padding: 0 10px; }
+  .cleaners-booking > div {
+    display: inline-block;
+    vertical-align: top; }
+  .cleaners-booking .personal-details {
+    width: 250px; }
+    .cleaners-booking .personal-details .client-name {
+      margin-top: 10px; }
+    .cleaners-booking .personal-details .client-contact-details {
+      padding: 0 0 10px 10px; }
+  .cleaners-booking .booking-details {
+    width: 250px;
+    padding-top: 10px; }
+    .cleaners-booking .booking-details .extra {
+      margin-top: 20px; }
+  .cleaners-booking .booking-deal {
+    width: 178px; }
+    .cleaners-booking .booking-deal .price {
+      color: #db530f;
+      font-size: 40px;
+      text-align: center;
+      line-height: 100px; }
+    .cleaners-booking .booking-deal .controls {
+      text-align: center; }
+      .cleaners-booking .booking-deal .controls > form {
+        margin-bottom: 15px; }
 
 .long-form > div {
   margin-bottom: 30px; }

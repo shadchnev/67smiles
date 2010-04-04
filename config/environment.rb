@@ -54,3 +54,4 @@ GATEWAY_NO_ERROR = 'testmode - nothing sent'
 GATEWAY_TEST_MODE = 1
 
 CLEANER_REPLY_TIMEOUT = 1.hour
+

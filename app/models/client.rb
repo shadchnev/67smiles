@@ -24,5 +24,12 @@ class Client < ActiveRecord::Base
     address.postcode.area
   end  
   
+  def email
+    contact_details.email
+  end
+  
+  def phone
+    contact_details.phone
+  end
   
 end

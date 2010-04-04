@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 12) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_line"
@@ -40,16 +40,13 @@ ActiveRecord::Schema.define(:version => 15) do
     t.datetime "end_time"
     t.boolean  "cleaning_materials_provided"
     t.boolean  "accepted"
+    t.boolean  "cancelled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cleaners", :force => true do |t|
     t.integer  "name_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "postcode_id"
-    t.integer  "contact_details_id"
     t.text     "description"
     t.integer  "minimum_hire"
     t.decimal  "rate",               :precision => 4, :scale => 2
@@ -59,6 +56,10 @@ ActiveRecord::Schema.define(:version => 15) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.integer  "contact_details_id"
+    t.integer  "postcode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "clients", :force => true do |t|
