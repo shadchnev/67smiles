@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   
   before_filter :find_both
   before_filter :authenticate, :except => :new
-  before_filter :find_booking, :only => [:accept, :cancel, :decline]
+  before_filter :find_booking_and_client, :only => [:accept, :cancel, :decline]
   before_filter :authorize_person, :only => [:index, :cancel]
   before_filter :authorize_client, :only => [:create]
   before_filter :authorize_cleaner, :only => [:accept, :decline]
@@ -89,9 +89,10 @@ private
     @cleaner == current_user.owner
   end
 
-  def find_booking
+  def find_booking_and_client
     @booking = Booking.find(params[:id]) if params[:id]    
     raise "Couldn't find a booking with id = #{params[:id]}" unless @booking
+    @client = @booking.client
   end
 
   def find_both

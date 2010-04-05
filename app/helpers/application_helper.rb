@@ -12,7 +12,7 @@ module ApplicationHelper
     when :login then link_to "Login", '#', :onclick => "showLoginPrompt(); return false;"    
     when :logout then link_to "Logout", user_sessions_path, :method => :delete
     when :cleaners_bookings then link_to "My Jobs", cleaner_bookings_path(current_user.owner)
-    when :clients_bookings then link_to "Bookings", client_bookings_path(current_user.owner)
+    when :clients_bookings then link_to "Bookings", "/client/#{current_user.owner.id}/bookings"
     end
   end  
   

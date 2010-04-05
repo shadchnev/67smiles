@@ -14,9 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cleaners, :collection => {:availability => :get}, :member => {:snap => :post, :delete_photo => :post} do |cleaners|
     cleaners.resources :bookings, :member => {:cancel => :post, :accept => :post, :decline => :post}
   end
-  map.resources :clients do |clients|
-    clients.resources :bookings, :member => {:cancel => :post}
-  end
+  map.resources :clients
+  map.connect 'clients/:client_id/bookings', :controller => "bookings", :action => "index"
   map.resources :reviews
   map.resource :user_sessions
   

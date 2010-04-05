@@ -71,12 +71,6 @@ class BookingsControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
     
-  test "cleaner cannot try to book a client - what a crazy idea" do
-    login @cleaner
-    get :new, {"client_id" => @client.id}
-    assert_redirected_to '/'
-  end
-  
   test "clients may create bookings" do
     login @client
     post :create, booking_params
@@ -139,14 +133,14 @@ class BookingsControllerTest < ActionController::TestCase
   test "client can cancel a booking" do
     booking = Booking.build!
     login booking.client
-    post :cancel, {"id" => booking.id, "client_id" => booking.client.id}
+    post :cancel, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
     assert_match /Booking was cancelled/, flash[:notice]
   end
     
   test "client cannot cancel a booking they don't own" do
     booking = Booking.build!
     login @client
-    post :cancel, {"id" => booking.id, "client_id" => booking.client.id}
+    post :cancel, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
     assert_match /not authorized/, flash[:warn]
   end
     
