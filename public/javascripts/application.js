@@ -334,7 +334,7 @@ function showLoginPrompt(error) {
         showLoginPrompt(data);
     }
     if (choice)
-      $.post('/user_sessions/create', {login: form.login, password: form.password}, callback);
+      $.post('/user_sessions', {login: form.login, password: form.password}, callback);
   }
   $.prompt(text, {buttons:{Ok: true, Cancel: false}, callback: callback});
   $(".jqicontainer input[type='text']").focus();

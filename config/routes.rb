@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :clients
   map.connect 'clients/:client_id/bookings', :controller => "bookings", :action => "index"
   map.resources :reviews
-  map.resource :user_sessions
+  map.resources :user_sessions
   
   map.resources :sms, :member => {:update => :post} # sms gateway requirement
   
