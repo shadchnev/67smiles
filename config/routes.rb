@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reviews
   map.resource :user_sessions
   
-  map.connect 'sms/update/:id', :controller => :sms, :action => :update, :conditions => {:method => :post} # sms gateway requirement
+  map.resources :sms, :member => {:update => :post} # sms gateway requirement
   
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
@@ -48,6 +48,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/:id.:format'
 end

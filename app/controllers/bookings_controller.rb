@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   before_filter :authorize_person, :only => [:index, :cancel]
   before_filter :authorize_client, :only => [:create]
   before_filter :authorize_cleaner, :only => [:accept, :decline]
+  before_filter :stop_cleaner, :only => [:new]
   
   def index    
     @cleaner ? cleaners_index : clients_index
@@ -76,6 +77,10 @@ private
     go_home unless client_authorized?
   end
   
+  def stop_cleaner
+    go_home if current_user and current_user.cleaner?
+  end
+  
   def client_authorized?
     @client == current_user.owner
   end
@@ -92,7 +97,6 @@ private
   def find_both
     @cleaner = Cleaner.find(params[:cleaner_id]) if params[:cleaner_id]
     @client  =  Client.find(params[:client_id])  if params[:client_id]
-    @client ||= current_user.owner if current_user and current_user.client?
     raise "Couldn't find neither client nor cleaner for a booking" unless @cleaner or @client
   end
   

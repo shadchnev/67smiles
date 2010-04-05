@@ -78,7 +78,7 @@ class Booking < ActiveRecord::Base
   
   # can still be cancelled
   def cancellable?
-    !cancelled? and (start_time - Time.now) > CANCELLATION_DEADLINE
+    accepted? and !cancelled? and (start_time - Time.now) > CANCELLATION_DEADLINE
   end
   
   def missed?
