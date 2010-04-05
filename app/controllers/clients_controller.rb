@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
   end
   
   def create
-    postcode = Postcode.find_or_create_by_normalized_value(params[:client][:address_attributes][:postcode_attributes][:value])
+    postcode = find_or_create_postcode
     params[:client][:address_attributes].delete(:postcode_attributes)
     params[:client][:user_attributes][:login] = params[:client][:contact_details_attributes][:email]
     @client = Client.new(params[:client])
@@ -22,6 +22,29 @@ class ClientsController < ApplicationController
       render(:action => :new)
     end
   end
+
+  def update
+    @client = Client.find(params[:id])
+    @client.address.postcode = find_or_create_postcode
+    params[:client][:address_attributes].delete(:postcode_attributes)
+    params[:client][:user_attributes][:login] = params[:client][:contact_details_attributes][:email]    
+    if @client.update_attributes(params[:client])
+      flash[:notice] = "Your profile has been updated."
+      redirect_to('/')
+    else
+      render(:action => :new)
+    end    
+  end
   
+  def edit
+    @client = Client.find(params[:id])
+    render :action => :new
+  end
+
+private
+
+  def find_or_create_postcode
+    Postcode.find_or_create_by_normalized_value(params[:client][:address_attributes][:postcode_attributes][:value])
+  end
 
 end

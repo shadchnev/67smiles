@@ -18,7 +18,7 @@ module Factory
       puts "#{obj.class} couldn't be saved: " + obj.errors.inspect
       raise e
     end
-    obj
+    obj.reload # reload gets rid of user.password in memory, which makes the model think we're changing the password and freak out otherwise
   end
 
   def factory_cleaner

@@ -1,5 +1,9 @@
 - f.fields_for :user do |f|
   .hint You will use your email to log in.
+  - if ask_for_old_password
+    #old-password
+      = f.password_field :old_password
+      Enter your current password
   #password
     = f.password_field :password
     Please use no less than 6 characters

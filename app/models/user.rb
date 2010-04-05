@@ -10,12 +10,29 @@ class User < ActiveRecord::Base
   
   belongs_to :owner, :polymorphic => true
   
+  validate :old_password_valid?, :if => Proc.new{|u| 
+    !u.new_record? and u.password and !u.password.empty?
+  }
+  
+  def old_password=(val)
+    @old_password = val
+  end
+  
+  def old_password
+  end
+  
   def client?
     owner.kind_of? Client
   end
   
   def cleaner?
     owner.kind_of? Cleaner
+  end
+  
+private
+
+  def old_password_valid?
+    errors.add(:old_password, "^Old password is invalid") unless valid_password?(@old_password)
   end
   
 end

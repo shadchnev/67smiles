@@ -14,7 +14,7 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :user
     
-  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them"
+  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record?}
   
   validates_presence_of :user
   
@@ -23,7 +23,7 @@ class Client < ActiveRecord::Base
   end
   
   def area
-    address.postcode.area
+    postcode.area
   end  
   
   def email
@@ -32,6 +32,10 @@ class Client < ActiveRecord::Base
   
   def phone
     contact_details.phone
+  end
+  
+  def postcode
+    address.postcode
   end
     
 end
