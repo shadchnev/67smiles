@@ -1,0 +1,19 @@
+- booking, client, cleaner = clients_booking, clients_booking.client, clients_booking.cleaner
+.booking.clients-booking
+  .photo<>
+    =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
+  .booking-details
+    %h2= cleaner.first_name
+    .cleaner-contact-details
+      %p==+#{cleaner.phone}
+      %p= mail_to cleaner.email
+    = render :partial => 'booking_details', :locals => {:booking => booking, :messages => clients_booking_messages(cleaner)}
+  .booking-deal
+    .price<
+      &pound;
+      = round_if_possible booking.cost
+    .controls
+      - if booking.cancellable?
+        = button_to "Cancel", cancel_client_booking_path(client, booking)
+      - elsif booking.cancelled?
+        %h2 Cancelled

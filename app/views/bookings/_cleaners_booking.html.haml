@@ -1,31 +1,20 @@
-- booking = cleaners_booking
+- booking, client, cleaner = cleaners_booking, cleaners_booking.client, cleaners_booking.cleaner
 .booking.cleaners-booking
   .personal-details  
     %h2.client-name
-      = booking.client.first_name
+      = client.first_name
     .client-contact-details
       %p.phone        
-        ==+#{booking.client.phone}
+        ==+#{client.phone}
       %p.email
-        = mail_to booking.client.email
+        = mail_to client.email
     .client-address
       - booking.address.to_a.each do |line|
         %p= line
       %p.map-link
         = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}"
   .booking-details
-    .date
-      %h3= booking.day.strftime '%d %B, %A'
-    .time
-      %h3
-        = booking.start_time.strftime('%H:%M')
-        &mdash;
-        = booking.end_time.strftime('%H:%M')
-    .extra
-      - if booking.cleaning_materials_provided?
-        Cleaning stuff will be provided
-      - else
-        Bring your own cleaning stuff
+    = render :partial => 'booking_details', :locals => {:booking => booking, :messages => cleaners_booking_messages(client)}
   .booking-deal
     .price<
       &pound;
@@ -43,6 +32,7 @@
           (you have to accept or decline no later than 1 hour after we send you the sms)
         - else
           %p
+            You have 
             = pluralize((booking.time_left / 1.minute).round, 'minute')
             to make a decision
           = button_to "Accept", accept_cleaner_booking_path(@cleaner, booking)

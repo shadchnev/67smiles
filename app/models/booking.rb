@@ -43,17 +43,17 @@ class Booking < ActiveRecord::Base
   
   def accept!
     self.accepted = true
-    save
+    save!
   end
   
   def decline!
     self.accepted = false
-    save
+    save!
   end
   
   def cancel!
     self.cancelled = true
-    save
+    save!
   end
   
   def address
@@ -78,7 +78,7 @@ class Booking < ActiveRecord::Base
   
   # can still be cancelled
   def cancellable?
-    (start_time - Time.now) < CANCELLATION_DEADLINE
+    !cancelled? and (start_time - Time.now) > CANCELLATION_DEADLINE
   end
   
   def missed?

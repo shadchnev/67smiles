@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     cleaners.resources :bookings, :member => {:cancel => :post, :accept => :post, :decline => :post}
   end
   map.resources :clients do |clients|
-    clients.resources :bookings
+    clients.resources :bookings, :member => {:cancel => :post}
   end
   map.resources :reviews
   map.resource :user_sessions

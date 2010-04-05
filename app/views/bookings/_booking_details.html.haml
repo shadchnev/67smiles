@@ -1,0 +1,12 @@
+.date
+  %h3= booking.day.strftime '%d %B, %A'
+.time
+  %h3
+    = booking.start_time.strftime('%H:%M')
+    &mdash;
+    = booking.end_time.strftime('%H:%M')
+.extra
+  - if booking.cleaning_materials_provided?
+    = messages[:cleaning_materials_provided]
+  - else
+    = messages[:cleaning_materials_not_provided]

@@ -4,5 +4,5 @@
   %p You will be able to accept, decline or cancel them on this page.
   %p We will notify you by sms when somebody offers you a job.
 - else
-  = render :partial => 'cleaners_bookings_subset', :locals => {:bookings => @cleaner.upcoming_bookings, :title => 'Upcoming jobs'}
-  = render :partial => 'cleaners_bookings_subset', :locals => {:bookings => @cleaner.past_bookings, :title => 'Past jobs'}
+  = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.upcoming_bookings, :title => 'Upcoming jobs', :partial => 'cleaners_booking'}
+  = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.past_bookings, :title => 'Past jobs', :partial => 'cleaners_booking'}

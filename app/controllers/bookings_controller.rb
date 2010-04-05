@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
   
-  before_filter :find_both,  :only => [:index, :cancel, :new, :create]
+  before_filter :find_both
+  before_filter :authenticate, :except => :new
   before_filter :find_booking, :only => [:accept, :cancel, :decline]
-  before_filter :authenticate
   before_filter :authorize_person, :only => [:index, :cancel]
-  before_filter :authorize_client, :only => [:new, :create]
+  before_filter :authorize_client, :only => [:create]
   before_filter :authorize_cleaner, :only => [:accept, :decline]
   
   def index    
@@ -37,14 +37,20 @@ class BookingsController < ApplicationController
   
   def accept
     @booking.accept!
+    flash[:notice] = 'Booking was accepted'
+    redirect_back_or_to '/'
   end
   
   def cancel
     @booking.cancel!
+    flash[:notice] = 'Booking was cancelled'
+    redirect_back_or_to '/'
   end
   
   def decline
     @booking.decline!    
+    flash[:notice] = 'Booking was declined'
+    redirect_back_or_to '/'
   end
   
 private
@@ -79,13 +85,14 @@ private
   end
 
   def find_booking
-    @booking = Booking.find(params[:booking_id]) if params[:booking_id]    
-    raise "Couldn't find a booking with id = #{params[:booking_id]}" unless @booking
+    @booking = Booking.find(params[:id]) if params[:id]    
+    raise "Couldn't find a booking with id = #{params[:id]}" unless @booking
   end
 
   def find_both
     @cleaner = Cleaner.find(params[:cleaner_id]) if params[:cleaner_id]
     @client  =  Client.find(params[:client_id])  if params[:client_id]
+    @client ||= current_user.owner if current_user and current_user.client?
     raise "Couldn't find neither client nor cleaner for a booking" unless @cleaner or @client
   end
   

@@ -25,13 +25,31 @@
 
 .booking
   +coloured-block-in-a-stack
-  
-.cleaners-booking
-  padding: 0 10px
-  
   & > div
     display: inline-block
     vertical-align: top
+  .booking-deal
+    width: 178px    
+    .price
+      +big_orange_price
+    .controls
+      text-align: center
+      & > form
+        margin-bottom: 15px
+    
+
+.clients-booking
+  .photo
+    width = !photo_width
+    line-height: 0
+  .booking-details
+    padding: 10px
+    width: 370px
+    .cleaner-contact-details
+      padding: 0 0 0 10px
+  
+.cleaners-booking
+  padding: 0 10px  
   
   .personal-details
     width: 250px
@@ -48,13 +66,4 @@
       margin-top: 20px
       
     
-  .booking-deal
-    width: 178px    
-    .price
-      +big_orange_price
-    .controls
-      text-align: center
-      & > form
-        margin-bottom: 15px
-    
-            
+          

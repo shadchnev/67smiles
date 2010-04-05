@@ -1,6 +1,6 @@
 %h1= title
 - unless bookings.empty?
-  = render :partial => 'cleaners_booking', :collection => bookings
+  = render :partial => partial, :collection => bookings
 - else
   Sorry, there are no
   = title.downcase

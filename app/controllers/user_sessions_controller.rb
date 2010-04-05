@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy if current_user_session
     flash[:notice] = "Looking forward to seeing you again!"
-    redirect_back_or_to '/'
+    redirect_to '/'
   end  
   
 end

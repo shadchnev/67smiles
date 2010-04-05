@@ -1,5 +1,7 @@
 class Cleaner < ActiveRecord::Base
   
+  include BookingSelectors
+  
   SEARCH_PROXIMITY = 10
   
   belongs_to :name
@@ -63,6 +65,10 @@ class Cleaner < ActiveRecord::Base
     contact_details.phone
   end
   
+  def email
+    contact_details.email
+  end
+  
   def area
     postcode.area
   end
@@ -75,12 +81,5 @@ class Cleaner < ActiveRecord::Base
     availability.available?(from, to)
   end
   
-  def upcoming_bookings
-    bookings.select{|b| b.start_time >= Time.now}
-  end
-  
-  def past_bookings
-    bookings.select{|b| b.start_time < Time.now}
-  end
   
 end

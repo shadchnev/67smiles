@@ -1,5 +1,7 @@
 class Client < ActiveRecord::Base
   
+  include BookingSelectors
+  
   belongs_to :name
   belongs_to :contact_details  
   belongs_to :address
@@ -31,5 +33,5 @@ class Client < ActiveRecord::Base
   def phone
     contact_details.phone
   end
-  
+    
 end
