@@ -10,6 +10,24 @@ class CleanersController < ApplicationController
     @cleaner.save ? redirect_to(cleaner_path(@cleaner)) : render(:action => :new)
   end
   
+  def update  
+    params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
+    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
+    @cleaner = Cleaner.find(params[:id])
+    @cleaner.postcode ||= existing_postcode    
+    if @cleaner.update_attributes(params[:cleaner]) 
+      flash[:notice] = 'Your profile has been updated.'
+      redirect_to(cleaner_path(@cleaner))
+    else
+      render(:action => :new)
+    end
+  end
+  
+  def edit
+    @cleaner = Cleaner.find(params[:id])
+    render :action => :new
+  end
+  
   def show
     @cleaner = Cleaner.find(params[:id])
     if current_user and current_user.client?

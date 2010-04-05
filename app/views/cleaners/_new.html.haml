@@ -1,9 +1,9 @@
 - form_for @cleaner, :html => {:multipart => true} do |cleaner_form|
   #new-cleaner.long-form  
     #intro
-      %h1 Join Innocent Cleaners
+      %h1= modification_title(controller.action_name)
     
-      %p You're just 60 seconds away from being available for hire on Innocent Cleaners!
+      %p= modification_subtitle(controller.action_name)
       
     - unless @cleaner.errors.empty?
       #errors
@@ -17,7 +17,7 @@
   
       #postcode
         - cleaner_form.fields_for :postcode do |postcode_fields|
-          = postcode_fields.text_field :value
+          = postcode_fields.text_field :value, :value => @cleaner.postcode
         e.g. W2 1TT
     
       - cleaner_form.fields_for :contact_details do |contact_details_fields|
@@ -49,13 +49,13 @@
         
       #hourly-rate
         &pound;
-        = cleaner_form.text_field :rate
-        for example, 7.5
+        = cleaner_form.text_field :rate, :value => "#{round_if_possible @cleaner.rate} (hourly rate)"
+        e.g., 7.5
     
       #surcharge
         &pound;
-        = cleaner_form.text_field :surcharge
-        for example, 2.5      
+        = cleaner_form.text_field :surcharge, :value => "#{round_if_possible @cleaner.surcharge} (cleaning materials surcharge)"
+        e.g., 2.5      
       .hint
         %h4
           You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
@@ -77,12 +77,13 @@
       %hr
       %h2 4. Choose a password
       
-      = render :partial => 'shared/new_account', :locals => {:f => cleaner_form}
+      = render :partial => 'shared/new_account', :locals => {:f => cleaner_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
       
-    = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
+    -if controller.action_name == 'new'
+      = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
     #submit
-      = cleaner_form.submit "Join Innocent Cleaners"
+      = cleaner_form.submit modification_submit(controller.action_name)
       
   
     

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 12) do
     t.boolean  "cleaning_materials_provided"
     t.boolean  "accepted"
     t.boolean  "cancelled"
+    t.decimal  "cost",                        :precision => 4, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

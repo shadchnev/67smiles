@@ -1,5 +1,7 @@
 = content_for :master_picture do
-  %img.with_right_border{:src => '/images/smiling_lady.png'}<>
+  #master-picture-container<>
+    #master-picture
+      %img.with_right_border{:src => '/images/smiling_lady.png'}<>
   
 = content_for :left_content do
   = render :partial => 'hints'

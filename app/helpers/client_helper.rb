@@ -2,12 +2,12 @@ module ClientHelper
   
   def client_modification_title(action)
     'Create a new account' if action == "new"
-    'Update your account' if action == "edit"
+    'Update your account' if action == "edit" or action == 'update'
   end
   
   def client_modification_submit(action)
     'Create an account' if action == "new"
-    'Update your account' if action == "edit"
+    'Update your account' if action == "edit" or action == 'update'
   end
   
   def client_modification_subtitle(action)

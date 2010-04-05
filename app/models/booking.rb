@@ -13,6 +13,8 @@ class Booking < ActiveRecord::Base
   validate :time_valid?
   validate :time_available?, :if => Proc.new{|b| b.errors.on_base.nil? and b.cleaner }
   
+  before_create :calculate_cost
+  
   CANCELLATION_DEADLINE = 1.hour
   
   def time_valid?
@@ -30,10 +32,6 @@ class Booking < ActiveRecord::Base
     else
       errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again") and false # to return false and prevent the object from being created
     end
-  end
-  
-  def cost
-    number_of_hours * (cleaner.rate + surcharge)
   end
   
   def self.first_pending_for(number)
@@ -91,7 +89,15 @@ class Booking < ActiveRecord::Base
     difference > 0 ? difference : 0
   end
   
+  def completed?
+    accepted? and !cancelled? and end_time < Time.now
+  end
+  
 private
+
+  def calculate_cost
+    self[:cost] = number_of_hours * (cleaner.rate + surcharge)
+  end
 
   def self.expired_cutoff
     (Time.now.utc - CLEANER_REPLY_TIMEOUT).to_s :db
@@ -111,7 +117,5 @@ private
       sms.text = SmsContent.booking_enquiry(self)
     end    
   end
-  
-  
   
 end

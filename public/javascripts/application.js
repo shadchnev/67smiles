@@ -242,16 +242,17 @@ function saveAvailabilityTableToHiddenFields() {
 
 function fillAvailabilityTable() {
   iterateOverAvailabilityCells(function(cells, days, dayIndex) {
-    var value = $('form#new_cleaner input#cleaner_availability_attributes_' + days[dayIndex]).val();
+    var value = $('form input#cleaner_availability_attributes_' + days[dayIndex]).val();
     for (var j=0; j <= MAXIMUM_WORKING_HOUR - MINIMUM_WORKING_HOUR; j++)
-      if ((value >> (MINIMUM_WORKING_HOUR + j)) & 1)
+      if ((value >> (MINIMUM_WORKING_HOUR + j)) & 1) {
         $(cells[j*DAYS_IN_A_WEEK + parseInt(dayIndex)]).addClass('ui-selected');
+      }
   });
 }
 
 function iterateOverAvailabilityCells(strategy) {
   var days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-  var cells = $('form#new_cleaner .selectable');
+  var cells = $('form .selectable');
   for (dayIndex in days)
     strategy(cells, days, dayIndex);  
 }
@@ -313,13 +314,15 @@ function selectRegistrationType() {
   $.prompt('Are you a homeowner or a cleaner?', {buttons: {Homeowner: 'homeowner', Cleaner: 'cleaner'}, callback: callback});
 }
 
-function collapseTopPart() {
+function collapseTopPart(delay) {
+  if (!delay)
+    delay = 500;
   var callback = function() {
     $('#find-a-cleaner').color_fade();
     $('#find-a-cleaner #where input').focus();    
   }
-  $('#left-column #master-picture-container').slideUp(500);
-  $('#right-column #content #summary-block').slideUp(500, callback);
+  $('#left-column #master-picture-container').slideUp(delay);
+  $('#right-column #content #summary-block').slideUp(delay, callback);
 }
 
 function showLoginPrompt(error) {

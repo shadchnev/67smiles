@@ -4,9 +4,9 @@ class SmsContent
   def self.booking_enquiry(booking)
     text = "Job:"
     text << booking.start_time.strftime(' %d %B ')
-    text << booking.start_time.to_s(:time)
+    text << booking.start_time.localtime.to_s(:time)
     text << ' - '
-    text << booking.end_time.to_s(:time)
+    text << booking.end_time.localtime.to_s(:time)
     text << (booking.cleaning_materials_provided? ? ' (cleaning stuff provided). ' : ' with own cleaning stuff. ')
     text << "Will pay #{round_if_possible booking.cost} pounds. "
     text << "Accept? Reply 'yes' or 'no' before #{booking_reply_deadline}"

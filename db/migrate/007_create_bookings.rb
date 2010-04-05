@@ -8,6 +8,7 @@ class CreateBookings < ActiveRecord::Migration
       t.boolean   :cleaning_materials_provided
       t.boolean   :accepted
       t.boolean   :cancelled
+      t.decimal   :cost, :precision => 4, :scale => 2
       t.timestamps
     end
   end

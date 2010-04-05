@@ -17,7 +17,7 @@
     = javascript_include_tag controller.controller_name if File.exists?("#{RAILS_ROOT}/public/javascripts/#{controller.controller_name}.js")
     %title
       Innocent Cleaners
-  %body
+  %body    
     #login-form
       Please enter your email and password
       %br
@@ -31,7 +31,7 @@
             %img{:src => "/images/logo_scruff.png"}
         #welcome-line
           - if current_user
-            ==Hi, #{link_to current_user.owner.first_name, (current_user.cleaner? ? cleaner_path(current_user.owner_id) : client_path(current_user.owner_id))}!
+            Hi, #{current_user.cleaner? ? link_to(current_user.owner.first_name, cleaner_path(current_user.owner)) : current_user.owner.first_name}!
         #navigation-container
           = render :partial => 'shared/navigation'      
       #flash
@@ -42,9 +42,7 @@
         - if flash[:error]
           .error= flash[:error]  
       #left-column<>
-        #master-picture-container<>
-          #master-picture
-            = yield :master_picture
+        = yield :master_picture
         #left-content
           = yield :left_content        
       #right-column<>

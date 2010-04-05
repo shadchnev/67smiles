@@ -30,7 +30,7 @@ class Cleaner < ActiveRecord::Base
   
   validates_presence_of :user
   
-  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them"
+  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record?}
   
   acts_as_mappable :through => :postcode
   
@@ -74,12 +74,19 @@ class Cleaner < ActiveRecord::Base
   end
   
   def rate=(value)
-    self[:rate] = (value.to_f * 10).round / 10.0
+    self[:rate] = (value.to_f * 10).round / 10.0 if value
+  end
+  
+  def surcharge=(value)
+    self[:surcharge] = (value.to_f * 10).round / 10.0 if value
   end
   
   def available?(from, to)    
     availability.available?(from, to)
   end
   
-  
+  def completed_jobs
+    bookings.select{|b| b.completed?}
+  end
+    
 end
