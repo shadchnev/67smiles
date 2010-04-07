@@ -25,7 +25,8 @@ Rails::Initializer.run do |config|
   config.gem "curb" # to send sms
   config.gem "paperclip" # to attach photos
   config.gem "mime-types", :lib => 'mime/types' # to detect the type of the uploaded photo
-  config.gem "haml"
+  config.gem "haml" # to enjoy creating views
+  config.gem "mysql" # to... well... use mysql :)
   
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
@@ -51,8 +52,6 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-GATEWAY_NO_ERROR = 'testmode - nothing sent'
-GATEWAY_TEST_MODE = 1
 
 CLEANER_REPLY_TIMEOUT = 1.hour
 
