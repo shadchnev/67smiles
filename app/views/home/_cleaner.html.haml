@@ -6,11 +6,12 @@
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
     .stats
       .jobs-done
-        %a{:href => '#'}
-          5 Jobs Done
+        %span= jobs_done cleaner
       .reviews
-        %a{:href => '#'}
-          2 Reviews
+        - if cleaner.has_reviews?
+          = link_to pluralize(cleaner.reviews.count, 'review'), cleaner_path(cleaner, :anchor => "reviews")
+        - else
+          No reviews yet
     .introduction
       = cleaner.description
   = render :partial => 'shared/booking', :locals => {:cleaner => cleaner}

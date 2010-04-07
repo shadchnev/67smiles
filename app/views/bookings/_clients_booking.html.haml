@@ -3,7 +3,7 @@
   .photo<>
     =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
   .booking-details
-    %h2= cleaner.first_name
+    %h2= link_to cleaner.first_name, cleaner_path(cleaner)
     .cleaner-contact-details
       %p==+#{cleaner.phone}
       %p= mail_to cleaner.email
@@ -12,8 +12,8 @@
     .price<
       &pound;
       = round_if_possible booking.cost
+    .status      
+      %h3= booking_status(booking)
     .controls
       - if booking.cancellable?
-        = button_to "Cancel", cancel_client_booking_path(client, booking)
-      - elsif booking.cancelled?
-        %h2 Cancelled
+        = button_to "Cancel", cancel_cleaner_booking_path(client, booking)

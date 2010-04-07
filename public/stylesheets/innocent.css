@@ -123,7 +123,7 @@ li span {
   color: #db530f;
   font-size: 40px;
   text-align: center;
-  line-height: 100px; }
+  line-height: 80px; }
   .hourly-rate .hour {
     font-size: 15px;
     color: #999999; }
@@ -133,7 +133,7 @@ li span {
   .make-a-booking input {
     font-size: 150%; }
   .make-a-booking .book-online {
-    height: 60px; }
+    height: 35px; }
 
 #calendar {
   font-size: 120%; }
@@ -187,6 +187,9 @@ body > #login-form {
 
 div.fieldWithErrors {
   display: inline; }
+
+#old-password {
+  margin-top: 30px; }
 
 #find-a-cleaner {
   padding-top: 5px; }
@@ -251,7 +254,6 @@ div.fieldWithErrors {
   border-bottom: 1px solid #6ea7d1; }
   #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .make-a-booking {
     display: inline-block;
-    height: 160px;
     width: 110px; }
   #cleaners .cleaner .photo {
     vertical-align: bottom;
@@ -268,11 +270,11 @@ div.fieldWithErrors {
       margin-top: 10px; }
     #cleaners .cleaner .details .stats {
       vertical-align: top;
-      width: 90px; }
+      width: 150px; }
     #cleaners .cleaner .details .introduction, #cleaners .cleaner .details .stats {
       display: inline-block; }
     #cleaners .cleaner .details .introduction {
-      width: 310px;
+      width: 250px;
       color: #484848; }
   #cleaners .cleaner .make-a-booking {
     width: 180px; }
@@ -412,7 +414,10 @@ div.fieldWithErrors {
       color: #db530f;
       font-size: 40px;
       text-align: center;
-      line-height: 100px; }
+      line-height: 80px; }
+    .booking .booking-deal .status {
+      margin: 10px 0;
+      text-align: center; }
     .booking .booking-deal .controls {
       text-align: center; }
       .booking .booking-deal .controls > form {

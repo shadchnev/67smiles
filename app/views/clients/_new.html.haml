@@ -15,7 +15,7 @@
       %hr
       %h2 1. Tell us about yourself
       - client_form.fields_for :name do |name_fields|
-        = render :partial => "shared/name", :locals => {:f => name_fields}
+        = render :partial => "shared/name", :locals => {:f => name_fields}        
     
       - client_form.fields_for :contact_details do |contact_details_fields|
         #email

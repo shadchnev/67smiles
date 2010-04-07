@@ -76,7 +76,11 @@ class Booking < ActiveRecord::Base
   
   # can still be cancelled
   def cancellable?
-    accepted? and !cancelled? and (start_time - Time.now) > CANCELLATION_DEADLINE
+    !cancelled? and !missed? and (start_time - Time.now) > CANCELLATION_DEADLINE
+  end
+  
+  def pending?
+    !accepted? and !declined? and !missed?
   end
   
   def missed?
@@ -91,6 +95,15 @@ class Booking < ActiveRecord::Base
   
   def completed?
     accepted? and !cancelled? and end_time < Time.now
+  end
+  
+  def to_partial_hash
+    {
+      :cleaning_materials_provided => cleaning_materials_provided,
+      :start_time => start_time.to_s,
+      :end_time => end_time.to_s,
+      :cleaner_id => cleaner.id
+    }
   end
   
 private

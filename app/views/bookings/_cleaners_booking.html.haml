@@ -12,28 +12,22 @@
       - booking.address.to_a.each do |line|
         %p= line
       %p.map-link
-        = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}"
+        = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}", :target => '_blank'
   .booking-details
     = render :partial => 'booking_details', :locals => {:booking => booking, :messages => cleaners_booking_messages(client)}
   .booking-deal
     .price<
       &pound;
       = round_if_possible booking.cost
+    .status
+      %h3= booking_status(booking)
     .controls
-      - if booking.declined?
-        %h2 Declined
-      - elsif booking.accepted?
-        %h2 Accepted
-        - if booking.cancellable?
-          = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
-      - else # neither declined, nor accepted
-        - if booking.missed?
-          %h2 You missed this job
-          (you have to accept or decline no later than 1 hour after we send you the sms)
-        - else
-          %p
-            You have 
-            = pluralize((booking.time_left / 1.minute).round, 'minute')
-            to make a decision
-          = button_to "Accept", accept_cleaner_booking_path(@cleaner, booking)
-          = button_to "Decline", decline_cleaner_booking_path(@cleaner, booking)
+      - if booking.accepted? and booking.cancellable?
+        = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
+      - elsif booking.pending?
+        %p
+          You have 
+          = pluralize((booking.time_left / 1.minute).round, 'minute')
+          to make a decision
+        = button_to "Accept", accept_cleaner_booking_path(@cleaner, booking)
+        = button_to "Decline", decline_cleaner_booking_path(@cleaner, booking)

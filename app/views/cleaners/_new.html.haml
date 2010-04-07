@@ -49,12 +49,12 @@
         
       #hourly-rate
         &pound;
-        = cleaner_form.text_field :rate, :value => "#{round_if_possible @cleaner.rate} (hourly rate)"
+        = cleaner_form.text_field :rate, :value => ("#{round_if_possible @cleaner.rate} (hourly rate)" unless @cleaner.new_record?)
         e.g., 7.5
     
       #surcharge
         &pound;
-        = cleaner_form.text_field :surcharge, :value => "#{round_if_possible @cleaner.surcharge} (cleaning materials surcharge)"
+        = cleaner_form.text_field :surcharge, :value => ("#{round_if_possible @cleaner.surcharge} (cleaning materials surcharge)" unless @cleaner.new_record?)
         e.g., 2.5      
       .hint
         %h4

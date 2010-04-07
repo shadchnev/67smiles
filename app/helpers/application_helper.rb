@@ -26,4 +26,16 @@ module ApplicationHelper
     elements
   end
   
+  def jobs_done(cleaner)
+    cleaner.completed_jobs.empty? ? "Never been hired before" : "#{cleaner.completed_jobs.size} jobs done"
+  end
+  
+  def booking_status(booking)
+    return "Missed by the cleaner" if booking.missed?
+    return 'Cancelled' if booking.cancelled?
+    return 'Declined' if booking.declined?
+    return 'Not accepted yet' unless booking.accepted?
+    return 'Accepted' if booking.accepted?
+  end  
+  
 end

@@ -14,10 +14,23 @@ class ClientsController < ApplicationController
     preprocess_params
     @client = Client.new(params[:client])
     @client.address.postcode = postcode    
-    if @client.save
-      flash[:notice] = "Thank you for the registration! Now you can book a cleaner in just couple of clicks."
+    message = "Thank you for the registration! Now you can book a cleaner in just couple of clicks."
+    begin
+      Client.transaction do
+        booking = Booking.new(session[:attempted_booking]) if session[:attempted_booking]
+        raise "fuck" unless @client.user.new_record? 
+        if booking
+          booking.client = @client
+          booking.save!       
+          message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
+        else
+          @client.save!          
+        end
+      end
+      flash[:notice] = message
       redirect_to('/')
-    else
+    rescue Exception => e
+      flash[:error] = e.message
       render(:action => :new)
     end
   end

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
   map.resources :cleaners, :collection => {:availability => :get}, :member => {:snap => :post, :delete_photo => :post} do |cleaners|
-    cleaners.resources :bookings, :member => {:cancel => :post, :accept => :post, :decline => :post}
+    cleaners.resources :bookings, :member => {:cancel => :post, :accept => :post, :decline => :post}, :collection => {:provisionally_create => :post}
   end
   map.resources :clients
   map.connect 'clients/:client_id/bookings', :controller => "bookings", :action => "index"

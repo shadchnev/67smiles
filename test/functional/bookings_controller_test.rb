@@ -11,6 +11,11 @@ class BookingsControllerTest < ActionController::TestCase
     @client = Client.build!
     UserSession.find.destroy # users are automatically logged in when created
   end
+  
+  test "a stranger can book a cleaner" do
+    post :provisionally_create, booking_params
+    assert_redirected_to :controller => :clients, :action => :new
+  end
  
   test "parameters are parsed properly" do
     login @client
@@ -23,6 +28,15 @@ class BookingsControllerTest < ActionController::TestCase
     assert_equal true, booking.cleaning_materials_provided
     assert_equal @cleaner.id, booking.cleaner.id
     assert_equal @client.id, booking.client.id
+  end
+  
+  test "'no cleaning materials' is parsed" do
+    login @client
+    updated_params = booking_params
+    updated_params["booking"]["cleaning_materials_provided"] = '0'
+    post :create, updated_params
+    booking = Booking.first
+    assert !booking.cleaning_materials_provided
   end
   
   test "cleaner can access their bookings" do

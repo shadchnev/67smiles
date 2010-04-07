@@ -19,4 +19,8 @@ module BookingHelper
     }
   end
   
+  def new_booking_form_url
+    current_user ? cleaner_bookings_path(@cleaner) : provisionally_create_cleaner_bookings_path(@cleaner)
+  end
+    
 end

@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
   
   before_filter :find_both
-  before_filter :authenticate, :except => :new
+  before_filter :authenticate, :except => [:new, :provisionally_create]
   before_filter :find_booking_and_client, :only => [:accept, :cancel, :decline]
   before_filter :authorize_person, :only => [:index, :cancel]
   before_filter :authorize_client, :only => [:create]
+  before_filter :authorize_stranger, :only => [:provisionally_create]
   before_filter :authorize_cleaner, :only => [:accept, :decline]
   before_filter :stop_cleaner, :only => [:new]
   
@@ -18,22 +19,14 @@ class BookingsController < ApplicationController
     @booking_date = (Time.now + 1.day).to_i # default value
   end
   
+  def provisionally_create
+    @booking = initialize_booking
+    offer_to_create_account
+  end
+  
   def create
-    @booking = Booking.new do |b|            
-      b.cleaner, b.client = @cleaner, @client
-      %w[start_time end_time].each do |t|
-        day, hour = params[:booking_date].to_i, params[:booking][t.to_sym].to_i*3600
-        b.send("#{t}=", Time.at(day + hour))
-      end      
-      b.cleaning_materials_provided = params[:booking][:cleaning_materials_provided] == '1'
-    end
-    if @booking.save
-      @booking.sms!
-      redirect_to(cleaner_path(@cleaner))
-      flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive an email from us when #{@cleaner.first_name} replies."
-    else
-      render(:action => :new)    
-    end
+    @booking = initialize_booking
+    try_to_save_booking
   end
   
   def accept
@@ -55,6 +48,33 @@ class BookingsController < ApplicationController
   end
   
 private
+  
+  def initialize_booking
+    Booking.new do |b|            
+      b.client = @client if @client
+      b.cleaner = @cleaner
+      %w[start_time end_time].each do |t|
+        day, hour = params[:booking_date].to_i, params[:booking][t.to_sym].to_i*3600
+        b.send("#{t}=", Time.at(day + hour))
+      end      
+      b.cleaning_materials_provided = params[:booking][:cleaning_materials_provided] == '1'
+    end    
+  end
+  
+  def offer_to_create_account
+    session[:attempted_booking] = @booking.to_partial_hash
+    redirect_to :controller => :clients, :action => :new
+  end
+
+  def try_to_save_booking
+    if @booking.save
+      @booking.sms!
+      redirect_to(cleaner_path(@cleaner))
+      flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive an email from us when #{@cleaner.first_name} replies."
+    else
+      render(:action => :new)    
+    end    
+  end
 
   def go_home(msg = 'You are not authorized to access this page')
     flash[:warn] = msg
@@ -75,6 +95,10 @@ private
   
   def authorize_client
     go_home unless client_authorized?
+  end
+  
+  def authorize_stranger
+    go_home if current_user
   end
   
   def stop_cleaner
@@ -98,6 +122,8 @@ private
   def find_both
     @cleaner = Cleaner.find(params[:cleaner_id]) if params[:cleaner_id]
     @client  =  Client.find(params[:client_id])  if params[:client_id]
+    # raise "client not found" unless @client
+    @client ||= current_user.owner if current_user and current_user.client?
     raise "Couldn't find neither client nor cleaner for a booking" unless @cleaner or @client
   end
   

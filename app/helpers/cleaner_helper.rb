@@ -5,7 +5,7 @@ module CleanerHelper
   end
   
   def modification_title(action)
-    "Join Innocent Cleaners" if action == 'new'
+    return "Join Innocent Cleaners" if action == 'new'
     "Edit your profile" if action == 'edit' or action == 'update'
   end
   
@@ -14,7 +14,7 @@ module CleanerHelper
   end
   
   def modification_submit(action)
-    "Join Innocent Cleaners" if action == 'new'
+    return "Join Innocent Cleaners" if action == 'new'
     "Update your profile" if action == 'edit' or action == 'update'    
   end
   

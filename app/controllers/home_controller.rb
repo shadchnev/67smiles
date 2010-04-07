@@ -47,12 +47,19 @@ private
     Date.today
   end
     
-  def default_selection    
-    location = Geokit::Geocoders::IpGeocoder.geocode($1) if request.env['REMOTE_ADDR'] =~ /((?:\d{1,3}\.){3}\d{1,3})/
+  def default_selection        
+    # begin
+    #   location = Geokit::Geocoders::IpGeocoder.geocode($1) if request.env['REMOTE_ADDR'] =~ /((?:\d{1,3}\.){3}\d{1,3})/
+    # rescue
+    #   location = nil    
+    # end
     params = {:limit => 20, :order => 'created_at desc'}
-    geo_params = params.merge({:origin => location, :within => 20}) if location.success and location.country_code == 'GB'
-    cleaners =  Cleaner.find(:all, geo_params)
-    cleaners.empty? ? Cleaner.find(:all, params) : cleaners
+    # if location and location.success and location.country_code == 'GB'
+    #   geo_params = params.merge({:origin => location, :within => 20}) 
+    #   cleaners =  Cleaner.find(:all, geo_params)
+    # end
+    # !cleaners ? Cleaner.find(:all, params) : cleaners
+    Cleaner.find :all, params
   end
 
   def search_params_present?

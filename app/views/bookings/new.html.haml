@@ -1,7 +1,7 @@
 = content_for :master_picture do
   #master-picture-container<>
     #master-picture
-      %img.with_right_border{:src => '/images/emma_profile.png'}<>
+      %img.with_right_border{:src => @cleaner.photo.url(:medium)}<>
   
 = content_for :left_content do
   = render :partial => 'hints'

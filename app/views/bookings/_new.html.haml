@@ -11,7 +11,7 @@
     When you submit the form, we'll text 
     = @booking.cleaner.first_name
     to confirm the availability and email you.
-  - form_for [@booking.cleaner, @booking] do |booking_form|
+  - form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
     #day
       %hr
       %h2 1. What day?

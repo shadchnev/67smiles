@@ -21,7 +21,7 @@
           Info
         %ul#info
           %li
-            %span= @cleaner.completed_jobs.empty? ? "Never been hired before" : "#{@cleaner.completed_jobs.size} jobs done"
+            %span= jobs_done @cleaner
           %li
             %span 
               Living in
