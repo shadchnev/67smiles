@@ -15,7 +15,7 @@
             auto:           true,
             fileExt:        '*.jpg;*.png;*.gif;*.tiff;*.bmp;*.jpeg',
             fileDesc:       'fileDesc text',
-            sizeLimit:      3000000,
+            sizeLimit:      10000000,
             onComplete:     function(event, queueId, fileObj, response, data) {
                               $('#master-picture #upload-picture').remove();
                               $('#master-picture').append($('<img id="profile-photo"/>'));
