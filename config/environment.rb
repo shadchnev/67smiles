@@ -24,7 +24,8 @@ Rails::Initializer.run do |config|
   config.gem "authlogic" # to authenticate users
   config.gem "curb" # to send sms
   config.gem "paperclip" # to attach photos
-  config.gem 'mime-types', :lib => 'mime/types' # to detect the type of the uploaded photo
+  config.gem "mime-types", :lib => 'mime/types' # to detect the type of the uploaded photo
+  config.gem "haml"
   
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
