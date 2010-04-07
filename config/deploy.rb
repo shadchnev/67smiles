@@ -30,3 +30,4 @@ namespace(:customs) do
 end
 
 after "deploy:symlink","customs:symlink"
+after "deploy:symlink","deploy:cleanup"
