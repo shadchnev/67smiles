@@ -28,3 +28,6 @@ config.action_mailer.delivery_method = :test
 # config.active_record.schema_format = :sql
 
 # ActiveRecord::Base.logger = Logger.new STDOUT
+
+GATEWAY_NO_ERROR = 'testmode - nothing sent'
+GATEWAY_TEST_MODE = 1
