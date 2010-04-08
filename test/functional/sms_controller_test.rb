@@ -7,10 +7,10 @@ class SmsControllerTest < ActionController::TestCase
   end
   
   test "can receive incoming sms" do
-    post :create, {'sender' => '447923374199', 'content' => 'yes', 'inNumber' => '447786202240'}
+    post :create, {'sender' => '447923374199', 'content' => 'yes', 'inNumber' => '447786201825'}
     assert sms = Sms.first
     assert_equal 'yes', sms.text
-    assert_equal '447786202240', sms.to
+    assert_equal '447786201825', sms.to
     assert_equal '447923374199', sms.from
     assert sms.incoming?
   end

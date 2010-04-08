@@ -18,10 +18,10 @@ class ClientsController < ApplicationController
     begin
       Client.transaction do
         booking = Booking.new(session[:attempted_booking]) if session[:attempted_booking]
-        raise "fuck" unless @client.user.new_record? 
         if booking
           booking.client = @client
-          booking.save!       
+          booking.save!
+          booking.sms!       
           message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
         else
           @client.save!          

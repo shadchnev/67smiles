@@ -11,7 +11,7 @@ class Sms < ActiveRecord::Base
   FROM_ID = 'InncntClnrs'
   USERNAME = 'evgeny.shadchnev@gmail.com'
   PASSWORD = '67mops!'
-  OWN_NUMBER = '447786202240'
+  OWN_NUMBER = '447786201825'
   
   belongs_to :booking
   
