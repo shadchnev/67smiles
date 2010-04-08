@@ -121,9 +121,7 @@ function prepareCalendar() {
   prepareCalendarForPage('#availability #calendar', function(date, instance) {updateDailyAvailability();});  
   var hiddenDate = $('#booking_date').val();
   if (hiddenDate) {
-    console.log('Syncing calendar to ' + hiddenDate);
     $('#calendar').datepicker('setDate', new Date(parseInt(hiddenDate)*1000));
-    console.log("Now calendar is " + $('#calendar').datepicker('getDate'));
   }  
 }
 
@@ -177,6 +175,7 @@ function minimumHire() {
 }
 
 function isAvailableIn(availability, date, period, complete) {  
+  if (date <= new Date()) return false;
   if (minimumHire() > period.end - period.start) return false;
   var mask = ((Math.pow(2, period.end - period.start)  - 1) << period.start);
   var partialAvailability = mask & availability[WEEKDAYS[date.getDay()]];

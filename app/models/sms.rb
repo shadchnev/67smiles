@@ -8,7 +8,6 @@ class Sms < ActiveRecord::Base
   UNDELIVERED_STATE = 'U'
   INCOMING_STATE = 'R' # I don't want to use self.to == own_number because the inbound number may change in the future
   GATEWAY_URL = 'http://www.txtlocal.com/sendsmspost.php'
-  # FROM_ID = 'InncntClnrs'
   USERNAME = 'evgeny.shadchnev@gmail.com'
   PASSWORD = '67mops!'
   OWN_NUMBER = '447786201825'
@@ -103,7 +102,6 @@ private
     [ f('json', 1),
       f('test', GATEWAY_TEST_MODE),
       f('message', text),
-      # f('from', FROM_ID),
       f('uname', USERNAME),
       f('pword', PASSWORD),
       f('selectednums', to),
