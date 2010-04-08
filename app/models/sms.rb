@@ -82,13 +82,15 @@ class Sms < ActiveRecord::Base
   
 private
 
-  def process_incoming
+  def process_incoming    
     self.booking, meaning = Booking.first_pending_for(self.from), SmsMeaning.new(self.text)
+    Rails.logger.info "Processing inbound sms. Booking is #{self.booking ? booking.id : 'not found'}, the job is #{'not' unless meaning.accepted?} accepted"
     meaning.accepted? ? self.booking.accept! : self.booking.decline! if self.booking and meaning.understood?
     true
   end
 
   def inbound!    
+    Rails.logger.info "Sms is inbound"
     self.state = INCOMING_STATE
   end
   
