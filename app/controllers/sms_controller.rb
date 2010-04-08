@@ -3,6 +3,8 @@ class SmsController < ApplicationController
   USER_ID = 'txtlocal'
   PASSWORD = 'innocentsms'
   
+  skip_before_filter :verify_authenticity_token
+  
   before_filter :authenticate
 
   def create
@@ -11,6 +13,7 @@ class SmsController < ApplicationController
       sms.to = params[:inNumber]
       sms.text = params[:content]
     end
+    Rails.logger.info "Got sms from #{params[:sender]} to #{params[:number]}: '#{params[:content]}'"
     render :text => ''
   end
   
@@ -24,6 +27,7 @@ class SmsController < ApplicationController
     else 
       raise "Invalid incoming request: status=#{params[:status]}"
     end
+    Rails.logger.info "About to save sms receipt for #{params[:id]}: status is #{params[:status]}"
     sms.save!    
     render :text => ''
   end
