@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^innocentcleaners\.com
+RewriteRule ^(.*)$ http://www.innocentcleaners.com/$1 [R=permanent,L] 
+
+RewriteCond %{HTTP_HOST} ^innocentcleaners\.com
+RewriteRule ^(.*)$ http://www.innocentcleaners.com/$1 [R=permanent,L]
