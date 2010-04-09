@@ -74,7 +74,7 @@ li span {
 #master-picture-container {
   display: table;
   width: 250px;
-  height: 311px;
+  height: 310px;
   text-align: center;
   border-bottom: 1px solid #6ea7d1; }
 
@@ -131,7 +131,7 @@ li span {
 .make-a-booking {
   text-align: center; }
   .make-a-booking input {
-    font-size: 150%; }
+    font-size: 125%; }
   .make-a-booking .book-online {
     height: 35px; }
 
@@ -198,7 +198,7 @@ div.fieldWithErrors {
   #find-a-cleaner input[type='text'] {
     width: 150px; }
   #find-a-cleaner input[type='submit'] {
-    font-size: 150%; }
+    font-size: 125%; }
   #find-a-cleaner #activities {
     text-align: left;
     margin-left: 50px; }
@@ -213,9 +213,7 @@ div.fieldWithErrors {
     height: 300px;
     display: inline-block;
     vertical-align: top;
-    border-left: 1px solid #6ea7d1;
-    border-top: 1px solid #6ea7d1;
-    border-top-left-radius: 20px;
+    background-image: url(/images/corner.png);
     padding: 5px 10px;
     width: 323px; }
   #welcome #clients {
@@ -226,15 +224,15 @@ div.fieldWithErrors {
   #welcome .step {
     font-size: 130%;
     color: #484848;
-    display: table;
-    margin: 15px 0;
+    display: block;
+    padding: 7px 0;
     text-align: left; }
   #welcome .icon, #welcome .step {
     height: 40px; }
   #welcome .title {
     font-size: 150%;
     color: #6ea7d1;
-    margin-top: 10px; }
+    margin: 15px 0; }
   #welcome .text {
     display: table-cell;
     padding-left: 15px; }
@@ -292,8 +290,6 @@ div.fieldWithErrors {
     vertical-align: top; }
   #cleaner-summary #details #skills, #cleaner-summary #details #stats {
     width: 273px; }
-  #cleaner-summary .make-a-booking {
-    float: right; }
   #cleaner-summary #introduction, #cleaner-summary #stats {
     display: inline-block; }
   #cleaner-summary #introduction {
@@ -399,7 +395,7 @@ div.fieldWithErrors {
   border-top: 1px solid #db530f;
   width: 75%; }
 #new-booking #submit {
-  font-size: 150%; }
+  font-size: 125%; }
 
 .booking {
   background-color: #eaf4fd;
@@ -458,4 +454,4 @@ div.fieldWithErrors {
 .long-form #terms-and-conditions input {
   margin-right: 10px; }
 .long-form #submit {
-  font-size: 150%; }
+  font-size: 125%; }

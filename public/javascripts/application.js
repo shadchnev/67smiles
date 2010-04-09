@@ -85,8 +85,10 @@ function isAvailableInSelectedTime() {
 function fillTimeSelectors() {
   if ($('#time-selectors').length == 0)
     return;
-  addDropdownOptionsToTimeSelector('#booking_start_time', MINIMUM_WORKING_HOUR, MAXIMUM_WORKING_HOUR - 1);
-  addDropdownOptionsToTimeSelector('#booking_end_time', MINIMUM_WORKING_HOUR + 1, MAXIMUM_WORKING_HOUR );
+  setTimeout(function() {
+    addDropdownOptionsToTimeSelector('#booking_start_time', MINIMUM_WORKING_HOUR, MAXIMUM_WORKING_HOUR - 1);
+    addDropdownOptionsToTimeSelector('#booking_end_time', MINIMUM_WORKING_HOUR + 1, MAXIMUM_WORKING_HOUR );      
+  }, 10)
 }
 
 function addDropdownOptionsToTimeSelector(selector, minimumTime, maximumTime) {
@@ -128,7 +130,7 @@ function prepareCalendar() {
 function haveDailyAvailability() {
   if ($('#daily-availability').length == 0)
     return;
-  $('#daily-availability').data('availability', JSON.parse($('#daily-availability #availability').val()));
+  $('#daily-availability').data('availability', $.parseJSON($('#daily-availability #availability').val()));
   addCostCalculationHandlers();
   updateBookingCost();      
   updateDailyAvailability();

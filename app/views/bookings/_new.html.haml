@@ -19,7 +19,7 @@
         %input{:type => 'hidden', :id => 'booking_date', :name => 'booking_date', :value => @booking_date}
         #calendar
         #hours
-          %h3 Available hours
+          %h3 #{@cleaner.first_name}'s availability
           = hidden_field_tag "minimum-hire", @booking.cleaner.minimum_hire
           = render :partial => 'shared/hours'
     
