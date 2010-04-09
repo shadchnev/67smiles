@@ -15,5 +15,10 @@ class SmsContentTest < ActiveSupport::TestCase
     assert_equal "Job: 22 March 12:00 - 16:00 (cleaning stuff provided). Will pay 45.20 pounds. Accept? Reply 'yes' or 'no' before 22:12", SmsContent.booking_enquiry(booking)
   end
   
+  test "booking accepted" do
+    booking = Booking.build!
+    assert_equal "Evita has accepted the booking for 29 March. Cleaning materials will be provided by Evita.", SmsContent.booking_accepted(booking)
+  end
+  
   
 end

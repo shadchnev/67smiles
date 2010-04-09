@@ -13,6 +13,12 @@ class SmsContent
     text
   end
   
+  def self.booking_accepted(booking)    
+    text = "#{booking.cleaner.first_name} has accepted the booking for #{booking.start_time.strftime('%d %B')}."
+    text << (booking.cleaning_materials_provided? ? ' You will be expected to provide cleaning materials.' : " Cleaning materials will be provided by #{booking.cleaner.first_name}.")
+    text
+  end
+  
 private
 
   def self.round_if_possible(val)

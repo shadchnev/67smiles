@@ -8,9 +8,10 @@ class ClientsControllerTest < ActionController::TestCase
     assert_equal postcode.id, Client.first.address.postcode.id
   end
   
-  test "a booking is created with a new cleaner if necessary" do
+  test "a booking is created with a new cleaner if necessary" do    
     cleaner = Cleaner.build!
     booking = Booking.build :cleaner => cleaner
+    Booking.any_instance.stubs(:send_text)
     session[:attempted_booking] = booking.to_partial_hash    
     assert_equal 0, Client.count
     assert_equal 0, Booking.count

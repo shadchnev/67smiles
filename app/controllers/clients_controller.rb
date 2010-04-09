@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
         if booking
           booking.client = @client
           booking.save!
-          booking.sms!       
+          booking.ask_cleaner!       
           message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
         else
           @client.save!          

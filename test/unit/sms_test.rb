@@ -2,6 +2,10 @@ require 'test_helper'
 
 class SmsTest < ActiveSupport::TestCase
   
+  def setup
+    silence_warnings {Sms.const_set('GATEWAY_NO_ERROR', nil)} # we pretend we're production in this respect since we're stubbing curl with a production reply    
+  end
+  
   test "can send messages" do    
     sms = Sms.new do |s|
       s.text = 'test'
@@ -9,14 +13,15 @@ class SmsTest < ActiveSupport::TestCase
     end
     sms.stubs(:update_state).returns(true)
     sms.save!
-    sms.stubs(:curl).returns(curl)
-    silence_warnings {Sms.const_set('GATEWAY_NO_ERROR', nil)} # we pretend we're production in this respect since we're stubbing curl with a production reply
+    sms.stubs(:curl).returns(curl('test'))
+    test_value = Sms.const_get('GATEWAY_NO_ERROR')
     assert sms.send :dispatch
     assert sms.outgoing?
   end
   
   test "incoming messages are processed (yes)" do
     booking = Booking.build!        
+    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_accepted(booking)))
     receive_sms!(booking.cleaner.phone, 'Yes!!!')
     assert booking.reload.accepted?
   end
@@ -37,11 +42,11 @@ private
     end
   end
   
-  def curl
+  def curl(text)
     curl = mock('curl')
     curl.responds_like Curl::Easy.new(Sms::GATEWAY_URL)
     curl.stubs(:http_post)                    
-    curl.stubs(:body_str).returns('{"TestMode":0,"MessageReceived":"test","Custom":"13","MessageCount":1,"From":"InncntClnrs","CreditsAvailable":"9","MessageLength":1,"NumberContacts":1,"CreditsRequired":1,"CreditsRemaining":8}')
+    curl.stubs(:body_str).returns('{"TestMode":0,"MessageReceived":"' + text + '","Custom":"13","MessageCount":1,"From":"InncntClnrs","CreditsAvailable":"9","MessageLength":1,"NumberContacts":1,"CreditsRequired":1,"CreditsRemaining":8}')
     curl    
   end
   

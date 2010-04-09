@@ -25,13 +25,8 @@ class Booking < ActiveRecord::Base
     errors.add_to_base("#{cleaner.first_name} is not available for hire at the specified time") unless cleaner.available?(start_time, end_time)
   end
   
-  def sms!
-    sms = booking_sms
-    if sms.dispatch
-      self.sms << sms
-    else
-      errors.add_to_base("Sorry, I couldn't send a text message. Please try booking again") and false # to return false and prevent the object from being created
-    end
+  def ask_cleaner!
+    send_text(cleaner, SmsContent.booking_enquiry(self))
   end
   
   def self.first_pending_for(number)
@@ -41,6 +36,7 @@ class Booking < ActiveRecord::Base
   
   def accept!
     self.accepted = true
+    send_text(client, SmsContent.booking_accepted(self))
     save!
   end
   
@@ -108,6 +104,15 @@ class Booking < ActiveRecord::Base
   
 private
 
+  def send_text(recipient, text)
+    sms = Sms.create do |s|
+      s.to = recipient.phone
+      s.text = text
+    end        
+    sms.dispatch or raise("Sorry, I couldn't send a text message. Recipient is a #{recipient.class.to_s} with id #{recipient ? recipient.id : 'n/a'}. Text: #{text}")
+    self.sms << sms      
+  end
+
   def calculate_cost
     self[:cost] = number_of_hours * (cleaner.rate + surcharge)
   end
@@ -124,11 +129,4 @@ private
     cleaning_materials_provided? ? 0 : cleaner.surcharge
   end
 
-  def booking_sms
-    Sms.create do |sms|
-      sms.to = cleaner.phone
-      sms.text = SmsContent.booking_enquiry(self)
-    end    
-  end
-  
 end

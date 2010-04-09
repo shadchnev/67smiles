@@ -68,7 +68,7 @@ private
 
   def try_to_save_booking
     if @booking.save
-      @booking.sms!
+      @booking.ask_cleaner!
       redirect_to(cleaner_path(@cleaner))
       flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive an email from us when #{@cleaner.first_name} replies."
     else
