@@ -10,7 +10,7 @@
   #intro
     When you submit the form, we'll text 
     = @booking.cleaner.first_name
-    to confirm the availability and email you.
+    to confirm the availability and text you.
   - form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
     #day
       %hr

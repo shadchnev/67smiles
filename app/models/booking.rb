@@ -42,6 +42,7 @@ class Booking < ActiveRecord::Base
   
   def decline!
     self.accepted = false
+    send_text(client, SmsContent.booking_declined(self))
     save!
   end
   

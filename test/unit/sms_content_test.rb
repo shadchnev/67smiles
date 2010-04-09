@@ -20,5 +20,10 @@ class SmsContentTest < ActiveSupport::TestCase
     assert_equal "Evita has accepted the booking for 29 March. Cleaning materials will be provided by Evita.", SmsContent.booking_accepted(booking)
   end
   
+  test "booking declined" do
+    booking = Booking.build!
+    assert_equal "Evita has declined the booking for 29 March. Please feel free to make another booking with Evita or any other cleaner.", SmsContent.booking_declined(booking)
+  end
+  
   
 end

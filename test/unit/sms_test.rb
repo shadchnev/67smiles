@@ -28,8 +28,10 @@ class SmsTest < ActiveSupport::TestCase
 
   test "incoming messages are processed (no)" do
     booking = Booking.build!
+    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_declined(booking)))
     receive_sms!(booking.cleaner.phone, 'no, sorry')
     assert !booking.reload.accepted?
+    assert booking.declined?
   end
 
 private
