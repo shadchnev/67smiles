@@ -63,6 +63,8 @@ li span {
 
 #left-column, #right-column {
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   vertical-align: top; }
 
 #left-content {
@@ -70,6 +72,8 @@ li span {
 
 #header {
   text-align: right; }
+  #header > * {
+    vertical-align: top; }
 
 #master-picture-container {
   display: table;
@@ -87,26 +91,32 @@ li span {
 .with_right_border {
   border-right: 1px solid #6ea7d1; }
 
-#navigation {
-  width: 200px;
-  float: right;
-  padding: 3px; }
-
 #welcome-line {
   vertical-align: top;
   width: 150px;
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   padding: 3px;
   text-align: right; }
 
 #navigation-container {
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   vertical-align: top;
-  text-align: right; }
+  text-align: right;
+  width: 250px; }
+
+#navigation {
+  float: right;
+  padding: 3px; }
 
 #logo {
   width: 480px;
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   text-align: left;
   margin-bottom: 25px; }
 
@@ -210,13 +220,15 @@ div.fieldWithErrors {
   #welcome * {
     vertical-align: middle; }
   #welcome #client-points, #welcome #cleaner-points {
-    height: 300px;
     display: inline-block;
+    zoom: 1;
+    *display: inline;
+    height: 300px;
     vertical-align: top;
     background-image: url(/images/corner.png);
     padding: 5px 10px;
     width: 323px; }
-  #welcome #clients {
+  #welcome #client-points {
     margin-right: 40px; }
   #welcome .icon {
     float: left;
@@ -234,8 +246,11 @@ div.fieldWithErrors {
     color: #6ea7d1;
     margin: 15px 0; }
   #welcome .text {
-    display: table-cell;
-    padding-left: 15px; }
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    margin-left: 15px;
+    line-height: 40px; }
   #welcome .action {
     font-size: 160%;
     margin-top: 30px;
@@ -252,6 +267,8 @@ div.fieldWithErrors {
   border-bottom: 1px solid #6ea7d1; }
   #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .make-a-booking {
     display: inline-block;
+    zoom: 1;
+    *display: inline;
     width: 110px; }
   #cleaners .cleaner .photo {
     vertical-align: bottom;
@@ -268,11 +285,13 @@ div.fieldWithErrors {
       margin-top: 10px; }
     #cleaners .cleaner .details .stats {
       vertical-align: top;
-      width: 150px; }
+      width: 160px; }
     #cleaners .cleaner .details .introduction, #cleaners .cleaner .details .stats {
-      display: inline-block; }
+      display: inline-block;
+      zoom: 1;
+      *display: inline; }
     #cleaners .cleaner .details .introduction {
-      width: 250px;
+      width: 240px;
       color: #484848; }
   #cleaners .cleaner .make-a-booking {
     width: 180px; }

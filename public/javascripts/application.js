@@ -1,11 +1,11 @@
-const MINIMUM_WORKING_HOUR = 6
-const MAXIMUM_WORKING_HOUR = 22
-const DAYS_IN_A_WEEK = 7
-const WEEKDAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-const MORNING = {start: MINIMUM_WORKING_HOUR, end: 12};
-const AFTERNOON= {start: 12, end: 18};
-const EVENING = {start: 18, end: MAXIMUM_WORKING_HOUR};
-
+// const keyword is not supported by IE: https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/const#Description
+var MINIMUM_WORKING_HOUR = 6;
+var MAXIMUM_WORKING_HOUR = 22;
+var DAYS_IN_A_WEEK = 7;
+var WEEKDAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+var MORNING = {start: MINIMUM_WORKING_HOUR, end: 12};
+var AFTERNOON= {start: 12, end: 18};
+var EVENING = {start: 18, end: MAXIMUM_WORKING_HOUR};
 
 $(document).ready(function() {
   prepareCalendar();
@@ -104,13 +104,13 @@ function addDropdownOption(selector, value, label, selected) {
 }
 
 function prepareCalendarForPage(selector, strategy) {
-  var common_options = {
+  var commonOptions = {
     firstDay: 1, 
-    dateFormat: 'dd MM',
+    dateFormat: 'dd MM'
   };
   $(selector).datepicker($.extend({
     onSelect: strategy
-  }, common_options));
+  }, commonOptions));
 }
 
 function prepareCalendar() {  
@@ -272,7 +272,7 @@ function iterateOverInputLabels(strategy) {
           '#new-client #phone input': 'Mobile phone',
           '#new-client #first-line input': 'First line of address',
           '#new-client #postcode input': 'Postcode',
-          '#new-client #email input': 'E-mail',
+          '#new-client #email input': 'E-mail'
           };
   for (var selector in selectors) {
     var value = selectors[selector];

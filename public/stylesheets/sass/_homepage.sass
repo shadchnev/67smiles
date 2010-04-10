@@ -29,14 +29,14 @@
     vertical-align: middle
  
   #client-points, #cleaner-points
-    height: 300px
-    display: inline-block
+    +cross_inline_block
+    height: 300px    
     vertical-align: top
     background-image: url(/images/corner.png)
     padding: 5px 10px
     width = !right_column / 2 - 50px
 
-  #clients
+  #client-points
     margin-right: 40px
 
   .icon
@@ -59,8 +59,9 @@
     margin: 15px 0
 
   .text
-    display: table-cell
-    padding-left: 15px
+    +cross_inline_block
+    margin-left: 15px
+    line-height: 40px
 
   .action
     font-size: 160%
@@ -79,7 +80,7 @@
     +coloured-block-in-a-stack
 
     .photo, .details, .make-a-booking
-      display: inline-block
+      +cross_inline_block
       / height = !photo_height
       width = !photo_width
     
@@ -102,13 +103,13 @@
         
       .stats
         vertical-align: top
-        width: 150px
+        width: 160px
         
       .introduction, .stats
-        display: inline-block
+        +cross_inline_block
       
       .introduction
-        width: 250px
+        width: 240px
         color = !black
 
     .make-a-booking

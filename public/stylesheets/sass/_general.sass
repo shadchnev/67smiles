@@ -1,5 +1,10 @@
 !summary_block_height = 310px
 
+=cross_inline_block
+  display: inline-block
+  zoom: 1
+  *display: inline
+  
 #container
   width = !master_width
   margin-left: auto
@@ -13,7 +18,7 @@
   text-align: left
   
 #left-column, #right-column
-  display: inline-block
+  +cross_inline_block
   vertical-align: top
   
 #left-content
@@ -21,6 +26,8 @@
 
 #header
   text-align: right
+  & > *
+    vertical-align: top
 
 #master-picture-container
   display: table
@@ -38,28 +45,29 @@
 .with_right_border
   border-right: 1px solid #{!dark_marine}
 
-#navigation
-  width: 200px
-  float: right
-  padding: 3px
-
 #welcome-line
   vertical-align: top
   width: 150px
-  display: inline-block
+  +cross_inline_block
   padding: 3px
   text-align: right
 
 #navigation-container
-  display: inline-block
+  +cross_inline_block
   vertical-align: top
   text-align: right
+  width: 250px
+
+#navigation
+  float: right
+  padding: 3px
+
 
 #logo
   width: 480px  
-  display: inline-block
+  +cross_inline_block
   text-align: left
-  margin-bottom: 25px
+  margin-bottom: 25px  
   
 #summary-block
   border-bottom: 1px solid #{!dark_marine}
