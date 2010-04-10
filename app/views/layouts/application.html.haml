@@ -2,14 +2,14 @@
 %html{:xmlns => 'http://www.w3.org/1999/xhtml'}
   %head
     %meta{"http-equiv" => "Content-type", "content"=>"text/html;charset=UTF-8"}
-    = stylesheet_link_tag 'reset-min.css' # yahoo
+    = stylesheet_link_tag 'reset-min' # yahoo
     = stylesheet_link_tag 'innocent'
     = stylesheet_link_tag 'impromptu'
     = stylesheet_link_tag 'uploadify'
     = stylesheet_link_tag 'jquery-ui/jquery-ui-1.7.2.custom'
 
     = javascript_include_tag 'jquery-1.4.2.min'
-    = javascript_include_tag 'jquery-ui-1.7.2.custom.min'
+    = javascript_include_tag 'jquery-ui-1.8.custom.min'
     = javascript_include_tag 'jquery-impromptu.3.0.min'
     = javascript_include_tag 'jquery.color_fade'
     = javascript_include_tag 'swfobject.js'
@@ -18,7 +18,8 @@
     = javascript_include_tag 'application'
     %title
       Innocent Cleaners
-  %body    
+  %body
+    = render :partial => 'home/ie6sucks'
     #login-form
       Please enter your email and password
       %br

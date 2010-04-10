@@ -31,10 +31,12 @@ h3 {
 p {
   margin: 5px 0; }
 
-input[type='text'], input[type='password'] {
+input[type='password'] {
   border: 1px solid #6ea7d1;
-  font-size: 110%;
   color: #6ea7d1; }
+
+input[type='submit'], input[type='button'] {
+  padding: 3px 7px; }
 
 ul {
   margin-left: 20px; }
@@ -140,8 +142,6 @@ li span {
 
 .make-a-booking {
   text-align: center; }
-  .make-a-booking input {
-    font-size: 125%; }
   .make-a-booking .book-online {
     height: 35px; }
 
@@ -205,10 +205,6 @@ div.fieldWithErrors {
   padding-top: 5px; }
   #find-a-cleaner > form > div {
     margin-bottom: 25px; }
-  #find-a-cleaner input[type='text'] {
-    width: 150px; }
-  #find-a-cleaner input[type='submit'] {
-    font-size: 125%; }
   #find-a-cleaner #activities {
     text-align: left;
     margin-left: 50px; }
