@@ -209,7 +209,7 @@ div.fieldWithErrors {
   text-align: center; }
   #welcome * {
     vertical-align: middle; }
-  #welcome #clients, #welcome #cleaners {
+  #welcome #client-points, #welcome #cleaner-points {
     height: 300px;
     display: inline-block;
     vertical-align: top;

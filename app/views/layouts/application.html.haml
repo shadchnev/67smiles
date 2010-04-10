@@ -1,5 +1,5 @@
 !!! Strict
-%html
+%html{:xmlns => 'http://www.w3.org/1999/xhtml '}
   %head
     = stylesheet_link_tag 'reset-min.css' # yahoo
     = stylesheet_link_tag 'innocent'
@@ -28,7 +28,7 @@
       #header<>
         #logo
           %a{:href => '/'}
-            %img{:src => "/images/logo_scruff.png"}
+            %img{:src => "/images/logo_scruff.png", :alt => "Innocent Cleaners Logo"}
         #welcome-line
           - if current_user
             Hi, #{current_user.cleaner? ? link_to(current_user.owner.first_name, cleaner_path(current_user.owner)) : current_user.owner.first_name}!
