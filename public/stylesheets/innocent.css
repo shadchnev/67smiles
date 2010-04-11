@@ -45,7 +45,7 @@ li {
   list-style-type: square;
   color: #db530f;
   font-size: 18px;
-  line-height: 16px; }
+  line-height: 20px; }
 
 li span {
   color: #484848;
@@ -78,14 +78,14 @@ li span {
     vertical-align: top; }
 
 #master-picture-container {
-  display: table;
   width: 250px;
   height: 310px;
   text-align: center;
   border-bottom: 1px solid #6ea7d1; }
 
 #master-picture {
-  display: table-cell;
+  position: relative;
+  height: 310px;
   text-align: right;
   vertical-align: bottom;
   line-height: 0; }
@@ -302,6 +302,8 @@ div.fieldWithErrors {
   #cleaner-summary #details > div {
     margin-top: 10px;
     display: inline-block;
+    zoom: 1;
+    *display: inline;
     vertical-align: top; }
   #cleaner-summary #details #skills, #cleaner-summary #details #stats {
     width: 273px; }
@@ -383,15 +385,16 @@ div.fieldWithErrors {
   line-height: 20px; }
 
 .floating-button {
-  position: relative;
+  position: absolute;
   right: 0px;
-  float: right;
+  bottom: 0;
   z-index: 3;
   display: none; }
 
 #cleaner-photo {
-  left: 16px;
-  position: relative; }
+  right: 0;
+  position: absolute;
+  bottom: 0; }
 
 #new-booking .hourly-rate {
   float: right; }

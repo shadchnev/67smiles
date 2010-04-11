@@ -11,11 +11,11 @@
         %h3
           I'm happy to help you with
         %ul#list
-        - {:domestic_cleaning => 'Domestic Cleaning'}.each_pair do |key, value|
-          - if @cleaner.skills.send(key)
-            %li 
-              %span 
-                = value
+          - {:domestic_cleaning => 'Domestic Cleaning'}.each_pair do |key, value|
+            - if @cleaner.skills.send(key)
+              %li 
+                %span 
+                  = value
       #stats
         %h3
           Info

@@ -130,7 +130,7 @@ function prepareCalendar() {
 function haveDailyAvailability() {
   if ($('#daily-availability').length == 0)
     return;
-  $('#daily-availability').data('availability', $.parseJSON($('#daily-availability #availability').val()));
+  $('#daily-availability').data('availability', $.parseJSON($('#daily-availability #availability-json').val()));
   addCostCalculationHandlers();
   updateBookingCost();      
   updateDailyAvailability();
@@ -141,7 +141,7 @@ function setCorrectTimeSelectorValues() {
   if (!isAvailableInSelectedTime()) {
     var availability =  $('#daily-availability').data('availability');
     var date = $("#calendar").datepicker('getDate');
-    var selected_availability = availability[WEEKDAYS[date.getDay()]];
+    var selected_availability = availability[WEEKDAYS[date.getDay()]];    
     var first_available_hour;
     for (var j=MINIMUM_WORKING_HOUR; j <= MAXIMUM_WORKING_HOUR; j++) {
       if (selected_availability >> j & 1) {

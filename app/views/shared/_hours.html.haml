@@ -1,5 +1,5 @@
 #daily-availability
-  = hidden_field_tag :availability, @cleaner.availability.to_hash.to_json
+  = hidden_field_tag "availability-json", @cleaner.availability.to_hash.to_json
   #morning
     %h3
       Morning

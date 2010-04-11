@@ -7,14 +7,11 @@
   #details
     & > div
       margin-top: 10px
-      display: inline-block
+      +cross_inline_block
       vertical-align: top
     #skills, #stats
       width = !right_column / 2 - 100px        
-  
-  / .make-a-booking
-    / float: right
-    
+      
   #introduction, #stats
     display: inline-block
   
@@ -104,12 +101,14 @@
   line-height: 20px
 
 .floating-button
-  position: relative
+  position: absolute
   right: 0px
-  float: right
+  bottom: 0
+  / float: right
   z-index: 3
   display: none
   
 #cleaner-photo
-  left: 16px
-  position: relative
+  right: 0
+  position: absolute
+  bottom: 0
