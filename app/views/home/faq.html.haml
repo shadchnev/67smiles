@@ -1,0 +1,12 @@
+= content_for :master_picture do
+  #master-picture-container<>
+    #master-picture
+      %img{:src => '/images/stock/lady_smiling.png', :alt => "Smiling lady"}
+
+= content_for :left_content do    
+  = render :partial => "contact_us"
+  
+#right-container
+  #faq
+    %h2 Question
+    %p answer
