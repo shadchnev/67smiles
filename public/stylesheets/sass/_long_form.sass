@@ -5,9 +5,13 @@
   & > div > div
     margin-bottom: 15px
     padding-left: 20px
+  
+  #name div
+    vertical-align: middle
 
   #honorific, #first-name, #last-name
-    display: inline-block
+    +cross_inline_block
+    margin-right: 3px
     
   & input[type='text']
     width: 250px

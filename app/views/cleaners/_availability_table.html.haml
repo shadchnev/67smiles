@@ -4,7 +4,7 @@
     - days = %w(&nbsp; Mon Tue Wed Thu Fri Sat Sun)
     - for hour in hours
       - for day in days
-        - cell = day == days[0] ? '%2s:00' % hour : '&nbsp;'
+        - cell = day == days[0] ? '%2s:00' % hour : ''
         - klass = (day == days[0] || hour == hours[0]) ? 'non-selectable' : 'selectable'
         %li{:class => klass}
           = hour == hours[0] ? day : cell

@@ -2,7 +2,7 @@
   #upload-picture-hint
     You haven't uploaded your picture. Upload your photo to show up higher in searches!
   #upload-picture-controls
-    No pic!
+    Upload a photo!
 :ruby
   print %Q[
     <script type='text/javascript'> 
@@ -17,17 +17,20 @@
             fileDesc:       'fileDesc text',
             sizeLimit:      10000000,
             onComplete:     function(event, queueId, fileObj, response, data) {
-                              $('#master-picture #upload-picture').remove();
-                              $('#master-picture').append($('<img id="profile-photo"/>'));
-                              $('#master-picture #profile-photo').attr('src', response);
-                              $('#master-picture #profile-photo').addClass('with_right_border');
-                              prepareDeletePhoto();
+                              setTimeout(function() {
+                                $('#master-picture #upload-picture').remove();
+                                $('#master-picture').append($('<img id="cleaner-photo"/>'));
+                                $('#master-picture #cleaner-photo').attr('src', response);
+                                $('#master-picture #cleaner-photo').addClass('with_right_border');
+                                $('#delete-photo').css('display', 'inline');
+                              }, 50);
+                              return true;
                             },
             fileDataName:   'photo[file]',
             scriptData:     {'#{session_key_name}': '#{u cookies[session_key_name]}',
                               'authenticity_token': encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')
                             }
-          });
+          });          
         });
       //]]>
     </script>

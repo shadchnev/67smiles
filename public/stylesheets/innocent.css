@@ -31,12 +31,13 @@ h3 {
 p {
   margin: 5px 0; }
 
-input[type='password'] {
+input[type='text'], input[type='password'] {
   border: 1px solid #6ea7d1;
   color: #6ea7d1; }
 
 input[type='submit'], input[type='button'] {
-  padding: 3px 7px; }
+  padding: 3px 7px;
+  *padding: 0; }
 
 ul {
   margin-left: 20px; }
@@ -334,7 +335,7 @@ div.fieldWithErrors {
 
 #new-cleaner #description textarea {
   width: 400px;
-  height: 50px; }
+  height: 100px; }
 #new-cleaner #skills .fieldWithErrors, #new-cleaner #terms-and-conditions .fieldWithErrors {
   display: inline; }
 #new-cleaner #set-availability {
@@ -465,8 +466,13 @@ div.fieldWithErrors {
 .long-form > div > div {
   margin-bottom: 15px;
   padding-left: 20px; }
+.long-form #name div {
+  vertical-align: middle; }
 .long-form #honorific, .long-form #first-name, .long-form #last-name {
-  display: inline-block; }
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  margin-right: 3px; }
 .long-form input[type='text'] {
   width: 250px; }
 .long-form #terms-and-conditions input {

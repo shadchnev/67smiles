@@ -216,7 +216,15 @@ function addFormSubmitHandlers() {
 }
 
 function prepareAvailabilityTable() {  
-  $("#set-availability ul").selectable({filter: 'li.selectable'});  
+  $("#set-availability ul").selectable({filter: 'li.selectable', stop: function(event, ui) {
+    // for some reason that didn't become obvious to me after an hour of debugging,
+    // IE (as opposed to other browsers) doesn't release the ctrl key after the selection.
+    // Though this behaviour cannot be seen on the jquery ui website and, therefore, must be due to
+    // a bug in my code, I couldn't find it. However, setting the focus to an input field prevents the
+    // ctrl key from being stuck. Ugly. Ugly.
+    if ($.browser.msie)
+      $('#cleaner_user_attributes_password').focus();
+  }});  
 }
 
 function prepareFormFields() {
