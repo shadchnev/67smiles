@@ -48,7 +48,7 @@ function updateBookingCost() {
   var timeDiff = timeTo - timeFrom;
 
   if (timeDiff <= 0)
-    error = 'Please correct the time';
+    error = 'Please select available time';
   else {
     if (!isAvailableInSelectedTime())
       error = 'The selected time is not available';
@@ -327,10 +327,10 @@ function collapseTopPart(delay) {
   if (!delay)
     delay = 500;
   var callback = function() {
-    $('#find-a-cleaner').color_fade();
+    $('#find-a-cleaner #where').fadeOut().fadeIn();
     $('#find-a-cleaner #where input').focus();    
   }
-  $('#left-column #master-picture-container').slideUp(delay);
+  $('#left-column #master-picture-container, #left-column #master-picture').slideUp(delay);
   $('#right-column #content #summary-block').slideUp(delay, callback);
 }
 

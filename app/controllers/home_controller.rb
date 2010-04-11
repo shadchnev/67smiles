@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     begin
       instantiate_query_params
       @cleaners = suitable_cleaners if search?
+      @skills = {:domestic_cleaning => true}
     rescue Exception => e
       flash.now[:error] = e.message 
     ensure

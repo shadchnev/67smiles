@@ -2,7 +2,6 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new(:login => params[:login], :password => params[:password])
-    puts @user_session.inspect
     if @user_session.save
       render :text => 'success'
     else

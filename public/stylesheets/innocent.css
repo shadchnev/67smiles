@@ -295,8 +295,11 @@ div.fieldWithErrors {
 
 #new-client #country-name {
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   width: 250px;
-  border: 1px solid #484848; }
+  border: 1px solid #484848;
+  *margin-right: 5px; }
 
 #cleaner-summary {
   padding: 0 20px; }
@@ -308,8 +311,6 @@ div.fieldWithErrors {
     vertical-align: top; }
   #cleaner-summary #details #skills, #cleaner-summary #details #stats {
     width: 273px; }
-  #cleaner-summary #introduction, #cleaner-summary #stats {
-    display: inline-block; }
   #cleaner-summary #introduction {
     height: 85px;
     overflow: hidden;
@@ -373,16 +374,14 @@ div.fieldWithErrors {
   margin-bottom: 10px; }
 
 #upload-picture {
-  display: inline-block;
-  width: 228px;
+  width: 250px;
   height: 310px;
   text-align: center;
   border-right: 1px solid #6ea7d1; }
 
 #upload-picture-hint {
-  margin-top: 100px;
+  padding-top: 100px;
   margin-bottom: 20px;
-  display: inline-block;
   line-height: 20px; }
 
 .floating-button {
@@ -401,12 +400,26 @@ div.fieldWithErrors {
   float: right; }
 #new-booking #calendar {
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   width: 300px;
   padding-left: 0; }
 #new-booking #hours {
   display: inline-block;
+  zoom: 1;
+  *display: inline;
   vertical-align: top;
   text-align: center; }
+#new-booking #time-selectors #end-time {
+  margin: 0 20px 0 5px; }
+#new-booking #time-selectors #start-time {
+  margin: 0 5px 0 0; }
+#new-booking #time-selectors #start-time, #new-booking #time-selectors #end-time {
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+#new-booking #time-selectors select {
+  *width: 60px; }
 #new-booking #cost {
   font-size: 200%;
   color: #db530f;
@@ -416,12 +429,17 @@ div.fieldWithErrors {
 #new-booking #submit {
   font-size: 125%; }
 
+#upcoming {
+  margin-bottom: 20px; }
+
 .booking {
   background-color: #eaf4fd;
   margin: 10px 0;
   border-bottom: 1px solid #6ea7d1; }
   .booking > div {
     display: inline-block;
+    zoom: 1;
+    *display: inline;
     vertical-align: top; }
   .booking .booking-deal {
     width: 178px; }
@@ -450,19 +468,19 @@ div.fieldWithErrors {
 .cleaners-booking {
   padding: 0 10px; }
   .cleaners-booking .personal-details {
-    width: 250px; }
+    width: 200px; }
     .cleaners-booking .personal-details .client-name {
       margin-top: 10px; }
     .cleaners-booking .personal-details .client-contact-details {
       padding: 0 0 10px 10px; }
   .cleaners-booking .booking-details {
-    width: 250px;
+    width: 300px;
     padding-top: 10px; }
     .cleaners-booking .booking-details .extra {
       margin-top: 20px; }
 
 .long-form > div {
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 .long-form > div > div {
   margin-bottom: 15px;
   padding-left: 20px; }

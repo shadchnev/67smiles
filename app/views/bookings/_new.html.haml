@@ -1,17 +1,17 @@
 - unless @booking.errors.empty?
   #errors
     = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
-#new-booking.long-form
-  %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
-  = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
-  %h1
-    Hire
-    = @booking.cleaner.first_name
-  #intro
-    When you submit the form, we'll text 
-    = @booking.cleaner.first_name
-    to confirm the availability and text you.
-  - form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
+- form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
+  #new-booking.long-form
+    %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
+    = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
+    %h1
+      Hire
+      = @booking.cleaner.first_name
+    #intro
+      When you submit the form, we'll text 
+      = @booking.cleaner.first_name
+      to confirm the availability and text you.
     #day
       %hr
       %h2 1. What day?
@@ -26,12 +26,14 @@
     #time
       %hr
       %h2 2. What time?
-      #time-selectors
-        = hidden_field_tag :booking_start_time_value, @booking.start_time ? @booking.start_time.localtime.hour : nil
-        = booking_form.select :start_time, []
-        &mdash;
-        = hidden_field_tag :booking_end_time_value, @booking.end_time ? @booking.end_time.localtime.hour : nil
-        = booking_form.select :end_time, []
+      = hidden_field_tag :booking_start_time_value, @booking.start_time ? @booking.start_time.localtime.hour : nil
+      = hidden_field_tag :booking_end_time_value, @booking.end_time ? @booking.end_time.localtime.hour : nil
+      #time-selectors<>
+        #start-time<>
+          = booking_form.select :start_time, []
+        &nbsp;&mdash;&nbsp;
+        #end-time<>
+          = booking_form.select :end_time, []
         = "Minimum #{@booking.cleaner.minimum_hire} hour#{'s' if @booking.cleaner.minimum_hire > 1}"
     #cleaning-materials
       %hr

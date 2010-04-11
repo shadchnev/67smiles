@@ -58,10 +58,8 @@ class CleanersController < ApplicationController
   
   def delete_photo
     @cleaner.photo = nil
-    puts "#{@cleaner.first_name} has photo: #{@cleaner.photo}"
     @cleaner.save!
     @cleaner.reload
-    puts "#{@cleaner.first_name} has photo: #{@cleaner.photo}"
     render :text => ''
   end
   

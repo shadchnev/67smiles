@@ -3,5 +3,7 @@
   %p This page will contain all bookings you will make.
   %p You will be able to view cleaners' details or cancel the bookings.
 - else
-  = render :partial => 'bookings_subset', :locals => {:bookings => @client.upcoming_bookings, :title => 'Upcoming bookings', :partial => 'clients_booking'}
-  = render :partial => 'bookings_subset', :locals => {:bookings => @client.past_bookings, :title => 'Past bookings', :partial => 'clients_booking'}
+  #upcoming
+    = render :partial => 'bookings_subset', :locals => {:bookings => @client.upcoming_bookings, :title => 'Upcoming bookings', :partial => 'clients_booking'}
+  #past
+    = render :partial => 'bookings_subset', :locals => {:bookings => @client.past_bookings, :title => 'Past bookings', :partial => 'clients_booking'}

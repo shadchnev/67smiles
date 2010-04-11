@@ -4,14 +4,25 @@
     float: right
 
   #calendar
-    display: inline-block
+    +cross_inline_block
     width: 300px
     padding-left: 0
 
   #hours
-    display: inline-block
+    +cross_inline_block
     vertical-align: top
     text-align: center
+  
+  #time-selectors
+    #end-time
+      margin: 0 20px 0 5px
+    #start-time
+      margin: 0 5px 0 0 
+    #start-time, #end-time
+      +cross_inline_block
+    & select
+      *width: 60px
+      
 
   #cost
     font-size: 200%
@@ -23,10 +34,13 @@
   #submit
     font-size: 125%
 
+#upcoming
+  margin-bottom: 20px
+
 .booking
   +coloured-block-in-a-stack
   & > div
-    display: inline-block
+    +cross_inline_block
     vertical-align: top
   .booking-deal
     width: 178px    
@@ -55,7 +69,7 @@
   padding: 0 10px  
   
   .personal-details
-    width: 250px
+    width: 200px
     .client-name
       margin-top: 10px
     .client-contact-details
@@ -63,7 +77,7 @@
       
   
   .booking-details
-    width: 250px
+    width: 300px
     padding-top: 10px
     .extra
       margin-top: 20px
