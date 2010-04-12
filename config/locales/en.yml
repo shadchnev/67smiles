@@ -1,5 +1,48 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  faq_what_is_ic:
+    What is Innocent Cleaners?
+  faq_what_is_ic_answer:
+    Innocent Cleaners is a marketplace for self-employed cleaners in the UK. 
+    We help cleaners to find work and homeowners to find cleaners for casual jobs.
+    Innocent Cleaners is not an agency, therefore all cleaners are self-employed.
+    
+  faq_how_hiring_works:
+    What happens when I hire the cleaner?
+  faq_how_hiring_works_answer:
+    When you book a cleaner, we send an sms with the short description of the job.
+    The cleaner has one hour to accept or decline the job, which they can do by replying to the sms.
+    
+  faq_cleaner_declines:
+    What if the cleaner does not accept the job?
+  faq_cleaner_declines_answer:
+    When the cleaner replies to the sms, we text you to let you know of the decision. 
+    If the cleaner does not reply within an hour or declines your offer, you are free to attempt to hire another cleaner for the same day.
+    
+  faq_how_do_i_pay:
+    How do I pay the cleaner?
+  faq_how_do_i_pay_answer:
+    You pay cleaners by cash immediately when the job is done. 
+    All money you pay goes to the cleaner, as opposed to the way conventional cleaning agencies that usually take a large cut in cleaners' earnings operate.
+    The amount you must pay is shown in My Bookings section of the website.
+    
+  faq_who_leaves_reviews:
+    Who leaves reviews for the cleaners?
+  faq_who_leaves_reviews_answer:
+    Other users who have hired this cleaner in the past. We aim to verify the authenticity of every review.
+    You are welcome to leave a review when the job is done.
+    
+  faq_are_they_exclusive:
+    Are the cleaners listed on the website exclusively available on Innocent Cleaners?
+  faq_are_they_exclusive_answer:
+    No, they are not exclusive and, therefore, they can decline your offer because they may have other commitments.
+  
+  faq_bad_result:
+    What if I'm not satisfied with the quality of the work?
+  faq_bad_result_answer:
+    Please discuss this issue with the cleaner on the spot. Since the cleaners are self-employed, they are ultimately responsible for the job.
+    Please feel free to leave feedback on the cleaners page if necessary.
+
+  faq_another_question:
+    I have a question not listed here. How can I contact you?
+  faq_another_question_answer:
+    Please feel free to email us on hello@innocentcleaners.com and we'll try to reply on the same day.

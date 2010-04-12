@@ -14,7 +14,7 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :user
     
-  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record?}
+  # validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record?}
   
   validates_presence_of :user
   

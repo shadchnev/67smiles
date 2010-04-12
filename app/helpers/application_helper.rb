@@ -15,11 +15,12 @@ module ApplicationHelper
     when :clients_bookings    then link_to "Bookings", "/clients/#{current_user.owner.id}/bookings"
     when :edit_client         then link_to "Edit Profile", edit_client_path(current_user.owner)
     when :edit_cleaner        then link_to "Edit Profile", edit_cleaner_path(current_user.owner)
+    when :faq                 then link_to "FAQ", '/faq'
     end
   end  
   
   def navigation_elements
-    elements = []
+    elements = [:faq]
     elements += [:cleaners_bookings, :edit_cleaner] if current_user and current_user.cleaner?
     elements += [:clients_bookings, :edit_client]  if current_user and current_user.client?
     elements += current_user ? [:logout] : [:register, :login] 

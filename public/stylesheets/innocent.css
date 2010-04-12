@@ -202,6 +202,9 @@ div.fieldWithErrors {
 #old-password {
   margin-top: 30px; }
 
+.page-header {
+  margin-bottom: 20px; }
+
 #find-a-cleaner {
   padding-top: 5px; }
   #find-a-cleaner > form > div {
@@ -292,6 +295,9 @@ div.fieldWithErrors {
       color: #484848; }
   #cleaners .cleaner .make-a-booking {
     width: 180px; }
+
+.faq-item {
+  margin-bottom: 30px; }
 
 #new-client #country-name {
   display: inline-block;
