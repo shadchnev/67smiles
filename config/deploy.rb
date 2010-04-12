@@ -24,7 +24,7 @@ end
 namespace(:customs) do
   task :symlink, :roles => :app do
     run <<-CMD
-      ln -nfs #{shared_path}/photos #{release_path}/public/photos
+      ln -nfs #{shared_path}/photos/cleaners #{release_path}/public/photos/cleaners
     CMD
   end
 end
