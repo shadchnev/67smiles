@@ -30,7 +30,7 @@ class Cleaner < ActiveRecord::Base
   
   validates_presence_of :user
   
-  # validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record?}
+  validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record? and false} # DISABLED FOR NOW
   
   acts_as_mappable :through => :postcode
   
