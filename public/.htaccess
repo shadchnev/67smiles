@@ -1,3 +1,10 @@
 RewriteEngine on
+RewriteCond %{HTTP_HOST} ^innocentcleaners
+RewriteRule ^(.*)$ http://www.varsitycleaners.co.uk/$1 [R=permanent,L] 
+
 RewriteCond %{HTTP_HOST} ^varsitycleaners\.co.uk
 RewriteRule ^(.*)$ http://www.varsitycleaners.co.uk/$1 [R=permanent,L]
+
+RewriteCond %{HTTP_HOST} ^www.innocentcleaners
+RewriteRule ^(.*)$ http://www.varsitycleaners.co.uk/$1 [R=permanent,L]
+
