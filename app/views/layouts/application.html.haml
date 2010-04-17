@@ -30,7 +30,7 @@
       #header<>
         #logo
           %a{:href => '/'}
-            %img{:src => "/images/logo_scruff.png", :alt => "Innocent Cleaners Logo"}
+            %img{:src => "/images/varsitycleaners.png", :alt => "Varsity Cleaners Logo"}
         #welcome-line
           - if current_user
             Hi, #{current_user.cleaner? ? link_to(current_user.owner.first_name, cleaner_path(current_user.owner)) : current_user.owner.first_name}!
