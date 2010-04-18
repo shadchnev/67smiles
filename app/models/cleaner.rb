@@ -44,12 +44,12 @@ class Cleaner < ActiveRecord::Base
   attr_protected :photo_file_name, :photo_content_type, :photo_size
   
   def self.find_suitable!(options)
-    conditions = [options[:skills].search_conditions]
+    conditions = [options[:skills].search_conditions, 'active = 1']
     conditions << "#{Date::DAYNAMES[options[:date].wday].downcase} > 0"
     cleaners = find(:all,
                     :within => SEARCH_PROXIMITY, 
                     :origin => options[:origin], 
-                    :joins => [:skills, :availability], 
+                    :joins => [:skills, :availability, :user], 
                     :conditions => conditions.join(" AND "))
     !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode, selecting fewer skills or changing the date")
   end
