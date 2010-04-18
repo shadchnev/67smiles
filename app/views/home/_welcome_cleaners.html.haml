@@ -1,8 +1,8 @@
 .title
   Students
-= render :partial => 'how_to', :locals => {:image => 'smile', :text => 'Get flexible one-off jobs'}
-= render :partial => 'how_to', :locals => {:image => 'text', :text => 'Receive and accept jobs by sms'}
-= render :partial => 'how_to', :locals => {:image => 'percent', :text => "Don't pay a commission"}
+= render :partial => 'how_to', :locals => {:image => 'smile', :text => "Get #{link_to 'flexible', faq_path(:anchor => 'faq_is_it_flexible')} one-off jobs"}
+= render :partial => 'how_to', :locals => {:image => 'text', :text => "Receive and accept jobs #{link_to 'by sms', faq_path(:anchor => 'faq_how_hiring_works')}"}
+= render :partial => 'how_to', :locals => {:image => 'percent', :text => "Do not pay a #{link_to 'commission', faq_path(:anchor => 'faq_do_i_have_to_pay_a_commission')}"}
 / .action
 /   = link_to "Join Now!", :controller => :cleaners, :action => :new
 / .hint

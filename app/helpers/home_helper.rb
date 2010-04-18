@@ -1,7 +1,7 @@
 module HomeHelper
   
   def faq_question(question)
-    render :partial => 'faq_item', :locals => {:question => t(question), :answer => t("#{question}_answer".to_sym)}
+    render :partial => 'faq_item', :locals => {:question => t(question), :answer => t("#{question}_answer".to_sym), :anchor => question}
   end
   
   def day_of_week(cleaner, day)

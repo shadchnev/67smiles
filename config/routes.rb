@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :sms, :member => {:update => :post} # sms gateway requirement
   
-  map.connect '/faq', :controller => :home, :action => :faq
+  map.faq '/faq', :controller => :home, :action => :faq
   
   map.activate '/users/activate/:activation_code', :controller => "user", :action => "activate"
   

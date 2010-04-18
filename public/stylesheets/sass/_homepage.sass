@@ -22,10 +22,7 @@
 
 #welcome
   text-align: center
-  
-  & *
-    vertical-align: middle
- 
+   
   #client-points, #cleaner-points
     +cross_inline_block
     height: 230px    
@@ -40,6 +37,8 @@
   #light-search
     border-top: 1px solid #{!dark_marine}
     padding-top: 15px
+    *
+      vertical-align: middle    
     & form *
       display: inline
     #postcode input
