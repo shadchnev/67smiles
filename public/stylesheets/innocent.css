@@ -215,6 +215,9 @@ div.fieldWithErrors {
   #find-a-cleaner #calendar {
     padding-left: 12px; }
 
+.full-width {
+  left: -200px; }
+
 #welcome {
   text-align: center; }
   #welcome * {
@@ -223,13 +226,28 @@ div.fieldWithErrors {
     display: inline-block;
     zoom: 1;
     *display: inline;
-    height: 300px;
+    height: 230px;
     vertical-align: top;
     background-image: url(/images/corner.png);
     padding: 5px 10px;
     width: 323px; }
   #welcome #client-points {
-    margin-right: 40px; }
+    margin-right: 55px; }
+  #welcome #light-search {
+    border-top: 1px solid #6ea7d1;
+    padding-top: 15px; }
+    #welcome #light-search form * {
+      display: inline; }
+    #welcome #light-search #postcode input {
+      font-size: 25px;
+      width: 150px; }
+    #welcome #light-search #label {
+      color: #db530f;
+      font-size: 20px; }
+    #welcome #light-search #number-of-results {
+      margin: 3px 0;
+      color: #db530f;
+      text-align: right; }
   #welcome .icon {
     float: left;
     width: 40px; }
@@ -243,7 +261,7 @@ div.fieldWithErrors {
     height: 40px; }
   #welcome .title {
     font-size: 150%;
-    color: #6ea7d1;
+    color: #db530f;
     margin: 15px 0; }
   #welcome .text {
     display: inline-block;
@@ -293,6 +311,12 @@ div.fieldWithErrors {
     #cleaners .cleaner .details .introduction {
       width: 240px;
       color: #484848; }
+    #cleaners .cleaner .details .days-of-week {
+      margin-top: 20px; }
+      #cleaners .cleaner .details .days-of-week * {
+        display: inline; }
+      #cleaners .cleaner .details .days-of-week .active {
+        color: #db530f; }
   #cleaners .cleaner .make-a-booking {
     width: 180px; }
 

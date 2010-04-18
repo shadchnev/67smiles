@@ -1,4 +1,4 @@
-set :application, "Innocent Cleaners"
+set :application, "Varsity Cleaners"
 set :repository,  "git@github.com:shadchnev/67smiles.git"
 set :deploy_to, "/var/www/ic"
 

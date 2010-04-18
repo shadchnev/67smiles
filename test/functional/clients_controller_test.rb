@@ -41,7 +41,7 @@ private
          "second_line" => "Wapping Wall"}, 
        "contact_details_attributes" => 
         {"phone" => "07912345678", 
-          "email" => "test@test.com"}}, 
+          "email" => "test@gmail.com"}}, 
     }    
   end
   

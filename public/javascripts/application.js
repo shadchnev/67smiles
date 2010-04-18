@@ -206,7 +206,7 @@ function pad (character) {
 }
 
 function addFormSubmitHandlers() {
-  $('form#new_cleaner').submit(function() {
+  $('form.new_cleaner, form.edit_cleaner').submit(function() {
     removeDefaultValuesFromFields();
     saveAvailabilityTableToHiddenFields();    
   });  
@@ -245,7 +245,7 @@ function saveAvailabilityTableToHiddenFields() {
     var value = 0;
     for (var j=0; j <= MAXIMUM_WORKING_HOUR - MINIMUM_WORKING_HOUR; j++)
       value |= ($(cells[j*DAYS_IN_A_WEEK+parseInt(dayIndex)]).hasClass('ui-selected') ? 1 : 0) << (MINIMUM_WORKING_HOUR + j);
-    $('form#new_cleaner input#cleaner_availability_attributes_' + days[dayIndex]).val(value);    
+    $('input#cleaner_availability_attributes_' + days[dayIndex]).val(value);    
   })
 }
 

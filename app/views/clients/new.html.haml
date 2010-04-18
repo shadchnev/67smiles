@@ -1,10 +1,7 @@
 = content_for :master_picture do
   #master-picture-container<>
     #master-picture
-      - if controller.action_name == 'new'
-        %img{:src => '/images/stock/lady_thumbs_up.png'}<>
-      - else
-        %img{:src => '/images/stock/lady_cheeky.png'}<>
+      %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
   
 = content_for :left_content do
   = render :partial => 'tips'

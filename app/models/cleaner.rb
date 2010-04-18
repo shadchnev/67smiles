@@ -29,6 +29,7 @@ class Cleaner < ActiveRecord::Base
   validates_presence_of :contact_details
   
   validates_presence_of :user
+  validate :university_email
   
   validates_acceptance_of :terms_and_conditions, :message => "^Please check the 'Terms and conditions' checkbox if you agree with them", :if => Proc.new{|c| c.new_record? and false} # DISABLED FOR NOW
   
@@ -91,6 +92,16 @@ class Cleaner < ActiveRecord::Base
   
   def has_reviews?
     reviews.count > 0
+  end
+  
+  def available_on?(day)
+    availability.send(day) > 0
+  end
+  
+private
+
+  def university_email
+    errors.add_to_base("The email must end with ac.uk to prove you are a student, e.g. john.smith12345@ic.ac.uk") unless contact_details.email.ends_with?('ac.uk')
   end
     
 end

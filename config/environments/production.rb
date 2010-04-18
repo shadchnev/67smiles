@@ -27,5 +27,9 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
+ActionMailer::Base.default_url_options[:host] = 'varsitycleaners.co.uk'
+
+ActionMailer::Base.delivery_method = :smtp
+
 GATEWAY_NO_ERROR = nil
 GATEWAY_TEST_MODE = 0

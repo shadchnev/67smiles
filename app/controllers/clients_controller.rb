@@ -24,8 +24,9 @@ class ClientsController < ApplicationController
           booking.ask_cleaner!       
           message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
         else
-          @client.save!          
+          @client.save!    
         end
+        @client.user.deliver_activation_instructions!
       end
       flash[:notice] = message
       redirect_to('/')

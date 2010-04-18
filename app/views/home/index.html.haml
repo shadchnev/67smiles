@@ -1,15 +1,11 @@
 = content_for :master_picture do
-  - unless current_user
-    #master-picture-container<>
-      #master-picture
-        %img{:src => '/images/stock/lady_smiling.png', :alt => "Smiling lady"}
+  #master-picture-container<>
+    #master-picture
+      %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
 
-= content_for :left_content do    
-  = render :partial => "find_a_cleaner"
-  
-= render :partial => 'welcome' unless current_user
+= render :partial => 'welcome'# unless current_user
 
-#right-container
+#right-container.full-width
   #cleaners
     - @cleaners.each do |cleaner|    
       = render :partial => 'cleaner', :locals => {:cleaner => cleaner}

@@ -4,11 +4,59 @@ class CleanersControllerTest < ActionController::TestCase
     
   test "postcode isn't recreated if exists" do     
     postcode = Postcode.build!(:value => 'e1w 3tj')    
-    xhr :post, :create, new_cleaner_params
+    post :create, new_cleaner_params
     assert_equal postcode.id, Cleaner.first.postcode.id
   end
   
+  test "availability can be updated" do
+    cleaner = Cleaner.build!
+    assert !cleaner.available_on?(:friday)
+    assert !cleaner.skills.pets?
+    put :update, updated_cleaner_params(cleaner)
+    assert_redirected_to cleaner_path(cleaner)
+    cleaner.reload
+    assert cleaner.skills.pets?
+    assert cleaner.available_on?(:friday)    
+  end
+  
 private
+
+  def updated_cleaner_params(cleaner)
+    {"cleaner"=>
+      {"name_attributes"=>
+          {"honorific"=>"Ms", 
+            "first_name"=>"Emma", 
+            "last_name"=>"BROWN", 
+            "id"=>cleaner.name.id}, 
+      "postcode_attributes"=>
+        {"value"=>"E1W 3TJ", 
+          "id"=>cleaner.postcode.id}, 
+      "contact_details_attributes"=>
+        {"email"=>"emma@ic.ac.uk", 
+          "phone"=>"447923374199", 
+          "id"=>cleaner.contact_details.id}, 
+      "description"=>"I'm the best cleaner ever! Really :)", 
+      "skills_attributes"=>
+        {"domestic_cleaning"=>"1", 
+          "ironing"=>"0", 
+          "groceries"=>"0", 
+          "pets"=>"1", 
+          "id"=>cleaner.skills.id}, 
+      "minimum_hire"=>"1", 
+      "rate"=>"10 (hourly rate)", 
+      "surcharge"=>"1 (cleaning materials surcharge)", 
+      "availability_attributes"=>
+        {"monday"=>"130944", "tuesday"=>"130944", "wednesday"=>"130944", "thursday"=>"130944", "friday"=>"130944", "saturday"=>"0", "sunday"=>"0", "id" => cleaner.availability.id}, 
+        "user_attributes"=>
+          {"password"=>"", 
+            "password_confirmation"=>"", 
+            "old_password"=>"", 
+            "id"=>cleaner.user.id}}, 
+      "commit"=>"Update your profile", 
+      "controller"=>"cleaners", 
+      "action"=>"update", 
+      "id"=>cleaner.id}    
+  end
 
   def new_cleaner_params
     {"cleaner" => 
@@ -35,7 +83,7 @@ private
          "surcharge"=>"2", 
          "description"=>"blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah", 
          "contact_details_attributes"=>
-          {"phone"=>"07912345678", "email"=>"emma@mail.com"}, 
+          {"phone"=>"07912345678", "email"=>"emma@ic.ac.uk"}, 
          "skills_attributes"=>
           {"pets"=>"0", 
            "groceries"=>"0", 

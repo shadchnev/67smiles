@@ -50,7 +50,23 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  
 end
+
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.default_charset = "utf-8"
+ActionMailer::Base.raise_delivery_errors = true
+ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
+
+ActionMailer::Base.smtp_settings = {
+   :enable_starttls_auto => true,
+   :address        => 'smtp.gmail.com',
+   :port           => 587,
+   :domain         => 'varsitycleaners.co.uk',
+   :authentication => :plain,
+   :user_name      => 'robot@varsitycleaners.co.uk',
+   :password       => '97E394',
+ }
 
 
 CLEANER_REPLY_TIMEOUT = 1.hour

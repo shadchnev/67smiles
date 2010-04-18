@@ -14,4 +14,11 @@
           No reviews yet
     .introduction
       = cleaner.description
+    .days-of-week
+      Available on:
+      - [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
+        = day_of_week(cleaner, day)
+    .university
+      Student of
+      = university(cleaner.email)
   = render :partial => 'shared/booking', :locals => {:cleaner => cleaner}

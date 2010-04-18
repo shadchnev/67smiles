@@ -2,7 +2,7 @@
   #master-picture-container<>
     #master-picture
       - if @cleaner.new_record?
-        %img{:src => '/images/stock/lady_thumbs_up.png'}<>
+        %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
       - else
         = render :partial => 'picture'
   

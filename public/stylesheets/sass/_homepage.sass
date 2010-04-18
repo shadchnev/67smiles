@@ -16,6 +16,10 @@
   #calendar
     padding-left: 12px
 
+.full-width
+  / position: absolute
+  left: -200px
+
 #welcome
   text-align: center
   
@@ -24,14 +28,30 @@
  
   #client-points, #cleaner-points
     +cross_inline_block
-    height: 300px    
+    height: 230px    
     vertical-align: top
     background-image: url(/images/corner.png)
     padding: 5px 10px
     width = !right_column / 2 - 50px
 
   #client-points
-    margin-right: 40px
+    margin-right: 55px
+    
+  #light-search
+    border-top: 1px solid #{!dark_marine}
+    padding-top: 15px
+    & form *
+      display: inline
+    #postcode input
+      font-size: 25px
+      width: 150px
+    #label
+      color = !clay
+      font-size: 20px
+    #number-of-results
+      margin: 3px 0
+      color = !clay
+      text-align: right
 
   .icon
     float: left
@@ -49,7 +69,7 @@
 
   .title
     font-size: 150%
-    color = !dark_marine
+    color = !clay
     margin: 15px 0
 
   .text
@@ -105,6 +125,13 @@
       .introduction
         width: 240px
         color = !black
+      
+      .days-of-week
+        margin-top: 20px
+        *
+          display: inline
+        .active
+          color = !clay
 
     .make-a-booking
       width = !hourly_rate_width

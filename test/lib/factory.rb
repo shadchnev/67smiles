@@ -54,7 +54,7 @@ module Factory
   
   def factory_contact_details
     {
-      :email => "evita.peron#{rand(1000000)}@gmail.com",
+      :email => "evita.peron#{rand(1000000)}@ic.ac.uk",
       :phone => "07923#{'%06d' % rand(1000000)}"
     }
   end
@@ -87,9 +87,10 @@ module Factory
   
   def factory_user
     {
-      :login => "test#{rand(1000000)}@test.com",
+      :login => "test#{rand(1000000)}@ic.ac.uk",
       :password => 'test12',
-      :password_confirmation => 'test12'
+      :password_confirmation => 'test12',
+      :active => true
     }
   end
   

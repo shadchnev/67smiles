@@ -5,16 +5,16 @@ module CleanerHelper
   end
   
   def modification_title(action)
-    return "Join Innocent Cleaners" if action == 'new'
+    return "Join Varsity Cleaners" if action == 'new'
     "Edit your profile" if action == 'edit' or action == 'update'
   end
   
   def modification_subtitle(action)
-    "You're just 60 seconds away from being available for hire on Innocent Cleaners!" if action == 'new'
+    "You're just 60 seconds away from being available for hire on Varsity Cleaners!" if action == 'new'
   end
   
   def modification_submit(action)
-    return "Join Innocent Cleaners" if action == 'new'
+    return "Join Varsity Cleaners" if action == 'new'
     "Update your profile" if action == 'edit' or action == 'update'    
   end
   

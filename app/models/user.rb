@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
     c.validates_format_of_login_field_options = {:with => //, :if => lambda{|c| false}} # so we don't check it at all
     c.validates_length_of_password_confirmation_field_options = {:minimum => 6, :if => lambda {|c| false}}
     c.validates_confirmation_of_password_field_options = {:if => :require_password?, :message => "^Please make sure the password matches the password confirmation field"}
+    c.maintain_sessions = false # disable autologin
   end
   
   belongs_to :owner, :polymorphic => true
@@ -28,6 +29,21 @@ class User < ActiveRecord::Base
   def cleaner?
     owner.kind_of? Cleaner
   end
+  
+  def activate!
+    self.active = true
+    save
+  end
+  
+  def deliver_activation_instructions!
+    reset_perishable_token!
+    Notifier.deliver_activation_instructions(self)
+  end
+
+  def deliver_activation_confirmation!
+    reset_perishable_token!
+    Notifier.deliver_activation_confirmation(self)
+  end  
   
 private
 

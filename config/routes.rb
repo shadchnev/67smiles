@@ -23,6 +23,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/faq', :controller => :home, :action => :faq
   
+  map.activate '/users/activate/:activation_code', :controller => "user", :action => "activate"
+  
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 

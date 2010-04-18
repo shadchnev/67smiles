@@ -9,7 +9,7 @@ class BookingsControllerTest < ActionController::TestCase
     Sms.any_instance.stubs(:dispatch).returns(true)
     @cleaner = Cleaner.build!        
     @client = Client.build!
-    UserSession.find.destroy # users are automatically logged in when created
+    # UserSession.find.destroy # users are automatically logged in when created
   end
   
   test "a stranger can book a cleaner" do

@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index      
     begin
       instantiate_query_params
+      @search = search?
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}
     rescue Exception => e

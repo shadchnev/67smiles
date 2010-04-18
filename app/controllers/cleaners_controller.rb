@@ -7,20 +7,28 @@ class CleanersController < ApplicationController
     params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
     @cleaner = Cleaner.new(params[:cleaner])
     @cleaner.postcode ||= existing_postcode
-    @cleaner.save ? redirect_to(cleaner_path(@cleaner)) : render(:action => :new)
-  end
-  
-  def update  
-    params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
-    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
-    @cleaner = Cleaner.find(params[:id])
-    @cleaner.postcode ||= existing_postcode    
-    if @cleaner.update_attributes(params[:cleaner]) 
-      flash[:notice] = 'Your profile has been updated.'
+    if @cleaner.save
+      @cleaner.user.deliver_activation_instructions!
+      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
       redirect_to(cleaner_path(@cleaner))
     else
       render(:action => :new)
     end
+  end
+  
+  def update  
+    existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
+    raise "The postcode is invalid" unless existing_postcode
+    params[:cleaner].delete(:postcode_attributes) 
+    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
+    @cleaner = Cleaner.find(params[:id])
+    @cleaner.postcode = existing_postcode
+    @cleaner.update_attributes!(params[:cleaner]) 
+    flash[:notice] = 'Your profile has been updated.'
+    redirect_to(cleaner_path(@cleaner))
+  rescue Exception => e
+    flash[:error] = e.message      
+    render(:action => :new)
   end
   
   def edit
