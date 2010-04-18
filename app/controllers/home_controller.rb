@@ -25,7 +25,7 @@ private
 
   def suitable_cleaners
     postcode, skills, date = [build_postcode, build_skills, build_date]
-    @cleaners = Cleaner.find_suitable!(:origin => postcode, :skills => skills, :date => date)    
+    @cleaners = Cleaner.find_suitable!(:origin => postcode, :skills => skills)
   end
 
   def build_postcode

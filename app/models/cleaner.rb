@@ -45,7 +45,7 @@ class Cleaner < ActiveRecord::Base
   
   def self.find_suitable!(options)
     conditions = [options[:skills].search_conditions, 'active = 1']
-    conditions << "#{Date::DAYNAMES[options[:date].wday].downcase} > 0"
+    # conditions << "#{Date::DAYNAMES[options[:date].wday].downcase} > 0"
     cleaners = find(:all,
                     :within => SEARCH_PROXIMITY, 
                     :origin => options[:origin], 

@@ -27,12 +27,12 @@ class CleanerSearchTest < ActiveSupport::TestCase
   
   test "exception is raised if no suitable cleaners are found" do
     assert_raise RuntimeError do
-      Cleaner.find_suitable!(:origin => @origin, :skills => Skills.build(:ironing => true), :date => Date.parse('16-03-2010')).size # Tuesday
+      Cleaner.find_suitable!(:origin => @origin, :skills => Skills.build(:ironing => true, :pets => true))
     end
   end
   
-  test "suitable cleaners are filtered by date" do
-    assert_equal 1, Cleaner.find_suitable!(:origin => @origin, :skills => Skills.build, :date => Date.parse('16-03-2010')).size # Tuesday
-  end
+  # test "suitable cleaners are filtered by date" do
+  #   assert_equal 1, Cleaner.find_suitable!(:origin => @origin, :skills => Skills.build, :date => Date.parse('16-03-2010')).size # Tuesday
+  # end
     
 end
