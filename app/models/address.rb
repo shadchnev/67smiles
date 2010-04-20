@@ -14,4 +14,8 @@ class Address < ActiveRecord::Base
     [first_line, second_line, city, postcode.to_s]
   end
   
+  def area
+    postcode.area
+  end
+  
 end

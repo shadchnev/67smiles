@@ -55,6 +55,10 @@ class Booking < ActiveRecord::Base
     client.address
   end
   
+  def area
+    address.area
+  end
+  
   def day
     start_time.to_date
   end
