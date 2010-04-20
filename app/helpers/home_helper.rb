@@ -14,7 +14,7 @@ module HomeHelper
       :saturday => 'Sat',
       :sunday => 'Sun'
     }
-    "<div class=\"day-of-week #{'active' if cleaner.available_on?(day)}\">#{short[day]}</div>"
+    "<div class=\"day-of-week #{cleaner.available_on?(day) ? 'active' : 'inactive'}\">#{short[day]}</div>"
   end
   
   def university(email)

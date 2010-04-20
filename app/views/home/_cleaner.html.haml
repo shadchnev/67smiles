@@ -15,7 +15,7 @@
     .introduction
       = cleaner.description
     .days-of-week
-      Available on:
+      #{link_to "Available on", cleaner_path(cleaner, :anchor => 'availability')}:
       - [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
         = day_of_week(cleaner, day)
     .university

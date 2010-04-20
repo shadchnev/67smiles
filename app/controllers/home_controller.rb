@@ -24,13 +24,16 @@ private
   end
 
   def suitable_cleaners
-    postcode, skills, date = [build_postcode, build_skills, build_date]
-    @cleaners = Cleaner.find_suitable!(:origin => postcode, :skills => skills)
+    location, skills, date = [build_location, build_skills, build_date]
+    @cleaners = Cleaner.find_suitable!(:origin => location, :skills => skills)
   end
 
-  def build_postcode
+  def build_location
     postcode = Postcode.find_or_create_by_normalized_value(params[:postcode])
-    postcode.id ? postcode : raise("We couldn't locate your postcode. Please try a postcode near you instead")
+    return postcode if postcode.valid?
+    location = Geokit::Geocoders::MultiGeocoder.geocode(params[:postcode], :bias => :uk)
+    return location if location.success
+    raise("We couldn't locate your postcode. Please try a postcode near you instead")
   end
   
   def build_skills

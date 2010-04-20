@@ -317,6 +317,8 @@ div.fieldWithErrors {
         display: inline; }
       #cleaners .cleaner .details .days-of-week .active {
         color: #db530f; }
+      #cleaners .cleaner .details .days-of-week .inactive {
+        color: #999999; }
   #cleaners .cleaner .make-a-booking {
     width: 180px; }
 
@@ -394,7 +396,7 @@ div.fieldWithErrors {
     color: #484848; }
 
 #availability #calendar {
-  margin-bottom: 40px; }
+  margin-bottom: 10px; }
 
 #reviews #new-review textarea {
   width: 100%;
