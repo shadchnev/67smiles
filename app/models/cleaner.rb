@@ -50,6 +50,7 @@ class Cleaner < ActiveRecord::Base
                     :within => SEARCH_PROXIMITY, 
                     :origin => options[:origin], 
                     :joins => [:skills, :availability, :user], 
+                    :order => 'distance',
                     :conditions => conditions.join(" AND "))
     !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode, selecting fewer skills or changing the date")
   end
