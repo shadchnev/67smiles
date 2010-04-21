@@ -3,7 +3,7 @@
 = render :partial => 'how_to', :locals => {:image => 'arrow', :text => "Hire #{link_to 'reliable', faq_path(:anchor => 'faq_why_students')} university students"}
 = render :partial => 'how_to', :locals => {:image => 'pound', :text => "Help students #{link_to 'finance', faq_path(:anchor => 'faq_finance')} studies"}
 = render :partial => 'how_to', :locals => {:image => 'tick', :text => "Leave #{link_to 'feedback', faq_path(:anchor => 'faq_feedback')} afterwards"}
-/ .action
-/   = link_to "Choose a Cleaner Now!", '#', :onclick => 'collapseTopPart(); return false;'
+.action
+  = link_to "Register Now!", :controller => :clients, :action => :new
 / .hint
 /   You need a cleaner, not an agency

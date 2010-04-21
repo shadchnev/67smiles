@@ -17,7 +17,6 @@
     padding-left: 12px
 
 .full-width
-  / position: absolute
   left: -200px
 
 #welcome
@@ -60,7 +59,6 @@
     font-size: 130%
     color = !black
     display: block
-    padding: 7px 0
     text-align: left
     
   .icon, .step
@@ -78,7 +76,7 @@
 
   .action
     font-size: 160%
-    margin-top: 30px
+    margin-top: 15px
     display: block
     color = !clay
 
@@ -94,7 +92,6 @@
 
     .photo, .details, .make-a-booking
       +cross_inline_block
-      / height = !photo_height
       width = !photo_width
     
     .photo
@@ -139,3 +136,7 @@
 
 .faq-item
   margin-bottom: 30px
+  
+.no-bottom-gap
+  padding-bottom: 0 ! important
+  line-height: 0

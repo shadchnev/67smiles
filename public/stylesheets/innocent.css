@@ -255,7 +255,6 @@ div.fieldWithErrors {
     font-size: 130%;
     color: #484848;
     display: block;
-    padding: 7px 0;
     text-align: left; }
   #welcome .icon, #welcome .step {
     height: 40px; }
@@ -271,7 +270,7 @@ div.fieldWithErrors {
     line-height: 40px; }
   #welcome .action {
     font-size: 160%;
-    margin-top: 30px;
+    margin-top: 15px;
     display: block;
     color: #db530f; }
   #welcome .hint {
@@ -324,6 +323,10 @@ div.fieldWithErrors {
 
 .faq-item {
   margin-bottom: 30px; }
+
+.no-bottom-gap {
+  padding-bottom: 0 ! important;
+  line-height: 0; }
 
 #new-client #country-name {
   display: inline-block;
