@@ -11,15 +11,16 @@ class SmsTest < ActiveSupport::TestCase
       s.text = 'test'
       s.to = '447923374199'
     end
-    sms.stubs(:update_state).returns(true)
+    # sms.stubs(:update_state).returns(true)
     sms.save!
     sms.stubs(:curl).returns(curl('test'))
-    test_value = Sms.const_get('GATEWAY_NO_ERROR')
     assert sms.send :dispatch
     assert sms.outgoing?
   end
   
   test "incoming messages are processed (yes)" do
+    Sms.any_instance.stubs(:curl).returns(curl('blah'))
+    Sms.any_instance.stubs(:success?).returns(true)
     booking = Booking.build!        
     Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_accepted(booking)))
     receive_sms!(booking.cleaner.phone, 'Yes!!!')
@@ -27,6 +28,8 @@ class SmsTest < ActiveSupport::TestCase
   end
 
   test "incoming messages are processed (no)" do
+    Sms.any_instance.stubs(:curl).returns(curl('blah'))
+    Sms.any_instance.stubs(:success?).returns(true)    
     booking = Booking.build!
     Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_declined(booking)))
     receive_sms!(booking.cleaner.phone, 'no, sorry')

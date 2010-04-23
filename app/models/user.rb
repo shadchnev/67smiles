@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
     Notifier.deliver_activation_confirmation(self)
   end  
   
+  def after_create
+    sms = Sms.create do |s|
+      s.to = '447923374199'
+      s.text = SmsContent.new_user(self)
+    end        
+    sms.dispatch or raise("Sorry, I couldn't a text about a new user to #{sms.to}")    
+  end
+  
 private
 
   def old_password_valid?

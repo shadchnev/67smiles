@@ -22,6 +22,7 @@ module HomeHelper
     universities = {
       'ic.ac.uk' => 'Imperial College London',
       'imperial.ac.uk' => 'Imperial College London',
+      'westminster.ac.uk' => 'Westminster University',
     }
     universities[domain] || domain
   end
