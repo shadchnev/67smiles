@@ -17,6 +17,7 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 
 GATEWAY_NO_ERROR = 'testmode - nothing sent'
 GATEWAY_TEST_MODE = 1

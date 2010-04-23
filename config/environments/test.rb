@@ -30,6 +30,7 @@ config.action_mailer.delivery_method = :test
 # ActiveRecord::Base.logger = Logger.new STDOUT
 
 ActionMailer::Base.delivery_method = :test
+ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 
 GATEWAY_NO_ERROR = 'testmode - nothing sent'
 GATEWAY_TEST_MODE = 1
