@@ -4,14 +4,14 @@ class Cleaner < ActiveRecord::Base
   
   SEARCH_PROXIMITY = 10
   
-  belongs_to :name
+  belongs_to :name, :dependent => :destroy
   belongs_to :postcode
-  belongs_to :contact_details
-  belongs_to :availability
-  belongs_to :skills
+  belongs_to :contact_details, :dependent => :destroy
+  belongs_to :availability, :dependent => :destroy
+  belongs_to :skills, :dependent => :destroy
   has_many :bookings
   has_many :reviews
-  has_one :user, :as => :owner
+  has_one :user, :as => :owner, :dependent => :destroy
   
   accepts_nested_attributes_for :name
   accepts_nested_attributes_for :postcode
