@@ -10,8 +10,16 @@ class Notifier < ActionMailer::Base
 
   def activation_confirmation(user)
     subject       "Varsity Cleaners: Activation Complete"
-    from          "hello@varsitycleaners.co.uk"
+    from          "robot@varsitycleaners.co.uk"
     recipients    user.owner.email
+    sent_on       Time.now
+    body          :root_url => root_url
+  end
+  
+  def test
+    subject       "Test"
+    from          "rebot@varsitycleaners.co.uk"
+    recipients    "evgeny.shadchnev@gmail.com"
     sent_on       Time.now
     body          :root_url => root_url
   end
