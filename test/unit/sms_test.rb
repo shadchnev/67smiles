@@ -22,7 +22,7 @@ class SmsTest < ActiveSupport::TestCase
     Sms.any_instance.stubs(:curl).returns(curl('blah'))
     Sms.any_instance.stubs(:success?).returns(true)
     booking = Booking.build!        
-    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_accepted(booking)))
+    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_accepted_for_client(booking)))
     receive_sms!(booking.cleaner.phone, 'Yes!!!')
     assert booking.reload.accepted?
   end
@@ -31,7 +31,7 @@ class SmsTest < ActiveSupport::TestCase
     Sms.any_instance.stubs(:curl).returns(curl('blah'))
     Sms.any_instance.stubs(:success?).returns(true)    
     booking = Booking.build!
-    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_declined(booking)))
+    Sms.any_instance.stubs(:curl).returns(curl(SmsContent.booking_declined_for_client(booking)))
     receive_sms!(booking.cleaner.phone, 'no, sorry')
     assert !booking.reload.accepted?
     assert booking.declined?

@@ -17,12 +17,17 @@ class SmsContentTest < ActiveSupport::TestCase
   
   test "booking accepted" do
     booking = Booking.build!
-    assert_equal "Evita has accepted the booking for 29 March. Cleaning materials will be provided by Evita.", SmsContent.booking_accepted(booking)
+    assert_equal "Evita has accepted the booking for 29 March. Cleaning materials will be provided by Evita.", SmsContent.booking_accepted_for_client(booking)
+  end
+  
+  test "booking accepted for cleaner" do
+    booking = Booking.build!
+    assert_equal "Thank you, Evita! Please log in on varsitycleaners.co.uk to see full details of the job.", SmsContent.booking_accepted_for_cleaner(booking)
   end
   
   test "booking declined" do
     booking = Booking.build!
-    assert_equal "Evita has declined the booking for 29 March. Please feel free to make another booking with Evita or any other cleaner.", SmsContent.booking_declined(booking)
+    assert_equal "Evita has declined the booking for 29 March. Please feel free to make another booking with Evita or any other cleaner.", SmsContent.booking_declined_for_client(booking)
   end
   
   

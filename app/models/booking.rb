@@ -36,13 +36,14 @@ class Booking < ActiveRecord::Base
   
   def accept!
     self.accepted = true
-    send_text(client, SmsContent.booking_accepted(self))
+    send_text(client, SmsContent.booking_accepted_for_client(self))
+    send_text(cleaner, SmsContent.booking_accepted_for_cleaner(self))
     save!
   end
   
   def decline!
     self.accepted = false
-    send_text(client, SmsContent.booking_declined(self))
+    send_text(client, SmsContent.booking_declined_for_client(self))
     save!
   end
   
