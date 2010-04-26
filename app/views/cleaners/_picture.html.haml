@@ -4,7 +4,7 @@
     :javascript
       $(document).ready(function(){$('#delete-photo').css('display', 'inline');});
   %img.with_right_border{:src => @cleaner.photo.url(:medium), :id => 'cleaner-photo'}<>
-- elsif current_user
+- elsif current_user and current_user.owner == @cleaner
   = render 'upload_picture'
 - else
   %img.with_right_border{:src => '/photos/medium/missing.png'}<>

@@ -23,6 +23,12 @@ module HomeHelper
       'ic.ac.uk' => 'Imperial College London',
       'imperial.ac.uk' => 'Imperial College London',
       'westminster.ac.uk' => 'Westminster University',
+      'marjon.ac.uk' => 'University College Marjon',
+      'londonmet.ac.uk' => 'London Metropolitan University',
+      'ucl.ac.uk' => 'University College London',
+      'bournemouth.ac.uk' => 'Bournemouth University',
+      'live.mdx.ac.uk' => 'Middlesex University',
+      'csm.arts.ac.uk' => 'Central Saint Martins, University of the Arts',
     }
     universities[domain] || domain
   end
