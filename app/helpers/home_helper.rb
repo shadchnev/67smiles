@@ -37,6 +37,7 @@ module HomeHelper
     when /kent.ac.uk$/; 'University of Kent'
     when /soas.ac.uk$/; 'School of Oriental and African Studies, University of London'
     when /bcu.ac.uk$/; 'Birmingham City University'
+    when /uel.ac.uk$/; 'University of East London'
     else email.split("@").last
     end
   end
