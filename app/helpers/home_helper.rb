@@ -31,6 +31,7 @@ module HomeHelper
     when /\bchester.ac.uk$/; 'University of Chester'
     when /manchester.ac.uk$/; 'University of Manchester'
     when /heythrop.ac.uk$/; 'Heythrop College'
+    when /heythropcollege.ac.uk$/; 'Heythrop College'
     when /open.ac.uk$/; 'Open University'
     when /qmul.ac.uk$/; 'Queen Mary, University of London'
     when /kent.ac.uk$/; 'University of Kent'
