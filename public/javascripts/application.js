@@ -274,7 +274,7 @@ function iterateOverInputLabels(strategy) {
           '#new-cleaner #email input': 'E-mail',
           '#new-cleaner #phone-number input': 'Phone number',
           '#new-cleaner #hourly-rate input': 'Hourly rate',
-          '#new-cleaner #surcharge input': 'Cleaning materials surcharge',
+          '#new-cleaner #surcharge input': 'Cleaning materials surcharge (per hour)',
           '#new-client #first-name input': 'First name',
           '#new-client #last-name input': 'Last name',
           '#new-client #phone input': 'Mobile phone',
