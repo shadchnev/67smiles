@@ -18,19 +18,25 @@ module HomeHelper
   end
   
   def university(email)
-    domain = email.split('@').last
-    universities = {
-      'ic.ac.uk' => 'Imperial College London',
-      'imperial.ac.uk' => 'Imperial College London',
-      'westminster.ac.uk' => 'Westminster University',
-      'marjon.ac.uk' => 'University College Marjon',
-      'londonmet.ac.uk' => 'London Metropolitan University',
-      'ucl.ac.uk' => 'University College London',
-      'bournemouth.ac.uk' => 'Bournemouth University',
-      'live.mdx.ac.uk' => 'Middlesex University',
-      'csm.arts.ac.uk' => 'Central Saint Martins, University of the Arts',
-    }
-    universities[domain] || domain
+    case email
+    when /ic.ac.uk$/; 'Imperial College London'
+    when /imperial.ac.uk$/; "Imperial College London"      
+    when /westminster.ac.uk$/; 'Westminster University'
+    when /marjon.ac.uk$/; 'University College Marjon'
+    when /londonmet.ac.uk$/; 'London Metropolitan University'
+    when /ucl.ac.uk$/; 'University College London'
+    when /bournemouth.ac.uk$/; 'Bournemouth University'
+    when /live.mdx.ac.uk$/; 'Middlesex University'
+    when /csm.arts.ac.uk$/; 'Central Saint Martins University of the Arts'
+    when /\bchester.ac.uk$/; 'University of Chester'
+    when /manchester.ac.uk$/; 'University of Manchester'
+    when /heythrop.ac.uk$/; 'Heythrop College'
+    when /open.ac.uk$/; 'Open University'
+    when /qmul.ac.uk$/; 'Queen Mary, University of London'
+    when /kent.ac.uk$/; 'University of Kent'
+    when /soas.ac.uk/; 'School of Oriental and African Studies, University of London'
+    else email.split("@").last
+    end
   end
   
 end

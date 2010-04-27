@@ -24,7 +24,7 @@ class SmsContent
   end
   
   def self.booking_declined_for_client(booking)    
-    "#{booking.cleaner.first_name} has declined the booking for #{booking.start_time.strftime('%d %B')}. Please feel free to make another booking with Evita or any other cleaner."
+    "#{booking.cleaner.first_name} has declined the booking for #{booking.start_time.strftime('%d %B')}. Please feel free to make another booking with #{booking.cleaner.first_name} or any other cleaner."
   end
   
   def self.new_user(user)
