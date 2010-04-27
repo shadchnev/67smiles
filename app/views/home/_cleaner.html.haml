@@ -13,7 +13,7 @@
         - else
           No reviews yet
     .introduction
-      = cleaner.description
+      = truncate(cleaner.description, :length => 250, :omission => '&hellip; ' + link_to("(read the rest)", cleaner_url(cleaner)))
     .days-of-week
       #{link_to "Available on", cleaner_path(cleaner, :anchor => 'availability')}:
       - [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
