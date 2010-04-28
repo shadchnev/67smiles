@@ -58,7 +58,7 @@ private
     # rescue
     #   location = nil    
     # end
-    params = {:joins => :user, :conditions => 'active = 1', :limit => 20, :order => 'created_at desc'}
+    params = {:select => 'cleaners.*, (photo_file_size > 0) AS has_photo', :joins => :user, :conditions => 'active = 1', :limit => 20, :order => 'has_photo desc, created_at desc'}
     # if location and location.success and location.country_code == 'GB'
     #   geo_params = params.merge({:origin => location, :within => 20}) 
     #   cleaners =  Cleaner.find(:all, geo_params)
