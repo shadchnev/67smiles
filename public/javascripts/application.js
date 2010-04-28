@@ -177,7 +177,7 @@ function minimumHire() {
 }
 
 function isAvailableIn(availability, date, period, complete) {  
-  if (date <= new Date()) return false;
+  if (date < new Date()) return false;
   if (minimumHire() > period.end - period.start) return false;
   var mask = ((Math.pow(2, period.end - period.start)  - 1) << period.start);
   var partialAvailability = mask & availability[WEEKDAYS[date.getDay()]];
