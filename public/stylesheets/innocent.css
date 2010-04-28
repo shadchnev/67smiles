@@ -313,7 +313,8 @@ div.fieldWithErrors {
     #cleaners .cleaner .details .days-of-week {
       margin-top: 20px; }
       #cleaners .cleaner .details .days-of-week * {
-        display: inline; }
+        display: inline;
+        margin-right: 5px; }
       #cleaners .cleaner .details .days-of-week .active {
         color: #db530f; }
       #cleaners .cleaner .details .days-of-week .inactive {
