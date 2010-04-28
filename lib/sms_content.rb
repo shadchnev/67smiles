@@ -2,7 +2,7 @@
 class SmsContent
   
   def self.booking_enquiry(booking)
-    text = "VarsityCleaners: job offer in #{booking.area}."
+    text = "VarsityCleaners: job offer in #{booking.postcode}."
     text << booking.start_time.strftime(' %d %B ')
     text << booking.start_time.localtime.to_s(:time)
     text << ' - '

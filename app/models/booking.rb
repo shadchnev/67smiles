@@ -60,6 +60,10 @@ class Booking < ActiveRecord::Base
     address.area
   end
   
+  def postcode
+    address.postcode
+  end
+  
   def day
     start_time.to_date
   end
