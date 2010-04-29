@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     begin
       instantiate_query_params
       @search = search?
+      @welcome_partial = params[:hlp] ? 'welcome_homeowner' : 'welcome_generic'
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}
     rescue Exception => e

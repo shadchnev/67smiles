@@ -325,6 +325,9 @@ div.fieldWithErrors {
 .faq-item {
   margin-bottom: 30px; }
 
+.no-top-border {
+  border-top: 0px ! important; }
+
 .no-bottom-gap {
   padding-bottom: 0 ! important;
   line-height: 0; }
