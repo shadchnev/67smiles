@@ -28,7 +28,7 @@ module ApplicationHelper
   end
   
   def jobs_done(cleaner)
-    cleaner.completed_jobs.empty? ? "Never been hired before" : "#{cleaner.completed_jobs.size} jobs done"
+    cleaner.completed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'job')} done"
   end
   
   def booking_status(booking)
