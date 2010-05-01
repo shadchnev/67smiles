@@ -6,7 +6,7 @@
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
     .stats
       .jobs-done
-        =#%span= jobs_done cleaner
+        %span= jobs_done cleaner 
       .reviews
         - if cleaner.has_reviews?
           = link_to pluralize(cleaner.reviews.count, 'review'), cleaner_path(cleaner, :anchor => "reviews")
