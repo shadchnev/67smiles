@@ -54,17 +54,12 @@ private
   end
     
   def default_selection        
-    # begin
-    #   location = Geokit::Geocoders::IpGeocoder.geocode($1) if request.env['REMOTE_ADDR'] =~ /((?:\d{1,3}\.){3}\d{1,3})/
-    # rescue
-    #   location = nil    
-    # end
-    params = {:select => 'cleaners.*, (photo_file_size > 0) AS has_photo', :joins => :user, :conditions => 'active = 1', :limit => 20, :order => 'has_photo desc, created_at desc'}
-    # if location and location.success and location.country_code == 'GB'
-    #   geo_params = params.merge({:origin => location, :within => 20}) 
-    #   cleaners =  Cleaner.find(:all, geo_params)
-    # end
-    # !cleaners ? Cleaner.find(:all, params) : cleaners
+    params = {:select => 'cleaners.*, (photo_file_size > 0) AS has_photo, count(r.id) as num_reviews', 
+              :joins => "LEFT JOIN reviews r ON r.cleaner_id = cleaners.id INNER JOIN users u ON u.owner_id = cleaners.id", 
+              :conditions => 'active = 1', 
+              :limit => 20, 
+              :order => 'num_reviews DESC, has_photo DESC, created_at DESC', 
+              :group => 'cleaners.id'}
     Cleaner.find :all, params
   end
 
