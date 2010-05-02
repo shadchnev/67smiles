@@ -32,4 +32,8 @@
               Created an account
               = time_ago_in_words @cleaner.created_at
               ago
+          %li
+            %span.university
+              Student of
+              = university(@cleaner.email)              
       = render :partial => 'shared/booking', :locals => {:cleaner => @cleaner}
