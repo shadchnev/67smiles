@@ -20,8 +20,9 @@
         %h3
           Info
         %ul#info
-          %li
-            %span= jobs_done @cleaner
+          - unless @cleaner.completed_jobs.empty?
+            %li
+              %span= jobs_done @cleaner
           %li
             %span 
               Living in

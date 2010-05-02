@@ -320,7 +320,7 @@ function selectRegistrationType() {
     else if (choice == 'cleaner')
       document.location = '/cleaners/new'    
   }
-  $.prompt('Are you a homeowner or a cleaner?', {buttons: {Homeowner: 'homeowner', Cleaner: 'cleaner'}, callback: callback});
+  $.prompt('Are you a homeowner or a cleaner?', {buttons: {'I\'m a Homeowner': 'homeowner', 'I\'m a Cleaner': 'cleaner'}, callback: callback});
 }
 
 function collapseTopPart(delay) {
