@@ -76,10 +76,12 @@ class Cleaner < ActiveRecord::Base
   end
   
   def rate=(value)
+    value.gsub!(/[^\d]/, '') if value.kind_of? String
     self[:rate] = (value.to_f * 10).round / 10.0 if value
   end
   
   def surcharge=(value)
+    value.gsub!(/[^\d]/, '') if value.kind_of? String
     self[:surcharge] = (value.to_f * 10).round / 10.0 if value
   end
   

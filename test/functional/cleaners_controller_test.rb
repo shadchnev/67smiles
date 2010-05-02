@@ -6,6 +6,7 @@ class CleanersControllerTest < ActionController::TestCase
     postcode = Postcode.build!(:value => 'e1w 3tj')    
     post :create, new_cleaner_params
     assert_equal postcode.id, Cleaner.first.postcode.id
+    assert_equal 10, Cleaner.first.rate
   end
   
   test "availability can be updated" do
@@ -71,7 +72,7 @@ private
          "postcode_attributes"=>
           {"value"=>"e1w 3tj"}, 
          "terms_and_conditions"=>"1", 
-         "rate"=>"10", 
+         "rate"=>"£10", 
          "availability_attributes"=>
           {"friday"=>"4194176", 
            "tuesday"=>"4194176", 
