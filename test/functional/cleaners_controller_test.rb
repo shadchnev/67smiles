@@ -72,7 +72,7 @@ private
          "postcode_attributes"=>
           {"value"=>"e1w 3tj"}, 
          "terms_and_conditions"=>"1", 
-         "rate"=>"£10", 
+         "rate"=>"pounds 10", 
          "availability_attributes"=>
           {"friday"=>"4194176", 
            "tuesday"=>"4194176", 
