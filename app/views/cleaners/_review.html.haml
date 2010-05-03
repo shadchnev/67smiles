@@ -4,4 +4,4 @@
   %p.signature
     = "#{review.client.first_name} from #{review.client.area}"
   %p.timestamp
-    = review.timestamp
+    = review.timestamp.localtime
