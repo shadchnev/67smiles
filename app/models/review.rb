@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   validates_presence_of :text
   
   def timestamp
-    created_at.to_formatted_s :short
+    created_at.localtime.to_formatted_s :short
   end
   
 end
