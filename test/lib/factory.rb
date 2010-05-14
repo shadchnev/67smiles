@@ -95,12 +95,15 @@ module Factory
   end
   
   def factory_booking
+    start_time = Time.parse('10:00')
+    start_time += 1.day until start_time.wday == 1 # that is Monday
+    end_time = start_time + 4.hours    
     {
       :client => Client.build,
       :cleaner => Cleaner.build,
       :cleaning_materials_provided => false,
-      :start_time => Time.parse('29 March 2010 10:00'),
-      :end_time => Time.parse('29 March 2010 14:00')
+      :start_time => start_time,
+      :end_time => end_time
     }
   end
   

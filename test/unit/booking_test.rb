@@ -34,4 +34,10 @@ class BookingTest < ActiveSupport::TestCase
     assert_nil Booking.first_pending_for('447900000000')
   end
   
+  test "cleaner reminder and missed job is created" do
+    assert_equal 0, Delayed::Job.count
+    booking = Booking.build!
+    assert_equal 2, Delayed::Job.count
+  end
+  
 end

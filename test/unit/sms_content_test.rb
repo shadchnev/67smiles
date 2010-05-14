@@ -17,7 +17,7 @@ class SmsContentTest < ActiveSupport::TestCase
   
   test "booking accepted" do
     booking = Booking.build!
-    assert_equal "Evita has accepted the booking for 29 March. Cleaning materials will be provided by Evita.", SmsContent.booking_accepted_for_client(booking)
+    assert SmsContent.booking_accepted_for_client(booking) =~ /Evita has accepted the booking for \d\d \w+\. Cleaning materials will be provided by Evita\./
   end
   
   test "booking accepted for cleaner" do
@@ -27,7 +27,12 @@ class SmsContentTest < ActiveSupport::TestCase
   
   test "booking declined" do
     booking = Booking.build!
-    assert_equal "Evita has declined the booking for 29 March. Please feel free to make another booking with Evita or any other cleaner.", SmsContent.booking_declined_for_client(booking)
+    assert SmsContent.booking_declined_for_client(booking) =~ /Evita has declined the booking for \d\d \w+\. Please feel free to make another booking with Evita or any other cleaner\./
+  end
+  
+  test "cleaner reminder" do
+    booking = Booking.build!
+    assert SmsContent.cleaner_reminder(booking) =~ /Your Varsity Cleaners job at E1W 3TJ is on \d\d \w+, between 10:00 and 14:00\. Please cancel online if you can't make it/
   end
   
   

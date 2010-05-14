@@ -103,6 +103,18 @@ class Booking < ActiveRecord::Base
     accepted? and !cancelled? and end_time < Time.now
   end
   
+  def active?
+    accepted? and !cancelled? and start_time > Time.now
+  end
+  
+  def after_create
+    priority = 0
+    reminder_run_at = start_time - 1.day
+    missed_run_at = Time.now + CLEANER_REPLY_TIMEOUT
+    Delayed::Job.enqueue(CleanerReminderJob.new(id), priority, reminder_run_at) if reminder_run_at.to_date > Time.now.to_date
+    Delayed::Job.enqueue(MissedBookingJob.new(id), priority, missed_run_at)
+  end
+  
   def to_partial_hash
     {
       :cleaning_materials_provided => cleaning_materials_provided,

@@ -3,10 +3,10 @@ class SmsContent
   
   def self.booking_enquiry(booking)
     text = "VarsityCleaners: job offer in #{booking.postcode}."
-    text << booking.start_time.strftime(' %d %B ')
-    text << booking.start_time.localtime.to_s(:time)
+    text << " #{booking_date(booking)} "
+    text << booking_start_time(booking)
     text << ' - '
-    text << booking.end_time.localtime.to_s(:time)
+    text << booking_end_time(booking)
     text << (booking.cleaning_materials_provided? ? ' (cleaning stuff provided). ' : ' with own cleaning stuff. ')
     text << "Will pay #{round_if_possible booking.cost} pounds. "
     text << "Accept? Reply 'yes' or 'no' before #{booking_reply_deadline}"
@@ -31,7 +31,27 @@ class SmsContent
     "Aaaaaaaa! New user! (#{user.login})"
   end
   
+  def self.cleaner_reminder(booking)
+    "Your Varsity Cleaners job at #{booking.client.postcode} is on #{booking_date(booking)}, between #{booking_start_time(booking)} and #{booking_end_time(booking)}. Please cancel online if you can't make it"
+  end
+  
+  def self.missed_booking(booking)
+    "We're sorry but #{booking.cleaner.first_name} did not reply to confirm the booking. Please feel free to choose another cleaner on the website!"
+  end
+  
 private
+
+  def self.booking_date(booking)
+    booking.start_time.localtime.strftime('%d %B') 
+  end
+  
+  def self.booking_start_time(booking)
+    booking.start_time.localtime.to_s(:time)
+  end
+
+  def self.booking_end_time(booking)
+    booking.end_time.localtime.to_s(:time)
+  end
 
   def self.round_if_possible(val)
     (val.round.to_i - val) == 0 ? val.to_i : '%2.2f' % val
