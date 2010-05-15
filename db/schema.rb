@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_line"
@@ -95,6 +95,18 @@ ActiveRecord::Schema.define(:version => 13) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "events", :force => true do |t|
+    t.string   "type"
+    t.integer  "booking_id"
+    t.integer  "cleaner_id"
+    t.integer  "client_id"
+    t.integer  "review_id"
+    t.decimal  "old_rate",   :precision => 4, :scale => 2
+    t.decimal  "new_rate",   :precision => 4, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "names", :force => true do |t|
     t.string   "honorific"

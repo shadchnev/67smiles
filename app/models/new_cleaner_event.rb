@@ -1,0 +1,3 @@
+class NewCleanerEvent < Event
+  
+end

@@ -101,6 +101,12 @@ class Cleaner < ActiveRecord::Base
     availability.send(day) > 0
   end
   
+  def after_create
+    NewCleanerEvent.create do |e|
+      e.cleaner = self
+    end
+  end
+  
 private
 
   def university_email

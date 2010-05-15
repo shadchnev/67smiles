@@ -20,6 +20,14 @@ class CleanersControllerTest < ActionController::TestCase
     assert cleaner.available_on?(:friday)    
   end
   
+  test "new cleaner event is created" do
+    assert_equal 0, Event.count
+    cleaner = Cleaner.build!
+    assert_equal 1, Event.count
+    assert_equal NewCleanerEvent, Event.first.class
+    assert_equal cleaner, Event.first.cleaner
+  end
+  
 private
 
   def updated_cleaner_params(cleaner)
