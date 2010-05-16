@@ -1,0 +1,42 @@
+= content_for :quote do  
+  #quote-text
+    Being a full-time student it’s really hard to find a job that doesn’t compromise my education. Varsity Cleaners allow me to work as much or as little as can, nothings beats that.
+  #quote-signature
+    Ivone Teresa,
+    %br
+    Queen Mary University Student
+= content_for :right do
+  #landing-page-content
+    #landing-page-header<
+      #border<>
+        = image_tag 'paragraph-border-left-dark.png'
+      #text-container
+        #text
+          Earn up to &pound;8&mdash;10/hour working as a one-off domestic cleaner in your area
+      
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'You decide when to work and what your hourly rate is', :text => 'As a university student, you need a very flexible job to make money on the side. With Varsity Cleaners you can work more when you have time to spare and focus on studies when you have to. It’s also up to you to choose your hourly rate; just keep in mind that higher price means fewer jobs.'}
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'Receive and accept jobs by sms', :text => 'When somebody attempts to hire you, you will get a text from us with the details of the job. Then you can decide if you want to accept or decline it. You will have one hour to reply, otherwise the job will be gone. '}
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'Get paid on the spot and keep all the money', :text => 'When you finish the work, you’ll be paid by the client in cash. You keep all the money, that is, we do not take a commission on your earnings. However, you have to pay the taxes, so you must be registered as a self-employed person. Don’t worry: it’s easy and you can do it up to three months after you start working.'}
+  #form-area-container<
+    #left-border
+      = image_tag 'search-area-border-left.png'
+    #form-area<>
+      #title-container
+        #title
+          Join now
+      #form-container
+        %form
+          #text>
+            #all-cleaners
+              To see all cleaners in your area
+            #example
+              Your postcode or area,
+              %br
+              e.g. W2 1TT, N1 or Westminster
+          #search-box>
+            = text_field_tag 'search'
+          #submit
+            .blue.button
+              Search
+
+%br

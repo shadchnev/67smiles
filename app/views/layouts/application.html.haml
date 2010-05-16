@@ -26,15 +26,26 @@
       = text_field_tag :login, '', :onkeypress => 'loginKeyDown(event);'
       %br
       = password_field_tag :password, '', :onkeypress => 'loginKeyDown(event);'
-    #container<
+    #container<>
       #header
         = render 'layouts/navigation'
         = render 'layouts/logo'
         = render 'layouts/tabs'
       #content<>        
         = render :partial => @enable_horizontal_layout ? 'layouts/horizontal' : 'layouts/vertical'
-      #footer
-        Copyright &copy; 2010 Varsity Cleaners
+      #footer>
+        #about-us
+          %h6 About Us
+          .who-we-are= link_to 'Who We Are'
+          .faq= link_to 'FAQ'
+          .contact-us= link_to 'Contact Us'
+        #legal
+          %h6 Legal Stuff
+          .privacy= link_to 'Privacy Policy'
+          .terms-and-conditions= link_to 'Terms & Conditions'
+        #copyright
+          %h6
+            &copy; Varsity Cleaners, 2010
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

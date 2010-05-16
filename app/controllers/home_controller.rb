@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
   
+  before_filter :enable_horisontal_layout
+  
   def index      
     begin
       instantiate_query_params
       @search = search?
-      @welcome_partial = params[:hlp] ? 'welcome_homeowner' : 'welcome_generic'
       @cleaners = suitable_cleaners if search?
-      @skills = {:domestic_cleaning => true}
-      @enable_horizontal_layout = true
+      @skills = {:domestic_cleaning => true}      
       @lead_photo = 'lead-photo-frontpage.png'
     rescue Exception => e
       flash.now[:error] = e.message 
@@ -15,8 +15,16 @@ class HomeController < ApplicationController
       @cleaners ||= default_selection 
     end
   end
+  
+  def students
+    @lead_photo = 'lead-photo-student.png'
+  end
 
 private
+
+  def enable_horisontal_layout
+    @enable_horizontal_layout = true
+  end
 
   def instantiate_query_params
     @postcode, @booking_date, @skills = params[:postcode], params[:booking_date], Hash[*Skills.skill_set.map{|s| [s.to_s, !params[s].nil?]}.flatten]
