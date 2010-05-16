@@ -21,13 +21,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #ff6600; }
 
 h1 {
-  font-size: 170%; }
+  font-size: 22px; }
 
 h2 {
-  font-size: 130%; }
+  font-size: 18px; }
 
 h3 {
-  font-size: 110%; }
+  font-size: 16px; }
 
 p {
   margin: 5px 0; }
@@ -40,6 +40,9 @@ input[type='submit'], input[type='button'] {
   padding: 3px 7px;
   *padding: 0; }
 
+ul {
+  margin-left: 20px; }
+
 li {
   list-style-type: square;
   color: #ff6600;
@@ -47,7 +50,8 @@ li {
   line-height: 20px; }
 
 li span {
-  font-size: 12px; }
+  font-size: 12px;
+  color: #585858; }
 
 #container {
   width: 996px;
@@ -73,6 +77,12 @@ li span {
     #navigation #links a {
       text-decoration: none;
       margin: 0 10px; }
+
+#quote {
+  background-image: url(/images/left-column-background.png);
+  background-repeat: no-repeat;
+  min-height: 21px;
+  padding-top: 10px; }
 
 #tabs {
   height: 26px;
@@ -101,28 +111,70 @@ li span {
 #quote-text {
   padding: 6px 12px;
   text-align: left;
-  font-size: 12px; }
+  font-size: 12px;
+  line-height: 18px; }
 
 #quote-signature {
   text-align: right;
   padding-right: 12px;
   margin-top: 6px; }
 
+.button {
+  text-align: center;
+  line-height: 31px;
+  color: white;
+  font-size: 16px;
+  height: 31px;
+  width: 158px;
+  display: inline-block; }
+
+.blue {
+  background-image: url('/images/button.png'); }
+
+.orange {
+  background-image: url('/images/orange_button.png'); }
+
 #search-area-container > * {
   display: inline-block;
   zoom: 1;
   *display: inline; }
 #search-area-container #search-area {
-  width: 640px; }
+  width: 640px;
+  text-align: left; }
   #search-area-container #search-area #title-container {
     background-color: #6fbdfe;
     height: 41px; }
+    #search-area-container #search-area #title-container #title {
+      color: white;
+      font-size: 24px;
+      padding-top: 6px; }
   #search-area-container #search-area #form-container {
     background-color: #cfe8fd;
-    height: 83px; }
+    height: 59px;
+    padding-bottom: 12px;
+    padding-top: 12px; }
+    #search-area-container #search-area #form-container form > * {
+      display: inline-block;
+      zoom: 1;
+      *display: inline;
+      vertical-align: bottom; }
+    #search-area-container #search-area #form-container #search-box {
+      width: 273px;
+      background-color: green; }
+      #search-area-container #search-area #form-container #search-box input {
+        width: 100%;
+        font-size: 24px; }
+    #search-area-container #search-area #form-container #submit {
+      padding-right: 12px;
+      padding-left: 12px; }
+    #search-area-container #search-area #form-container #text {
+      width: 185px; }
+      #search-area-container #search-area #form-container #text #all-cleaners {
+        font-weight: bold;
+        margin-bottom: 15px; }
 
 #summary {
-  height: 307px; }
+  height: 247px; }
 
 #content {
   border-top: 3px solid #6fbdfe; }
@@ -130,9 +182,9 @@ li span {
 .hourly-rate {
   color: #ff6600;
   font-size: 40px;
-  text-align: center;
-  line-height: 80px; }
+  text-align: center; }
   .hourly-rate .hour {
+    vertical-align: baseline;
     font-size: 15px;
     color: #585858; }
 
@@ -187,10 +239,8 @@ div.fieldWithErrors {
 #old-password {
   margin-top: 30px; }
 
-#top {
-  height: 546px; }
-  #top * {
-    vertical-align: top; }
+#top * {
+  vertical-align: top; }
 
 #left-block {
   width: 332px;
@@ -222,12 +272,115 @@ div.fieldWithErrors {
       width: 530px;
       color: #585858;
       font-size: 22px; }
+  #right-block #summary > * {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    width: 314px;
+    padding-left: 18px; }
+  #right-block #summary .title {
+    color: #ff6600;
+    font-size: 18px;
+    margin: 0px 0; }
+  #right-block #summary .step {
+    text-align: left;
+    margin: 5px 0; }
+    #right-block #summary .step * {
+      display: inline-block;
+      zoom: 1;
+      *display: inline; }
+    #right-block #summary .step .text {
+      line-height: 52px;
+      font-size: 15px;
+      padding-left: 12px; }
+  #right-block #summary .action {
+    margin-top: 15px; }
 
-#quote {
-  background-image: url(/images/left-column-background.png);
-  background-repeat: no-repeat;
-  min-height: 21px;
-  padding-top: 10px; }
+#cleaners, #latest-activity {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  margin-top: 12px;
+  margin-bottom: 12px; }
+
+#cleaners {
+  width: 640px;
+  margin-right: 6px;
+  padding-left: !column_padding * 4; }
+
+#latest-activity {
+  border-top: 2px solid #6fbdfe;
+  width: 308px;
+  padding-right: !column_padding * 4;
+  background-color: #cfe8fd;
+  vertical-align: top;
+  padding-top: 6px;
+  padding-left: 12px;
+  text-align: left; }
+
+.cleaner {
+  height: 160px;
+  margin-bottom: 12px;
+  border-top: 2px solid #6fbdfe;
+  background-color: #cfe8fd;
+  text-align: left; }
+  .cleaner * {
+    vertical-align: top; }
+  .cleaner > div {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; }
+  .cleaner .button {
+    font-size: 12px; }
+  .cleaner .photo {
+    width: 142px; }
+  .cleaner .text {
+    padding-top: 6px;
+    padding-right: 12px;
+    width: 320px; }
+    .cleaner .text .name a {
+      color: #ff6600; }
+    .cleaner .text .university {
+      font-size: 10px;
+      text-decoration: underline;
+      margin: 6px 0; }
+    .cleaner .text .introduction {
+      font-size: 12px; }
+    .cleaner .text .stats {
+      margin-top: 12px;
+      color: #ff6600; }
+      .cleaner .text .stats .stats-column-first {
+        width: 75px; }
+      .cleaner .text .stats .stats-column-second {
+        width: 130px; }
+      .cleaner .text .stats .stats-column-third {
+        width: 109px; }
+      .cleaner .text .stats .reviews, .cleaner .text .stats .missed-jobs, .cleaner .text .stats .last-logged-in {
+        margin-top: 3px; }
+      .cleaner .text .stats > div {
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+        .cleaner .text .stats > div a {
+          color: #ff6600; }
+  .cleaner .booking-info {
+    padding-top: 6px;
+    width: 166px; }
+    .cleaner .booking-info .availability {
+      margin: 5px 0; }
+      .cleaner .booking-info .availability .active {
+        color: #ff6600;
+        font-weight: bold; }
+      .cleaner .booking-info .availability .inactive {
+        color: #585858; }
+      .cleaner .booking-info .availability > div {
+        width: 40px;
+        padding-left: 15px;
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+        .cleaner .booking-info .availability > div > div {
+          margin: 4px 0; }
 
 #new-client #country-name {
   display: inline-block;
@@ -379,8 +532,7 @@ div.fieldWithErrors {
     .booking .booking-deal .price {
       color: #ff6600;
       font-size: 40px;
-      text-align: center;
-      line-height: 80px; }
+      text-align: center; }
     .booking .booking-deal .status {
       margin: 10px 0;
       text-align: center; }

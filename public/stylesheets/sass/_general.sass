@@ -28,6 +28,13 @@
       text-decoration: none
       margin: 0 10px
 
+#quote
+  background-image: url(/images/left-column-background.png)
+  background-repeat: no-repeat
+  min-height: 21px
+  padding-top: 10px
+
+
 #tabs
   height: 26px
   text-align: right
@@ -56,26 +63,67 @@
   padding: #{!column_padding} #{!column_padding * 2}
   text-align: left
   font-size: 12px
+  line-height: 18px
   
 #quote-signature
   text-align: right
   padding-right = !column_padding * 2
   margin-top = !column_padding
+  
+.button
+  text-align: center
+  line-height: 31px
+  color: white
+  font-size: 16px
+  height: 31px
+  width: 158px
+  display: inline-block
+  
+.blue
+  background-image: url('/images/button.png')
+
+.orange
+  background-image: url('/images/orange_button.png')
+
 
 #search-area-container 
   & > *
     +cross_inline_block
   #search-area
     width = !column_width * 4 - !column_padding * 4
+    text-align: left
     #title-container
       background-color = !dark_blue
       height: 41px
-    #form-container
+      #title
+        color: white
+        font-size: 24px
+        padding-top: 6px
+    #form-container      
+      form > *
+        +cross_inline_block
+        vertical-align: bottom
       background-color = !light_blue
-      height: 83px
+      height: 59px
+      padding-bottom = !column_padding * 2      
+      padding-top = !column_padding * 2      
+      #search-box
+        width = 273px
+        background-color: green
+        input
+          width: 100%
+          font-size: 24px
+      #submit
+        padding-right = !column_padding * 2
+        padding-left = !column_padding * 2
+      #text
+        width = 185px
+        #all-cleaners
+          font-weight: bold
+          margin-bottom: 15px
   
 #summary
-  height: 307px
+  height: 247px
   
 #content
   border-top: 3px solid #{!dark_blue}
@@ -84,11 +132,11 @@
   color = !safety_orange
   font-size: 40px
   text-align: center
-  line-height: 80px  
 
 .hourly-rate
-  +big_orange_price
+  +big_orange_price  
   .hour
+    vertical-align: baseline
     font-size: 15px
     color= !dark_gray
 

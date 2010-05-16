@@ -1,5 +1,4 @@
 #top
-  height: 546px
   *
     vertical-align: top
   
@@ -27,9 +26,106 @@
       width: 530px
       color = !dark_gray
       font-size: 22px
+  #summary
+    & > *
+      +cross_inline_block
+      width = !column_width * 2 - !column_padding * 3
+      padding-left = !column_padding * 3
+    .title
+      color = !safety_orange
+      font-size: 18px
+      margin: 0px 0
+    .step
+      text-align: left
+      margin: 5px 0  
+      *
+        +cross_inline_block
+      .text
+        line-height: 52px
+        font-size: 15px
+        padding-left = !column_padding * 2
+    .action
+      margin-top: 15px        
+
+#cleaners, #latest-activity
+  +cross_inline_block
+  margin-top = !column_padding * 2
+  margin-bottom = !column_padding * 2
+
+#cleaners
+  width = !column_width * 4 - !column_padding * 4
+  margin-right = !column_padding
+  padding-left: !column_padding * 4
+
+#latest-activity
+  border-top: 2px solid #{!dark_blue}
+  width = !column_width * 2 - !column_padding * 4
+  padding-right: !column_padding * 4
+  background-color = !light_blue
+  vertical-align: top
+  padding-top = !column_padding
+  padding-left = !column_padding * 2
+  text-align: left  
+  
+.cleaner
+  height: 160px
+  margin-bottom = !column_padding * 2
+  border-top: 2px solid #{!dark_blue}
+  background-color = !light_blue
+  text-align: left
+  *
+    vertical-align: top
+  & > div
+    +cross_inline_block
+  .button
+    font-size: 12px
+  .photo
+    width: 142px
+  .text
+    padding-top = !column_padding
+    padding-right = !column_padding * 2
+    width: 320px
+    .name      
+      a
+        color = !safety_orange
+    .university
+      font-size: 10px
+      text-decoration: underline
+      margin: #{!column_padding} 0
+    .introduction
+      font-size: 12px
+    .stats
+      margin-top: 12px
+      color = !safety_orange
+      .stats-column-first
+        width: 75px
+      .stats-column-second
+        width: 130px
+      .stats-column-third
+        width: 109px
+      .reviews, .missed-jobs, .last-logged-in
+        margin-top: 3px
+      & > div
+        +cross_inline_block
+        a
+          color = !safety_orange
+  .booking-info
+    padding-top = !column_padding
+    width: 166px
+    .price      
+    .availability
+      margin: 5px 0
+      .active
+        color = !safety_orange
+        font-weight: bold
+      .inactive
+        color = !dark_gray
+      & > div
+        & > div
+          margin: 4px 0
+        width: 40px
+        padding-left: 15px
+        +cross_inline_block
+  
+    
       
-#quote
-  background-image: url(/images/left-column-background.png)
-  background-repeat: no-repeat
-  min-height: 21px
-  padding-top: 10px

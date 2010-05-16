@@ -14,15 +14,41 @@
         Hire British university students as domestic cleaners and help them finance their studies
     #separator
       = image_tag 'homepage-column-separator.png'
-    #summary
-    #search-area-container<
-      #left-border
-        = image_tag 'search-area-border-left.png'
-      #search-area<>
-        #title-container
-          #title
-            Enter your postcode
-        #form-container
-          to see all cleaners in your area
+  #summary<
+    #client-points>
+      = render :partial => "welcome_clients"
+    #cleaner-points
+      = render :partial => "welcome_cleaners"
+  #search-area-container<
+    #left-border
+      = image_tag 'search-area-border-left.png'
+    #search-area<>
+      #title-container
+        #title
+          Enter your postcode
+      #form-container
+        %form
+          #text>
+            #all-cleaners
+              To see all cleaners in your area
+            #example
+              Your postcode or area,
+              %br
+              e.g. W2 1TT, N1 or Westminster
+          #search-box>
+            = text_field_tag 'search'
+          #submit
+            .blue.button
+              Search
           
-Main content
+#cleaners>
+  - @cleaners.each do |cleaner|
+    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+#latest-activity>
+  %h1 Latest Activity
+  %ul
+    - 10.times do |event|
+      %li
+        %span= describe event

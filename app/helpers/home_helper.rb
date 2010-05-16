@@ -17,4 +17,8 @@ module HomeHelper
     "<div class=\"day-of-week #{cleaner.available_on?(day) ? 'active' : 'inactive'}\">#{short[day]}</div>"
   end
   
+  def describe(event)
+    "Maria has joined the site"
+  end
+  
 end
