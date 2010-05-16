@@ -7,6 +7,8 @@ class HomeController < ApplicationController
       @welcome_partial = params[:hlp] ? 'welcome_homeowner' : 'welcome_generic'
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}
+      @enable_horizontal_layout = true
+      @lead_photo = 'lead-photo-frontpage.png'
     rescue Exception => e
       flash.now[:error] = e.message 
     ensure

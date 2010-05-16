@@ -1,0 +1,9 @@
+#top
+  #left-block>
+    = render 'layouts/leading_photo'
+    #quote
+      = yield :quote
+  #right-block
+    = yield :right
+#main-block
+  = yield

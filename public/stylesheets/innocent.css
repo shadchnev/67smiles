@@ -1,22 +1,24 @@
+html {
+  height: 100%; }
+
 body {
-  background-color: white;
+  height: 100%;
+  background-color: #f4f4f4;
   text-align: center;
-  font-family: verdana,helvetica,arial,sans-serif;
-  margin-top: 25px;
-  color: #484848;
+  font-family: Helvetica,Arial,Verdana,sans-serif;
+  color: #000;
   font-size: 12px; }
 
 a {
-  color: #db530f;
+  color: #585858;
   text-decoration: underline; }
   a:hover {
-    color: #db530f; }
+    color: #585858; }
   a:visited {
-    color: #db530f; }
+    color: #585858; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #db530f;
-  padding-bottom: 10px; }
+  color: #ff6600; }
 
 h1 {
   font-size: 170%; }
@@ -25,137 +27,124 @@ h2 {
   font-size: 130%; }
 
 h3 {
-  font-size: 110%;
-  padding-bottom: 3px; }
+  font-size: 110%; }
 
 p {
   margin: 5px 0; }
 
 input[type='text'], input[type='password'] {
-  border: 1px solid #6ea7d1;
-  color: #6ea7d1; }
+  border: 1px solid #6fbdfe;
+  color: #6fbdfe; }
 
 input[type='submit'], input[type='button'] {
   padding: 3px 7px;
   *padding: 0; }
 
-ul {
-  margin-left: 20px; }
-
 li {
   list-style-type: square;
-  color: #db530f;
+  color: #ff6600;
   font-size: 18px;
   line-height: 20px; }
 
 li span {
-  color: #484848;
   font-size: 12px; }
 
 #container {
   width: 996px;
+  background-color: white;
   margin-left: auto;
   margin-right: auto; }
 
-#left-column {
-  width: 250px; }
-
-#right-column {
-  width: 746px;
-  text-align: left; }
-
-#left-column, #right-column {
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  vertical-align: top; }
-
-#left-content {
-  padding: 20px 0; }
-
 #header {
-  text-align: right; }
-  #header > * {
-    vertical-align: top; }
-
-#master-picture-container {
-  width: 250px;
-  height: 310px;
-  text-align: center;
-  border-bottom: 1px solid #6ea7d1; }
-
-#master-picture {
-  position: relative;
-  height: 310px;
-  text-align: right;
-  vertical-align: bottom;
-  line-height: 0; }
-
-.with_right_border {
-  border-right: 1px solid #6ea7d1; }
-
-#welcome-line {
-  vertical-align: top;
-  width: 150px;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  padding: 3px;
-  text-align: right; }
-
-#navigation-container {
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  vertical-align: top;
-  text-align: right;
-  width: 250px; }
+  background-color: #f4f4f4; }
 
 #navigation {
-  float: right;
-  padding: 3px; }
+  text-align: right;
+  padding-right: 12px; }
+  #navigation #links {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    background-color: #cfe8fd;
+    vertical-align: top;
+    line-height: 23px;
+    height: 23px;
+    color: #585858; }
+    #navigation #links a {
+      text-decoration: none;
+      margin: 0 10px; }
+
+#tabs {
+  height: 26px;
+  text-align: right;
+  font-size: 14px;
+  padding-right: 12px; }
+  #tabs #links {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+    height: 26px;
+    line-height: 26px;
+    background-color: #6fbdfe;
+    color: #585858; }
+    #tabs #links .current {
+      color: white; }
+    #tabs #links a {
+      text-decoration: none;
+      margin: 0 10px; }
 
 #logo {
-  width: 480px;
+  text-align: left;
+  margin-left: 12px; }
+
+#quote-text {
+  padding: 6px 12px;
+  text-align: left;
+  font-size: 12px; }
+
+#quote-signature {
+  text-align: right;
+  padding-right: 12px;
+  margin-top: 6px; }
+
+#search-area-container > * {
   display: inline-block;
   zoom: 1;
-  *display: inline;
-  text-align: left;
-  margin-bottom: 25px; }
+  *display: inline; }
+#search-area-container #search-area {
+  width: 640px; }
+  #search-area-container #search-area #title-container {
+    background-color: #6fbdfe;
+    height: 41px; }
+  #search-area-container #search-area #form-container {
+    background-color: #cfe8fd;
+    height: 83px; }
 
-#summary-block {
-  border-bottom: 1px solid #6ea7d1;
-  height: 310px;
-  text-align: left; }
+#summary {
+  height: 307px; }
 
-#right-container {
-  padding: 20px;
-  padding-top: 0; }
+#content {
+  border-top: 3px solid #6fbdfe; }
 
 .hourly-rate {
-  color: #db530f;
+  color: #ff6600;
   font-size: 40px;
   text-align: center;
   line-height: 80px; }
   .hourly-rate .hour {
     font-size: 15px;
-    color: #999999; }
-
-.make-a-booking {
-  text-align: center; }
-  .make-a-booking .book-online {
-    height: 35px; }
+    color: #585858; }
 
 #calendar {
   font-size: 120%; }
 
 #footer {
-  color: #999999;
-  font-size: 80%;
-  padding: 10px;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #6ea7d1; }
+  color: #f4f4f4;
+  background-color: #585858;
+  font-size: 90%;
+  padding: 6px;
+  height: 150px; }
 
 .clearer {
   clear: both; }
@@ -177,16 +166,12 @@ body > #login-form {
   color: black;
   font-size: 120%; }
 
-#flash {
-  width: 746px;
-  margin-left: 250px; }
-
 #flash div {
   margin: 10px 30px;
   padding: 10px;
-  background-color: #fcf75e;
-  border-left: 15px solid #6ea7d1;
-  border-top: 1px solid #6ea7d1; }
+  background-color: yellow;
+  border-left: 15px solid #6fbdfe;
+  border-top: 1px solid #6fbdfe; }
 
 #flash div.error {
   border-left: 15px solid red;
@@ -202,157 +187,67 @@ div.fieldWithErrors {
 #old-password {
   margin-top: 30px; }
 
-.page-header {
-  margin-bottom: 20px; }
-
-#find-a-cleaner {
-  padding-top: 5px; }
-  #find-a-cleaner > form > div {
-    margin-bottom: 25px; }
-  #find-a-cleaner #activities {
-    text-align: left;
-    margin-left: 50px; }
-  #find-a-cleaner #calendar {
-    padding-left: 12px; }
-
-.full-width {
-  left: -200px; }
-
-#welcome {
-  text-align: center; }
-  #welcome #client-points, #welcome #cleaner-points {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    height: 230px;
-    vertical-align: top;
-    background-image: url(/images/corner.png);
-    padding: 5px 10px;
-    width: 323px; }
-  #welcome #client-points {
-    margin-right: 55px; }
-  #welcome #light-search {
-    border-top: 1px solid #6ea7d1;
-    padding-top: 15px; }
-    #welcome #light-search * {
-      vertical-align: middle; }
-    #welcome #light-search form * {
-      display: inline; }
-    #welcome #light-search #postcode input {
-      font-size: 25px;
-      width: 150px; }
-    #welcome #light-search #label {
-      color: #db530f;
-      font-size: 20px; }
-    #welcome #light-search #number-of-results {
-      margin: 3px 0;
-      color: #db530f;
-      text-align: right; }
-  #welcome .icon {
-    float: left;
-    width: 40px; }
-  #welcome .step {
-    font-size: 130%;
-    color: #484848;
-    display: block;
-    text-align: left; }
-  #welcome .icon, #welcome .step {
-    height: 40px; }
-  #welcome .title {
-    font-size: 150%;
-    color: #db530f;
-    margin: 15px 0; }
-  #welcome .text {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    margin-left: 15px;
-    line-height: 40px; }
-  #welcome .action {
-    font-size: 160%;
-    margin-top: 15px;
-    display: block;
-    color: #db530f; }
-  #welcome .hint {
-    font-size: 80%;
-    margin-top: 5px;
-    color: #999999; }
-
-#cleaners .cleaner {
-  background-color: #eaf4fd;
-  margin: 10px 0;
-  border-bottom: 1px solid #6ea7d1; }
-  #cleaners .cleaner .photo, #cleaners .cleaner .details, #cleaners .cleaner .make-a-booking {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    width: 110px; }
-  #cleaners .cleaner .photo {
-    vertical-align: bottom;
-    line-height: 0; }
-    #cleaners .cleaner .photo img {
-      display: inline; }
-  #cleaners .cleaner .details {
-    padding-left: 10px;
-    width: 406px;
-    text-align: left;
-    color: #6ea7d1;
+#top {
+  height: 546px; }
+  #top * {
     vertical-align: top; }
-    #cleaners .cleaner .details .name {
-      margin-top: 10px; }
-    #cleaners .cleaner .details .stats {
-      vertical-align: top;
-      width: 160px; }
-    #cleaners .cleaner .details .introduction, #cleaners .cleaner .details .stats {
+
+#left-block {
+  width: 332px;
+  heigth: 100%;
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+
+#right-block {
+  width: 664px;
+  height: 100%;
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+  #right-block #tagline {
+    margin-top: 23px; }
+    #right-block #tagline #border, #right-block #tagline #text-container {
       display: inline-block;
       zoom: 1;
       *display: inline; }
-    #cleaners .cleaner .details .introduction {
-      width: 240px;
-      color: #484848; }
-    #cleaners .cleaner .details .days-of-week {
-      margin-top: 20px; }
-      #cleaners .cleaner .details .days-of-week * {
-        display: inline;
-        margin-right: 5px; }
-      #cleaners .cleaner .details .days-of-week .active {
-        color: #db530f; }
-      #cleaners .cleaner .details .days-of-week .inactive {
-        color: #999999; }
-  #cleaners .cleaner .make-a-booking {
-    width: 180px; }
+    #right-block #tagline #text-container {
+      background-color: #cfe8fd;
+      width: 652px;
+      height: 67px;
+      text-align: center; }
+    #right-block #tagline #text {
+      margin: auto;
+      margin-top: 8px;
+      width: 530px;
+      color: #585858;
+      font-size: 22px; }
 
-.faq-item {
-  margin-bottom: 30px; }
-
-.no-top-border {
-  border-top: 0px ! important; }
-
-.no-bottom-gap {
-  padding-bottom: 0 ! important;
-  line-height: 0; }
+#quote {
+  background-image: url(/images/left-column-background.png);
+  background-repeat: no-repeat;
+  min-height: 21px;
+  padding-top: 10px; }
 
 #new-client #country-name {
   display: inline-block;
   zoom: 1;
   *display: inline;
   width: 250px;
-  border: 1px solid #484848;
+  border: 1px solid black;
   *margin-right: 5px; }
 
-#cleaner-summary {
-  padding: 0 20px; }
-  #cleaner-summary #details > div {
-    margin-top: 10px;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    vertical-align: top; }
-  #cleaner-summary #details #skills, #cleaner-summary #details #stats {
-    width: 250px; }
-  #cleaner-summary #introduction {
-    height: 105px;
-    overflow: hidden; }
+#cleaner-summary #details > div {
+  margin-top: 10px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  vertical-align: top; }
+#cleaner-summary #details #skills, #cleaner-summary #details #stats {
+  width: 209px; }
+#cleaner-summary #introduction {
+  height: 105px;
+  overflow: hidden; }
 
 #availability #calendar {
   padding-left: 12px; }
@@ -365,11 +260,11 @@ div.fieldWithErrors {
   padding-top: 20px; }
   #reviews .review {
     padding: 5px 15px;
-    background-color: #eaf4fd;
+    background-color: #cfe8fd;
     margin: 10px 0;
-    border-bottom: 1px solid #6ea7d1; }
+    border-top: 1px solid #6fbdfe; }
     #reviews .review .signature, #reviews .review .timestamp {
-      color: #db530f;
+      color: #ff6600;
       font-size: 80%; }
 
 #new-cleaner #description textarea {
@@ -391,15 +286,15 @@ div.fieldWithErrors {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border-right: 1px solid #999999;
-    border-bottom: 1px solid #999999; }
+    border-right: 1px solid #585858;
+    border-bottom: 1px solid #585858; }
   #new-cleaner #set-availability li.ui-selecting {
-    background: #feca40; }
+    background: yellow; }
   #new-cleaner #set-availability li.ui-selected {
-    background: #f39814;
+    background: orange;
     color: white; }
   #new-cleaner #set-availability li.non-selectable {
-    color: #484848; }
+    color: black; }
 
 #availability #calendar {
   margin-bottom: 10px; }
@@ -415,7 +310,7 @@ div.fieldWithErrors {
   width: 250px;
   height: 310px;
   text-align: center;
-  border-right: 1px solid #6ea7d1; }
+  border-right: 1px solid #6fbdfe; }
 
 #upload-picture-hint {
   padding-top: 100px;
@@ -460,9 +355,9 @@ div.fieldWithErrors {
   *width: 60px; }
 #new-booking #cost {
   font-size: 200%;
-  color: #db530f;
+  color: #ff6600;
   padding: 15px;
-  border-top: 1px solid #db530f;
+  border-top: 1px solid #ff6600;
   width: 75%; }
 #new-booking #submit {
   font-size: 125%; }
@@ -471,9 +366,9 @@ div.fieldWithErrors {
   margin-bottom: 20px; }
 
 .booking {
-  background-color: #eaf4fd;
+  background-color: #cfe8fd;
   margin: 10px 0;
-  border-bottom: 1px solid #6ea7d1; }
+  border-top: 1px solid #6fbdfe; }
   .booking > div {
     display: inline-block;
     zoom: 1;
@@ -482,7 +377,7 @@ div.fieldWithErrors {
   .booking .booking-deal {
     width: 178px; }
     .booking .booking-deal .price {
-      color: #db530f;
+      color: #ff6600;
       font-size: 40px;
       text-align: center;
       line-height: 80px; }
@@ -495,7 +390,7 @@ div.fieldWithErrors {
         margin-bottom: 15px; }
 
 .clients-booking .photo {
-  width: 110px;
+  width: 332px;
   line-height: 0; }
 .clients-booking .booking-details {
   padding: 10px;

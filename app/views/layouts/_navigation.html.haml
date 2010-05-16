@@ -1,0 +1,7 @@
+#navigation<
+  = image_tag 'navigation-border-left.png'
+  #links>
+    - navigation_elements.each do |element|
+      = navigational_link element
+      = '|' unless element == navigation_elements.last
+  = image_tag 'navigation-border-right.png'

@@ -11,7 +11,7 @@
     = javascript_include_tag 'jquery-1.4.2.min'
     = javascript_include_tag 'jquery-ui-1.8.custom.min'
     = javascript_include_tag 'jquery-impromptu.3.0.min'
-    = javascript_include_tag 'jquery.color_fade'
+    =# javascript_include_tag 'jquery.color_fade'
     = javascript_include_tag 'swfobject.min'
     = javascript_include_tag 'jquery.uploadify.v2.1.0.min'
     = javascript_include_tag controller.controller_name if File.exists?("#{RAILS_ROOT}/public/javascripts/#{controller.controller_name}.js")
@@ -26,30 +26,13 @@
       = text_field_tag :login, '', :onkeypress => 'loginKeyDown(event);'
       %br
       = password_field_tag :password, '', :onkeypress => 'loginKeyDown(event);'
-    #container<>
-      #header<>
-        #logo
-          %a{:href => '/'}
-            %img{:src => "/images/varsitycleaners.png", :alt => "Varsity Cleaners Logo"}
-        #welcome-line
-          - if current_user
-            Hi, #{current_user.cleaner? ? link_to(current_user.owner.first_name, cleaner_path(current_user.owner)) : current_user.owner.first_name}!
-        #navigation-container
-          = render :partial => 'shared/navigation'      
-      #flash
-        - if flash[:notice]
-          .notice= flash[:notice]
-        - if flash[:warn]
-          .warn= flash[:warn]
-        - if flash[:error]
-          .error= flash[:error]  
-      #left-column<>
-        = yield :master_picture
-        #left-content
-          = yield :left_content        
-      #right-column<>
-        #content<>
-          = yield
+    #container<
+      #header
+        = render 'layouts/navigation'
+        = render 'layouts/logo'
+        = render 'layouts/tabs'
+      #content<>        
+        = render :partial => @enable_horizontal_layout ? 'layouts/horizontal' : 'layouts/vertical'
       #footer
         Copyright &copy; 2010 Varsity Cleaners
     :javascript

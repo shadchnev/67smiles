@@ -1,22 +1,24 @@
+html
+  height: 100%
+  
 body
-  background-color = !white
+  height: 100%
+  background-color = !light_gray
   text-align: center
-  font-family: verdana,helvetica,arial,sans-serif
-  margin-top: 25px
-  color = !black
+  font-family: Helvetica,Arial,Verdana,sans-serif
+  color: #000
   font-size: 12px
 
 a
-  color = !clay
+  color = !dark_gray
   text-decoration: underline
   &:hover
-    color = !clay
+    color = !dark_gray
   &:visited
-    color = !clay
+    color = !dark_gray
     
 h1, h2, h3, h4, h5, h6
-  color = !clay
-  padding-bottom: 10px
+  color = !safety_orange
 
 h1
   font-size: 170%
@@ -26,29 +28,24 @@ h2
 
 h3
   font-size: 110%
-  padding-bottom: 3px
 
 p
   margin: 5px 0
   
 input[type='text'], input[type='password']
-  border: 1px solid #{!dark_marine}  
-  color = !dark_marine
+  border: 1px solid #{!dark_blue}
+  color = !dark_blue
   
 input[type='submit'], input[type='button']
   padding: 3px 7px
   *padding: 0
   
-ul
-  margin-left = !column_interspace
-
 li
   list-style-type: square
-  color = !clay
+  color = !safety_orange
   font-size: 18px
   line-height: 20px
 
 li span
-  color = !black
   font-size: 12px
 

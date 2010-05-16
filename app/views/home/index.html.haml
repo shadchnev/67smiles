@@ -1,11 +1,28 @@
-= content_for :master_picture do
-  #master-picture-container<>
-    #master-picture
-      %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
-
-= render :partial => @welcome_partial
-
-#right-container.full-width
-  #cleaners
-    - @cleaners.each do |cleaner|    
-      = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+= content_for :quote do  
+  #quote-text
+    I'm glad I can hire a cleaner for my house and support local students at the same time. I definitely prefer Varsity Cleaners to conventional cleaning agencies!
+  #quote-signature
+    Dr. Simon Overell,
+    %br
+    software engineer
+= content_for :right do
+  #tagline<
+    #border<>
+      = image_tag 'tagline-border-left.png'
+    #text-container
+      #text
+        Hire British university students as domestic cleaners and help them finance their studies
+    #separator
+      = image_tag 'homepage-column-separator.png'
+    #summary
+    #search-area-container<
+      #left-border
+        = image_tag 'search-area-border-left.png'
+      #search-area<>
+        #title-container
+          #title
+            Enter your postcode
+        #form-container
+          to see all cleaners in your area
+          
+Main content

@@ -1,146 +1,35 @@
-!hourly_rate_width = 180px
-!photo_height = 160px
-!photo_width = 110px
-
-
-#find-a-cleaner
-  padding-top: 5px
-  
-  & > form > div
-    margin-bottom: 25px  
-
-  #activities
-    text-align: left
-    margin-left: 50px
-  
-  #calendar
-    padding-left: 12px
-
-.full-width
-  left: -200px
-
-#welcome
-  text-align: center
-   
-  #client-points, #cleaner-points
-    +cross_inline_block
-    height: 230px    
+#top
+  height: 546px
+  *
     vertical-align: top
-    background-image: url(/images/corner.png)
-    padding: 5px 10px
-    width = !right_column / 2 - 50px
-
-  #client-points
-    margin-right: 55px
-    
-  #light-search
-    border-top: 1px solid #{!dark_marine}
-    padding-top: 15px
-    *
-      vertical-align: middle    
-    & form *
-      display: inline
-    #postcode input
-      font-size: 25px
-      width: 150px
-    #label
-      color = !clay
-      font-size: 20px
-    #number-of-results
-      margin: 3px 0
-      color = !clay
-      text-align: right
-
-  .icon
-    float: left
-    width: 40px
- 
-  .step
-    font-size: 130%
-    color = !black
-    display: block
-    text-align: left
-    
-  .icon, .step
-    height: 40px    
-
-  .title
-    font-size: 150%
-    color = !clay
-    margin: 15px 0
-
-  .text
-    +cross_inline_block
-    margin-left: 15px
-    line-height: 40px
-
-  .action
-    font-size: 160%
-    margin-top: 15px
-    display: block
-    color = !clay
-
-  .hint
-    font-size: 80%
-    margin-top: 5px
-    color = !medium_gray
-
-#cleaners
-
-  .cleaner
-    +coloured-block-in-a-stack
-
-    .photo, .details, .make-a-booking
-      +cross_inline_block
-      width = !photo_width
-    
-    .photo
-      vertical-align: bottom
-      line-height: 0
-
-      img
-        display: inline
-
-    .details
-      padding-left: 10px
-      width = !right_column - !photo_width - !hourly_rate_width - 10px - !column_interspace * 2
-      text-align: left  
-      color = !dark_marine
-      vertical-align: top
-      
-      .name
-        margin-top: 10px      
-        
-      .stats
-        vertical-align: top
-        width: 160px
-        
-      .introduction, .stats
-        +cross_inline_block
-      
-      .introduction
-        width: 240px
-        color = !black
-      
-      .days-of-week
-        margin-top: 20px
-        *
-          display: inline
-          margin-right: 5px
-        .active
-          color = !clay
-        .inactive
-          color = !medium_gray
-
-    .make-a-booking
-      width = !hourly_rate_width
-
-.faq-item
-  margin-bottom: 30px
   
-.no-top-border
-  border-top: 0px ! important
-
-.no-bottom-gap
-  padding-bottom: 0 ! important
-  line-height: 0
+#left-block
+  width = !column_width * 2
+  heigth: 100%
+  +cross_inline_block
+  
+#right-block
+  width = !column_width * 4
+  height: 100%
+  +cross_inline_block
+  #tagline
+    margin-top: 23px
+    #border, #text-container
+      +cross_inline_block
+    #text-container
+      background-color = !light_blue
+      width: 652px      
+      height: 67px
+      text-align: center
+    #text
+      margin: auto
+      margin-top: 8px
+      width: 530px
+      color = !dark_gray
+      font-size: 22px
+      
+#quote
+  background-image: url(/images/left-column-background.png)
+  background-repeat: no-repeat
+  min-height: 21px
+  padding-top: 10px
