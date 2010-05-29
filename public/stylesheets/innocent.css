@@ -101,12 +101,16 @@ li span {
     *display: inline;
     vertical-align: top;
     height: 26px;
-    line-height: 26px;
-    background-color: #6fbdfe;
-    color: #585858; }
+    line-height: 26px; }
+    #tabs #links .tab {
+      background-color: #6fbdfe;
+      display: inline-block;
+      zoom: 1;
+      *display: inline; }
     #tabs #links .current {
-      color: white; }
+      background-color: #ff6600; }
     #tabs #links a {
+      color: white;
       text-decoration: none;
       margin: 0 10px; }
 
@@ -115,10 +119,10 @@ li span {
   margin-left: 12px; }
 
 #quote-text {
-  padding: 6px 12px;
+  padding: 6px 12px 0;
   text-align: left;
-  font-size: 12px;
-  line-height: 18px; }
+  font-size: 16px;
+  line-height: 20px; }
 
 #quote-signature {
   text-align: right;
@@ -142,10 +146,9 @@ li span {
 
 #tagline {
   margin-top: 23px; }
-  #tagline #text-container {
-    background-color: #cfe8fd; }
   #tagline #text {
-    color: #585858; }
+    color: #6fbdfe;
+    text-align: left; }
 
 #landing-page-header {
   margin-top: 13px; }
@@ -175,7 +178,7 @@ li span {
     .summary-paragraph .text-container .text {
       margin: auto;
       margin-top: 4px;
-      font-size: 11px; }
+      font-size: 12px; }
 
 #tagline #border, #tagline #text-container, #landing-page-header #border, #landing-page-header #text-container {
   display: inline-block;
@@ -186,9 +189,8 @@ li span {
   width: 652px;
   text-align: center; }
 #tagline #text, #landing-page-header #text {
-  margin: auto;
-  margin-top: 8px;
-  width: 503px;
+  margin: 8px 40px 8px 17px;
+  width: 590px;
   font-size: 22px; }
 
 #form-area-container > * {
@@ -204,7 +206,8 @@ li span {
     #form-area-container #form-area #title-container #title {
       color: white;
       font-size: 24px;
-      padding-top: 6px; }
+      line-height: 41px;
+      height: 41px; }
   #form-area-container #form-area #form-container {
     background-color: #cfe8fd;
     height: 59px;
@@ -230,12 +233,37 @@ li span {
         font-weight: bold;
         margin-bottom: 15px;
         color: black; }
+  #form-area-container #form-area .student-lead-form #left-column {
+    width: 130px;
+    font-weight: bold;
+    height: 49px;
+    line-height: 25px; }
+  #form-area-container #form-area .student-lead-form #middle-column {
+    width: 320px; }
+    #form-area-container #form-area .student-lead-form #middle-column input {
+      font-size: 14px;
+      padding-top: 4px;
+      height: 16px; }
+    #form-area-container #form-area .student-lead-form #middle-column #title {
+      width: 50px;
+      margin-right: 4px; }
+    #form-area-container #form-area .student-lead-form #middle-column #first-name, #form-area-container #form-area .student-lead-form #middle-column #last-name {
+      width: 129px; }
+    #form-area-container #form-area .student-lead-form #middle-column #first-name {
+      margin-right: 4px; }
+    #form-area-container #form-area .student-lead-form #middle-column #email {
+      width: 318px;
+      margin-top: 5px; }
+  #form-area-container #form-area .student-lead-form #submit {
+    margin-bottom: 9px; }
 
 #summary {
-  height: 247px; }
+  height: 260px;
+  padding-top: 10px;
+  background-image: url('/images/summary_background.png'); }
 
 #content {
-  border-top: 3px solid #6fbdfe; }
+  border-top: 3px solid #ff6600; }
 
 .hourly-rate {
   color: #ff6600;
@@ -342,8 +370,7 @@ div.fieldWithErrors {
     font-size: 18px;
     margin: 0px 0; }
   #right-block #summary .step {
-    text-align: left;
-    margin: 5px 0; }
+    text-align: left; }
     #right-block #summary .step * {
       display: inline-block;
       zoom: 1;
@@ -402,10 +429,11 @@ div.fieldWithErrors {
     .cleaner .text .university {
       font-size: 10px;
       text-decoration: underline;
-      margin: 6px 0; }
+      margin: 6px 10px; }
     .cleaner .text .introduction {
-      font-size: 12px; }
+      font-size: 14px; }
     .cleaner .text .stats {
+      font-size: 10px;
       margin-top: 12px;
       color: #ff6600; }
       .cleaner .text .stats .stats-column-first {

@@ -2,12 +2,12 @@
   .photo>
     =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
   .text>
-    %h1.name
+    %h4.name
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
     .university
       = university(cleaner.email)
     .introduction
-      = truncate(cleaner.description, :length => 250, :omission => '&hellip; ' + link_to("(read the rest)", cleaner_url(cleaner)))
+      = truncate(cleaner.description, :length => 200, :omission => '&hellip; ' + link_to("(read the rest)", cleaner_url(cleaner)))
     .stats<
       .stats-column-first
         .jobs-done

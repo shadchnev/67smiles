@@ -45,13 +45,15 @@
     vertical-align: top
     height: 26px
     line-height: 26px
-    background-color = !dark_blue
-    color = !dark_gray
-    
+    .tab
+      background-color = !dark_blue
+      +cross_inline_block
+        
     .current
-      color: white
+      background-color = !safety_orange
     
     a
+      color: white
       text-decoration: none
       margin: 0 10px
 
@@ -60,10 +62,10 @@
   margin-left = !column_padding * 2
   
 #quote-text
-  padding: #{!column_padding} #{!column_padding * 2}
+  padding: #{!column_padding} #{!column_padding * 2} 0
   text-align: left
-  font-size: 12px
-  line-height: 18px
+  font-size: 16px
+  line-height: 20px
   
 #quote-signature
   text-align: right
@@ -87,10 +89,10 @@
 
 #tagline
   margin-top: 23px
-  #text-container
-    background-color = !light_blue
+  #text-container    
   #text
-    color = !dark_gray
+    color = !dark_blue
+    text-align: left
     
 #landing-page-header
   margin-top: 13px  
@@ -118,7 +120,7 @@
     .text
       margin: auto
       margin-top = 4px
-      font-size: 11px
+      font-size: 12px
   
 
 #tagline, #landing-page-header
@@ -129,9 +131,8 @@
     width: 652px          
     text-align: center
   #text
-    margin: auto
-    margin-top: 8px
-    width: 503px    
+    margin: 8px 40px 8px 17px
+    width: 590px    
     font-size: 22px
 
 
@@ -147,7 +148,8 @@
       #title
         color: white
         font-size: 24px
-        padding-top: 6px
+        line-height: 41px
+        height: 41px
     #form-container      
       form > *
         +cross_inline_block
@@ -171,12 +173,44 @@
           font-weight: bold
           margin-bottom: 15px
           color: black
+    .student-lead-form
+      #left-column        
+        width = 130px
+        font-weight: bold
+        height: 49px
+        line-height: 25px
+        / #name
+        /   margin-top: 3px
+        / #email-label
+        /   margin-top: 14px
+      #middle-column
+        width = 320px
+        input
+          font-size: 14px
+          padding-top: 4px
+          height: 16px
+        #title
+          width: 50px
+          margin-right: 4px
+        #first-name, #last-name
+          width: 129px          
+        #first-name
+          margin-right: 4px
+        #email
+          width: 318px
+          margin-top: 5px
+      #submit
+        margin-bottom: 9px
+        
+          
   
 #summary
-  height: 247px
+  height: 260px
+  padding-top: 10px
+  background-image: url('/images/summary_background.png')
   
 #content
-  border-top: 3px solid #{!dark_blue}
+  border-top: 3px solid #{!safety_orange}
 
 =big_orange_price
   color = !safety_orange

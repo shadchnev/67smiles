@@ -22,21 +22,22 @@
       = image_tag 'search-area-border-left.png'
     #form-area<>
       #title-container
-        #title
+        #title<>
           Join now
-      #form-container
+      #form-container.student-lead-form
         %form
-          #text>
-            #all-cleaners
-              To see all cleaners in your area
-            #example
-              Your postcode or area,
-              %br
-              e.g. W2 1TT, N1 or Westminster
-          #search-box>
-            = text_field_tag 'search'
+          #left-column
+            #name
+              Your name              
+            #email-label
+              University email
+          #middle-column<
+            = select_tag 'title'
+            = text_field_tag 'first_name', '', :id => 'first-name'
+            = text_field_tag 'last_name', '', :id => 'last-name'
+            = text_field_tag 'email', '', :id => 'email'
           #submit
             .blue.button
-              Search
+              Join now
 
 %br

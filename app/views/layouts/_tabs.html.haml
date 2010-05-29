@@ -1,11 +1,12 @@
 #tabs<>
-  = image_tag 'tabs-border-left.png'
+  = image_tag 'tabs-border-left-orange.png'
   #links<>
-    %a.current{:href => '#'} home
-    |
-    %a{:href => '/students'} students
-    |
-    %a{:href => '#'} homeowners
-    |
-    %a{:href => '#'} faq
+    .tab.current>
+      %a{:href => '#'} home
+    .tab>
+      %a{:href => '/students'} students
+    .tab>
+      %a{:href => '#'} homeowners
+    .tab>
+      %a{:href => '#'} faq
   = image_tag 'tabs-border-right.png'
