@@ -1,4 +1,4 @@
-#top
+#two-columns
   *
     vertical-align: top
   
@@ -40,15 +40,31 @@
   width = !column_width * 4 - !column_padding * 4
   margin-right = !column_padding
   padding-left: !column_padding * 4
+  #pagination
+    font-size: 14px
+    & > div
+      line-height: 25px
+      margin: 3px
+      +cross_inline_block
+      background-color = !dark_blue
+      height: 25px
+      width: 25px
+      color: white
+      font-weight: bold
+    .active
+      background-color = !safety_orange
+    .page-mdot
+      height: 7px
+      width: 7px
+      vertical-align: middle
 
 #latest-activity
   border-top: 2px solid #{!dark_blue}
   width = !column_width * 2 - !column_padding * 4
   padding-right: !column_padding * 4
-  background-color = !light_blue
+  background-color: #FFFACD
   vertical-align: top
-  padding-top = !column_padding
-  padding-left = !column_padding * 2
+  padding = !column_padding !column_padding * 2
   text-align: left  
   
 .cleaner
@@ -112,5 +128,8 @@
         padding-left: 15px
         +cross_inline_block
   
-    
-      
+#faq
+  .faq-item
+    margin: #{!column_padding * 4} 0
+    p
+      padding-left = !column_padding

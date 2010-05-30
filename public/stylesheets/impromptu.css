@@ -11,7 +11,7 @@ div.jqi .jqimessage{ padding: 10px; line-height: 20px; color: #444444; }
 div.jqi .jqimessage input{ width: 300px; }
 div.jqi .jqimessage .error{ color: red; }
 div.jqi .jqibuttons{ text-align: right; padding: 5px 0 5px 0; border: solid 1px #e2e8e6; background-color: #f2f8f6; }
-div.jqi button{ padding: 3px 10px; margin: 0 10px; background-color: #2F6073; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 12px; }
-div.jqi button:hover{ background-color: #728A8C; }
-div.jqi button.jqidefaultbutton{ background-color: #BF5E26; }
+div.jqi button{ padding: 3px 10px; margin: 0 10px; background-color: #6FBDFE; border: solid 1px #f4f4f4; color: #ffffff; font-weight: bold; font-size: 12px; }
+div.jqi button:hover{ background-color: #5894DC; }
+div.jqi button.jqidefaultbutton{ background-color: #F60; }
 .jqiwarning .jqi .jqibuttons{ background-color: #BF5E26; }

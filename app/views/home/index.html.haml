@@ -1,4 +1,4 @@
-= content_for :quote do  
+= content_for :left_block_contents do  
   #quote-text
     I'm glad I can hire a cleaner for my house and support local students at the same time.
   #quote-signature
@@ -15,36 +15,25 @@
       = render :partial => "welcome_clients"
     #cleaner-points
       = render :partial => "welcome_cleaners"
-  #form-area-container<
-    #left-border
-      = image_tag 'search-area-border-left.png'
-    #form-area<>
-      #title-container
-        #title
-          Enter your postcode
-      #form-container
-        %form
-          #text>
-            #all-cleaners
-              To see all cleaners in your area
-            #example
-              Your postcode or area,
-              %br
-              e.g. W2 1TT, N1 or Westminster
-          #search-box>
-            = text_field_tag 'search'
-          #submit
-            .blue.button
-              Search
-          
+  = render :partial => 'shared/search_form'
 #cleaners>
   - @cleaners.each do |cleaner|
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+  #pagination
+    .page-number 1
+    .page-number.active 2
+    .page-number 3
+    .page-mdot
+    .page-mdot
+    .page-mdot
+    .page-number 9
 #latest-activity>
   %h1 Latest Activity
   %ul
     - 10.times do |event|
       %li
         %span= describe event
+
+  

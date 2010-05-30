@@ -1,0 +1,21 @@
+#form-area-container<
+  #left-border
+    = image_tag 'search-area-border-left.png'
+  #form-area<>
+    #title-container
+      #title
+        Enter your postcode
+    #form-container
+      %form
+        #text>
+          #all-cleaners
+            To see all cleaners in your area
+          #example
+            Your postcode or area,
+            %br
+            e.g. W2 1TT, N1 or Westminster
+        #search-box>
+          = text_field_tag 'search'
+        #submit
+          .blue.button
+            Search

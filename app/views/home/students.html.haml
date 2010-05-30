@@ -1,15 +1,13 @@
-= content_for :quote do  
+= content_for :left_block_contents do  
   #quote-text
-    Being a full-time student it’s really hard to find a job that doesn’t compromise my education. Varsity Cleaners allow me to work as much or as little as can, nothings beats that.
+    It’s really hard to find a job that doesn’t compromise my education. As a cleaner I can work as much or as little as want.
   #quote-signature
     Ivone Teresa,
-    %br
+    %br>
     Queen Mary University Student
 = content_for :right do
   #landing-page-content
     #landing-page-header<
-      #border<>
-        = image_tag 'paragraph-border-left-dark.png'
       #text-container
         #text
           Earn up to &pound;8&mdash;10/hour working as a one-off domestic cleaner in your area
@@ -38,6 +36,6 @@
             = text_field_tag 'email', '', :id => 'email'
           #submit
             .blue.button
-              Join now
+              Join now, it's free!
 
 %br

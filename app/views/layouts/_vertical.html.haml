@@ -1,1 +1,7 @@
-vertical layout
+#vertical-content
+  #left-block>
+    = render 'layouts/leading_photo'
+    #additional
+      = yield :additional
+  #main-block
+    = yield

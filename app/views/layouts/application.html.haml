@@ -32,7 +32,15 @@
         = render 'layouts/logo'
         = render 'layouts/tabs'
       #content<>        
-        = render :partial => @enable_horizontal_layout ? 'layouts/horizontal' : 'layouts/vertical'
+        #two-columns
+          #left-block>
+            = render 'layouts/leading_photo'
+            #left-block-contents
+              = yield :left_block_contents
+          #right-block
+            = yield :right
+        #main-block
+          = yield
       #footer>
         #about-us
           %h6 About Us

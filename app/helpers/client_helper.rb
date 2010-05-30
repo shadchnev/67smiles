@@ -6,8 +6,8 @@ module ClientHelper
   end
   
   def client_modification_submit(action)
-    return 'Create an account' if action == "new"
-    'Update your account' if action == "edit" or action == 'update'
+    return 'Create My Account' if action == "new"
+    'Save My Profile' if action == "edit" or action == 'update'
   end
   
   def client_modification_subtitle(action)

@@ -1,12 +1,19 @@
 #tabs<>
-  = image_tag 'tabs-border-left-orange.png'
+  - if controller.action_name == 'index'
+    = image_tag 'tabs-border-left-orange.png'
+  - else
+    = image_tag 'tabs-border-left.png'
+    
   #links<>
-    .tab.current>
-      %a{:href => '#'} home
-    .tab>
+    .tab{:class => ('current' if controller.action_name == 'index')}>
+      %a{:href => '/'} home
+    .tab{:class => ('current' if controller.action_name == 'students')}>
       %a{:href => '/students'} students
-    .tab>
-      %a{:href => '#'} homeowners
-    .tab>
-      %a{:href => '#'} faq
-  = image_tag 'tabs-border-right.png'
+    .tab{:class => ('current' if controller.action_name == 'homeowners')}>
+      %a{:href => '/homeowners'} homeowners
+    .tab{:class => ('current' if controller.action_name == 'faq')}>
+      %a{:href => '/faq'} faq
+  - if controller.action_name == 'faq'
+    = image_tag 'tabs-border-right-orange.png'
+  - else
+    = image_tag 'tabs-border-right.png'

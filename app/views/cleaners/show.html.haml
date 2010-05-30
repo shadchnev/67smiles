@@ -1,12 +1,5 @@
-= content_for :master_picture do  
-  #master-picture-container<>
-    #master-picture  
-      = render :partial => 'picture'
-  
-= content_for :left_content do
+= content_for :left_block_contents do  
   = render :partial => 'availability', :locals => {:availability => @cleaner.availability}
-
-= render :partial => 'summary'
-#right-container
+= content_for :right do
+  = render :partial => 'summary'
   = render :partial => 'reviews'
-  

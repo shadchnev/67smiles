@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   
-  before_filter :enable_horisontal_layout
-  
   def index      
     begin
       instantiate_query_params
@@ -20,11 +18,15 @@ class HomeController < ApplicationController
     @lead_photo = 'lead-photo-student.png'
   end
 
-private
-
-  def enable_horisontal_layout
-    @enable_horizontal_layout = true
+  def homeowners
+    @lead_photo = 'lead-photo-homeowner.png'
   end
+
+  def faq
+    @lead_photo = 'lead-photo-faq.png'
+  end
+
+private
 
   def instantiate_query_params
     @postcode, @booking_date, @skills = params[:postcode], params[:booking_date], Hash[*Skills.skill_set.map{|s| [s.to_s, !params[s].nil?]}.flatten]

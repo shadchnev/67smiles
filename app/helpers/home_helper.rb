@@ -18,7 +18,13 @@ module HomeHelper
   end
   
   def describe(event)
-    "Maria has joined the site"
+    a = [
+      "Evgeny from E1W wrote a review for Clarissa",
+      "Maria joined Varsity Cleaners",
+      "Ivone Teresa declined a booking in SW1A",
+      "Homeowner Mark created an account"
+    ]
+    a[rand(a.size)]
   end
   
 end

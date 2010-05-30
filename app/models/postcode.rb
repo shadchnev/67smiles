@@ -33,6 +33,7 @@ class Postcode < ActiveRecord::Base
 private
 
   def split
+    return [] unless value
     value =~ /(.+)(.{3})/i 
     [$1, $2]
   end      
