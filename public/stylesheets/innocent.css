@@ -16,25 +16,25 @@ a {
   a:visited {
     color: #585858; }
 
-h1 {
-  font-size: 22px;
+h1, h2, h3, h4, h5, h6 {
   color: #6fbdfe; }
+
+h1 {
+  font-size: 22px; }
 
 h2 {
   font-size: 20px;
-  color: #6fbdfe;
   padding: 12px 0; }
 
 h3 {
-  font-size: 18px;
-  color: #6fbdfe; }
+  font-size: 18px; }
 
 h4 {
   font-size: 16px; }
 
 h5 {
   font-size: 14px;
-  margin: 12px 0; }
+  padding: 12px 0; }
 
 h6 {
   font-size: 12px;
@@ -145,7 +145,7 @@ li span {
   color: white;
   font-size: 16px;
   height: 31px;
-  width: 158px;
+  width: 158px ! important;
   display: inline-block; }
 
 .blue {
@@ -281,7 +281,7 @@ li span {
   font-size: 40px;
   text-align: center; }
   .hourly-rate .hour {
-    vertical-align: baseline;
+    vertical-align: baseline ! important;
     font-size: 15px;
     color: #585858; }
 
@@ -376,6 +376,29 @@ div.fieldWithErrors {
   .fieldset .bottom-arrow {
     background-image: url('/images/fieldset-bottom-arrow.png');
     height: 20px; }
+
+.make-a-booking {
+  background-image: url('/images/booking-background.png');
+  text-align: center; }
+  .make-a-booking .top, .make-a-booking .bottom {
+    height: 10px; }
+  .make-a-booking .book-online {
+    margin: 12px 0; }
+  .make-a-booking, .make-a-booking * {
+    width: 317px;
+    background-repeat: repeat-y; }
+  .make-a-booking .top {
+    margin-bottom: 25px;
+    background-image: url('/images/booking-top.png'); }
+  .make-a-booking .bottom {
+    margin-top: 25px;
+    background-image: url('/images/booking-bottom.png'); }
+
+#daily-availability {
+  margin-bottom: 24px; }
+  #daily-availability p {
+    color: #ff6600;
+    font-weight: bold; }
 
 #two-columns * {
   vertical-align: top; }
@@ -536,23 +559,24 @@ div.fieldWithErrors {
 
 #cleaner-summary {
   height: 360px;
-  text-align: left; }
-  #cleaner-summary div {
-    margin-left: 12px; }
+  text-align: left;
+  border-bottom: 20px solid #6fbdfe;
+  padding-right: 12px; }
   #cleaner-summary #details > div {
     margin-top: 10px;
     display: inline-block;
     zoom: 1;
     *display: inline;
     vertical-align: top; }
-  #cleaner-summary #details #skills, #cleaner-summary #details #stats {
-    width: 209px; }
+  #cleaner-summary #details #stats {
+    width: 332px; }
   #cleaner-summary #introduction {
     max-height: 125px;
+    line-height: 16px;
     overflow: hidden; }
 
 #availability #calendar {
-  padding-left: 12px; }
+  padding-left: 55px; }
 
 #hints ul {
   text-align: left;

@@ -1,15 +1,15 @@
 #daily-availability
   = hidden_field_tag "availability-json", @cleaner.availability.to_hash.to_json
   #morning
-    %h3
+    %p
       Morning
     .timespan 08:00 &mdash; 11:00
   #afternoon
-    %h3
+    %p
       Afternoon    
     .timespan 12:00 &mdash; 14:00
     .timespan 16:00 &mdash; 18:00
   #evening
-    %h3
+    %p
       Evening  
     .timespan 18:00 &mdash; 21:00

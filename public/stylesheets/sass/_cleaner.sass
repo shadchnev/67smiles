@@ -1,24 +1,25 @@
 #cleaner-summary
   height: 360px
   text-align: left
-  div
-    margin-left: 12px
+  border-bottom: 20px solid #{!dark_blue}
+  padding-right: 12px
 
   #details
     & > div
       margin-top: 10px
       +cross_inline_block
       vertical-align: top
-    #skills, #stats
-      width = !column_width*2 - 123px
+    #stats
+      width = !column_width*2
         
   #introduction
     max-height: 125px
+    line-height: 16px
     overflow: hidden 
     
 #availability
   #calendar
-    padding-left: 12px
+    padding-left: 55px
     
 #hints
   ul

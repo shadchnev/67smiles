@@ -6,19 +6,17 @@
   #introduction
     %p= @cleaner.description
   #details
-    #skills
-      %h3
-        I'm happy to help you with
-      %ul#list
-        - Skills.skill_set.each do |skill|
-          - if @cleaner.skills.send(skill)
-            %li 
-              %span 
-                = skill.to_s.humanize
+    / #skills
+    /   %h3
+    /     I'm happy to help you with
+    /   %ul#list
+    /     - Skills.skill_set.each do |skill|
+    /       - if @cleaner.skills.send(skill)
+    /         %li 
+    /           %span 
+    /             = skill.to_s.humanize
     #stats
-      %h4
-        Info
-      %ul#info
+      %ul
         - unless @cleaner.completed_jobs.empty?
           %li
             %span= jobs_done @cleaner

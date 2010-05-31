@@ -83,7 +83,7 @@
   color: white
   font-size: 16px
   height: 31px
-  width: 158px
+  width: 158px ! important
   display: inline-block
   
 .blue
@@ -227,7 +227,7 @@
 .hourly-rate
   +big_orange_price  
   .hour
-    vertical-align: baseline
+    vertical-align: baseline ! important
     font-size: 15px
     color= !dark_gray
 
@@ -328,6 +328,25 @@ div.fieldWithErrors
     background-image: url('/images/fieldset-bottom-arrow.png')
     height: 20px
   
+.make-a-booking
+  background-image: url('/images/booking-background.png')
+  text-align: center
+  .top, .bottom
+    height: 10px    
+  .book-online
+    margin: 12px 0
+  &, *
+    width: 317px
+    background-repeat: repeat-y
+  .top
+    margin-bottom: 25px
+    background-image: url('/images/booking-top.png')
+  .bottom
+    margin-top: 25px
+    background-image: url('/images/booking-bottom.png')
   
-  
-  
+#daily-availability
+  margin-bottom: 24px
+  p
+    color = !safety_orange
+    font-weight: bold
