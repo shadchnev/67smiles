@@ -1,7 +1,10 @@
 #new-booking
+  text-align: left
+  padding-left: 24px
 
   .hourly-rate
     float: right
+    display: none
 
   #calendar
     +cross_inline_block
@@ -13,7 +16,13 @@
     vertical-align: top
     text-align: center
   
+  #cleaning-materials
+    p
+      margin-top: 12px
+  
   #time-selectors
+    *
+      vertical-align: middle
     #end-time
       margin: 0 20px 0 5px
     #start-time
@@ -25,11 +34,8 @@
       
 
   #cost
-    font-size: 200%
-    color = !safety_orange
-    padding: 15px
-    border-top: 1px solid #{!safety_orange}
-    width: 75%
+    font-size: 18px
+    color = !dark_blue
   
   #submit
     font-size: 125%

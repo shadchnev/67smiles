@@ -48,11 +48,7 @@ function updateBookingCost() {
   var timeDiff = timeTo - timeFrom;
 
   if (timeDiff <= 0)
-    error = 'Please select available time';
-  else {
-    if (!isAvailableInSelectedTime())
-      error = 'The selected time is not available';
-  }
+    error = 'Select an available time slot to calculate the price';
       
   var surcharge = 0;
   if ($('#new-booking #booking_cleaning_materials_provided').val() == 0)

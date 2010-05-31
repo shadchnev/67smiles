@@ -1,10 +1,5 @@
-= content_for :master_picture do
-  #master-picture-container<>
-    #master-picture
-      %img.with_right_border{:src => @cleaner.photo.url(:medium)}<>
-  
-= content_for :left_content do
+= content_for :left_block_contents do
   = render :partial => 'new_booking_hints'
 
-#right-container
+= content_for :right do
   = render :partial => 'new'

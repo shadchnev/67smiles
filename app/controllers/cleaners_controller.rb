@@ -38,6 +38,7 @@ class CleanersController < ApplicationController
   
   def show
     @cleaner = Cleaner.find(params[:id])
+    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
     if current_user and current_user.client?
       @review = Review.new
       @review.cleaner = @cleaner
