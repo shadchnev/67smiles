@@ -47,7 +47,7 @@ function updateBookingCost() {
 
   var timeDiff = timeTo - timeFrom;
 
-  if (timeDiff <= 0)
+  if ((timeDiff <= 0) || !isAvailableInSelectedTime())
     error = 'Select an available time slot to calculate the price';
       
   var surcharge = 0;

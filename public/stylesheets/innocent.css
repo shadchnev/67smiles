@@ -713,8 +713,7 @@ div.fieldWithErrors {
   #new-booking #time-selectors select {
     *width: 60px; }
   #new-booking #cost {
-    font-size: 18px;
-    color: #6fbdfe; }
+    font-size: 18px; }
   #new-booking #submit {
     font-size: 125%; }
 
