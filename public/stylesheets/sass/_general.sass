@@ -29,9 +29,7 @@
       margin: 0 10px
 
 #left-block-contents
-  background-image: url(/images/left-column-background.png)
-  background-repeat: no-repeat
-  min-height: 21px
+  border-top: 2px solid $safety_orange
   padding-top: 10px  
   #email
     margin: #{!column_padding * 2} 0
@@ -83,11 +81,21 @@
   color: white
   font-size: 16px
   height: 31px
-  width: 158px ! important
-  display: inline-block
-  
-.blue
-  background-image: url('/images/button.png')
+  //width: 158px !important
+  display: inline-block  
+  padding: 2px
+  & > *
+    display: inline-block
+  .left, .right
+    width: 18px
+    height: 31px
+  .left
+    background-image: url('/images/button-left.png')    
+  .right
+    background-image: url('/images/button-right.png')
+  .text
+    background-color: $dark_blue
+    
 
 .orange
   background-image: url('/images/orange_button.png')
@@ -186,10 +194,6 @@
         font-weight: bold
         height: 49px
         line-height: 25px
-        / #name
-        /   margin-top: 3px
-        / #email-label
-        /   margin-top: 14px
       #middle-column
         width = 320px
         input
@@ -218,6 +222,7 @@
   
 #content
   border-top: 3px solid #{!safety_orange}
+  min-height: 700px
 
 =big_orange_price
   color = !safety_orange
@@ -227,7 +232,7 @@
 .hourly-rate
   +big_orange_price  
   .hour
-    vertical-align: baseline ! important
+    vertical-align: baseline !important
     font-size: 15px
     color= !dark_gray
 

@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
   end
   
   def new
+    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
     @booking = Booking.new
     @booking.cleaner = @cleaner
     @booking_date = (Time.now + 1.day).to_i # default value

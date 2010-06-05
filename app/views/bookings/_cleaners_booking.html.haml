@@ -1,33 +1,42 @@
 - booking, client, cleaner = cleaners_booking, cleaners_booking.client, cleaners_booking.cleaner
+
 .booking.cleaners-booking
-  .personal-details  
-    %h2.client-name
+  .title<
+    .client-name>
       = client.first_name
-    .client-contact-details
-      %p.phone        
-        ==+#{client.phone}
-      %p.email
-        = mail_to client.email
-    .client-address
+    .time>
+      = booking.day.strftime '%d %B, %A'
+      = booking.start_time.localtime.strftime('%H:%M')
+      &mdash;
+      = booking.end_time.localtime.strftime('%H:%M')      
+    .status>
+      = booking_status(booking)
+  .body
+    .contact-details>
+      %p==+#{client.phone}
+      %p= mail_to client.email
+    .address>
       - booking.address.to_a.each do |line|
         %p= line
       %p.map-link
-        = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}", :target => '_blank'
-  .booking-details
-    = render :partial => 'booking_details', :locals => {:booking => booking, :messages => cleaners_booking_messages(client)}
-  .booking-deal
-    .price<
-      &pound;
-      = round_if_possible booking.cost
-    .status
-      %h3= booking_status(booking)
-    .controls
-      - if booking.accepted? and booking.cancellable?
-        = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
-      - elsif booking.pending?
-        %p
-          You have 
-          = pluralize((booking.time_left / 1.minute).round, 'minute')
-          to make a decision
-        = button_to "Accept", accept_cleaner_booking_path(@cleaner, booking)
-        = button_to "Decline", decline_cleaner_booking_path(@cleaner, booking)
+        = link_to 'map', "http://maps.google.co.uk/maps?q=#{booking.address.postcode.value}", :target => '_blank'      
+    .booking-deal>
+      .price
+        &pound;
+        = round_if_possible booking.cost
+      .controls
+        - if booking.accepted? and booking.cancellable?
+          / = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
+          = render :partial => 'shared/button', :locals => {:text => 'Cancel'}
+        - elsif booking.pending?
+          %p            
+            = pluralize((booking.time_left / 1.minute).round, 'minute')
+            left to accept or decline
+          = render :partial => 'shared/button', :locals => {:text => 'Accept'}
+          = render :partial => 'shared/button', :locals => {:text => 'Decline'}
+  .notes
+    - messages = cleaners_booking_messages(client)
+    - if booking.cleaning_materials_provided?
+      = messages[:cleaning_materials_provided]
+    - else
+      = messages[:cleaning_materials_not_provided]

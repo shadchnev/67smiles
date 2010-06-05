@@ -66,10 +66,10 @@ module ApplicationHelper
   end
   
   def booking_status(booking)
-    return "Missed by the cleaner" if booking.missed?
+    return "Missed" if booking.missed?
     return 'Cancelled' if booking.cancelled?
     return 'Declined' if booking.declined?
-    return 'Not accepted yet' unless booking.accepted?
+    return 'Pending' unless booking.accepted?
     return 'Accepted' if booking.accepted?
   end  
   

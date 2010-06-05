@@ -4,9 +4,10 @@ html {
 body {
   background-color: #f4f4f4;
   text-align: center;
-  font-family: Helvetica,Arial,Verdana,sans-serif;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
   color: #585858;
-  font-size: 12px; }
+  font-size: 12px;
+  height: 100%; }
 
 a {
   color: #585858;
@@ -90,9 +91,7 @@ li span {
       margin: 0 10px; }
 
 #left-block-contents {
-  background-image: url(/images/left-column-background.png);
-  background-repeat: no-repeat;
-  min-height: 21px;
+  border-top: 2px solid #ff6600;
   padding-top: 10px; }
   #left-block-contents #email {
     margin: 12px 0;
@@ -145,14 +144,22 @@ li span {
   color: white;
   font-size: 16px;
   height: 31px;
-  width: 158px ! important;
-  display: inline-block; }
-
-.blue {
-  background-image: url('/images/button.png'); }
+  display: inline-block;
+  padding: 2px; }
+  .button > * {
+    display: inline-block; }
+  .button .left, .button .right {
+    width: 18px;
+    height: 31px; }
+  .button .left {
+    background-image: url("/images/button-left.png"); }
+  .button .right {
+    background-image: url("/images/button-right.png"); }
+  .button .text {
+    background-color: #6fbdfe; }
 
 .orange {
-  background-image: url('/images/orange_button.png'); }
+  background-image: url("/images/orange_button.png"); }
 
 #tagline {
   margin-top: 23px; }
@@ -271,17 +278,18 @@ li span {
 #summary {
   height: 260px;
   padding-top: 10px;
-  background-image: url('/images/summary_background.png'); }
+  background-image: url("/images/summary_background.png"); }
 
 #content {
-  border-top: 3px solid #ff6600; }
+  border-top: 3px solid #ff6600;
+  min-height: 700px; }
 
 .hourly-rate {
   color: #ff6600;
   font-size: 40px;
   text-align: center; }
   .hourly-rate .hour {
-    vertical-align: baseline ! important;
+    vertical-align: baseline !important;
     font-size: 15px;
     color: #585858; }
 
@@ -295,7 +303,7 @@ li span {
   height: 100px;
   text-align: left; }
   #footer * {
-    color: #999; }
+    color: #999999; }
   #footer a {
     text-decoration: none; }
   #footer h6 {
@@ -363,22 +371,22 @@ div.fieldWithErrors {
   padding: 12px 0 12px 0; }
 
 .fieldset {
-  background-image: url('/images/fieldset-background.png'); }
+  background-image: url("/images/fieldset-background.png"); }
   .fieldset .top, .fieldset .bottom {
     height: 10px; }
   .fieldset, .fieldset .top, .fieldset .bottom, .fieldset .bottom-arrow {
     width: 619px;
     background-repeat: repeat-y; }
   .fieldset .top {
-    background-image: url('/images/fieldset-top.png'); }
+    background-image: url("/images/fieldset-top.png"); }
   .fieldset .bottom {
-    background-image: url('/images/fieldset-bottom.png'); }
+    background-image: url("/images/fieldset-bottom.png"); }
   .fieldset .bottom-arrow {
-    background-image: url('/images/fieldset-bottom-arrow.png');
+    background-image: url("/images/fieldset-bottom-arrow.png");
     height: 20px; }
 
 .make-a-booking {
-  background-image: url('/images/booking-background.png');
+  background-image: url("/images/booking-background.png");
   text-align: center; }
   .make-a-booking .top, .make-a-booking .bottom {
     height: 10px; }
@@ -389,10 +397,10 @@ div.fieldWithErrors {
     background-repeat: repeat-y; }
   .make-a-booking .top {
     margin-bottom: 25px;
-    background-image: url('/images/booking-top.png'); }
+    background-image: url("/images/booking-top.png"); }
   .make-a-booking .bottom {
     margin-top: 25px;
-    background-image: url('/images/booking-bottom.png'); }
+    background-image: url("/images/booking-bottom.png"); }
 
 #daily-availability {
   margin-bottom: 24px; }
@@ -462,8 +470,7 @@ div.fieldWithErrors {
 
 #cleaners {
   width: 640px;
-  margin-right: 6px;
-  padding-left: !column_padding * 4; }
+  margin-right: 6px; }
   #cleaners #pagination {
     font-size: 14px; }
     #cleaners #pagination > div {
@@ -487,8 +494,8 @@ div.fieldWithErrors {
 #latest-activity {
   border-top: 2px solid #6fbdfe;
   width: 308px;
-  padding-right: !column_padding * 4;
-  background-color: #FFFACD;
+  padding-right: 24px;
+  background-color: #fffacd;
   vertical-align: top;
   padding: 6px 12px;
   text-align: left; }
@@ -717,54 +724,48 @@ div.fieldWithErrors {
   #new-booking #submit {
     font-size: 125%; }
 
+#bookings {
+  text-align: left;
+  padding: 0 12px; }
+  #bookings .booking {
+    width: 100%;
+    background-color: #e9f4fe;
+    border-bottom: 2px solid #323232;
+    margin-bottom: 12px; }
+    #bookings .booking .body, #bookings .booking .title, #bookings .booking .notes {
+      padding: 6px; }
+      #bookings .booking .body > *, #bookings .booking .title > *, #bookings .booking .notes > * {
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+    #bookings .booking .title {
+      background-color: #323232;
+      color: white;
+      font-size: 18px; }
+    #bookings .booking .notes {
+      border-top: 1px solid #323232; }
+  #bookings .cleaners-booking .client-name, #bookings .cleaners-booking .contact-details {
+    width: 209px; }
+  #bookings .cleaners-booking .time {
+    width: 308px; }
+  #bookings .cleaners-booking .status {
+    width: 110px;
+    text-align: right; }
+  #bookings .cleaners-booking .address {
+    width: 229px; }
+  #bookings .cleaners-booking .booking-deal {
+    width: 189px; }
+  #bookings .cleaners-booking .body .address .map-link {
+    font-weight: bold; }
+  #bookings .cleaners-booking .body .booking-deal {
+    text-align: center; }
+    #bookings .cleaners-booking .body .booking-deal .price {
+      color: #ff6600;
+      font-size: 36px;
+      font-weight: bold; }
+
 #upcoming {
   margin-bottom: 20px; }
-
-.booking {
-  background-color: #cfe8fd;
-  margin: 10px 0;
-  border-top: 1px solid #6fbdfe; }
-  .booking > div {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    vertical-align: top; }
-  .booking .booking-deal {
-    width: 178px; }
-    .booking .booking-deal .price {
-      color: #ff6600;
-      font-size: 40px;
-      text-align: center; }
-    .booking .booking-deal .status {
-      margin: 10px 0;
-      text-align: center; }
-    .booking .booking-deal .controls {
-      text-align: center; }
-      .booking .booking-deal .controls > form {
-        margin-bottom: 15px; }
-
-.clients-booking .photo {
-  width: 332px;
-  line-height: 0; }
-.clients-booking .booking-details {
-  padding: 10px;
-  width: 370px; }
-  .clients-booking .booking-details .cleaner-contact-details {
-    padding: 0 0 0 10px; }
-
-.cleaners-booking {
-  padding: 0 10px; }
-  .cleaners-booking .personal-details {
-    width: 200px; }
-    .cleaners-booking .personal-details .client-name {
-      margin-top: 10px; }
-    .cleaners-booking .personal-details .client-contact-details {
-      padding: 0 0 10px 10px; }
-  .cleaners-booking .booking-details {
-    width: 300px;
-    padding-top: 10px; }
-    .cleaners-booking .booking-details .extra {
-      margin-top: 20px; }
 
 .long-form > div {
   margin-bottom: 20px; }

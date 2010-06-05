@@ -39,53 +39,55 @@
   #submit
     font-size: 125%
 
-#upcoming
-  margin-bottom: 20px
-
-.booking
-  +coloured-block-in-a-stack
-  & > div
-    +cross_inline_block
-    vertical-align: top
-  .booking-deal
-    width: 178px    
-    .price
-      +big_orange_price
+#bookings
+  text-align: left
+  padding: 0 $column_padding * 2
+  
+  .booking
+    width: 100%
+    background-color: $pale_blue
+    border-bottom: 2px solid $mine_shaft
+    margin-bottom: 12px
+    .body, .title, .notes
+      padding: 6px
+      & > *
+        +cross_inline_block
+    .title
+      background-color: $mine_shaft
+      color: white
+      font-size: 18px      
+    .notes
+      border-top: 1px solid $mine_shaft
+          
+  .cleaners-booking
+    .client-name, .contact-details
+      width: 209px
+    .time
+      width: 308px
     .status
-      margin: 10px 0
-      text-align: center
-    .controls
-      text-align: center
-      & > form
-        margin-bottom: 15px
+      width: 110px        
+      text-align: right
+    .address
+      width: 229px
+    .booking-deal
+      width: 189px
+    .body
+      .contact-details
+      .address
+        .map-link
+          font-weight: bold
+      .booking-deal
+        text-align: center
+        .price
+          color: $safety_orange
+          font-size: 36px
+          font-weight: bold
+
     
 
-.clients-booking
-  .photo
-    width = !column_width * 2
-    line-height: 0
-  .booking-details
-    padding: 10px
-    width: 370px
-    .cleaner-contact-details
-      padding: 0 0 0 10px
-  
-.cleaners-booking
-  padding: 0 10px  
-  
-  .personal-details
-    width: 200px
-    .client-name
-      margin-top: 10px
-    .client-contact-details
-      padding: 0 0 10px 10px
-      
-  
-  .booking-details
-    width: 300px
-    padding-top: 10px
-    .extra
-      margin-top: 20px
+#upcoming
+  margin-bottom: 20px    
+
       
     
           
