@@ -26,7 +26,6 @@
         = round_if_possible booking.cost
       .controls
         - if booking.accepted? and booking.cancellable?
-          / = button_to "Cancel", cancel_cleaner_booking_path(@cleaner, booking)
           = render :partial => 'shared/button', :locals => {:text => 'Cancel'}
         - elsif booking.pending?
           %p            

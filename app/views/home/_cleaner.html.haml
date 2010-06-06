@@ -41,6 +41,6 @@
       .days>
         = day_of_week(cleaner, :sunday)
     .hire
-      .blue.button
-        Hire #{cleaner.first_name}
+      = render :partial => 'shared/button', :locals => {:text => "Hire #{cleaner.first_name}"}
+        
       

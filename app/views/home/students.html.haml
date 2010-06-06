@@ -1,10 +1,11 @@
 = content_for :left_block_contents do  
-  #quote-text
-    It’s really hard to find a job that doesn’t compromise my education. As a cleaner I can work as much or as little as want.
-  #quote-signature
-    Ivone Teresa,
-    %br>
-    Queen Mary University Student
+  #quote
+    #quote-text
+      &ldquo;
+      Working as a cleaner doesn't compromise my education since I choose when to work myself
+      &rdquo;
+    #quote-signature
+      Emma, Queen Mary University Student
 = content_for :right do
   #landing-page-content
     #landing-page-header<
@@ -16,8 +17,6 @@
     = render :partial => 'summary_paragraph', :locals => {:gist => 'Receive and accept jobs by sms', :text => 'When somebody attempts to hire you, you will get a text from us with the details of the job. Then you can decide if you want to accept or decline it. You will have one hour to reply, otherwise the job will be gone. '}
     = render :partial => 'summary_paragraph', :locals => {:gist => 'Get paid on the spot and keep all the money', :text => 'When you finish the work, you’ll be paid by the client in cash. You keep all the money, that is, we do not take a commission on your earnings. However, you have to pay the taxes, so you must be registered as a self-employed person. Don’t worry: it’s easy and you can do it up to three months after you start working.'}
   #form-area-container<
-    #left-border
-      = image_tag 'search-area-border-left.png'
     #form-area<>
       #title-container
         #title<>
@@ -35,7 +34,4 @@
             = text_field_tag 'last_name', '', :id => 'last-name'
             = text_field_tag 'email', '', :id => 'email'
           #submit
-            .blue.button
-              Join now, it's free!
-
-%br
+            = render :partial => 'shared/button', :locals => {:text => "Join now!", :black => true}

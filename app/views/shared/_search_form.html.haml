@@ -1,21 +1,16 @@
 #form-area-container<
-  #left-border
-    = image_tag 'search-area-border-left.png'
   #form-area<>
     #title-container
       #title
-        Enter your postcode
+        Search to see all cleaners in your area
     #form-container
       %form
-        #text>
-          #all-cleaners
-            To see all cleaners in your area
-          #example
-            Your postcode or area,
-            %br
-            e.g. W2 1TT, N1 or Westminster
         #search-box>
-          = text_field_tag 'search'
+          = text_field_tag 'search', "Postcode", :onfocus => 'if (this.value == "Postcode") this.value = ""'
         #submit
-          .blue.button
-            Search
+          = render :partial => 'shared/button', :locals => {:text => "Search", :black => true}
+      #text>
+        #example
+          Your postcode or area, 
+          %br
+          e.g. W2 1TT, N1 or Westminster

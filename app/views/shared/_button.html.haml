@@ -1,4 +1,6 @@
-.button
+.button{:class => ('on-black' if defined?(black) and black)}
   .left>
-  .text>= text
+  .text>
+    %a{:href => '#'}
+      = text
   .right>

@@ -15,11 +15,11 @@ class HomeController < ApplicationController
   end
   
   def students
-    @lead_photo = 'lead-photo-student.png'
+    @lead_photo = 'lead-photo-students.png'
   end
 
   def homeowners
-    @lead_photo = 'lead-photo-homeowner.png'
+    @lead_photo = 'lead-photo-homeowners.png'
   end
 
   def faq

@@ -1,7 +1,12 @@
 = content_for :left_block_contents do  
-  %h3
-    Do not hesitate to contact us!
-  #email
-    = mail_to "hello@varsitycleaners.co.uk"
+  - render :layout => 'layouts/hints' do
+    %h5
+      Have got a question not mentioned here?
+      %br
+      Email me and I'll reply within 24 hours.
+    %br
+    .email
+      = mail_to 'hello@varsitycleaners.co.uk'
+
 = content_for :right do
   = render :partial => 'faq'

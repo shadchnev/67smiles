@@ -3,9 +3,10 @@
     vertical-align: top
   
 #left-block
-  width = !column_width * 2
+  width = 332px
   heigth: 100%
   +cross_inline_block
+
   
 #right-block
   width = !column_width * 4
@@ -19,13 +20,17 @@
     .title
       color = !safety_orange
       font-size: 18px
+      font-weight: bold
       margin: 0px 0
+      //text-align: left
+      //padding-left: 52px
     .step
       text-align: left
+      margin: 12px 0
       *
         +cross_inline_block
       .text
-        line-height: 52px
+        line-height: 40px
         font-size: 15px
         padding-left = !column_padding * 2
     .action
@@ -59,10 +64,10 @@
       vertical-align: middle
 
 #latest-activity
-  border-top: 2px solid #{!dark_blue}
+  //border-top: 2px solid #{!dark_blue}
   width = !column_width * 2 - !column_padding * 4
   padding-right: !column_padding * 4
-  background-color: #FFFACD
+  //background-color: #FFFACD
   vertical-align: top
   padding = !column_padding !column_padding * 2
   text-align: left  
@@ -71,7 +76,7 @@
   height: 160px
   margin-bottom = !column_padding * 2
   border-top: 2px solid #{!dark_blue}
-  background-color = !light_blue
+  background-color: $pale_blue
   text-align: left
   *
     vertical-align: top
@@ -86,7 +91,7 @@
     img
       position: absolute
       bottom: 0px
-  .text
+  & > .text
     padding-top = !column_padding
     padding-right = !column_padding * 2
     width: 340px
@@ -118,6 +123,8 @@
   .booking-info
     padding-top = !column_padding
     width: 166px
+    .hire
+      text-align: center
     .price      
     .availability
       margin: 5px 0

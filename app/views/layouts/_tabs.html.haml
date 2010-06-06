@@ -5,14 +5,14 @@
     = image_tag 'tabs-border-left.png'
     
   #links<>
-    .tab{:class => ('current' if controller.action_name == 'index' and controller.controller_name == 'home')}>
-      %a{:href => '/'} home
-    .tab{:class => ('current' if controller.action_name == 'students')}>
-      %a{:href => '/students'} students
-    .tab{:class => ('current' if controller.action_name == 'homeowners')}>
-      %a{:href => '/homeowners'} homeowners
+    .tab.separator{:class => ('current' if controller.action_name == 'index' and controller.controller_name == 'home')}>
+      %a{:href => '/'} Home
+    .tab.separator{:class => ('current' if controller.action_name == 'homeowners')}>
+      %a{:href => '/homeowners'} Homeowners
+    .tab.separator{:class => ('current' if controller.action_name == 'students')}>
+      %a{:href => '/students'} Students
     .tab{:class => ('current' if controller.action_name == 'faq')}>
-      %a{:href => '/faq'} faq
+      %a{:href => '/faq'} FAQ 
   - if controller.action_name == 'faq'
     = image_tag 'tabs-border-right-orange.png'
   - else
