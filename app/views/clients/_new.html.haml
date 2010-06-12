@@ -60,7 +60,6 @@
         = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
   
       #submit
-        .blue.button
-          = client_modification_submit(controller.action_name)
+        = render :partial => 'shared/button', :locals => {:text => client_modification_submit(controller.action_name)}
         
       .bottom

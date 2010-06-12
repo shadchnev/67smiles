@@ -26,6 +26,10 @@ class HomeController < ApplicationController
     @lead_photo = 'lead-photo-faq.png'
   end
 
+  def about
+    @lead_photo = 'lead-photo-evgeny.png'
+  end
+
 private
 
   def instantiate_query_params

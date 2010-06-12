@@ -1,5 +1,6 @@
 = content_for :left_block_contents do
-  = render :partial => 'tips'
+  - render :layout => 'layouts/hints' do
+    = render :partial => 'tips'
 
 = content_for :right do
   = render :partial => 'new'

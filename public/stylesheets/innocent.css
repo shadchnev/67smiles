@@ -47,7 +47,8 @@ h6 {
   font-weight: bold; }
 
 p {
-  margin: 5px 0; }
+  margin: 5px 0;
+  line-height: 18px; }
 
 input[type='text'], input[type='password'], textarea {
   border: 1px solid #6fbdfe;
@@ -632,6 +633,9 @@ div.fieldWithErrors {
   #faq .faq-item p {
     padding-left: 6px; }
 
+#about p {
+  margin: 12px 0; }
+
 #new-client #country-name {
   display: inline-block;
   zoom: 1;
@@ -643,7 +647,7 @@ div.fieldWithErrors {
 #cleaner-summary {
   height: 360px;
   text-align: left;
-  padding-right: 12px; }
+  padding: 0 12px; }
   #cleaner-summary #details > div {
     margin-top: 10px;
     display: inline-block;
@@ -651,11 +655,12 @@ div.fieldWithErrors {
     *display: inline;
     vertical-align: top; }
   #cleaner-summary #details #stats {
-    width: 332px; }
+    width: 320px; }
   #cleaner-summary #introduction {
     max-height: 125px;
-    line-height: 16px;
     overflow: hidden; }
+    #cleaner-summary #introduction p {
+      line-height: 16px; }
 
 #availability #calendar {
   padding-left: 55px; }
@@ -669,7 +674,7 @@ div.fieldWithErrors {
   padding: 0 12px; }
   #reviews .review, #reviews #new-review {
     border-top: 2px solid #6fbdfe;
-    background-color: #cfe8fd; }
+    background-color: #e9f4fe; }
   #reviews .review {
     padding: 5px 15px;
     margin-bottom: 12px; }
@@ -799,22 +804,28 @@ div.fieldWithErrors {
       font-size: 18px; }
     #bookings .booking .notes {
       border-top: 1px solid #323232; }
-  #bookings .cleaners-booking .client-name, #bookings .cleaners-booking .contact-details {
+  #bookings .cleaners-booking .contact-details {
     width: 209px; }
-  #bookings .cleaners-booking .time {
+  #bookings .clients-booking .photo {
+    width: 209px; }
+  #bookings .clients-booking .contact-details {
+    width: 229px; }
+  #bookings .name {
+    width: 209px; }
+  #bookings .time {
     width: 308px; }
-  #bookings .cleaners-booking .status {
+  #bookings .status {
     width: 110px;
     text-align: right; }
-  #bookings .cleaners-booking .address {
+  #bookings .address {
     width: 229px; }
-  #bookings .cleaners-booking .booking-deal {
+  #bookings .booking-deal {
     width: 189px; }
-  #bookings .cleaners-booking .body .address .map-link {
+  #bookings .body .address .map-link {
     font-weight: bold; }
-  #bookings .cleaners-booking .body .booking-deal {
+  #bookings .body .booking-deal {
     text-align: center; }
-    #bookings .cleaners-booking .body .booking-deal .price {
+    #bookings .body .booking-deal .price {
       color: #ff6600;
       font-size: 36px;
       font-weight: bold;

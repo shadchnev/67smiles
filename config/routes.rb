@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.faq '/faq', :controller => :home, :action => :faq
   map.connect 'students', :controller => :home, :action => :students
   map.connect 'homeowners', :controller => :home, :action => :homeowners
+  map.connect 'about-us', :controller => :home, :action => :about
   
   map.activate '/users/activate/:activation_code', :controller => "user", :action => "activate"
   

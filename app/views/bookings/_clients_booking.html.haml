@@ -1,19 +1,34 @@
 - booking, client, cleaner = clients_booking, clients_booking.client, clients_booking.cleaner
+
 .booking.clients-booking
-  .photo<>
-    =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
-  .booking-details
-    %h2= link_to cleaner.first_name, cleaner_path(cleaner)
-    .cleaner-contact-details
+  .title<
+    .name>
+      = cleaner.first_name
+    .time>
+      = booking.day.strftime '%d %B, %A'
+      = booking.start_time.localtime.strftime('%H:%M')
+      &mdash;
+      = booking.end_time.localtime.strftime('%H:%M')      
+    .status>
+      = booking_status(booking)
+  .body
+    .photo
+      =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
+    .contact-details>
       %p==+#{cleaner.phone}
       %p= mail_to cleaner.email
-    = render :partial => 'booking_details', :locals => {:booking => booking, :messages => clients_booking_messages(cleaner)}
-  .booking-deal
-    .price<
-      &pound;
-      = round_if_possible booking.cost
-    .status      
-      %h3= booking_status(booking)
-    .controls
-      - if booking.cancellable?
-        = button_to "Cancel", cancel_cleaner_booking_path(client, booking)
+    .booking-deal>
+      .price
+        &pound;
+        = round_if_possible booking.cost
+      .controls
+        - if booking.cancellable?
+          = render :partial => 'shared/button', :locals => {:text => 'Cancel'}
+        - else booking.completed?
+          = render :partial => 'shared/button', :locals => {:text => 'Leave feedback'}
+  .notes
+    - messages = clients_booking_messages(cleaner)
+    - if booking.cleaning_materials_provided?
+      = messages[:cleaning_materials_provided]
+    - else
+      = messages[:cleaning_materials_not_provided]        

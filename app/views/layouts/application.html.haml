@@ -44,13 +44,13 @@
       #footer>
         #about-us
           %h6 About Us
-          .who-we-are= link_to 'Who We Are'
-          .faq= link_to 'FAQ'
-          .contact-us= link_to 'Contact Us'
-        #legal
-          %h6 Legal Stuff
-          .privacy= link_to 'Privacy Policy'
-          .terms-and-conditions= link_to 'Terms & Conditions'
+          .who-we-are= link_to 'Who We Are', '/about-us'
+          .faq= link_to 'FAQ', '/faq'
+          .contact-us= link_to 'Contact Us', '#', :onclick => '$.prompt("Please email us on <a href=\"mailto:hello@varsitycleaners.co.uk\">hello@varsitycleaners.co.uk</a>")'
+        / #legal
+        /   %h6 Legal Stuff
+        /   .privacy= link_to 'Privacy Policy'
+        /   .terms-and-conditions= link_to 'Terms & Conditions'
         #copyright
           %h6
             &copy; Varsity Cleaners 2010

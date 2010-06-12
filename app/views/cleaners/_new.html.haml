@@ -84,8 +84,7 @@
         = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
       #submit
-        .blue.button
-          = modification_submit(controller.action_name)
+        = render :partial => 'shared/button', :locals => {:text => modification_submit(controller.action_name)}
       .bottom
       
   
