@@ -15,11 +15,6 @@
       - cleaner_form.fields_for :name do |name_fields|
         = render :partial => "shared/name", :locals => {:f => name_fields}
   
-      #postcode
-        - cleaner_form.fields_for :postcode do |postcode_fields|
-          = postcode_fields.text_field :value, :value => @cleaner.postcode
-          e.g. W2 1TT
-    
       - cleaner_form.fields_for :contact_details do |contact_details_fields|
         #email
           = contact_details_fields.text_field :email
@@ -28,7 +23,12 @@
         #phone-number
           = contact_details_fields.text_field :phone
           e.g. 07912345678
-      
+
+      #postcode
+        - cleaner_form.fields_for :postcode do |postcode_fields|
+          = postcode_fields.text_field :value, :value => @cleaner.postcode
+          e.g. W2 1TT
+          
       .hint 
         Please write a short paragraph about yourself. 
       #description
@@ -84,7 +84,7 @@
         = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
       #submit
-        = render :partial => 'shared/button', :locals => {:text => modification_submit(controller.action_name)}
+        = render :partial => 'shared/button', :locals => {:text => modification_submit(controller.action_name), :onclick => '$("form#new_cleaner").submit()'}
       .bottom
       
   

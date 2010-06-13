@@ -1,6 +1,3 @@
-- unless @booking.errors.empty?
-  #errors
-    = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
 - form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
   #new-booking.long-form
     %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
@@ -8,6 +5,9 @@
     %h1#page-title
       Hire
       = @booking.cleaner.first_name
+    - unless @booking.errors.empty?
+      #errors
+        = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
     #intro
       When you submit the form, we'll text 
       = @booking.cleaner.first_name
@@ -46,8 +46,7 @@
       = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => "Are you happy with the price?"}
       #cost
       #submit
-        .blue.button
-          = "Hire #{@booking.cleaner.first_name}"
+        = render :partial => 'shared/button', :locals => {:text => "Hire #{@booking.cleaner.first_name}", :onclick => '$("form#new_booking").submit()'}
       .bottom
     
     

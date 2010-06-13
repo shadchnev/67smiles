@@ -3,11 +3,12 @@ class HomeController < ApplicationController
   def index      
     begin
       instantiate_query_params
-      @search = search?
+      @search = search?      
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}      
       @lead_photo = 'lead-photo-frontpage.png'
     rescue Exception => e
+      @search = false
       flash.now[:error] = e.message 
     ensure
       @cleaners ||= default_selection 

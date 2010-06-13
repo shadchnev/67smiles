@@ -20,18 +20,16 @@
 #cleaners>
   - @cleaners.each do |cleaner|
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-  #pagination
-    .page-number 1
-    .page-number.active 2
-    .page-number 3
-    .page-mdot
-    .page-mdot
-    .page-mdot
-    .page-number 9
+  / #pagination
+  /   .page-number 1
+  /   .page-number.active 2
+  /   .page-number 3
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-number 9
 #latest-activity>
-  %h1 Latest Activity
+  %h4 Latest Activity
   %ul
     - 10.times do |event|
       %li

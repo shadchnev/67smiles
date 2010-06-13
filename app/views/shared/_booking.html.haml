@@ -2,5 +2,5 @@
   .top
   = render :partial => 'shared/hourly_rate', :locals => {:rate => cleaner.rate}
   .book-online
-    = render :partial => 'shared/button', :locals => {:text => "Hire #{cleaner.first_name}"}
+    = render :partial => 'shared/button', :locals => {:text => "Hire #{cleaner.first_name}", :href => new_cleaner_booking_path(cleaner)}
   .bottom

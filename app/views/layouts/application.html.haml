@@ -30,6 +30,13 @@
       #header
         = render 'layouts/navigation'
         = render 'layouts/logo'
+        #flash
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:warn]
+            .warn= flash[:warn]
+          - if flash[:error]
+            .error= flash[:error]        
         = render 'layouts/tabs'
       #content<>        
         #two-columns
@@ -46,7 +53,7 @@
           %h6 About Us
           .who-we-are= link_to 'Who We Are', '/about-us'
           .faq= link_to 'FAQ', '/faq'
-          .contact-us= link_to 'Contact Us', '#', :onclick => '$.prompt("Please email us on <a href=\"mailto:hello@varsitycleaners.co.uk\">hello@varsitycleaners.co.uk</a>")'
+          .contact-us= link_to 'Contact Us', '#', :onclick => '$.prompt("Please say hello to <a href=\"mailto:hello@varsitycleaners.co.uk\">hello@varsitycleaners.co.uk</a>")'
         / #legal
         /   %h6 Legal Stuff
         /   .privacy= link_to 'Privacy Policy'

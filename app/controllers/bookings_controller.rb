@@ -20,12 +20,13 @@ class BookingsController < ApplicationController
     @booking_date = (Time.now + 1.day).to_i # default value
   end
   
-  def provisionally_create
+  def provisionally_create    
     @booking = initialize_booking
     offer_to_create_account
   end
   
   def create
+    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
     @booking = initialize_booking
     try_to_save_booking
   end

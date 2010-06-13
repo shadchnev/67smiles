@@ -23,9 +23,10 @@
         = round_if_possible booking.cost
       .controls
         - if booking.cancellable?
-          = render :partial => 'shared/button', :locals => {:text => 'Cancel'}
+          
+          = render :partial => 'shared/button', :locals => {:text => 'Cancel', :post => cancel_client_booking_path(cleaner, booking)}
         - else booking.completed?
-          = render :partial => 'shared/button', :locals => {:text => 'Leave feedback'}
+          = render :partial => 'shared/button', :locals => {:text => 'Leave feedback', :href => cleaner_path(cleaner, :anchor => 'reviews')}
   .notes
     - messages = clients_booking_messages(cleaner)
     - if booking.cleaning_materials_provided?

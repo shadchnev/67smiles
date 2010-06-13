@@ -4,13 +4,17 @@
       #title
         Search to see all cleaners in your area
     #form-container
-      %form
+      - form_tag '/'  do
         #search-box>
-          = text_field_tag 'search', "Postcode", :onfocus => 'if (this.value == "Postcode") this.value = ""'
+          = text_field_tag 'postcode', @postcode || "Postcode", :onfocus => 'if (this.value == "Postcode") this.value = ""'
         #submit
-          = render :partial => 'shared/button', :locals => {:text => "Search", :black => true}
+          = render :partial => 'shared/button', :locals => {:text => "Search", :black => true, :onclick => '$("#form-container form").submit();'}
       #text>
         #example
           Your postcode or area, 
           %br
           e.g. W2 1TT, N1 or Westminster
+        #cleaners-number
+          - if @search
+            = pluralize(@cleaners.size, 'cleaner')
+            found

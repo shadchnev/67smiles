@@ -94,6 +94,14 @@ class Cleaner < ActiveRecord::Base
     bookings.select{|b| b.completed?}
   end
   
+  def missed_jobs
+    bookings.select{|b| b.missed?}
+  end
+  
+  def accepted_jobs
+    bookings.select{|b| b.accepted?}
+  end
+  
   def has_reviews?
     reviews.count > 0
   end

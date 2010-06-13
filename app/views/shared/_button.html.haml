@@ -1,6 +1,20 @@
 .button{:class => ('on-black' if defined?(black) and black)}
   .left>
   .text>
-    %a{:href => '#'}
+    - if defined?(post)
+      - id = "form_#{rand(100000000)}"
+      :javascript
+        var f = document.createElement('form');
+        f.style.display = 'none'; 
+        f.id = '#{id}'
+        document.body.appendChild(f); 
+        f.method = 'POST';         
+        f.action = '#{post}';
+        var at = document.createElement('input');
+        at.name = 'authenticity_token'
+        at.value = '#{form_authenticity_token}';
+        f.appendChild(at);
+      - onclick = "$('##{id}').submit()"
+    %a{:href => (defined?(href) ? href : '#'), :onclick => (defined?(onclick) ? onclick : '')}
       = text
   .right>

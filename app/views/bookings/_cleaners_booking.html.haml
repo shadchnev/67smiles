@@ -26,13 +26,13 @@
         = round_if_possible booking.cost
       .controls
         - if booking.accepted? and booking.cancellable?
-          = render :partial => 'shared/button', :locals => {:text => 'Cancel'}
+          = render :partial => 'shared/button', :locals => {:text => 'Cancel', :post => cancel_cleaner_booking_path(@cleaner, booking)}
         - elsif booking.pending?
           %p            
             = pluralize((booking.time_left / 1.minute).round, 'minute')
             left to accept or decline
-          = render :partial => 'shared/button', :locals => {:text => 'Accept'}
-          = render :partial => 'shared/button', :locals => {:text => 'Decline'}
+          = render :partial => 'shared/button', :locals => {:text => 'Accept', :post => accept_cleaner_booking_path(@cleaner, booking)}
+          = render :partial => 'shared/button', :locals => {:text => 'Decline', :post => decline_cleaner_booking_path(@cleaner, booking)}
   .notes
     - messages = cleaners_booking_messages(client)
     - if booking.cleaning_materials_provided?

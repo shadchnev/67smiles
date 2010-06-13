@@ -213,8 +213,12 @@
         height: 35px
         *
           vertical-align: middle
+      #cleaners-number
+        float: right
+        color: $safety_orange
     #text
-      padding-top: 8px
+      width: 619px
+      padding-top: 8px      
     .student-lead-form
       input
         border-width: 0
@@ -242,7 +246,7 @@
       #submit
         text-align: center
         width: 160px
-        margin-bottom: 9px
+        margin-bottom: 9px      
         
           
   
@@ -308,9 +312,8 @@ body > #login-form
   border: 1px solid red
   
 #errors
-  border-left: 15px solid red
-  border-top: 1px solid red
   padding: 10px
+  text-align: left
 
 .errorExplanation
   h2
@@ -321,19 +324,20 @@ body > #login-form
       font-size: 120%
             
 #flash div
-  margin: 10px 30px
+  margin: 20px 0px
+  font-weight: bold
   padding: 10px
   background-color: yellow
-  border-left: 15px solid #{!dark_blue}
-  border-top: 1px solid #{!dark_blue}
+  //border-left: 15px solid #{!dark_blue}
+  //border-top: 1px solid #{!dark_blue}
   
-#flash div.error
-  border-left: 15px solid red
-  border-top: 1px solid red
-  
-#flash div.warn
-  border-left: 15px solid orange
-  border-top: 1px solid orange
+// #flash div.error
+//   border-left: 15px solid red
+//   border-top: 1px solid red
+//   
+// #flash div.warn
+//   border-left: 15px solid orange
+//   border-top: 1px solid orange
   
 div.fieldWithErrors
   display: inline

@@ -22,16 +22,16 @@
         #title<>
           Join now
       #form-container.student-lead-form
-        %form
+        %form{:action => new_cleaner_path()}
           #left-column
             #name
               Your name              
             #email-label
               University email
           #middle-column<
-            = select_tag 'title'
+            = select_tag 'title', '<option>Mr</option><option>Miss</option><option>Ms</option><option>Mrs</option>'
             = text_field_tag 'first_name', '', :id => 'first-name'
             = text_field_tag 'last_name', '', :id => 'last-name'
             = text_field_tag 'email', '', :id => 'email'
           #submit
-            = render :partial => 'shared/button', :locals => {:text => "Join now!", :black => true}
+            = render :partial => 'shared/button', :locals => {:text => "Join now!", :black => true, :onclick => '$("#form-container form").submit()'}

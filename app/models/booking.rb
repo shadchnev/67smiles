@@ -86,7 +86,7 @@ class Booking < ActiveRecord::Base
   end
   
   def pending?
-    !accepted? and !declined? and !missed?
+    !accepted? and !declined? and !missed? and !cancelled?
   end
   
   def missed?

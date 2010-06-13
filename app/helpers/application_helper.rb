@@ -65,6 +65,15 @@ module ApplicationHelper
     cleaner.completed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'job')} done"
   end
   
+  def missed_jobs(cleaner)
+    cleaner.missed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'missed job')}"
+  end
+  
+  def accepted_jobs(cleaner)
+    return '' if cleaner.accepted_jobs.empty?
+    "#{((cleaner.accepted_jobs.size / cleaner.bookings.size.to_f) * 100).round}% accepted jobs"
+  end
+  
   def booking_status(booking)
     return "Missed" if booking.missed?
     return 'Cancelled' if booking.cancelled?

@@ -278,7 +278,11 @@ li span {
         height: 35px; }
         #form-area-container #form-area #form-container #submit * {
           vertical-align: middle; }
+      #form-area-container #form-area #form-container #cleaners-number {
+        float: right;
+        color: #ff6600; }
     #form-area-container #form-area #text {
+      width: 619px;
       padding-top: 8px; }
     #form-area-container #form-area .student-lead-form input {
       border-width: 0; }
@@ -364,9 +368,8 @@ body > #login-form {
   border: 1px solid red; }
 
 #errors {
-  border-left: 15px solid red;
-  border-top: 1px solid red;
-  padding: 10px; }
+  padding: 10px;
+  text-align: left; }
 
 .errorExplanation h2 {
   color: red; }
@@ -375,19 +378,10 @@ body > #login-form {
   font-size: 120%; }
 
 #flash div {
-  margin: 10px 30px;
+  margin: 20px 0px;
+  font-weight: bold;
   padding: 10px;
-  background-color: yellow;
-  border-left: 15px solid #6fbdfe;
-  border-top: 1px solid #6fbdfe; }
-
-#flash div.error {
-  border-left: 15px solid red;
-  border-top: 1px solid red; }
-
-#flash div.warn {
-  border-left: 15px solid orange;
-  border-top: 1px solid orange; }
+  background-color: yellow; }
 
 div.fieldWithErrors {
   display: inline; }
@@ -555,6 +549,8 @@ div.fieldWithErrors {
   vertical-align: top;
   padding: 6px 12px;
   text-align: left; }
+  #latest-activity h4 {
+    margin-top: 2px; }
 
 .cleaner {
   height: 160px;
