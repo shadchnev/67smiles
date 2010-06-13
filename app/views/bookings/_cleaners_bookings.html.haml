@@ -1,10 +1,12 @@
-- if @cleaner.bookings.empty?
-  %h1 There are no jobs to display
-  %p This page will contain all past and upcoming jobs.
-  %p You will be able to accept, decline or cancel them on this page.
-  %p We will notify you by sms when somebody offers you a job.
-- else
-  #upcoming
-    = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.upcoming_bookings, :title => 'Upcoming jobs', :partial => 'cleaners_booking'}
-  #past
-    = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.past_bookings, :title => 'Past jobs', :partial => 'cleaners_booking'}
+= content_for :right do
+  #bookings
+    - if @cleaner.bookings.empty?
+      %h1#page-title There are no jobs to display
+      %p This page will list all past and upcoming jobs.
+      %p You will be able to accept, decline or cancel them on this page.
+      %p We will notify you by sms when somebody offers you a job.
+    - else
+      #upcoming
+        = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.upcoming_bookings, :title => 'Upcoming jobs', :partial => 'cleaners_booking'}
+      #past
+        = render :partial => 'bookings_subset', :locals => {:bookings => @cleaner.past_bookings, :title => 'Past jobs', :partial => 'cleaners_booking'}

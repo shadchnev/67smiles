@@ -1,8 +1,7 @@
 .title
   Students
-= render :partial => 'how_to', :locals => {:image => 'smiley', :text => "Get flexible one-off jobs"}
-= render :partial => 'how_to', :locals => {:image => 'sms', :text => "Receive and accept jobs by sms"}
-= render :partial => 'how_to', :locals => {:image => 'nocommission', :text => "Do not pay a commission"}
+= render :partial => 'how_to', :locals => {:image => 'smiley', :text => "Get Flexible One-off Jobs"}
+= render :partial => 'how_to', :locals => {:image => 'sms', :text => "Receive and Accept Jobs by Sms"}
+= render :partial => 'how_to', :locals => {:image => 'nocommission', :text => "Do Not Pay a Commission"}
 .action
-  .blue.button
-    See how it works
+  = render :partial => 'shared/button', :locals => {:text => 'See How It Works', :href => '/students'}

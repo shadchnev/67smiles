@@ -1,9 +1,11 @@
-- if @client.bookings.empty?
-  %h1 There are no bookings to display
-  %p This page will contain all bookings you will make.
-  %p You will be able to view cleaners' details or cancel the bookings.
-- else
-  #upcoming
-    = render :partial => 'bookings_subset', :locals => {:bookings => @client.upcoming_bookings, :title => 'Upcoming bookings', :partial => 'clients_booking'}
-  #past
-    = render :partial => 'bookings_subset', :locals => {:bookings => @client.past_bookings, :title => 'Past bookings', :partial => 'clients_booking'}
+= content_for :right do
+  #bookings
+    - if @client.bookings.empty?
+      %h1#page-title There are no bookings to display
+      %p This page will contain all bookings you will make.
+      %p You will be able to view cleaners' details or cancel the bookings.
+    - else
+      #upcoming
+        = render :partial => 'bookings_subset', :locals => {:bookings => @client.upcoming_bookings, :title => 'Upcoming bookings', :partial => 'clients_booking'}
+      #past
+        = render :partial => 'bookings_subset', :locals => {:bookings => @client.past_bookings, :title => 'Past bookings', :partial => 'clients_booking'}

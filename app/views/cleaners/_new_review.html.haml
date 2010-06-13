@@ -2,5 +2,4 @@
   = review_form.hidden_field :cleaner_id, :value => @cleaner.id
   #new-review
     = review_form.text_area :text
-    .blue.button
-      Add a review
+    = render :partial => 'shared/button', :locals => {:text => "Add review", :onclick => '$("form#new_review").submit()'}

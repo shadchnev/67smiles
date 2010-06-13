@@ -1,12 +1,16 @@
 html
   height: 100%
+  background-color = !light_gray
+
+*:focus
+  outline: none
   
 body
-  background-color = !light_gray
   text-align: center
   font-family: Helvetica,Arial,Verdana,sans-serif
   color = !dark_gray
   font-size: 12px
+  height: 100%
 
 a
   color = !dark_gray
@@ -17,7 +21,7 @@ a
     color = !dark_gray
     
 h1, h2, h3, h4, h5, h6
-  color = !dark_blue
+  color: $dark_blue
 
 h1
   font-size: 22px
@@ -28,8 +32,10 @@ h2
 
 h3
   font-size: 18px  
+  margin-top: 36px
 
 h4
+  color: $mine_shaft
   font-size: 16px
 
 h5
@@ -42,6 +48,7 @@ h6
 
 p
   margin: 5px 0
+  line-height: 18px
   
 input[type='text'], input[type='password'], textarea
   border: 1px solid #{!dark_blue}

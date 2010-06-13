@@ -1,8 +1,7 @@
 #cleaner-summary
   height: 360px
   text-align: left
-  border-bottom: 20px solid #{!dark_blue}
-  padding-right: 12px
+  padding: 0 12px  
 
   #details
     & > div
@@ -10,12 +9,13 @@
       +cross_inline_block
       vertical-align: top
     #stats
-      width = !column_width*2
+      width = !column_width*2 - 12px      
         
   #introduction
     max-height: 125px
-    line-height: 16px
     overflow: hidden 
+    p
+      line-height: 16px
     
 #availability
   #calendar
@@ -28,11 +28,10 @@
 
 #reviews
   text-align: left
-  padding-right: #{!column_padding * 2}
-  padding-top: #{!column_padding * 2}
+  padding: 0 #{!column_padding * 2}
   .review, #new-review
     border-top: 2px solid #{!dark_blue}
-    background-color = !light_blue    
+    background-color: $pale_blue    
   .review
     padding: 5px 15px
     margin-bottom: 12px

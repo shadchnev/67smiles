@@ -1,9 +1,8 @@
 .title
   Homeowners
-= render :partial => 'how_to', :locals => {:image => 'arrow', :text => "Hire trustworthy university students"}
-= render :partial => 'how_to', :locals => {:image => 'pound', :text => "Help students finance studies"}
-= render :partial => 'how_to', :locals => {:image => 'tick', :text => "All money goes to students"}
+= render :partial => 'how_to', :locals => {:image => 'arrow', :text => "Hire Trustworthy University Students"}
+= render :partial => 'how_to', :locals => {:image => 'pound', :text => "Help Students Finance Studies"}
+= render :partial => 'how_to', :locals => {:image => 'tick', :text => "All Money Goes to Students"}
 .action
-  .blue.button
-    Find out more
+  = render :partial => 'shared/button', :locals => {:text => 'Find Out More', :href => '/homeowners'}
   

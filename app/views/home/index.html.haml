@@ -1,10 +1,11 @@
 = content_for :left_block_contents do  
-  #quote-text
-    I'm glad I can hire a cleaner for my house and support local students at the same time.
-  #quote-signature
-    Dr. Simon Overell,
-    %br>
-    software engineer
+  #quote
+    #quote-text
+      &ldquo;
+      I'm glad I can hire a cleaner for my house and support local students at the same time
+      &rdquo;
+    #quote-signature
+      Dr. Simon Overell, software engineer
 = content_for :right do
   #tagline<
     #text-container
@@ -19,18 +20,16 @@
 #cleaners>
   - @cleaners.each do |cleaner|
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-  #pagination
-    .page-number 1
-    .page-number.active 2
-    .page-number 3
-    .page-mdot
-    .page-mdot
-    .page-mdot
-    .page-number 9
+  / #pagination
+  /   .page-number 1
+  /   .page-number.active 2
+  /   .page-number 3
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-number 9
 #latest-activity>
-  %h1 Latest Activity
+  %h4 Latest Activity
   %ul
     - 10.times do |event|
       %li

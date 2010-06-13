@@ -29,10 +29,10 @@
       margin: 0 10px
 
 #left-block-contents
-  background-image: url(/images/left-column-background.png)
+  // border-top: 2px solid $safety_orange
+  background-image: url('/images/left-column-bg.png')
   background-repeat: no-repeat
-  min-height: 21px
-  padding-top: 10px  
+  width: 332px
   #email
     margin: #{!column_padding * 2} 0
     font-size: 14px
@@ -41,23 +41,29 @@
 
 
 #tabs
-  height: 26px
+  height: 36px
   text-align: right
   font-size: 14px
+  font-weight: bold
   padding-right = !column_padding * 2
   #links
     +cross_inline_block
     vertical-align: top
-    height: 26px
-    line-height: 26px
+    height: 36px
+    line-height: 36px
+    .separator
+      //border-right: 2px solid $safety_orange
     .tab
       background-color = !dark_blue
       +cross_inline_block
+      width: 110px
+      text-align: center
         
     .current
       background-color = !safety_orange
     
     a
+      outline: 0
       color: white
       text-decoration: none
       margin: 0 10px
@@ -65,17 +71,23 @@
 #logo
   text-align: left
   margin-left = !column_padding * 2
+
+#quote
+  background-color: $safety_orange
+  height: 116px
+  color: white
+  padding: #{!column_padding} #{!column_padding * 2} 0
   
 #quote-text
-  padding: #{!column_padding} #{!column_padding * 2} 0
   text-align: left
-  font-size: 16px
-  line-height: 20px
+  font-size: 20px
+  // font-weight: bold
+  line-height: 26px
   
 #quote-signature
-  text-align: right
+  text-align: left
   padding-right = !column_padding * 2
-  margin-top = !column_padding
+  margin-top: $column_padding * 2
   
 .button
   text-align: center
@@ -83,11 +95,36 @@
   color: white
   font-size: 16px
   height: 31px
-  width: 158px ! important
-  display: inline-block
-  
-.blue
-  background-image: url('/images/button.png')
+  //width: 158px !important
+  display: inline-block  
+  padding: 2px
+  & > *
+    display: inline-block
+  .left, .right
+    width: 18px
+    height: 31px
+  .left
+    background-image: url('/images/button-left.png')    
+  .right
+    background-image: url('/images/button-right.png')
+  .text
+    background-image: url('/images/button-bg.png')
+    background-repeat: repeat-x
+    a
+      vertical-align: middle !important
+      text-decoration: none
+      color: white
+      height: 24px
+      line-height: 24px
+.on-black
+  .left
+    background-image: url('/images/button-left-black.png')    
+  .right
+    background-image: url('/images/button-right-black.png')
+  .text
+    background-image: url('/images/button-bg-black.png')
+
+    
 
 .orange
   background-image: url('/images/orange_button.png')
@@ -123,6 +160,7 @@
     .gist    
       font-size: 16px
       font-weight: bold
+      color: $mine_shaft
     .text
       margin: auto
       margin-top = 4px
@@ -138,86 +176,88 @@
     text-align: center
   #text
     margin: 8px 40px 8px 17px
-    width: 590px    
+    width: 580px    
     font-size: 22px
     font-weight: bold
 
 
 #form-area-container 
-  & > *
+  background-color: $mine_shaft
+  height: 122px
+  padding-left: 24px
+  color: white
+  *
     +cross_inline_block
   #form-area
-    width = !column_width * 4 - !column_padding * 4
     text-align: left
     #title-container
-      background-color = !dark_blue
       height: 41px
       #title
-        color: white
-        font-size: 24px
+        font-size: 22px
         line-height: 41px
         height: 41px
     #form-container      
-      form > *
+      #search-box, #submit
         +cross_inline_block
         vertical-align: bottom
-      background-color = !light_blue
-      height: 59px
+      height: 57px
       padding-bottom = !column_padding * 2      
-      padding-top = !column_padding * 2      
       #search-box
-        width = 273px
-        background-color: green
+        width: 520px
         input
           width: 100%
-          font-size: 24px
+          font-size: 28px
       #submit
         padding-right = !column_padding * 2
         padding-left = !column_padding * 2
-      #text
-        width = 185px
-        #all-cleaners
-          font-weight: bold
-          margin-bottom: 15px
-          color: black
+        height: 35px
+        *
+          vertical-align: middle
+      #cleaners-number
+        float: right
+        color: $safety_orange
+    #text
+      width: 619px
+      padding-top: 8px      
     .student-lead-form
+      input
+        border-width: 0
       #left-column        
-        width = 130px
+        width = 115px
         font-weight: bold
         height: 49px
         line-height: 25px
-        / #name
-        /   margin-top: 3px
-        / #email-label
-        /   margin-top: 14px
       #middle-column
-        width = 320px
+        width = 335px
         input
           font-size: 14px
           padding-top: 4px
           height: 16px
         #title
           width: 50px
-          margin-right: 4px
+          margin-right: 6px
         #first-name, #last-name
-          width: 129px          
+          width: 136px          
         #first-name
           margin-right: 4px
         #email
-          width: 318px
+          width: 332px
           margin-top: 5px
       #submit
-        margin-bottom: 9px
+        text-align: center
+        width: 160px
+        margin-bottom: 9px      
         
           
   
 #summary
   height: 260px
   padding-top: 10px
-  background-image: url('/images/summary_background.png')
+  background-image: url('/images/summary-background.png')
   
 #content
   border-top: 3px solid #{!safety_orange}
+  min-height: 700px
 
 =big_orange_price
   color = !safety_orange
@@ -227,7 +267,7 @@
 .hourly-rate
   +big_orange_price  
   .hour
-    vertical-align: baseline ! important
+    vertical-align: baseline !important
     font-size: 15px
     color= !dark_gray
 
@@ -272,9 +312,8 @@ body > #login-form
   border: 1px solid red
   
 #errors
-  border-left: 15px solid red
-  border-top: 1px solid red
   padding: 10px
+  text-align: left
 
 .errorExplanation
   h2
@@ -285,19 +324,20 @@ body > #login-form
       font-size: 120%
             
 #flash div
-  margin: 10px 30px
+  margin: 20px 0px
+  font-weight: bold
   padding: 10px
   background-color: yellow
-  border-left: 15px solid #{!dark_blue}
-  border-top: 1px solid #{!dark_blue}
+  //border-left: 15px solid #{!dark_blue}
+  //border-top: 1px solid #{!dark_blue}
   
-#flash div.error
-  border-left: 15px solid red
-  border-top: 1px solid red
-  
-#flash div.warn
-  border-left: 15px solid orange
-  border-top: 1px solid orange
+// #flash div.error
+//   border-left: 15px solid red
+//   border-top: 1px solid red
+//   
+// #flash div.warn
+//   border-left: 15px solid orange
+//   border-top: 1px solid orange
   
 div.fieldWithErrors
   display: inline
@@ -328,16 +368,40 @@ div.fieldWithErrors
     background-image: url('/images/fieldset-bottom-arrow.png')
     height: 20px
   
+#hints-container
+  padding: 12px
+
+
+#hints
+  background-image: url('/images/hints-background.png')
+  width: 296px
+  background-repeat: repeat-y    
+  text-align: left
+  .top, .bottom
+    height: 10px    
+  #hints-body
+    padding: 12px
+    .email
+      text-align: center
+      a
+        color: $safety_orange
+        font-size: 18px
+  .top
+    margin-bottom: 6px
+    background-image: url('/images/hints-top.png')
+  .bottom
+    margin-top: 6px
+    background-image: url('/images/hints-bottom.png')  
+
 .make-a-booking
   background-image: url('/images/booking-background.png')
+  width: 317px
+  background-repeat: repeat-y    
   text-align: center
   .top, .bottom
     height: 10px    
   .book-online
     margin: 12px 0
-  &, *
-    width: 317px
-    background-repeat: repeat-y
   .top
     margin-bottom: 25px
     background-image: url('/images/booking-top.png')

@@ -1,10 +1,6 @@
-= content_for :master_picture do
-  #master-picture-container<>
-    #master-picture
-      %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
-  
-= content_for :left_content do
-  = render :partial => 'client_booking_hints'
+= content_for :left_block_contents do
+  - render :layout => 'layouts/hints' do
+    = render :partial => 'client_booking_hints'
 
 #right-container
   = render :partial => "clients_bookings"

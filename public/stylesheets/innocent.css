@@ -1,12 +1,16 @@
 html {
-  height: 100%; }
+  height: 100%;
+  background-color: #f4f4f4; }
+
+*:focus {
+  outline: none; }
 
 body {
-  background-color: #f4f4f4;
   text-align: center;
-  font-family: Helvetica,Arial,Verdana,sans-serif;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
   color: #585858;
-  font-size: 12px; }
+  font-size: 12px;
+  height: 100%; }
 
 a {
   color: #585858;
@@ -27,9 +31,11 @@ h2 {
   padding: 12px 0; }
 
 h3 {
-  font-size: 18px; }
+  font-size: 18px;
+  margin-top: 36px; }
 
 h4 {
+  color: #323232;
   font-size: 16px; }
 
 h5 {
@@ -41,7 +47,8 @@ h6 {
   font-weight: bold; }
 
 p {
-  margin: 5px 0; }
+  margin: 5px 0;
+  line-height: 18px; }
 
 input[type='text'], input[type='password'], textarea {
   border: 1px solid #6fbdfe;
@@ -90,10 +97,9 @@ li span {
       margin: 0 10px; }
 
 #left-block-contents {
-  background-image: url(/images/left-column-background.png);
+  background-image: url("/images/left-column-bg.png");
   background-repeat: no-repeat;
-  min-height: 21px;
-  padding-top: 10px; }
+  width: 332px; }
   #left-block-contents #email {
     margin: 12px 0;
     font-size: 14px; }
@@ -101,25 +107,29 @@ li span {
       color: #ff6600; }
 
 #tabs {
-  height: 26px;
+  height: 36px;
   text-align: right;
   font-size: 14px;
+  font-weight: bold;
   padding-right: 12px; }
   #tabs #links {
     display: inline-block;
     zoom: 1;
     *display: inline;
     vertical-align: top;
-    height: 26px;
-    line-height: 26px; }
+    height: 36px;
+    line-height: 36px; }
     #tabs #links .tab {
       background-color: #6fbdfe;
       display: inline-block;
       zoom: 1;
-      *display: inline; }
+      *display: inline;
+      width: 110px;
+      text-align: center; }
     #tabs #links .current {
       background-color: #ff6600; }
     #tabs #links a {
+      outline: 0;
       color: white;
       text-decoration: none;
       margin: 0 10px; }
@@ -128,16 +138,21 @@ li span {
   text-align: left;
   margin-left: 12px; }
 
+#quote {
+  background-color: #ff6600;
+  height: 116px;
+  color: white;
+  padding: 6px 12px 0; }
+
 #quote-text {
-  padding: 6px 12px 0;
   text-align: left;
-  font-size: 16px;
-  line-height: 20px; }
+  font-size: 20px;
+  line-height: 26px; }
 
 #quote-signature {
-  text-align: right;
+  text-align: left;
   padding-right: 12px;
-  margin-top: 6px; }
+  margin-top: 12px; }
 
 .button {
   text-align: center;
@@ -145,14 +160,36 @@ li span {
   color: white;
   font-size: 16px;
   height: 31px;
-  width: 158px ! important;
-  display: inline-block; }
+  display: inline-block;
+  padding: 2px; }
+  .button > * {
+    display: inline-block; }
+  .button .left, .button .right {
+    width: 18px;
+    height: 31px; }
+  .button .left {
+    background-image: url("/images/button-left.png"); }
+  .button .right {
+    background-image: url("/images/button-right.png"); }
+  .button .text {
+    background-image: url("/images/button-bg.png");
+    background-repeat: repeat-x; }
+    .button .text a {
+      vertical-align: middle !important;
+      text-decoration: none;
+      color: white;
+      height: 24px;
+      line-height: 24px; }
 
-.blue {
-  background-image: url('/images/button.png'); }
+.on-black .left {
+  background-image: url("/images/button-left-black.png"); }
+.on-black .right {
+  background-image: url("/images/button-right-black.png"); }
+.on-black .text {
+  background-image: url("/images/button-bg-black.png"); }
 
 .orange {
-  background-image: url('/images/orange_button.png'); }
+  background-image: url("/images/orange_button.png"); }
 
 #tagline {
   margin-top: 23px; }
@@ -184,7 +221,8 @@ li span {
     padding-left: 11px; }
     .summary-paragraph .text-container .gist {
       font-size: 16px;
-      font-weight: bold; }
+      font-weight: bold;
+      color: #323232; }
     .summary-paragraph .text-container .text {
       margin: auto;
       margin-top: 4px;
@@ -200,88 +238,95 @@ li span {
   text-align: center; }
 #tagline #text, #landing-page-header #text {
   margin: 8px 40px 8px 17px;
-  width: 590px;
+  width: 580px;
   font-size: 22px;
   font-weight: bold; }
 
-#form-area-container > * {
-  display: inline-block;
-  zoom: 1;
-  *display: inline; }
-#form-area-container #form-area {
-  width: 640px;
-  text-align: left; }
-  #form-area-container #form-area #title-container {
-    background-color: #6fbdfe;
-    height: 41px; }
-    #form-area-container #form-area #title-container #title {
-      color: white;
-      font-size: 24px;
-      line-height: 41px;
+#form-area-container {
+  background-color: #323232;
+  height: 122px;
+  padding-left: 24px;
+  color: white; }
+  #form-area-container * {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; }
+  #form-area-container #form-area {
+    text-align: left; }
+    #form-area-container #form-area #title-container {
       height: 41px; }
-  #form-area-container #form-area #form-container {
-    background-color: #cfe8fd;
-    height: 59px;
-    padding-bottom: 12px;
-    padding-top: 12px; }
-    #form-area-container #form-area #form-container form > * {
-      display: inline-block;
-      zoom: 1;
-      *display: inline;
-      vertical-align: bottom; }
-    #form-area-container #form-area #form-container #search-box {
-      width: 273px;
-      background-color: green; }
-      #form-area-container #form-area #form-container #search-box input {
-        width: 100%;
-        font-size: 24px; }
-    #form-area-container #form-area #form-container #submit {
-      padding-right: 12px;
-      padding-left: 12px; }
-    #form-area-container #form-area #form-container #text {
-      width: 185px; }
-      #form-area-container #form-area #form-container #text #all-cleaners {
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: black; }
-  #form-area-container #form-area .student-lead-form #left-column {
-    width: 130px;
-    font-weight: bold;
-    height: 49px;
-    line-height: 25px; }
-  #form-area-container #form-area .student-lead-form #middle-column {
-    width: 320px; }
-    #form-area-container #form-area .student-lead-form #middle-column input {
-      font-size: 14px;
-      padding-top: 4px;
-      height: 16px; }
-    #form-area-container #form-area .student-lead-form #middle-column #title {
-      width: 50px;
-      margin-right: 4px; }
-    #form-area-container #form-area .student-lead-form #middle-column #first-name, #form-area-container #form-area .student-lead-form #middle-column #last-name {
-      width: 129px; }
-    #form-area-container #form-area .student-lead-form #middle-column #first-name {
-      margin-right: 4px; }
-    #form-area-container #form-area .student-lead-form #middle-column #email {
-      width: 318px;
-      margin-top: 5px; }
-  #form-area-container #form-area .student-lead-form #submit {
-    margin-bottom: 9px; }
+      #form-area-container #form-area #title-container #title {
+        font-size: 22px;
+        line-height: 41px;
+        height: 41px; }
+    #form-area-container #form-area #form-container {
+      height: 57px;
+      padding-bottom: 12px; }
+      #form-area-container #form-area #form-container #search-box, #form-area-container #form-area #form-container #submit {
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
+        vertical-align: bottom; }
+      #form-area-container #form-area #form-container #search-box {
+        width: 520px; }
+        #form-area-container #form-area #form-container #search-box input {
+          width: 100%;
+          font-size: 28px; }
+      #form-area-container #form-area #form-container #submit {
+        padding-right: 12px;
+        padding-left: 12px;
+        height: 35px; }
+        #form-area-container #form-area #form-container #submit * {
+          vertical-align: middle; }
+      #form-area-container #form-area #form-container #cleaners-number {
+        float: right;
+        color: #ff6600; }
+    #form-area-container #form-area #text {
+      width: 619px;
+      padding-top: 8px; }
+    #form-area-container #form-area .student-lead-form input {
+      border-width: 0; }
+    #form-area-container #form-area .student-lead-form #left-column {
+      width: 115px;
+      font-weight: bold;
+      height: 49px;
+      line-height: 25px; }
+    #form-area-container #form-area .student-lead-form #middle-column {
+      width: 335px; }
+      #form-area-container #form-area .student-lead-form #middle-column input {
+        font-size: 14px;
+        padding-top: 4px;
+        height: 16px; }
+      #form-area-container #form-area .student-lead-form #middle-column #title {
+        width: 50px;
+        margin-right: 6px; }
+      #form-area-container #form-area .student-lead-form #middle-column #first-name, #form-area-container #form-area .student-lead-form #middle-column #last-name {
+        width: 136px; }
+      #form-area-container #form-area .student-lead-form #middle-column #first-name {
+        margin-right: 4px; }
+      #form-area-container #form-area .student-lead-form #middle-column #email {
+        width: 332px;
+        margin-top: 5px; }
+    #form-area-container #form-area .student-lead-form #submit {
+      text-align: center;
+      width: 160px;
+      margin-bottom: 9px; }
 
 #summary {
   height: 260px;
   padding-top: 10px;
-  background-image: url('/images/summary_background.png'); }
+  background-image: url("/images/summary-background.png"); }
 
 #content {
-  border-top: 3px solid #ff6600; }
+  border-top: 3px solid #ff6600;
+  min-height: 700px; }
 
 .hourly-rate {
   color: #ff6600;
   font-size: 40px;
   text-align: center; }
   .hourly-rate .hour {
-    vertical-align: baseline ! important;
+    vertical-align: baseline !important;
     font-size: 15px;
     color: #585858; }
 
@@ -295,7 +340,7 @@ li span {
   height: 100px;
   text-align: left; }
   #footer * {
-    color: #999; }
+    color: #999999; }
   #footer a {
     text-decoration: none; }
   #footer h6 {
@@ -323,9 +368,8 @@ body > #login-form {
   border: 1px solid red; }
 
 #errors {
-  border-left: 15px solid red;
-  border-top: 1px solid red;
-  padding: 10px; }
+  padding: 10px;
+  text-align: left; }
 
 .errorExplanation h2 {
   color: red; }
@@ -334,19 +378,10 @@ body > #login-form {
   font-size: 120%; }
 
 #flash div {
-  margin: 10px 30px;
+  margin: 20px 0px;
+  font-weight: bold;
   padding: 10px;
-  background-color: yellow;
-  border-left: 15px solid #6fbdfe;
-  border-top: 1px solid #6fbdfe; }
-
-#flash div.error {
-  border-left: 15px solid red;
-  border-top: 1px solid red; }
-
-#flash div.warn {
-  border-left: 15px solid orange;
-  border-top: 1px solid orange; }
+  background-color: yellow; }
 
 div.fieldWithErrors {
   display: inline; }
@@ -363,36 +398,59 @@ div.fieldWithErrors {
   padding: 12px 0 12px 0; }
 
 .fieldset {
-  background-image: url('/images/fieldset-background.png'); }
+  background-image: url("/images/fieldset-background.png"); }
   .fieldset .top, .fieldset .bottom {
     height: 10px; }
   .fieldset, .fieldset .top, .fieldset .bottom, .fieldset .bottom-arrow {
     width: 619px;
     background-repeat: repeat-y; }
   .fieldset .top {
-    background-image: url('/images/fieldset-top.png'); }
+    background-image: url("/images/fieldset-top.png"); }
   .fieldset .bottom {
-    background-image: url('/images/fieldset-bottom.png'); }
+    background-image: url("/images/fieldset-bottom.png"); }
   .fieldset .bottom-arrow {
-    background-image: url('/images/fieldset-bottom-arrow.png');
+    background-image: url("/images/fieldset-bottom-arrow.png");
     height: 20px; }
 
+#hints-container {
+  padding: 12px; }
+
+#hints {
+  background-image: url("/images/hints-background.png");
+  width: 296px;
+  background-repeat: repeat-y;
+  text-align: left; }
+  #hints .top, #hints .bottom {
+    height: 10px; }
+  #hints #hints-body {
+    padding: 12px; }
+    #hints #hints-body .email {
+      text-align: center; }
+      #hints #hints-body .email a {
+        color: #ff6600;
+        font-size: 18px; }
+  #hints .top {
+    margin-bottom: 6px;
+    background-image: url("/images/hints-top.png"); }
+  #hints .bottom {
+    margin-top: 6px;
+    background-image: url("/images/hints-bottom.png"); }
+
 .make-a-booking {
-  background-image: url('/images/booking-background.png');
+  background-image: url("/images/booking-background.png");
+  width: 317px;
+  background-repeat: repeat-y;
   text-align: center; }
   .make-a-booking .top, .make-a-booking .bottom {
     height: 10px; }
   .make-a-booking .book-online {
     margin: 12px 0; }
-  .make-a-booking, .make-a-booking * {
-    width: 317px;
-    background-repeat: repeat-y; }
   .make-a-booking .top {
     margin-bottom: 25px;
-    background-image: url('/images/booking-top.png'); }
+    background-image: url("/images/booking-top.png"); }
   .make-a-booking .bottom {
     margin-top: 25px;
-    background-image: url('/images/booking-bottom.png'); }
+    background-image: url("/images/booking-bottom.png"); }
 
 #daily-availability {
   margin-bottom: 24px; }
@@ -439,15 +497,17 @@ div.fieldWithErrors {
   #right-block #summary .title {
     color: #ff6600;
     font-size: 18px;
+    font-weight: bold;
     margin: 0px 0; }
   #right-block #summary .step {
-    text-align: left; }
+    text-align: left;
+    margin: 12px 0; }
     #right-block #summary .step * {
       display: inline-block;
       zoom: 1;
       *display: inline; }
     #right-block #summary .step .text {
-      line-height: 52px;
+      line-height: 40px;
       font-size: 15px;
       padding-left: 12px; }
   #right-block #summary .action {
@@ -462,8 +522,7 @@ div.fieldWithErrors {
 
 #cleaners {
   width: 640px;
-  margin-right: 6px;
-  padding-left: !column_padding * 4; }
+  margin-right: 6px; }
   #cleaners #pagination {
     font-size: 14px; }
     #cleaners #pagination > div {
@@ -485,19 +544,19 @@ div.fieldWithErrors {
       vertical-align: middle; }
 
 #latest-activity {
-  border-top: 2px solid #6fbdfe;
   width: 308px;
-  padding-right: !column_padding * 4;
-  background-color: #FFFACD;
+  padding-right: 24px;
   vertical-align: top;
   padding: 6px 12px;
   text-align: left; }
+  #latest-activity h4 {
+    margin-top: 2px; }
 
 .cleaner {
   height: 160px;
   margin-bottom: 12px;
   border-top: 2px solid #6fbdfe;
-  background-color: #cfe8fd;
+  background-color: #e9f4fe;
   text-align: left; }
   .cleaner * {
     vertical-align: top; }
@@ -514,39 +573,41 @@ div.fieldWithErrors {
     .cleaner .photo img {
       position: absolute;
       bottom: 0px; }
-  .cleaner .text {
+  .cleaner > .text {
     padding-top: 6px;
     padding-right: 12px;
     width: 340px; }
-    .cleaner .text .name a {
+    .cleaner > .text .name a {
       color: #ff6600; }
-    .cleaner .text .university {
+    .cleaner > .text .university {
       font-size: 10px;
       text-decoration: underline;
       margin: 6px 10px; }
-    .cleaner .text .introduction {
+    .cleaner > .text .introduction {
       font-size: 14px; }
-    .cleaner .text .stats {
+    .cleaner > .text .stats {
       font-size: 10px;
       margin-top: 12px;
       color: #ff6600; }
-      .cleaner .text .stats .stats-column-first {
+      .cleaner > .text .stats .stats-column-first {
         width: 75px; }
-      .cleaner .text .stats .stats-column-second {
+      .cleaner > .text .stats .stats-column-second {
         width: 130px; }
-      .cleaner .text .stats .stats-column-third {
+      .cleaner > .text .stats .stats-column-third {
         width: 108px; }
-      .cleaner .text .stats .reviews, .cleaner .text .stats .missed-jobs, .cleaner .text .stats .last-logged-in {
+      .cleaner > .text .stats .reviews, .cleaner > .text .stats .missed-jobs, .cleaner > .text .stats .last-logged-in {
         margin-top: 3px; }
-      .cleaner .text .stats > div {
+      .cleaner > .text .stats > div {
         display: inline-block;
         zoom: 1;
         *display: inline; }
-        .cleaner .text .stats > div a {
+        .cleaner > .text .stats > div a {
           color: #ff6600; }
   .cleaner .booking-info {
     padding-top: 6px;
     width: 166px; }
+    .cleaner .booking-info .hire {
+      text-align: center; }
     .cleaner .booking-info .availability {
       margin: 5px 0; }
       .cleaner .booking-info .availability .active {
@@ -568,6 +629,9 @@ div.fieldWithErrors {
   #faq .faq-item p {
     padding-left: 6px; }
 
+#about p {
+  margin: 12px 0; }
+
 #new-client #country-name {
   display: inline-block;
   zoom: 1;
@@ -579,8 +643,7 @@ div.fieldWithErrors {
 #cleaner-summary {
   height: 360px;
   text-align: left;
-  border-bottom: 20px solid #6fbdfe;
-  padding-right: 12px; }
+  padding: 0 12px; }
   #cleaner-summary #details > div {
     margin-top: 10px;
     display: inline-block;
@@ -588,11 +651,12 @@ div.fieldWithErrors {
     *display: inline;
     vertical-align: top; }
   #cleaner-summary #details #stats {
-    width: 332px; }
+    width: 320px; }
   #cleaner-summary #introduction {
     max-height: 125px;
-    line-height: 16px;
     overflow: hidden; }
+    #cleaner-summary #introduction p {
+      line-height: 16px; }
 
 #availability #calendar {
   padding-left: 55px; }
@@ -603,11 +667,10 @@ div.fieldWithErrors {
 
 #reviews {
   text-align: left;
-  padding-right: 12px;
-  padding-top: 12px; }
+  padding: 0 12px; }
   #reviews .review, #reviews #new-review {
     border-top: 2px solid #6fbdfe;
-    background-color: #cfe8fd; }
+    background-color: #e9f4fe; }
   #reviews .review {
     padding: 5px 15px;
     margin-bottom: 12px; }
@@ -713,59 +776,59 @@ div.fieldWithErrors {
   #new-booking #time-selectors select {
     *width: 60px; }
   #new-booking #cost {
-    font-size: 18px;
-    color: #6fbdfe; }
+    font-size: 18px; }
   #new-booking #submit {
     font-size: 125%; }
 
+#bookings {
+  text-align: left;
+  padding: 0 12px; }
+  #bookings .booking {
+    width: 100%;
+    background-color: #e9f4fe;
+    border-bottom: 2px solid #323232;
+    margin-bottom: 12px; }
+    #bookings .booking .body, #bookings .booking .title, #bookings .booking .notes {
+      padding: 6px; }
+      #bookings .booking .body > *, #bookings .booking .title > *, #bookings .booking .notes > * {
+        display: inline-block;
+        zoom: 1;
+        *display: inline; }
+    #bookings .booking .title {
+      background-color: #323232;
+      color: white;
+      font-size: 18px; }
+    #bookings .booking .notes {
+      border-top: 1px solid #323232; }
+  #bookings .cleaners-booking .contact-details {
+    width: 209px; }
+  #bookings .clients-booking .photo {
+    width: 209px; }
+  #bookings .clients-booking .contact-details {
+    width: 229px; }
+  #bookings .name {
+    width: 209px; }
+  #bookings .time {
+    width: 308px; }
+  #bookings .status {
+    width: 110px;
+    text-align: right; }
+  #bookings .address {
+    width: 229px; }
+  #bookings .booking-deal {
+    width: 189px; }
+  #bookings .body .address .map-link {
+    font-weight: bold; }
+  #bookings .body .booking-deal {
+    text-align: center; }
+    #bookings .body .booking-deal .price {
+      color: #ff6600;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 6px; }
+
 #upcoming {
   margin-bottom: 20px; }
-
-.booking {
-  background-color: #cfe8fd;
-  margin: 10px 0;
-  border-top: 1px solid #6fbdfe; }
-  .booking > div {
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-    vertical-align: top; }
-  .booking .booking-deal {
-    width: 178px; }
-    .booking .booking-deal .price {
-      color: #ff6600;
-      font-size: 40px;
-      text-align: center; }
-    .booking .booking-deal .status {
-      margin: 10px 0;
-      text-align: center; }
-    .booking .booking-deal .controls {
-      text-align: center; }
-      .booking .booking-deal .controls > form {
-        margin-bottom: 15px; }
-
-.clients-booking .photo {
-  width: 332px;
-  line-height: 0; }
-.clients-booking .booking-details {
-  padding: 10px;
-  width: 370px; }
-  .clients-booking .booking-details .cleaner-contact-details {
-    padding: 0 0 0 10px; }
-
-.cleaners-booking {
-  padding: 0 10px; }
-  .cleaners-booking .personal-details {
-    width: 200px; }
-    .cleaners-booking .personal-details .client-name {
-      margin-top: 10px; }
-    .cleaners-booking .personal-details .client-contact-details {
-      padding: 0 0 10px 10px; }
-  .cleaners-booking .booking-details {
-    width: 300px;
-    padding-top: 10px; }
-    .cleaners-booking .booking-details .extra {
-      margin-top: 20px; }
 
 .long-form > div {
   margin-bottom: 20px; }

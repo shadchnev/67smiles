@@ -33,4 +33,10 @@
           %span.university
             Student of
             = university(@cleaner.email)              
+        - Skills.skill_set.each do |skill|
+          - if @cleaner.skills.send(skill)
+            %li 
+              %span.skill 
+                = 'Willing to help with ' + skill.to_s.humanize
+
     = render :partial => 'shared/booking', :locals => {:cleaner => @cleaner}

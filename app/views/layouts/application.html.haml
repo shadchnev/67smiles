@@ -30,6 +30,13 @@
       #header
         = render 'layouts/navigation'
         = render 'layouts/logo'
+        #flash
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:warn]
+            .warn= flash[:warn]
+          - if flash[:error]
+            .error= flash[:error]        
         = render 'layouts/tabs'
       #content<>        
         #two-columns
@@ -44,16 +51,16 @@
       #footer>
         #about-us
           %h6 About Us
-          .who-we-are= link_to 'Who We Are'
-          .faq= link_to 'FAQ'
-          .contact-us= link_to 'Contact Us'
-        #legal
-          %h6 Legal Stuff
-          .privacy= link_to 'Privacy Policy'
-          .terms-and-conditions= link_to 'Terms & Conditions'
+          .who-we-are= link_to 'Who We Are', '/about-us'
+          .faq= link_to 'FAQ', '/faq'
+          .contact-us= link_to 'Contact Us', '#', :onclick => '$.prompt("Please say hello to <a href=\"mailto:hello@varsitycleaners.co.uk\">hello@varsitycleaners.co.uk</a>")'
+        / #legal
+        /   %h6 Legal Stuff
+        /   .privacy= link_to 'Privacy Policy'
+        /   .terms-and-conditions= link_to 'Terms & Conditions'
         #copyright
           %h6
-            &copy; Varsity Cleaners, 2010
+            &copy; Varsity Cleaners 2010
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

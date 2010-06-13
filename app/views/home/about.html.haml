@@ -1,0 +1,12 @@
+= content_for :left_block_contents do  
+  - render :layout => 'layouts/hints' do
+    %h5
+      If you have any questions,
+      %br
+      please e-mail me and I'll reply asap.
+    %br
+    .email
+      = mail_to 'hello@varsitycleaners.co.uk'
+
+= content_for :right do
+  = render :partial => 'about'
