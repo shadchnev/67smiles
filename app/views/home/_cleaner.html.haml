@@ -24,7 +24,7 @@
         %div
           Last logged in
         .last-logged-in
-          = time_ago_in_words cleaner.user.last_login_at
+          = cleaner.user.last_login_at ? time_ago_in_words(cleaner.user.last_login_at) : 'A few days ago'
           ago
   .booking-info>
     .price
