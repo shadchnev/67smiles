@@ -162,11 +162,14 @@ li span {
   height: 31px;
   display: inline-block;
   padding: 2px; }
-  .button > * {
-    display: inline-block; }
-  .button .left, .button .right {
-    width: 18px;
+  .button * {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; }
+  .button .left, .button .right, .button .text {
     height: 31px; }
+  .button .left, .button .right {
+    width: 18px; }
   .button .left {
     background-image: url("/images/button-left.png"); }
   .button .right {
@@ -178,8 +181,8 @@ li span {
       vertical-align: middle !important;
       text-decoration: none;
       color: white;
-      height: 24px;
-      line-height: 24px; }
+      height: 31px;
+      line-height: 31px; }
 
 .on-black .left {
   background-image: url("/images/button-left-black.png"); }
@@ -197,13 +200,12 @@ li span {
     color: #6fbdfe;
     text-align: left; }
 
-#landing-page-header {
-  margin-top: 13px; }
-  #landing-page-header #text {
-    color: #6fbdfe;
-    text-align: left; }
+#landing-page-header #text {
+  color: #6fbdfe;
+  text-align: left; }
 
 #landing-page-content {
+  margin-top: 13px;
   height: 347px; }
 
 .summary-paragraph {
@@ -470,7 +472,8 @@ div.fieldWithErrors {
   position: relative; }
   #photo img {
     position: absolute;
-    bottom: 0; }
+    bottom: 0;
+    left: 0; }
 
 #two-columns * {
   vertical-align: top; }

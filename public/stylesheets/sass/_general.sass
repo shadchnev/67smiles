@@ -98,11 +98,12 @@
   //width: 158px !important
   display: inline-block  
   padding: 2px
-  & > *
-    display: inline-block
+  *
+    +cross_inline_block
+  .left, .right, .text
+    height: 31px
   .left, .right
     width: 18px
-    height: 31px
   .left
     background-image: url('/images/button-left.png')    
   .right
@@ -114,8 +115,8 @@
       vertical-align: middle !important
       text-decoration: none
       color: white
-      height: 24px
-      line-height: 24px
+      height: 31px
+      line-height: 31px
 .on-black
   .left
     background-image: url('/images/button-left-black.png')    
@@ -137,13 +138,13 @@
     text-align: left
     
 #landing-page-header
-  margin-top: 13px  
   #text-container    
   #text
     color = !dark_blue
     text-align: left
     
 #landing-page-content
+  margin-top: 13px
   height: 347px
     
 .summary-paragraph
@@ -426,3 +427,4 @@ div.fieldWithErrors
   img
     position: absolute
     bottom: 0
+    left: 0

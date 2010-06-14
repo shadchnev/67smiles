@@ -8,6 +8,7 @@ class Client < ActiveRecord::Base
   has_many :bookings
   has_many :reviews
   has_one :user, :as => :owner  
+  has_many :new_client_events, :dependent => :destroy
   
   accepts_nested_attributes_for :name  
   accepts_nested_attributes_for :contact_details  
@@ -36,6 +37,10 @@ class Client < ActiveRecord::Base
   
   def postcode
     address.postcode
+  end
+  
+  def after_create
+    NewClientEvent.create!(:client_id => id)
   end
     
 end

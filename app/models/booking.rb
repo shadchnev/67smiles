@@ -4,6 +4,7 @@ class Booking < ActiveRecord::Base
   belongs_to :client
   
   has_many :sms
+  has_many :new_booking_events, :dependent => :destroy
   
   validates_associated :cleaner
   validates_associated :client

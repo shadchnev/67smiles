@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 15) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_line"
@@ -98,12 +98,10 @@ ActiveRecord::Schema.define(:version => 14) do
 
   create_table "events", :force => true do |t|
     t.string   "type"
-    t.integer  "booking_id"
     t.integer  "cleaner_id"
     t.integer  "client_id"
+    t.integer  "booking_id"
     t.integer  "review_id"
-    t.decimal  "old_rate",   :precision => 4, :scale => 2
-    t.decimal  "new_rate",   :precision => 4, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
