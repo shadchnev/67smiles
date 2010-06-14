@@ -1,0 +1,10 @@
+#navigation<
+  = image_tag 'navigation-border-left.png'
+  #links>
+    - if current_user
+      #welcome-line
+        Welcome, #{current_user.owner.first_name}!
+    - navigation_elements.each do |element|
+      = navigational_link element
+      = '|' unless element == navigation_elements.last
+  = image_tag 'navigation-border-right.png'

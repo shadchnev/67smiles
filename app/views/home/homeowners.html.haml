@@ -1,0 +1,21 @@
+= content_for :left_block_contents do  
+  #quote
+    #quote-text
+      &ldquo;
+      I can hire students from the uni where I studied once and help them to earn extra money
+      &rdquo;
+    #quote-signature
+      Lesley Pearson, business analyst
+= content_for :right do
+  #landing-page-content
+    #landing-page-header<
+      #text-container
+        #text
+          Hire students from London as domestic cleaners and help them finance their studies
+      
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'Support local university students', :text => 'Many students in your area have to work to finance their education. You can help by hiring them as one-off domestic cleaners. In return you’ll get a young, energetic cleaner with a high standard of English, so you’ll never have trouble talking to them. We check that all cleaners are students of British universities.'}
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'Hiring students is often cheaper – and fairer', :text => 'Conventional cleaning agencies take large commission on cleaners’ earnings. This means that the price you pay is much higher than it should be. It also means that of the money you pay only a fraction goes to the cleaner. On Varsity Cleaners everything you pay goes directly to the student’s pocket.'}
+    = render :partial => 'summary_paragraph', :locals => {:gist => 'You know who you are hiring', :text => 'With a conventional cleaning agency, you never know who’ll come. On Varsity Cleaners you can take a look at the profile of every cleaner, read reviews from other clients, choose a student of a specific university and make up your mind. If you change your plans, you’ll be able to cancel the cleaning online.'}
+  = render :partial => 'shared/search_form'
+
+%br

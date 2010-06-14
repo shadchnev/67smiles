@@ -1,11 +1,38 @@
-= content_for :master_picture do
-  #master-picture-container<>
-    #master-picture
-      %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
+= content_for :left_block_contents do  
+  #quote
+    #quote-text
+      &ldquo;
+      I'm glad I can hire a cleaner for my house and support local students at the same time
+      &rdquo;
+    #quote-signature
+      Dr. Simon Overell, software engineer
+= content_for :right do
+  #tagline<
+    #text-container
+      #text
+        Hire British university students as domestic cleaners and help them finance their studies
+  #summary<
+    #client-points>
+      = render :partial => "welcome_clients"
+    #cleaner-points
+      = render :partial => "welcome_cleaners"
+  = render :partial => 'shared/search_form'
+#cleaners>
+  - @cleaners.each do |cleaner|
+    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+  / #pagination
+  /   .page-number 1
+  /   .page-number.active 2
+  /   .page-number 3
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-mdot
+  /   .page-number 9
+#latest-activity>
+  %h4 Latest Activity
+  %ul
+    - Event.find(:all, :limit => 20, :order => 'created_at DESC').each do |event|
+      %li
+        %span= describe event
 
-= render :partial => @welcome_partial
-
-#right-container.full-width
-  #cleaners
-    - @cleaners.each do |cleaner|    
-      = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+  

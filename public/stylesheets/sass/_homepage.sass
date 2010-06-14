@@ -1,146 +1,153 @@
-!hourly_rate_width = 180px
-!photo_height = 160px
-!photo_width = 110px
-
-
-#find-a-cleaner
-  padding-top: 5px
-  
-  & > form > div
-    margin-bottom: 25px  
-
-  #activities
-    text-align: left
-    margin-left: 50px
-  
-  #calendar
-    padding-left: 12px
-
-.full-width
-  left: -200px
-
-#welcome
-  text-align: center
-   
-  #client-points, #cleaner-points
-    +cross_inline_block
-    height: 230px    
+#two-columns
+  *
     vertical-align: top
-    background-image: url(/images/corner.png)
-    padding: 5px 10px
-    width = !right_column / 2 - 50px
+  
+#left-block
+  width: 332px
+  heigth: 100%
+  +cross_inline_block
 
-  #client-points
-    margin-right: 55px
-    
-  #light-search
-    border-top: 1px solid #{!dark_marine}
-    padding-top: 15px
-    *
-      vertical-align: middle    
-    & form *
-      display: inline
-    #postcode input
-      font-size: 25px
-      width: 150px
-    #label
-      color = !clay
-      font-size: 20px
-    #number-of-results
-      margin: 3px 0
-      color = !clay
-      text-align: right
+  
+#right-block
+  width = !column_width * 4
+  height: 100%
+  +cross_inline_block
+  #summary
+    & > *
+      +cross_inline_block
+      width = !column_width * 2 - !column_padding * 3
+      padding-left = !column_padding * 3
+    .title
+      color = !safety_orange
+      font-size: 18px
+      font-weight: bold
+      margin: 0px 0
+      //text-align: left
+      //padding-left: 52px
+    .step
+      text-align: left
+      margin: 12px 0
+      *
+        +cross_inline_block
+      .text
+        line-height: 40px
+        font-size: 15px
+        padding-left = !column_padding * 2
+    .action
+      margin-top: 15px        
 
-  .icon
-    float: left
-    width: 40px
- 
-  .step
-    font-size: 130%
-    color = !black
-    display: block
-    text-align: left
-    
-  .icon, .step
-    height: 40px    
-
-  .title
-    font-size: 150%
-    color = !clay
-    margin: 15px 0
-
-  .text
-    +cross_inline_block
-    margin-left: 15px
-    line-height: 40px
-
-  .action
-    font-size: 160%
-    margin-top: 15px
-    display: block
-    color = !clay
-
-  .hint
-    font-size: 80%
-    margin-top: 5px
-    color = !medium_gray
+#cleaners, #latest-activity
+  +cross_inline_block
+  margin-top = !column_padding * 2
+  margin-bottom = !column_padding * 2
 
 #cleaners
-
-  .cleaner
-    +coloured-block-in-a-stack
-
-    .photo, .details, .make-a-booking
+  width = !column_width * 4 - !column_padding * 4
+  margin-right = !column_padding
+  //padding-left: !column_padding * 4
+  #pagination
+    font-size: 14px
+    & > div
+      line-height: 25px
+      margin: 3px
       +cross_inline_block
-      width = !photo_width
-    
-    .photo
-      vertical-align: bottom
-      line-height: 0
+      background-color = !dark_blue
+      height: 25px
+      width: 25px
+      color: white
+      font-weight: bold
+    .active
+      background-color = !safety_orange
+    .page-mdot
+      height: 7px
+      width: 7px
+      vertical-align: middle
 
-      img
-        display: inline
-
-    .details
-      padding-left: 10px
-      width = !right_column - !photo_width - !hourly_rate_width - 10px - !column_interspace * 2
-      text-align: left  
-      color = !dark_marine
-      vertical-align: top
-      
-      .name
-        margin-top: 10px      
-        
-      .stats
-        vertical-align: top
-        width: 160px
-        
-      .introduction, .stats
-        +cross_inline_block
-      
-      .introduction
-        width: 240px
-        color = !black
-      
-      .days-of-week
-        margin-top: 20px
-        *
-          display: inline
-          margin-right: 5px
-        .active
-          color = !clay
-        .inactive
-          color = !medium_gray
-
-    .make-a-booking
-      width = !hourly_rate_width
-
-.faq-item
-  margin-bottom: 30px
+#latest-activity
+  //border-top: 2px solid #{!dark_blue}
+  width = !column_width * 2 - !column_padding * 4
+  padding-right: !column_padding * 4
+  //background-color: #FFFACD
+  vertical-align: top
+  padding = !column_padding !column_padding * 2
+  text-align: left  
+  h4
+    margin-top: 2px
   
-.no-top-border
-  border-top: 0px ! important
-
-.no-bottom-gap
-  padding-bottom: 0 ! important
-  line-height: 0
+.cleaner
+  height: 160px
+  margin-bottom = !column_padding * 2
+  border-top: 2px solid #{!dark_blue}
+  background-color: $pale_blue
+  text-align: left
+  *
+    vertical-align: top
+  & > div
+    +cross_inline_block
+  .button
+    font-size: 12px
+  .photo
+    width: 122px
+    position: relative
+    height: 160px
+    img
+      position: absolute
+      bottom: 0px
+  & > .text
+    padding-top = !column_padding
+    padding-right = !column_padding * 2
+    width: 340px
+    .name
+      a
+        color = !safety_orange
+    .university
+      font-size: 10px
+      text-decoration: underline
+      margin: #{!column_padding} 10px
+    .introduction
+      font-size: 14px
+    .stats
+      font-size: 10px
+      margin-top: 12px
+      color = !safety_orange
+      .stats-column-first
+        width: 75px
+      .stats-column-second
+        width: 130px
+      .stats-column-third
+        width: 108px
+      .reviews, .missed-jobs, .last-logged-in
+        margin-top: 3px
+      & > div
+        +cross_inline_block
+        a
+          color = !safety_orange
+  .booking-info
+    padding-top = !column_padding
+    width: 166px
+    .hire
+      text-align: center
+    .price      
+    .availability
+      margin: 5px 0
+      .active
+        color = !safety_orange
+        font-weight: bold
+      .inactive
+        color = !dark_gray
+      & > div
+        & > div
+          margin: 4px 0
+        width: 40px
+        padding-left: 15px
+        +cross_inline_block
+  
+#faq
+  .faq-item
+    margin: #{!column_padding * 4} 0
+    p
+      padding-left = !column_padding
+      
+#about
+  p    
+    margin: 12px 0

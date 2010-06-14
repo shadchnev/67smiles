@@ -31,7 +31,7 @@ class ClientsController < ApplicationController
       flash[:notice] = message
       redirect_to('/')
     rescue Exception => e
-      flash[:error] = e.message
+      # flash[:error] = e.message
       render(:action => :new)
     end
   end

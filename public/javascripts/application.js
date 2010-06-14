@@ -47,12 +47,8 @@ function updateBookingCost() {
 
   var timeDiff = timeTo - timeFrom;
 
-  if (timeDiff <= 0)
-    error = 'Please select available time';
-  else {
-    if (!isAvailableInSelectedTime())
-      error = 'The selected time is not available';
-  }
+  if ((timeDiff <= 0) || !isAvailableInSelectedTime())
+    error = 'Select an available time slot to calculate the price';
       
   var surcharge = 0;
   if ($('#new-booking #booking_cleaning_materials_provided').val() == 0)
@@ -324,14 +320,14 @@ function selectRegistrationType() {
 }
 
 function collapseTopPart(delay) {
-  if (!delay)
-    delay = 500;
-  var callback = function() {
-    $('#find-a-cleaner #where').fadeOut().fadeIn();
-    $('#find-a-cleaner #where input').focus();    
-  }
-  $('#left-column #master-picture-container, #left-column #master-picture').slideUp(delay);
-  $('#right-column #content #summary-block').slideUp(delay, callback);
+  // if (!delay)
+  //   delay = 500;
+  // var callback = function() {
+  //   $('#find-a-cleaner #where').fadeOut().fadeIn();
+  //   $('#find-a-cleaner #where input').focus();    
+  // }
+  // $('#left-column #master-picture-container, #left-column #master-picture').slideUp(delay);
+  // $('#right-column #content #summary-block').slideUp(delay, callback);
 }
 
 function showLoginPrompt(error) {

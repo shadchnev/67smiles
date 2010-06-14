@@ -46,9 +46,11 @@ class Sms < ActiveRecord::Base
     self[:from] = number
   end
   
-  def dispatch    
+  def dispatch
     curl.http_post(*post_fields)
     success? curl.body_str
+  rescue
+    false
   end
   
   def outgoing?    

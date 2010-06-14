@@ -1,20 +1,20 @@
-- unless @booking.errors.empty?
-  #errors
-    = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
 - form_for [@booking.cleaner, @booking], :url => new_booking_form_url do |booking_form|
   #new-booking.long-form
     %input{:type => 'hidden', :id => 'cleaner-id', :value => @booking.cleaner.id}
     = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
-    %h1
+    %h1#page-title
       Hire
       = @booking.cleaner.first_name
+    - unless @booking.errors.empty?
+      #errors
+        = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
     #intro
       When you submit the form, we'll text 
       = @booking.cleaner.first_name
       to confirm the availability and text you.
-    #day
-      %hr
-      %h2 1. What day?
+    #day.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 1, :title => "When would you like #{@booking.cleaner.first_name} to come?"}
       #current-availability
         %input{:type => 'hidden', :id => 'booking_date', :name => 'booking_date', :value => @booking_date}
         #calendar
@@ -22,10 +22,6 @@
           %h3 #{@cleaner.first_name}'s availability
           = hidden_field_tag "minimum-hire", @booking.cleaner.minimum_hire
           = render :partial => 'shared/hours'
-    
-    #time
-      %hr
-      %h2 2. What time?
       = hidden_field_tag :booking_start_time_value, @booking.start_time ? @booking.start_time.localtime.hour : nil
       = hidden_field_tag :booking_end_time_value, @booking.end_time ? @booking.end_time.localtime.hour : nil
       #time-selectors<>
@@ -35,16 +31,22 @@
         #end-time<>
           = booking_form.select :end_time, []
         = "Minimum #{@booking.cleaner.minimum_hire} hour#{'s' if @booking.cleaner.minimum_hire > 1}"
-    #cleaning-materials
-      %hr
-      %h2 3. Will you provide cleaning materials?
+      .bottom-arrow
+    #cleaning-materials.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 2, :title => "Will you provide cleaning materials?"}
       #cleaning-materials-selector
         %input{:type => "hidden", :id => "cleaning_materials_surcharge", :value => @booking.cleaner.surcharge}
         = booking_form.select :cleaning_materials_provided, surcharge_select_content(@booking) 
         %p
           In any case, please have your vacuum cleaner ready.
-    #cost
+      .bottom-arrow      
+    #total.fieldset      
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => "Are you happy with the price?"}
+      #cost
+      #submit
+        = render :partial => 'shared/button', :locals => {:text => "Hire #{@booking.cleaner.first_name}", :onclick => '$("form#new_booking").submit()'}
+      .bottom
     
     
-    #submit
-      = booking_form.submit "Hire #{@booking.cleaner.first_name}"

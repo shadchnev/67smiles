@@ -1,54 +1,77 @@
+html
+  height: 100%
+  background-color = !light_gray
+
+*:focus
+  outline: none
+  
 body
-  background-color = !white
   text-align: center
-  font-family: verdana,helvetica,arial,sans-serif
-  margin-top: 25px
-  color = !black
+  font-family: Helvetica,Arial,Verdana,sans-serif
+  color = !dark_gray
   font-size: 12px
+  height: 100%
 
 a
-  color = !clay
+  color = !dark_gray
   text-decoration: underline
   &:hover
-    color = !clay
+    color = !dark_gray
   &:visited
-    color = !clay
+    color = !dark_gray
     
 h1, h2, h3, h4, h5, h6
-  color = !clay
-  padding-bottom: 10px
+  color: $dark_blue
 
 h1
-  font-size: 170%
+  font-size: 22px
 
 h2
-  font-size: 130%
+  font-size: 20px
+  padding = !column_padding * 2 0
 
 h3
-  font-size: 110%
-  padding-bottom: 3px
+  font-size: 18px  
+  margin-top: 36px
+
+h4
+  color: $mine_shaft
+  font-size: 16px
+
+h5
+  font-size: 14px
+  padding = !column_padding * 2 0  
+
+h6
+  font-size: 12px
+  font-weight: bold
 
 p
   margin: 5px 0
+  line-height: 18px
+
+button
+  zoom: 1
+  display: inline
   
-input[type='text'], input[type='password']
-  border: 1px solid #{!dark_marine}  
-  color = !dark_marine
+input[type='text'], input[type='password'], textarea
+  border: 1px solid #{!dark_blue}
+  color = !dark_blue
   
 input[type='submit'], input[type='button']
   padding: 3px 7px
   *padding: 0
-  
-ul
-  margin-left = !column_interspace
 
+ul
+  margin-left: 20px
+  
 li
   list-style-type: square
-  color = !clay
+  color = !safety_orange
   font-size: 18px
   line-height: 20px
 
 li span
-  color = !black
   font-size: 12px
+  color = !dark_gray
 

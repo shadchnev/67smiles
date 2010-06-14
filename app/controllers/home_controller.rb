@@ -3,15 +3,32 @@ class HomeController < ApplicationController
   def index      
     begin
       instantiate_query_params
-      @search = search?
-      @welcome_partial = params[:hlp] ? 'welcome_homeowner' : 'welcome_generic'
+      @search = search?      
       @cleaners = suitable_cleaners if search?
-      @skills = {:domestic_cleaning => true}
+      @skills = {:domestic_cleaning => true}      
+      @lead_photo = 'lead-photo-frontpage.png'
     rescue Exception => e
+      @search = false
       flash.now[:error] = e.message 
     ensure
       @cleaners ||= default_selection 
     end
+  end
+  
+  def students
+    @lead_photo = 'lead-photo-students.png'
+  end
+
+  def homeowners
+    @lead_photo = 'lead-photo-homeowners.png'
+  end
+
+  def faq
+    @lead_photo = 'lead-photo-faq.png'
+  end
+
+  def about
+    @lead_photo = 'lead-photo-evgeny.png'
   end
 
 private

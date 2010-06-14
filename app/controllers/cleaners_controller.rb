@@ -38,6 +38,7 @@ class CleanersController < ApplicationController
   
   def show
     @cleaner = Cleaner.find(params[:id])
+    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
     if current_user and current_user.client?
       @review = Review.new
       @review.cleaner = @cleaner
@@ -48,8 +49,12 @@ class CleanersController < ApplicationController
   def new
     @cleaner = Cleaner.new
     @cleaner.name = Name.new
+    @cleaner.name.first_name = params[:first_name]
+    @cleaner.name.last_name = params[:last_name]
+    @cleaner.name.honorific = params[:title]
     @cleaner.postcode = Postcode.new
     @cleaner.contact_details = ContactDetails.new
+    @cleaner.contact_details.email = params[:email]
     @cleaner.skills = Skills.new
     @cleaner.availability = Availability.new
     @cleaner.user = User.new

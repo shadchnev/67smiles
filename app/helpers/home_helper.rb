@@ -17,4 +17,15 @@ module HomeHelper
     "<div class=\"day-of-week #{cleaner.available_on?(day) ? 'active' : 'inactive'}\">#{short[day]}</div>"
   end
   
+  def describe(event)
+    a = [
+      "Evgeny from E1W wrote a review for Clarissa",
+      "Maria joined Varsity Cleaners",
+      "Ivone Teresa declined a booking in SW1A",
+      "Homeowner Mark created an account"
+    ]
+    a[rand(a.size)]
+    render :partial => "shared/events/#{event.class.to_s.underscore}", :locals => {:event => event}
+  end
+  
 end

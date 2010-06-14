@@ -1,22 +1,46 @@
 .cleaner
-  .photo<>
+  .photo>
     =link_to image_tag(cleaner.photo.url(:thumb)), cleaner_path(cleaner)
-  .details>
-    %h2.name      
+  .text>
+    %h4.name
       = link_to cleaner.first_name, :controller => "cleaners", :action => "show", :id => cleaner.id
-    .stats
-      .jobs-done
-        %span= jobs_done cleaner 
-      .reviews
-        - if cleaner.has_reviews?
-          = link_to pluralize(cleaner.reviews.count, 'review'), cleaner_path(cleaner, :anchor => "reviews")
-    .introduction
-      = truncate(cleaner.description, :length => 250, :omission => '&hellip; ' + link_to("(read the rest)", cleaner_url(cleaner)))
-    .days-of-week
-      #{link_to "Available on", cleaner_path(cleaner, :anchor => 'availability')}:
-      - [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
-        = day_of_week(cleaner, day)
     .university
-      Student of
       = university(cleaner.email)
-  = render :partial => 'shared/booking', :locals => {:cleaner => cleaner}
+    .introduction
+      = truncate(cleaner.description, :length => 200, :omission => '&hellip; ' + link_to("(read the rest)", cleaner_url(cleaner)))
+    .stats<
+      .stats-column-first
+        .jobs-done
+          = jobs_done cleaner
+        - if cleaner.has_reviews?
+          .reviews
+            = link_to pluralize(cleaner.reviews.count, 'review'), cleaner_path(cleaner, :anchor => "reviews")        
+      .stats-column-second
+        .accepted-jobs
+          = accepted_jobs cleaner
+        .missed-jobs
+          = missed_jobs cleaner
+      .stats-column-third
+        %div
+          Last logged in
+        .last-logged-in
+          = time_ago_in_words cleaner.user.last_login_at
+          ago
+  .booking-info>
+    .price
+      = render :partial => 'shared/hourly_rate', :locals => {:rate => cleaner.rate}
+    .availability      
+      .days>
+        = day_of_week(cleaner, :monday)
+        = day_of_week(cleaner, :tuesday)
+        = day_of_week(cleaner, :wednesday)
+      .days>
+        = day_of_week(cleaner, :thursday)
+        = day_of_week(cleaner, :friday)
+        = day_of_week(cleaner, :saturday)
+      .days>
+        = day_of_week(cleaner, :sunday)
+    .hire
+      = render :partial => 'shared/button', :locals => {:text => "Hire #{cleaner.first_name}", :href => new_cleaner_booking_path(cleaner)} unless current_user and current_user.cleaner?
+        
+      

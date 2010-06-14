@@ -4,6 +4,7 @@ class Booking < ActiveRecord::Base
   belongs_to :client
   
   has_many :sms
+  has_many :new_booking_events, :dependent => :destroy
   
   validates_associated :cleaner
   validates_associated :client
@@ -86,7 +87,7 @@ class Booking < ActiveRecord::Base
   end
   
   def pending?
-    !accepted? and !declined? and !missed?
+    !accepted? and !declined? and !missed? and !cancelled?
   end
   
   def missed?
@@ -111,7 +112,7 @@ class Booking < ActiveRecord::Base
     priority = 0
     reminder_run_at = start_time - 1.day
     missed_run_at = CLEANER_REPLY_TIMEOUT.from_now
-    Delayed::Job.enqueue(CleanerReminderJob.new(id), priority, reminder_run_at) if reminder_run_at.to_date > Time.now.to_date
+    Delayed::Job.enqueue(CleanerReminderJob.new(id), priority, reminder_run_at) if reminder_run_at.future?
     Delayed::Job.enqueue(MissedBookingJob.new(id), priority, missed_run_at)
   end
   

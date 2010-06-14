@@ -1,39 +1,53 @@
-!yellow = #FECA40
-!orange = #F39814
-
 #cleaner-summary
-  padding: 0 #{!column_interspace}
+  height: 360px
+  text-align: left
+  padding: 0 12px  
 
   #details
     & > div
       margin-top: 10px
       +cross_inline_block
       vertical-align: top
-    #skills, #stats
-      width = !right_column / 2 - 123px
+    #stats
+      width = !column_width*2 - 12px      
         
   #introduction
-    height: 105px
+    max-height: 125px
     overflow: hidden 
+    p
+      line-height: 16px
     
 #availability
   #calendar
-    padding-left: 12px
+    padding-left: 55px
     
 #hints
   ul
     text-align: left
     margin: 0 50px    
-    
+
 #reviews
-  padding-top: 20px
+  text-align: left
+  padding: 0 #{!column_padding * 2}
+  .review, #new-review
+    border-top: 2px solid #{!dark_blue}
+    background-color: $pale_blue    
   .review
     padding: 5px 15px
-    +coloured-block-in-a-stack
-
-    .signature, .timestamp
-      color = !clay
-      font-size: 80%
+    margin-bottom: 12px
+    .signature
+      padding-top: 6px
+    .signature, .timestamp      
+      color = !safety_orange
+  #new-review
+    padding: #{!column_padding * 2}
+    margin: 24px 0 
+    textarea
+      width: 100%
+      height: 75px      
+      margin: 6px 0
+    .button
+      margin: #{!column_padding } 0
 
 #new-cleaner
   #description textarea
@@ -58,35 +72,28 @@
       margin: 0
       padding: 0      
       border:
-        right: 1px solid #{!medium_gray}
-        bottom: 1px solid #{!medium_gray}
+        right: 1px solid #{!dark_gray}
+        bottom: 1px solid #{!dark_gray}
 
     li.ui-selecting
-      background = !yellow
+      background: yellow
 
     li.ui-selected
-      background = !orange
+      background: orange
       color: white
     
     li.non-selectable
-      color = !black
+      color: black
       
 #availability
   #calendar
     margin-bottom: 10px
 
-#reviews #new-review textarea
-  width: 100%
-  height: 50px
-
-#reviews #new-review
-  margin-bottom: 10px
-
 #upload-picture
   width: 250px
   height: 310px
   text-align: center
-  border-right: 1px solid #{!dark_marine}
+  border-right: 1px solid #{!dark_blue}
 
   
 #upload-picture-hint

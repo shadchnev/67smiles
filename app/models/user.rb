@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
       s.to = '447923374199'
       s.text = SmsContent.new_user(self)
     end        
-    sms.dispatch or raise("Sorry, I couldn't a text about a new user to #{sms.to}")    
+    sms.dispatch or raise("Sorry, I couldn't send a text about a new user to #{sms.to}")    
   end
   
 private

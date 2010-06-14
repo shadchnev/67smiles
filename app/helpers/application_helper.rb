@@ -43,20 +43,18 @@ module ApplicationHelper
   
   def navigational_link(key)
     case key
-    when :about               then link_to "About", "/about"
-    when :register            then link_to "Register", '#', :onclick => "selectRegistrationType(); return false;"
-    when :login               then link_to "Login", '#', :onclick => "showLoginPrompt(); return false;"    
-    when :logout              then link_to "Logout", user_sessions_path, :method => :delete
-    when :cleaners_bookings   then link_to "My Jobs", cleaner_bookings_path(current_user.owner)
-    when :clients_bookings    then link_to "Bookings", "/clients/#{current_user.owner.id}/bookings"
-    when :edit_client         then link_to "Edit Profile", edit_client_path(current_user.owner)
-    when :edit_cleaner        then link_to "Edit Profile", edit_cleaner_path(current_user.owner)
-    when :faq                 then link_to "FAQ", '/faq'
+    when :register            then link_to "register", '#', :onclick => "selectRegistrationType(); return false;"
+    when :login               then link_to "log in", '#', :onclick => "showLoginPrompt(); return false;"    
+    when :logout              then link_to "log out", user_sessions_path, :method => :delete
+    when :cleaners_bookings   then link_to "my jobs", cleaner_bookings_path(current_user.owner)
+    when :clients_bookings    then link_to "bookings", "/clients/#{current_user.owner.id}/bookings"
+    when :edit_client         then link_to "edit profile", edit_client_path(current_user.owner)
+    when :edit_cleaner        then link_to "edit profile", edit_cleaner_path(current_user.owner)
     end
   end  
   
   def navigation_elements
-    elements = [:faq]
+    elements = []
     elements += [:cleaners_bookings, :edit_cleaner] if current_user and current_user.cleaner?
     elements += [:clients_bookings, :edit_client]  if current_user and current_user.client?
     elements += current_user ? [:logout] : [:register, :login] 
@@ -67,11 +65,20 @@ module ApplicationHelper
     cleaner.completed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'job')} done"
   end
   
+  def missed_jobs(cleaner)
+    cleaner.missed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'missed job')}"
+  end
+  
+  def accepted_jobs(cleaner)
+    return '' if cleaner.accepted_jobs.empty?
+    "#{((cleaner.accepted_jobs.size / cleaner.bookings.size.to_f) * 100).round}% accepted jobs"
+  end
+  
   def booking_status(booking)
-    return "Missed by the cleaner" if booking.missed?
+    return "Missed" if booking.missed?
     return 'Cancelled' if booking.cancelled?
     return 'Declined' if booking.declined?
-    return 'Not accepted yet' unless booking.accepted?
+    return 'Pending' unless booking.accepted?
     return 'Accepted' if booking.accepted?
   end  
   

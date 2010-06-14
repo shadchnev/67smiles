@@ -1,13 +1,6 @@
-= content_for :master_picture do
-  #master-picture-container<>
-    #master-picture
-      - if @cleaner.new_record?
-        %img{:src => '/images/lead_photo.jpg', :alt => "Smiling lady"}
-      - else
-        = render :partial => 'picture'
-  
-= content_for :left_content do
-  = render :partial => 'tips'
+= content_for :left_block_contents do
+  - render :layout => 'layouts/hints' do
+    = render :partial => 'tips'
 
-#right-container
+= content_for :right do
   = render :partial => 'new'

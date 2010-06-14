@@ -1,39 +1,42 @@
-#summary-block
-  %input{:type => "hidden", :value => @cleaner.id, :id => 'cleaner-id'}
-  
-  #cleaner-summary
-    %h1
-      = @cleaner.first_name
-    %p#introduction
-      = @cleaner.description
-    #details
-      #skills
-        %h3
-          I'm happy to help you with
-        %ul#list
-          - Skills.skill_set.each do |skill|
-            - if @cleaner.skills.send(skill)
-              %li 
-                %span 
-                  = skill.to_s.humanize
-      #stats
-        %h3
-          Info
-        %ul#info
-          - unless @cleaner.completed_jobs.empty?
-            %li
-              %span= jobs_done @cleaner
+%input{:type => "hidden", :value => @cleaner.id, :id => 'cleaner-id'}
+
+#cleaner-summary
+  #name
+    %h2#page-title= @cleaner.first_name
+  #introduction
+    %p= @cleaner.description
+  #details
+    / #skills
+    /   %h3
+    /     I'm happy to help you with
+    /   %ul#list
+    /     - Skills.skill_set.each do |skill|
+    /       - if @cleaner.skills.send(skill)
+    /         %li 
+    /           %span 
+    /             = skill.to_s.humanize
+    #stats
+      %ul
+        - unless @cleaner.completed_jobs.empty?
           %li
-            %span 
-              Living in
-              = @cleaner.area
-          %li
-            %span 
-              Created an account
-              = time_ago_in_words @cleaner.created_at
-              ago
-          %li
-            %span.university
-              Student of
-              = university(@cleaner.email)              
-      = render :partial => 'shared/booking', :locals => {:cleaner => @cleaner}
+            %span= jobs_done @cleaner
+        %li
+          %span 
+            Living in
+            = @cleaner.area
+        %li
+          %span 
+            Created an account
+            = time_ago_in_words @cleaner.created_at
+            ago
+        %li
+          %span.university
+            Student of
+            = university(@cleaner.email)              
+        - Skills.skill_set.each do |skill|
+          - if @cleaner.skills.send(skill)
+            %li 
+              %span.skill 
+                = 'Willing to help with ' + skill.to_s.humanize
+
+    = render :partial => 'shared/booking', :locals => {:cleaner => @cleaner}

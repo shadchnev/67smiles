@@ -1,7 +1,7 @@
 - form_for @cleaner, :html => {:multipart => true} do |cleaner_form|
-  #new-cleaner.long-form  
+  #new-cleaner.padded-right-column.long-form
     #intro
-      %h1= modification_title(controller.action_name)
+      %h1#page-title= modification_title(controller.action_name)
     
       %p= modification_subtitle(controller.action_name)
       
@@ -9,17 +9,12 @@
       #errors
         = error_messages_for :cleaner, :header_message => "Sorry, there were problems with this form:", :message => nil
   
-    #personal    
-      %hr
-      %h2 1. Tell us about yourself      
+    #personal.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 1, :title => 'Tell us about yourself'}
       - cleaner_form.fields_for :name do |name_fields|
         = render :partial => "shared/name", :locals => {:f => name_fields}
   
-      #postcode
-        - cleaner_form.fields_for :postcode do |postcode_fields|
-          = postcode_fields.text_field :value, :value => @cleaner.postcode
-          e.g. W2 1TT
-    
       - cleaner_form.fields_for :contact_details do |contact_details_fields|
         #email
           = contact_details_fields.text_field :email
@@ -28,21 +23,27 @@
         #phone-number
           = contact_details_fields.text_field :phone
           e.g. 07912345678
-      
+
+      #postcode
+        - cleaner_form.fields_for :postcode do |postcode_fields|
+          = postcode_fields.text_field :value, :value => @cleaner.postcode
+          e.g. W2 1TT
+          
+      .hint 
+        Please write a short paragraph about yourself. 
       #description
-        %h4 Please write a short paragraph about yourself. 
         = cleaner_form.text_area :description
+      .bottom-arrow
     
-    #skills
-      %hr
-      %h2 2. Tell us about your skills and expectations
+    #skills.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 2, :title => 'What are your skills and expectations?'}
       %div
-        %h3 I can do:
         - cleaner_form.fields_for :skills do |skills_fields|
-          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :domestic_cleaning, :label => 'Domestic cleaning', :disabled => true, :checked => true}
-          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :ironing, :label => 'Ironing', :checked => @cleaner.skills.ironing}
-          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :groceries, :label => 'Groceries shopping', :checked => @cleaner.skills.groceries}
-          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :pets, :label => 'Dog-walking', :checked => @cleaner.skills.pets}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :domestic_cleaning, :label => 'I can do Domestic cleaning', :disabled => true, :checked => true}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :ironing, :label => 'and Ironing', :checked => @cleaner.skills.ironing}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :groceries, :label => 'and Groceries shopping', :checked => @cleaner.skills.groceries}
+          = render :partial => 'shared/checkbox_with_label', :locals => {:f => skills_fields, :field => :pets, :label => 'and Dog-walking', :checked => @cleaner.skills.pets}
     
       #minumum-hire
         = cleaner_form.select :minimum_hire,  Hash[*(1..4).map{|hours| ["I can be hired for no less than #{pluralize(hours, 'hour')}", hours]}.flatten]
@@ -57,12 +58,11 @@
         = cleaner_form.text_field :surcharge, :value => ("#{round_if_possible @cleaner.surcharge} (cleaning materials surcharge)" unless @cleaner.new_record?)
         e.g., 2.5      
       .hint
-        %h4
-          You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
-        
-    #availability
-      %hr
-      %h2 3. Tell us when you're available for work
+        You'll be expected to provide your own cleaning materials if necessary and you'll be paid extra for that.
+      .bottom-arrow
+    #availability.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => 'When are you available to work?'}
     
       .hint
         %p Drag the mouse over the table. Hold 'Control' key to select multiple rectangles.
@@ -72,18 +72,20 @@
           - %w[monday tuesday wednesday thursday friday saturday sunday].each do |day|
             = availability_fields.hidden_field day                
         = render :partial => 'availability_table'
-
-    #account
-      %hr
-      %h2 4. Choose a password
-      
+      .bottom-arrow
+    #account.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 4, :title => 'Create your account'}
+      .hint
+        Just choose your password
       = render :partial => 'shared/new_account', :locals => {:f => cleaner_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
       
-    -if controller.action_name == 'new'
-      = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
+      -if controller.action_name == 'new'
+        = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
-    #submit
-      = cleaner_form.submit modification_submit(controller.action_name)
+      #submit
+        = render :partial => 'shared/button', :locals => {:text => modification_submit(controller.action_name), :onclick => '$("form#new_cleaner").submit()'}
+      .bottom
       
   
     

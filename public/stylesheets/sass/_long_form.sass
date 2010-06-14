@@ -1,6 +1,11 @@
 .long-form
   & > div
-    margin-bottom: 20px    
+    margin-bottom: 20px
+    .subheader
+      *
+        +cross_inline_block
+      h2
+        margin-left: 12px
     
   & > div > div
     margin-bottom: 15px
@@ -13,7 +18,7 @@
     +cross_inline_block
     margin-right: 3px
     
-  & input[type='text']
+  & input[type='text'], & input[type='password']
     width: 250px
     
   #terms-and-conditions input

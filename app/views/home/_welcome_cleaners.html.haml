@@ -1,9 +1,7 @@
 .title
   Students
-= render :partial => 'how_to', :locals => {:image => 'smile', :text => "Get #{link_to 'flexible', faq_path(:anchor => 'faq_is_it_flexible')} one-off jobs"}
-= render :partial => 'how_to', :locals => {:image => 'text', :text => "Receive and accept jobs #{link_to 'by sms', faq_path(:anchor => 'faq_how_hiring_works')}"}
-= render :partial => 'how_to', :locals => {:image => 'percent', :text => "Do not pay a #{link_to 'commission', faq_path(:anchor => 'faq_do_i_have_to_pay_a_commission')}"}
+= render :partial => 'how_to', :locals => {:image => 'smiley', :text => "Get Flexible One-off Jobs"}
+= render :partial => 'how_to', :locals => {:image => 'sms', :text => "Receive and Accept Jobs by Sms"}
+= render :partial => 'how_to', :locals => {:image => 'nocommission', :text => "Do Not Pay a Commission"}
 .action
-  = link_to "See how it works!", :controller => :home, :action => :student_landing_page
-/ .hint
-/   You don't need an agency to find work
+  = render :partial => 'shared/button', :locals => {:text => 'See How It Works', :href => '/students'}

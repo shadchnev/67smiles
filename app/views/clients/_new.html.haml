@@ -1,7 +1,7 @@
 - form_for @client do |client_form|
-  #new-client.long-form
+  #new-client.padded-right-column.long-form
     #intro
-      %h1= client_modification_title(controller.action_name)
+      %h1#page-title= client_modification_title(controller.action_name)
       %p
         = client_modification_subtitle(controller.action_name)
         
@@ -9,9 +9,9 @@
         #errors
           = error_messages_for :client, :header_message => "Sorry, there were problems with this form:", :message => nil
 
-    #personal
-      %hr
-      %h2 1. Tell us about yourself
+    #personal.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 1, :title => 'Tell us about yourself'}
       - client_form.fields_for :name do |name_fields|
         = render :partial => "shared/name", :locals => {:f => name_fields}        
     
@@ -23,10 +23,10 @@
         #phone
           = contact_details_fields.text_field :phone
           e.g. 07912345678
-  
-    #address
-      %hr
-      %h2 2. Tell us where's the property you need to clean
+      .bottom-arrow
+    #address.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 2, :title => 'Tell us about the property that needs cleaning'}
       
       - client_form.fields_for :address do |address_fields|
         #first-line
@@ -48,14 +48,18 @@
       #country
         #country-name United Kingdom
         We operate only in the UK
-    #account
-      %hr
-      %h2 3. Choose a password
-
+      .bottom-arrow
+    #account.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => 'Create an account'}
+      .hint
+        Just choose your password      
       = render :partial => 'shared/new_account', :locals => {:f => client_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
 
-    - if controller.action_name == :new
-      = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
+      - if controller.action_name == "new"
+        = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
   
-    #submit
-      = client_form.submit client_modification_submit(controller.action_name)
+      #submit
+        = render :partial => 'shared/button', :locals => {:text => client_modification_submit(controller.action_name), :onclick => '$("form#new_client").submit()'}
+        
+      .bottom

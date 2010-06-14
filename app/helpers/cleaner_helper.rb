@@ -14,8 +14,8 @@ module CleanerHelper
   end
   
   def modification_submit(action)
-    return "Join Varsity Cleaners" if action == 'new'
-    "Update your profile" if action == 'edit' or action == 'update'    
+    return "Create My Account" if action == 'new'
+    "Update My Profile" if action == 'edit' or action == 'update'    
   end
   
 end

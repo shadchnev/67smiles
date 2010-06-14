@@ -1,5 +1,3 @@
-!summary_block_height = 310px
-
 =cross_inline_block
   display: inline-block
   zoom: 1
@@ -7,114 +5,306 @@
   
 #container
   width = !master_width
+  background-color: white
   margin-left: auto
   margin-right: auto
 
-#left-column
-  width = !left_column  
-  
-#right-column
-  width = !right_column
-  text-align: left
-  
-#left-column, #right-column
-  +cross_inline_block
-  vertical-align: top
-  
-#left-content
-  padding = !column_interspace 0
-
 #header
-  text-align: right
-  & > *
-    vertical-align: top
-
-#master-picture-container  
-  width = !left_column
-  height = !summary_block_height
-  text-align: center
-  border-bottom: 1px solid #{!dark_marine}  
-
-#master-picture
-  position: relative
-  height = !summary_block_height
-  text-align: right
-  vertical-align: bottom
-  line-height: 0
-
-.with_right_border
-  border-right: 1px solid #{!dark_marine}
-
-#welcome-line
-  vertical-align: top
-  width: 150px
-  +cross_inline_block
-  padding: 3px
-  text-align: right
-
-#navigation-container
-  +cross_inline_block
-  vertical-align: top
-  text-align: right
-  width: 250px
+  background-color = !light_gray
 
 #navigation
-  float: right
-  padding: 3px
+  text-align: right
+  padding-right = !column_padding * 2
+  
+  #links
+    +cross_inline_block
+    background-color = !light_blue
+    vertical-align: top
+    line-height: 23px
+    height: 23px
+    color = !dark_gray
+    
+    a
+      text-decoration: none
+      margin: 0 10px
 
+#left-block-contents
+  // border-top: 2px solid $safety_orange
+  background-image: url('/images/left-column-bg.png')
+  background-repeat: no-repeat
+  width: 332px
+  #email
+    margin: #{!column_padding * 2} 0
+    font-size: 14px
+    a 
+      color = !safety_orange  
+
+
+#tabs
+  height: 36px
+  text-align: right
+  font-size: 14px
+  font-weight: bold
+  padding-right = !column_padding * 2
+  #links
+    +cross_inline_block
+    vertical-align: top
+    height: 36px
+    line-height: 36px
+    .separator
+      //border-right: 2px solid $safety_orange
+    .tab
+      background-color = !dark_blue
+      +cross_inline_block
+      width: 110px
+      text-align: center
+        
+    .current
+      background-color = !safety_orange
+    
+    a
+      outline: 0
+      color: white
+      text-decoration: none
+      margin: 0 10px
 
 #logo
-  width: 480px  
-  +cross_inline_block
   text-align: left
-  margin-bottom: 25px  
+  margin-left = !column_padding * 2
+
+#quote
+  background-color: $safety_orange
+  height: 116px
+  color: white
+  padding: #{!column_padding} #{!column_padding * 2} 0
   
-#summary-block
-  border-bottom: 1px solid #{!dark_marine}
-  height = !summary_block_height
+#quote-text
   text-align: left
+  font-size: 20px
+  // font-weight: bold
+  line-height: 26px
   
-#right-container
-  padding = !column_interspace
-  padding-top: 0
+#quote-signature
+  text-align: left
+  padding-right = !column_padding * 2
+  margin-top: $column_padding * 2
   
+.button
+  text-align: center
+  line-height: 31px
+  color: white
+  font-size: 16px
+  height: 31px
+  //width: 158px !important
+  display: inline-block  
+  padding: 2px
+  *
+    +cross_inline_block
+  .left, .right, .text
+    height: 31px
+  .left, .right
+    width: 18px
+  .left
+    background-image: url('/images/button-left.png')    
+  .right
+    background-image: url('/images/button-right.png')
+  .text
+    background-image: url('/images/button-bg.png')
+    background-repeat: repeat-x
+    a
+      vertical-align: middle !important
+      text-decoration: none
+      color: white
+      height: 31px
+      line-height: 31px
+.on-black
+  .left
+    background-image: url('/images/button-left-black.png')    
+  .right
+    background-image: url('/images/button-right-black.png')
+  .text
+    background-image: url('/images/button-bg-black.png')
+
+    
+
+.orange
+  background-image: url('/images/orange_button.png')
+
+#tagline
+  margin-top: 23px
+  #text-container    
+  #text
+    color = !dark_blue
+    text-align: left
+    
+#landing-page-header
+  #text-container    
+  #text
+    color = !dark_blue
+    text-align: left
+    
+#landing-page-content
+  margin-top: 13px
+  height: 347px
+    
+.summary-paragraph
+  margin-top: 7px
+  .border, .text-container
+    +cross_inline_block
+  .text-container
+    height: 71px
+    width: 635px
+    text-align: left
+    background-color = !light_blue    
+    padding: #{!column_padding} 
+    padding-left: 11px
+    .gist    
+      font-size: 16px
+      font-weight: bold
+      color: $mine_shaft
+    .text
+      margin: auto
+      margin-top = 4px
+      font-size: 12px
+  
+
+#tagline, #landing-page-header
+  #border, #text-container
+    +cross_inline_block
+  #text-container
+    height: 67px  
+    width: 652px          
+    text-align: center
+  #text
+    margin: 8px 40px 8px 17px
+    width: 580px    
+    font-size: 22px
+    font-weight: bold
+
+
+#form-area-container 
+  background-color: $mine_shaft
+  height: 122px
+  padding-left: 24px
+  color: white
+  *
+    +cross_inline_block
+  #form-area
+    text-align: left
+    #title-container
+      height: 41px
+      #title
+        font-size: 22px
+        line-height: 41px
+        height: 41px
+    #form-container      
+      #search-box, #submit
+        +cross_inline_block
+        vertical-align: bottom
+      height: 57px
+      padding-bottom = !column_padding * 2      
+      #search-box
+        width: 520px
+        input
+          width: 100%
+          font-size: 28px
+      #submit
+        padding-right = !column_padding * 2
+        padding-left = !column_padding * 2
+        height: 35px
+        *
+          vertical-align: middle
+      #cleaners-number
+        float: right
+        color: $safety_orange
+    #text
+      width: 619px
+      padding-top: 8px      
+    .student-lead-form
+      input
+        border-width: 0
+      #left-column        
+        width = 115px
+        font-weight: bold
+        height: 49px
+        line-height: 25px
+      #middle-column
+        width = 335px
+        input
+          font-size: 14px
+          padding-top: 4px
+          height: 16px
+        #title
+          width: 50px
+          margin-right: 6px
+        #first-name, #last-name
+          width: 136px          
+        #first-name
+          margin-right: 4px
+        #email
+          width: 332px
+          margin-top: 5px
+      #submit
+        text-align: center
+        width: 160px
+        margin-bottom: 9px      
+        
+          
+  
+#summary
+  height: 260px
+  padding-top: 10px
+  background-image: url('/images/summary-background.png')
+  
+#content
+  border-top: 3px solid #{!safety_orange}
+  min-height: 700px
+
 =big_orange_price
-  color = !clay      
+  color = !safety_orange
   font-size: 40px
   text-align: center
-  line-height: 80px  
 
 .hourly-rate
-  +big_orange_price
+  +big_orange_price  
   .hour
+    vertical-align: baseline !important
     font-size: 15px
-    color= !medium_gray
+    color= !dark_gray
 
-.make-a-booking
-  text-align: center  
-    
-  .book-online
-    height: 35px
-  
 #calendar
   font-size: 120%
   
 #footer
-  color= !medium_gray
-  font-size: 80%
-  padding: 10px    
-  border-top:
-    width: 1px
-    style: solid
-    color = !dark_marine
+  *
+    color: #999
+  a
+    text-decoration: none
+  h6
+    margin-bottom: 10px
+  background-color = !dark_gray
+  font-size: 90%
+  padding = !column_padding * 2
+  height: 100px
+  text-align: left  
+  & > div
+    +cross_inline_block
+    vertical-align: top
+    & > div
+      margin-bottom: 3px
+  #about-us  
+    margin-left = !column_width + !column_padding * 2
+    width = !column_width
+  #copyright
+    float: right
 
 .clearer
   clear: both
   
 =coloured-block-in-a-stack
-  background-color = !light_marine
+  background-color = !light_blue
   margin: 10px 0
-  border-bottom: 1px solid #{!dark_marine}
+  border-top: 1px solid #{!dark_blue}
   
 body > #login-form
   display: none
@@ -123,9 +313,8 @@ body > #login-form
   border: 1px solid red
   
 #errors
-  border-left: 15px solid red
-  border-top: 1px solid red
   padding: 10px
+  text-align: left
 
 .errorExplanation
   h2
@@ -134,42 +323,108 @@ body > #login-form
     li
       color: black
       font-size: 120%
-      
-      
-#flash
-  width = !right_column
-  margin-left = !left_column    
-
+            
 #flash div
-  margin: 10px 30px
+  margin: 20px 0px
+  font-weight: bold
   padding: 10px
-  background-color = !icterine
-  border-left: 15px solid #{!dark_marine}
-  border-top: 1px solid #{!dark_marine}
+  background-color: yellow
+  //border-left: 15px solid #{!dark_blue}
+  //border-top: 1px solid #{!dark_blue}
   
-#flash div.error
-  border-left: 15px solid red
-  border-top: 1px solid red
-  
-#flash div.warn
-  border-left: 15px solid orange
-  border-top: 1px solid orange
+// #flash div.error
+//   border-left: 15px solid red
+//   border-top: 1px solid red
+//   
+// #flash div.warn
+//   border-left: 15px solid orange
+//   border-top: 1px solid orange
   
 div.fieldWithErrors
   display: inline
   
 #old-password
-  margin-top: 30px
+  margin-top: 30px    
+    
+.padded-right-column
+  text-align: left
+  padding = !column_padding !column_padding * 4      
+
+#page-title
+  color = !dark_blue
+  padding: #{!column_padding * 2} 0 #{!column_padding * 2} 0  
+
+.fieldset
+  .top, .bottom
+    height: 10px    
+  &, .top, .bottom, .bottom-arrow
+    width: 619px
+    background-repeat: repeat-y
+  background-image: url('/images/fieldset-background.png')
+  .top
+    background-image: url('/images/fieldset-top.png')
+  .bottom
+    background-image: url('/images/fieldset-bottom.png')
+  .bottom-arrow
+    background-image: url('/images/fieldset-bottom-arrow.png')
+    height: 20px
   
-.page-header
-  margin-bottom: 20px
+#hints-container
+  padding: 12px
+
+
+#hints
+  background-image: url('/images/hints-background.png')
+  width: 296px
+  background-repeat: repeat-y    
+  text-align: left
+  .top, .bottom
+    height: 10px    
+  #hints-body
+    padding: 12px
+    .email
+      text-align: center
+      a
+        color: $safety_orange
+        font-size: 18px
+  .top
+    margin-bottom: 6px
+    background-image: url('/images/hints-top.png')
+  .bottom
+    margin-top: 6px
+    background-image: url('/images/hints-bottom.png')  
+
+.make-a-booking
+  background-image: url('/images/booking-background.png')
+  width: 317px
+  background-repeat: repeat-y    
+  text-align: center
+  .top, .bottom
+    height: 10px    
+  .book-online
+    margin: 12px 0
+  .top
+    margin-bottom: 25px
+    background-image: url('/images/booking-top.png')
+  .bottom
+    margin-top: 25px
+    background-image: url('/images/booking-bottom.png')
   
+#daily-availability
+  margin-bottom: 24px
+  p
+    color = !safety_orange
+    font-weight: bold
+    
+#welcome-line
+  +cross_inline_block
+  margin: 0 12px
+  font-weight: bold
   
-  
-  
-  
-  
-  
-  
-  
-  
+#photo
+  height: 360px
+  position: relative
+  img
+    position: absolute
+    bottom: 0
+    left: 0
