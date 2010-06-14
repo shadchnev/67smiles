@@ -12,6 +12,7 @@ class Cleaner < ActiveRecord::Base
   has_many :bookings
   has_many :reviews
   has_one :user, :as => :owner, :dependent => :destroy
+  has_many :new_cleaner_events, :dependent => :destroy
   
   accepts_nested_attributes_for :name
   accepts_nested_attributes_for :postcode

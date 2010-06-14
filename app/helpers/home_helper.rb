@@ -25,6 +25,7 @@ module HomeHelper
       "Homeowner Mark created an account"
     ]
     a[rand(a.size)]
+    render :partial => "shared/events/#{event.class.to_s.underscore}", :locals => {:event => event}
   end
   
 end

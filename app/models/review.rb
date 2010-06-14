@@ -6,6 +6,7 @@ class Review < ActiveRecord::Base
   validates_presence_of :cleaner  
   validates_presence_of :client
   validates_presence_of :text
+  has_many :new_review_events, :dependent => :destroy
   
   def timestamp
     created_at.localtime.to_formatted_s :short

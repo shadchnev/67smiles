@@ -40,9 +40,9 @@
         = render 'layouts/tabs'
       #content<>        
         #two-columns
-          #left-block>
+          #left-block<>
             = render 'layouts/leading_photo'
-            #left-block-contents
+            #left-block-contents<>
               = yield :left_block_contents
           #right-block
             = yield :right
