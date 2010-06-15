@@ -19,11 +19,12 @@ class ClientsController < ApplicationController
       Client.transaction do
         booking = Booking.new(session[:attempted_booking]) if session[:attempted_booking]
         if booking
+          logger.info("Found provisional booking")
           booking.client = @client
           booking.save!
           booking.ask_cleaner!       
           message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
-        else
+        else          
           @client.save!    
         end
         @client.user.deliver_activation_instructions!
@@ -31,7 +32,8 @@ class ClientsController < ApplicationController
       flash[:notice] = message
       redirect_to('/')
     rescue Exception => e
-      # flash[:error] = e.message
+      logger.error e.message
+      e.backtrace.each{|msg| logger.error msg}
       render(:action => :new)
     end
   end

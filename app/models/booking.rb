@@ -128,7 +128,7 @@ class Booking < ActiveRecord::Base
 private
 
   def send_text(recipient, text)
-    sms = Sms.create do |s|
+    sms = Sms.create! do |s|
       s.to = recipient.phone
       s.text = text
     end        

@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
     Notifier.deliver_activation_confirmation(self)
   end  
   
-  def after_create
-    sms = Sms.create do |s|
+  def after_create    
+    sms = Sms.create! do |s|
       s.to = '447923374199'
       s.text = SmsContent.new_user(self)
     end        
