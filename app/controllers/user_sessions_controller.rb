@@ -5,7 +5,8 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       render :text => 'success'
     else
-      render :text => 'The username or password is incorrect'
+      user = User.find_by_login(params[:login])
+      render :text => 'The username/password is incorrect or you haven\'t activated your account (check your spam folder)'
     end
   end
   

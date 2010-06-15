@@ -23,11 +23,10 @@ class ClientsController < ApplicationController
           booking.client = @client
           booking.save!
           booking.ask_cleaner!       
-          message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}" 
+          message = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}. Log in to manage your bookings." 
         else          
           @client.save!    
         end
-        @client.user.deliver_activation_instructions!
       end
       flash[:notice] = message
       redirect_to('/')
@@ -35,6 +34,16 @@ class ClientsController < ApplicationController
       logger.error e.message
       e.backtrace.each{|msg| logger.error msg}
       render(:action => :new)
+      return
+    end
+    
+    begin
+      @client.user.deliver_activation_instructions!
+    rescue Exception => e
+      logger.error e.message
+      e.backtrace.each{|msg| logger.error msg}
+      logger.error "Could not send the activation message, activating.."
+      @client.user.activate!
     end
   end
 
