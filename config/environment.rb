@@ -61,12 +61,12 @@ ActionMailer::Base.raise_delivery_errors = true
 
 ActionMailer::Base.smtp_settings = {
    :enable_starttls_auto => true,
-   :address        => 'smtp.gmail.com',
-   :port           => 587,
+   :address        => 'localhost',
+   :port           => 25,
    :domain         => 'varsitycleaners.co.uk',
-   :authentication => :plain,
-   :user_name      => 'robot@varsitycleaners.co.uk',
-   :password       => '97E394',
+   # :authentication => :plain,
+   # :user_name      => 'robot@varsitycleaners.co.uk',
+   # :password       => '97E394',
  }
 
 

@@ -18,7 +18,7 @@ class Notifier < ActionMailer::Base
   
   def test
     subject       "Test"
-    from          "rebot@varsitycleaners.co.uk"
+    from          "robot@varsitycleaners.co.uk"
     recipients    "evgeny.shadchnev@gmail.com"
     sent_on       Time.now
     body          :root_url => root_url
