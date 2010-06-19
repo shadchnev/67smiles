@@ -4,11 +4,12 @@ class CleanersController < ApplicationController
   
   def create
     params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
-    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
+    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:phone]
     @cleaner = Cleaner.new(params[:cleaner])
     @cleaner.postcode ||= existing_postcode
     if @cleaner.save
-      @cleaner.user.deliver_activation_instructions!
+      #@cleaner.user.deliver_activation_instructions!
+      Delayed::Job.enqueue AccountActivationJob.new(@cleaner.id)
       flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
       redirect_to(cleaner_path(@cleaner))
     else
@@ -20,7 +21,7 @@ class CleanersController < ApplicationController
     existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
     raise "The postcode is invalid" unless existing_postcode
     params[:cleaner].delete(:postcode_attributes) 
-    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:email]
+    params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:phone]
     @cleaner = Cleaner.find(params[:id])
     @cleaner.postcode = existing_postcode
     @cleaner.update_attributes!(params[:cleaner]) 

@@ -14,7 +14,7 @@ class BookingsControllerTest < ActionController::TestCase
   
   test "a stranger can book a cleaner" do
     post :provisionally_create, booking_params
-    assert_redirected_to :controller => :clients, :action => :new
+    assert_redirected_to :controller => :clients, :action => :new, :booking => 'yes'
   end
  
   test "parameters are parsed properly" do
@@ -61,12 +61,12 @@ class BookingsControllerTest < ActionController::TestCase
     assert_redirected_to '/'
   end
   
-  test "stranger can try to book a cleaner if id is supplied" do
+  test "stranger can try to book a cleaner if an id is supplied" do
     get :new, {"cleaner_id" => @cleaner.id}
     assert_template 'new'
   end
     
-  test "client can try to book a cleaner if id is supplied" do
+  test "client can try to book a cleaner if an id is supplied" do
     login @client
     get :new, {"cleaner_id" => @cleaner.id}
     assert_template 'new'

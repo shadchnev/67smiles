@@ -4,7 +4,7 @@
     = render :partial => 'shared/hourly_rate', :locals => {:rate => @booking.cleaner.rate}
     %h1#page-title
       Hire
-      = @booking.cleaner.first_name
+      = link_to @booking.cleaner.first_name, cleaner_path(@booking.cleaner)
     - unless @booking.errors.empty?
       #errors
         = error_messages_for :booking, :header_message => "Sorry, there were problems with this booking:", :message => nil
@@ -46,7 +46,8 @@
       = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => "Are you happy with the price?"}
       #cost
       #submit
-        = render :partial => 'shared/button', :locals => {:text => "Hire #{@booking.cleaner.first_name}", :onclick => '$("form#new_booking").submit()'}
+        - confirm = "You are about to hire #{@booking.cleaner.first_name}. Are you sure?" if current_user
+        = render :partial => 'shared/button', :locals => {:text => "Hire #{@booking.cleaner.first_name}", :onclick => '$("form#new_booking").submit()', :confirm => confirm}
       .bottom
     
     

@@ -121,7 +121,7 @@ private
   def success?(reply)
     return false unless reply
     parsed_reply = JSON.parse reply
-    parsed_reply['Error'] == GATEWAY_NO_ERROR and parsed_reply['MessageReceived'] == text
+    parsed_reply['Error'] == GATEWAY_NO_ERROR
   end
 
 end

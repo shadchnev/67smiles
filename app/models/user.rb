@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     c.validates_format_of_login_field_options = {:with => //, :if => lambda{|c| false}} # so we don't check it at all
     c.validates_length_of_password_confirmation_field_options = {:minimum => 6, :if => lambda {|c| false}}
     c.validates_confirmation_of_password_field_options = {:if => :require_password?, :message => "^Please make sure the password matches the password confirmation field"}
-    c.maintain_sessions = false # disable autologin
+    c.maintain_sessions = false # disable autologin. We'll log in the clients manually but the cleaners must be activated
   end
   
   belongs_to :owner, :polymorphic => true
@@ -35,15 +35,23 @@ class User < ActiveRecord::Base
     save
   end
   
+  def confirm_email!
+    owner.contact_details.confirm_email
+  end
+  
+  def email_confirmed?
+    owner.contact_details.email_confirmed?
+  end
+  
+  def deliver_email_confirmation_instructions!
+    reset_perishable_token!
+    Notifier.deliver_email_confirmation_instructions(self)
+  end
+
   def deliver_activation_instructions!
     reset_perishable_token!
     Notifier.deliver_activation_instructions(self)
   end
-
-  def deliver_activation_confirmation!
-    reset_perishable_token!
-    Notifier.deliver_activation_confirmation(self)
-  end  
   
   def after_create    
     sms = Sms.create! do |s|

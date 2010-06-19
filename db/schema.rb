@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 16) do
+ActiveRecord::Schema.define(:version => 18) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_line"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 16) do
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "email_confirmed"
   end
 
   add_index "contact_details", ["email"], :name => "index_contact_details_on_email", :unique => true

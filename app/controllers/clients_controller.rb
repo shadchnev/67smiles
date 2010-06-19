@@ -7,6 +7,7 @@ class ClientsController < ApplicationController
     @client.address.postcode = Postcode.new
     @client.contact_details = ContactDetails.new
     @client.user = User.new
+    check_attempted_booking
   end
     
   def create
@@ -17,7 +18,7 @@ class ClientsController < ApplicationController
     return if redirect_due_to_confirmation_code    
     check_attempted_booking
     if @booking and @booking.valid?
-      if @cleaner.valid? 
+      if @client.valid? 
         save_booking
       else
         render :action => :new
@@ -27,8 +28,9 @@ class ClientsController < ApplicationController
       render :action => :new and return unless @client.save
       flash[:notice] = "Thank you for the registration! Now you can book a cleaner in just couple of clicks."
     end
-    Delayed::Job.enqueue EmailActivationJob.new(@client.id)
-    @client.user.activate!
+    Delayed::Job.enqueue EmailConfirmationJob.new(@client.id)
+    @client.user.activate! # because we have already confirmed their phone number, that's the most important bit
+    UserSession.create(@client.user)
     redirect_to '/'
   end
   
@@ -55,7 +57,7 @@ private
     @booking.save!
     begin
       @booking.ask_cleaner! 
-      flash[:notice] = "Thank you for the registration! You have successfully booked #{booking.cleaner.first_name}. Log in to manage your bookings." 
+      flash[:notice] = "Thank you for the registration! You have successfully booked #{@booking.cleaner.first_name}." 
     rescue Exception => e
       e.backtrace.each{|msg| logger.error msg}
       logger.error "Could not send the activation message, activating."        
@@ -83,12 +85,12 @@ private
     return unless value and !value.blank?
     code = PhoneConfirmationCode.find_by_value(value)
     return unless code
-    code.phone == Phone.normalize(params[:client][:contact_details_attributes][:phone])
+    Phone.normalize(code.phone) == Phone.normalize(params[:client][:contact_details_attributes][:phone])
   end
 
   def preprocess_params
     params[:client][:address_attributes].delete(:postcode_attributes)
-    params[:client][:user_attributes][:login] = params[:client][:contact_details_attributes][:email]        
+    params[:client][:user_attributes][:login] = params[:client][:contact_details_attributes][:phone]        
   end
 
   def find_or_create_postcode

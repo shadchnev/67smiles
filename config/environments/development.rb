@@ -14,9 +14,9 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+ActionMailer::Base.raise_delivery_errors = false
 
-ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 
 GATEWAY_NO_ERROR = 'testmode - nothing sent'

@@ -38,19 +38,19 @@ class BookingsController < ApplicationController
   
   def accept
     @booking.accept!
-    flash[:notice] = 'Booking was accepted'
+    flash[:notice] = 'The booking was accepted'
     redirect_back_or_to '/'
   end
   
   def cancel
     @booking.cancel!
-    flash[:notice] = 'Booking was cancelled'
+    flash[:notice] = 'The booking was cancelled'
     redirect_back_or_to '/'
   end
   
   def decline
     @booking.decline!    
-    flash[:notice] = 'Booking was declined'
+    flash[:notice] = 'The booking was declined'
     redirect_back_or_to '/'
   end
   
@@ -78,7 +78,7 @@ private
     if @booking.save
       @booking.ask_cleaner!
       redirect_to(cleaner_path(@cleaner))
-      flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive an email from us when #{@cleaner.first_name} replies."
+      flash[:notice] = "Thank you. We have sent a text to #{@booking.cleaner.first_name} to confirm the availability. You will receive a text from us when #{@cleaner.first_name} replies."
     else
       render(:action => :new)    
     end    

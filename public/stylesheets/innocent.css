@@ -22,6 +22,12 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   color: #6fbdfe; }
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: #6fbdfe; }
+    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+      color: #6fbdfe; }
+    h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+      color: #6fbdfe; }
 
 h1 {
   font-size: 22px; }
@@ -284,9 +290,14 @@ li span {
         height: 35px; }
         #form-area-container #form-area #form-container #submit * {
           vertical-align: middle; }
-      #form-area-container #form-area #form-container #cleaners-number {
-        float: right;
-        color: #ff6600; }
+      #form-area-container #form-area #form-container #text {
+        *position: relative; }
+        #form-area-container #form-area #form-container #text #cleaners-number {
+          float: right;
+          color: #ff6600;
+          *top: 0px;
+          *position: absolute;
+          *right: 0px; }
     #form-area-container #form-area #text {
       width: 619px;
       padding-top: 8px; }
@@ -344,7 +355,8 @@ li span {
   font-size: 90%;
   padding: 12px;
   height: 100px;
-  text-align: left; }
+  text-align: left;
+  position: relative; }
   #footer * {
     color: #999999; }
   #footer a {
@@ -362,7 +374,11 @@ li span {
     margin-left: 178px;
     width: 166px; }
   #footer #copyright {
-    float: right; }
+    float: right;
+    *margin: 12px;
+    *position: absolute;
+    *top: 0;
+    *right: 0; }
 
 .clearer {
   clear: both; }
@@ -405,8 +421,11 @@ div.fieldWithErrors {
 
 .fieldset {
   background-image: url("/images/fieldset-background.png"); }
+  .fieldset #submit * {
+    text-align: left; }
   .fieldset .top, .fieldset .bottom {
-    height: 10px; }
+    height: 10px;
+    *margin-bottom: 0; }
   .fieldset, .fieldset .top, .fieldset .bottom, .fieldset .bottom-arrow {
     width: 619px;
     background-repeat: repeat-y; }
@@ -416,7 +435,8 @@ div.fieldWithErrors {
     background-image: url("/images/fieldset-bottom.png"); }
   .fieldset .bottom-arrow {
     background-image: url("/images/fieldset-bottom-arrow.png");
-    height: 20px; }
+    height: 20px;
+    *margin-bottom: 0; }
 
 #hints-container {
   padding: 12px; }
@@ -519,6 +539,8 @@ div.fieldWithErrors {
       padding-left: 12px; }
   #right-block #summary .action {
     margin-top: 15px; }
+    #right-block #summary .action .button {
+      *text-align: center; }
 
 #cleaners, #latest-activity {
   display: inline-block;
@@ -588,7 +610,6 @@ div.fieldWithErrors {
       color: #ff6600; }
     .cleaner > .text .university {
       font-size: 10px;
-      text-decoration: underline;
       margin: 6px 10px; }
     .cleaner > .text .introduction {
       font-size: 14px; }
@@ -615,6 +636,8 @@ div.fieldWithErrors {
     width: 166px; }
     .cleaner .booking-info .hire {
       text-align: center; }
+      .cleaner .booking-info .hire * {
+        *text-align: center; }
     .cleaner .booking-info .availability {
       margin: 5px 0; }
       .cleaner .booking-info .availability .active {
@@ -670,7 +693,8 @@ div.fieldWithErrors {
       line-height: 16px; }
 
 #availability #calendar {
-  padding-left: 55px; }
+  padding-left: 55px;
+  *padding-left: 0; }
 
 #hints ul {
   text-align: left;
@@ -697,7 +721,8 @@ div.fieldWithErrors {
       height: 75px;
       margin: 6px 0; }
     #reviews #new-review .button {
-      margin: 6px 0; }
+      margin: 6px 0;
+      *text-align: left; }
 
 #new-cleaner #description textarea {
   width: 400px;

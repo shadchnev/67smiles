@@ -101,11 +101,11 @@ class Booking < ActiveRecord::Base
   end
   
   def completed?
-    accepted? and !cancelled? and end_time < Time.now
+    accepted? and !cancelled? and end_time.past?
   end
   
   def active?
-    accepted? and !cancelled? and start_time > Time.now
+    accepted? and !cancelled? and start_time.future?
   end
   
   def after_create
@@ -123,6 +123,10 @@ class Booking < ActiveRecord::Base
       :end_time => end_time.to_s,
       :cleaner_id => cleaner.id
     }
+  end
+  
+  def cost
+    self[:cost] || calculate_cost # because we may need the cost of an unsaved booking
   end
   
 private

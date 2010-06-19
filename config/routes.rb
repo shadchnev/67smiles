@@ -27,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'homeowners', :controller => :home, :action => :homeowners
   map.connect 'about-us', :controller => :home, :action => :about
   
+  map.confirm_email '/users/confirm_email/:activation_code', :controller => "user", :action => "confirm_email"
   map.activate '/users/activate/:activation_code', :controller => "user", :action => "activate"
   
   # Sample resource route with options:

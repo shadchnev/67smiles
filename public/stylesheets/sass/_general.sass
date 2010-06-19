@@ -197,7 +197,7 @@
         font-size: 22px
         line-height: 41px
         height: 41px
-    #form-container      
+    #form-container
       #search-box, #submit
         +cross_inline_block
         vertical-align: bottom
@@ -214,9 +214,14 @@
         height: 35px
         *
           vertical-align: middle
-      #cleaners-number
-        float: right
-        color: $safety_orange
+      #text
+        *position: relative
+        #cleaners-number
+          float: right
+          color: $safety_orange
+          *top: 0px
+          *position: absolute
+          *right: 0px
     #text
       width: 619px
       padding-top: 8px      
@@ -287,6 +292,7 @@
   padding = !column_padding * 2
   height: 100px
   text-align: left  
+  position: relative
   & > div
     +cross_inline_block
     vertical-align: top
@@ -297,6 +303,10 @@
     width = !column_width
   #copyright
     float: right
+    *margin: $column_padding * 2
+    *position: absolute
+    *top: 0
+    *right: 0
 
 .clearer
   clear: both
@@ -355,8 +365,11 @@ div.fieldWithErrors
   padding: #{!column_padding * 2} 0 #{!column_padding * 2} 0  
 
 .fieldset
+  #submit *
+    text-align: left
   .top, .bottom
     height: 10px    
+    *margin-bottom: 0
   &, .top, .bottom, .bottom-arrow
     width: 619px
     background-repeat: repeat-y
@@ -368,6 +381,7 @@ div.fieldWithErrors
   .bottom-arrow
     background-image: url('/images/fieldset-bottom-arrow.png')
     height: 20px
+    *margin-bottom: 0
   
 #hints-container
   padding: 12px

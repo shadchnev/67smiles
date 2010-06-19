@@ -1,5 +1,7 @@
-- form_for @client do |client_form|
+- form_for(@client) do |client_form|
   #new-client.padded-right-column.long-form
+    = hidden_field_tag 'booking', (@booking ? 'yes' : 'no')
+    - i = 0 # section number. 'i' is for brevity
     #intro
       %h1#page-title= client_modification_title(controller.action_name)
       %p
@@ -11,7 +13,7 @@
 
     #personal.fieldset
       .top
-      = render :partial => 'shared/fieldset_title', :locals => {:number => 1, :title => 'Tell us about yourself'}
+      = render :partial => 'shared/fieldset_title', :locals => {:number => i = i + 1, :title => 'Tell us about yourself'}
       - client_form.fields_for :name do |name_fields|
         = render :partial => "shared/name", :locals => {:f => name_fields}        
     
@@ -26,7 +28,7 @@
       .bottom-arrow
     #address.fieldset
       .top
-      = render :partial => 'shared/fieldset_title', :locals => {:number => 2, :title => 'Tell us about the property that needs cleaning'}
+      = render :partial => 'shared/fieldset_title', :locals => {:number => i = i + 1, :title => 'Tell us about the property that needs cleaning'}
       
       - client_form.fields_for :address do |address_fields|
         #first-line
@@ -49,28 +51,44 @@
         #country-name United Kingdom
         We operate only in the UK
       .bottom-arrow
-    #confirmation-code.fieldset
-      .top
-      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => 'Confirm your phone number'}
-      #send-confirmation-code
-        %p We need to make sure that you didn't make a mistake entering your mobile phone above. Please click the button below to receive a text containing a four-digit code and enter it below.
-        = render :partial => 'shared/button', :locals => {:text => "Send me the code", :onclick => "sendConfirmationCode();"}
-      #error
-      #confirmation-code{:class => ('fieldWithErrors' if @confirmation_code_incorrect)}
-        = text_field_tag 'confirmation_code', @confirmation_code
-        Four-digit code sent to your mobile
-      .bottom-arrow
+    - if controller.action_name == 'new' or controller.action_name == 'create'
+      #confirmation-code.fieldset
+        .top
+        = render :partial => 'shared/fieldset_title', :locals => {:number => i = i + 1, :title => 'Confirm your phone number'}
+        #send-confirmation-code
+          %p We need to make sure that you didn't make a mistake entering your mobile phone above. Please click the button below to receive a text containing a four-digit code and enter it below.
+          = render :partial => 'shared/button', :locals => {:text => "Send me the code", :onclick => "sendConfirmationCode();"}
+        #error
+        #confirmation-code{:class => ('fieldWithErrors' if @confirmation_code_incorrect)}
+          = text_field_tag 'confirmation_code', @confirmation_code
+          Four-digit code sent to your mobile
+        .bottom-arrow
+    - if @booking
+      #booking-summary.fieldset
+        .top
+        = render :partial => 'shared/fieldset_title', :locals => {:number => i = i + 1, :title => 'Review your booking'}
+        %div
+          You are now booking
+          = link_to @booking.cleaner.first_name, cleaner_url(@booking.cleaner)
+          for
+          = @booking.day.strftime '%d %B, %A'
+          = "(#{@booking.start_time.localtime.strftime('%H:%M')} &mdash; #{@booking.end_time.localtime.strftime('%H:%M')})"
+          %p
+            You will be asked to pay
+            = "&pound;#{round_if_possible @booking.cost}"
+            in cash or cheque (if #{@booking.cleaner.first_name} agrees) when the job is done.
+        .bottom-arrow
     #account.fieldset
       .top
-      = render :partial => 'shared/fieldset_title', :locals => {:number => 4, :title => 'Create an account'}
-      .hint
-        Just choose your password      
+      = render :partial => 'shared/fieldset_title', :locals => {:number => i = i + 1, :title => 'Choose your password'}
+      / .hint
+      /   Enter your password      
       = render :partial => 'shared/new_account', :locals => {:f => client_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
 
       =# - if controller.action_name == "new"
       =# render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
   
       #submit
-        = render :partial => 'shared/button', :locals => {:text => client_modification_submit(controller.action_name), :onclick => '$("form#new_client").submit()'}
+        = render :partial => 'shared/button', :locals => {:text => client_modification_submit(controller.action_name, @booking), :onclick => '$("#right-block form").submit()'}
         
       .bottom

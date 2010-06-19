@@ -1,12 +1,14 @@
 class UserSessionsController < ApplicationController
   
   def create
-    @user_session = UserSession.new(:login => params[:login], :password => params[:password])
+    @user_session = UserSession.new(:login => Phone.normalize(params[:login]), :password => params[:password])
     if @user_session.save
       render :text => 'success'
     else
-      user = User.find_by_login(params[:login])
-      render :text => 'The username/password is incorrect or you haven\'t activated your account (check your spam folder)'
+      user = User.find_by_login(Phone.normalize(params[:login]))
+      error_message = 'The phone/password is incorrect'
+      error_message += ' (have you activated your account?)' if user and user.cleaner?
+      render :text => error_message
     end
   end
   

@@ -5,13 +5,14 @@ module ClientHelper
     'Update your account' if action == "edit" or action == 'update'
   end
   
-  def client_modification_submit(action)
-    return 'Create My Account' if action == "new" or action == 'create'
-    'Save My Profile' if action == "edit" or action == 'update'
+  def client_modification_submit(action, booking)
+    return 'Save My Profile' if action == "edit" or action == 'update'
+    title = 'Create My Account' if action == "new" or action == 'create'
+    title += " and Book #{booking.cleaner.first_name}"
   end
   
   def client_modification_subtitle(action)
-    'You need to create an account to get your home cleaned.' if action == "new" or action == 'create'
+    "You need to create an account to get your home cleaned. #{link_to 'Already registered?', '#', :onclick => 'showLoginPrompt()'}" if action == "new" or action == 'create'
   end
   
 end

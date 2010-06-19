@@ -15,14 +15,23 @@ class ClientsControllerTest < ActionController::TestCase
     session[:attempted_booking] = booking.to_partial_hash    
     assert_equal 0, Client.count
     assert_equal 0, Booking.count
-    post :create, new_client_params
+    post :create, new_client_params.merge(:booking => 'yes')
     assert_equal 1, Client.count
     assert_equal 1, Booking.count
   end
   
+  test "email confirmation job is created" do
+    assert_equal 0, Delayed::Job.count
+    post :create, new_client_params
+    assert_equal 1, Delayed::Job.count
+  end
+    
 private
 
   def new_client_params
+    phone = '07912345678'
+    code = '1234'
+    PhoneConfirmationCode.create!(:phone => phone, :value => code)
     {"client" => 
       {"name_attributes" => 
         {"honorific" => "Ms",
@@ -40,8 +49,9 @@ private
          "first_line" => "60 Prospect Place", 
          "second_line" => "Wapping Wall"}, 
        "contact_details_attributes" => 
-        {"phone" => "07912345678", 
-          "email" => "test@gmail.com"}}, 
+        {"phone" => phone, 
+          "email" => "test@gmail.com"}},
+     "confirmation_code" => code
     }    
   end
   

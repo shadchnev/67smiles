@@ -13,4 +13,9 @@ class ContactDetails < ActiveRecord::Base
     self.phone = Phone.normalize(self.phone)
   end
   
+  def confirm_email
+    self.email_confirmed = true    
+    save
+  end
+  
 end
