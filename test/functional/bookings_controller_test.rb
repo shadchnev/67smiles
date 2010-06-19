@@ -106,21 +106,21 @@ class BookingsControllerTest < ActionController::TestCase
     booking = Booking.build!
     login booking.cleaner
     post :accept, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
-    assert_match /Booking was accepted/, flash[:notice]
+    assert_match /Booking was accepted/i, flash[:notice]
   end
     
   test "cleaner can decline a booking" do
     booking = Booking.build!
     login booking.cleaner
     post :decline, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
-    assert_match /Booking was declined/, flash[:notice]
+    assert_match /Booking was declined/i, flash[:notice]
   end
     
   test "cleaner can cancel a booking" do
     booking = Booking.build!
     login booking.cleaner
     post :cancel, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
-    assert_match /Booking was cancelled/, flash[:notice]
+    assert_match /Booking was cancelled/i, flash[:notice]
   end
     
   test "cleaner cannot cancel a booking they don't own" do
@@ -148,7 +148,7 @@ class BookingsControllerTest < ActionController::TestCase
     booking = Booking.build!
     login booking.client
     post :cancel, {"id" => booking.id, "cleaner_id" => booking.cleaner.id}
-    assert_match /Booking was cancelled/, flash[:notice]
+    assert_match /Booking was cancelled/i, flash[:notice]
   end
     
   test "client cannot cancel a booking they don't own" do
