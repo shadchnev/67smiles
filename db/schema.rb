@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 16) do
 
   create_table "addresses", :force => true do |t|
     t.string   "first_line"
@@ -112,6 +112,11 @@ ActiveRecord::Schema.define(:version => 15) do
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "phone_confirmation_codes", :force => true do |t|
+    t.string "phone", :limit => 12
+    t.string "value", :limit => 4
   end
 
   create_table "postcodes", :force => true do |t|

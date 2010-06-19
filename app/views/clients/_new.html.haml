@@ -49,15 +49,26 @@
         #country-name United Kingdom
         We operate only in the UK
       .bottom-arrow
+    #confirmation-code.fieldset
+      .top
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => 'Confirm your phone number'}
+      #send-confirmation-code
+        %p We need to make sure that you didn't make a mistake entering your mobile phone above. Please click the button below to receive a text containing a four-digit code and enter it below.
+        = render :partial => 'shared/button', :locals => {:text => "Send me the code", :onclick => "sendConfirmationCode();"}
+      #error
+      #confirmation-code{:class => ('fieldWithErrors' if @confirmation_code_incorrect)}
+        = text_field_tag 'confirmation_code', @confirmation_code
+        Four-digit code sent to your mobile
+      .bottom-arrow
     #account.fieldset
       .top
-      = render :partial => 'shared/fieldset_title', :locals => {:number => 3, :title => 'Create an account'}
+      = render :partial => 'shared/fieldset_title', :locals => {:number => 4, :title => 'Create an account'}
       .hint
         Just choose your password      
       = render :partial => 'shared/new_account', :locals => {:f => client_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
 
-      - if controller.action_name == "new"
-        = render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
+      =# - if controller.action_name == "new"
+      =# render :partial => 'shared/terms_and_conditions', :locals => {:f => client_form}
   
       #submit
         = render :partial => 'shared/button', :locals => {:text => client_modification_submit(controller.action_name), :onclick => '$("form#new_client").submit()'}

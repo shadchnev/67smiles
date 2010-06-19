@@ -19,6 +19,28 @@ $(document).ready(function() {
   removeNotice();
 });
 
+function sendConfirmationCode() {
+  var phone = $('#client_contact_details_attributes_phone').val();
+  $('#confirmation-code #error').ajaxError(function() {
+    $(this).text('Sorry, there was a problem sending the code, please try again.');
+  })
+  $.post('/phone_confirmation_codes', {phone: phone}, function(reply) {
+    switch(reply) {
+      case 'ok':
+        alert('The code has been sent, please check your mobile phone');
+        break;
+      case 'invalid':
+        alert('Sorry but your phone number (' + phone + ') seems to be invalid, please check it')
+        break;
+      case 'sent':
+        alert('We have already sent the code to your mobile phone, please check it')
+        break;
+      default:
+        alert("An unexpected error has occurred. If you haven't received the code, please try again or email hello@varsitycleaners.co.uk for assistance")        
+    }
+  })
+}
+
 function removeNotice() {
   setTimeout(function() {$("#flash .notice").slideUp()}, 20000);
 }

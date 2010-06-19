@@ -22,7 +22,12 @@ class BookingsController < ApplicationController
   
   def provisionally_create    
     @booking = initialize_booking
-    offer_to_create_account
+    @booking.client = NoClient.new
+    if @booking.valid?
+      offer_to_create_account
+    else
+      render :action => :new
+    end
   end
   
   def create
@@ -64,8 +69,9 @@ private
   end
   
   def offer_to_create_account
+    @booking.client = nil
     session[:attempted_booking] = @booking.to_partial_hash
-    redirect_to :controller => :clients, :action => :new
+    redirect_to :controller => :clients, :action => :new, :booking => 'yes'
   end
 
   def try_to_save_booking

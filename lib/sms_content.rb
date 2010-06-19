@@ -39,6 +39,10 @@ class SmsContent
     "We're sorry but #{booking.cleaner.first_name} did not reply to confirm the booking. Please feel free to choose another cleaner on the website!"
   end
   
+  def self.confirmation_code(code)
+    "Your confirmation code is #{code}. Thank you for registering on Varsity Cleaners!"
+  end
+  
 private
 
   def self.booking_date(booking)

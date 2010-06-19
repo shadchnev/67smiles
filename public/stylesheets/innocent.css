@@ -647,6 +647,10 @@ div.fieldWithErrors {
   border: 1px solid #6fbdfe;
   *margin-right: 5px; }
 
+#confirmation-code #error {
+  color: red;
+  font-weight: bold; }
+
 #cleaner-summary {
   height: 360px;
   text-align: left;

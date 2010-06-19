@@ -11,7 +11,7 @@ module ClientHelper
   end
   
   def client_modification_subtitle(action)
-    'You need to create an account to get your home cleaned.' if action == "new"
+    'You need to create an account to get your home cleaned.' if action == "new" or action == 'create'
   end
   
 end
