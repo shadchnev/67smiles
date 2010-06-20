@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
     if (current_user and session[:attempted_booking] and session[:attempted_booking][:cleaner_id] == @cleaner.id)
       @booking = Booking.new(session[:attempted_booking])
-      flash[:notice].now = "Please review the booking before hiring #{@booking.cleaner.first_name}"
+      flash.now[:notice] = "Please review the booking before hiring #{@booking.cleaner.first_name}"
     else
       @booking = Booking.new
     end

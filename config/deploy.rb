@@ -8,12 +8,12 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :keep_releases, 5
 set :user, "ubuntu"
+set :rails_env, 'production' # that's for delayed_job rake tasks
 
 role :web, "79.125.56.133"                          # Your HTTP server, Apache/etc
 role :app, "79.125.56.133"                          # This may be the same as your `Web` server
 role :db,  "79.125.56.133", :primary => true # This is where Rails migrations will run
 
-set :rails_env, 'production'
 
 namespace :deploy do
   task :start do ; end
