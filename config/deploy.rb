@@ -13,6 +13,8 @@ role :web, "79.125.56.133"                          # Your HTTP server, Apache/e
 role :app, "79.125.56.133"                          # This may be the same as your `Web` server
 role :db,  "79.125.56.133", :primary => true # This is where Rails migrations will run
 
+set :rails_env, 'production'
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
