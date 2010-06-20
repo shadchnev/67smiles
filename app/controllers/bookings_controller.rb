@@ -15,9 +15,14 @@ class BookingsController < ApplicationController
   
   def new
     @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'no-photo-large.png'
-    @booking = Booking.new
+    if (current_user and session[:attempted_booking] and session[:attempted_booking][:cleaner_id] == @cleaner.id)
+      @booking = Booking.new(session[:attempted_booking])
+      flash[:notice].now = "Please review the booking before hiring #{@booking.cleaner.first_name}"
+    else
+      @booking = Booking.new
+    end
     @booking.cleaner = @cleaner
-    @booking_date = (Time.now + 1.day).to_i # default value
+    @booking_date = @booking.start_time ? @booking.start_time.to_i : Time.new.tomorrow.to_i
   end
   
   def provisionally_create    

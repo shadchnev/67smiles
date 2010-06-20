@@ -5,7 +5,8 @@
     #intro
       %h1#page-title= client_modification_title(controller.action_name)
       %p
-        = client_modification_subtitle(controller.action_name)
+        - after_login_path = @booking ? new_cleaner_booking_path(@booking.cleaner) : ''
+        = client_modification_subtitle(controller.action_name, after_login_path)
         
       - unless @client.errors.empty?
         #errors

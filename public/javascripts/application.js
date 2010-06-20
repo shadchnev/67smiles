@@ -156,7 +156,13 @@ function haveDailyAvailability() {
 }
 
 function setCorrectTimeSelectorValues() {
-  if (!isAvailableInSelectedTime()) {
+  var selected_start = $('#booking_start_time_value').val();
+  var selected_end = $('#booking_end_time_value').val();
+  if (selected_start && selected_end) {
+    setTimeout(function(){$('#booking_start_time').val(selected_start)}, 100);
+    setTimeout(function(){$('#booking_end_time').val(selected_end)}, 100);    
+    setTimeout(updateBookingCost, 200);
+  } else if (!isAvailableInSelectedTime()) {
     var availability =  $('#daily-availability').data('availability');
     var date = $("#calendar").datepicker('getDate');
     var selected_availability = availability[WEEKDAYS[date.getDay()]];    
@@ -168,9 +174,9 @@ function setCorrectTimeSelectorValues() {
       }
     }
     if (first_available_hour) {
-      $('#booking_start_time').val(pad(first_available_hour) + ':00');
-      $('#booking_end_time').val(pad(first_available_hour + 1) + ':00');
-      updateBookingCost();
+      setTimeout(function(){$('#booking_start_time').val(first_available_hour)}, 100);
+      setTimeout(function(){$('#booking_end_time').val(first_available_hour+1)}, 100);
+      setTimeout(updateBookingCost, 200);
     }
   }  
 }
@@ -352,14 +358,17 @@ function collapseTopPart(delay) {
   // $('#right-column #content #summary-block').slideUp(delay, callback);
 }
 
-function showLoginPrompt(error) {
+function showLoginPrompt(error, redirect_path) {
   var text = $('body > #login-form').html(); // to make the js less messy
   if (error)
     text = "<span class='error'>" + error + '</span>' + '<br/>' + text;
   var callback = function(choice,m,form) {
     var callback = function(data) {
       if (data == 'success')
-        window.location.reload();
+        if (redirect_path)
+          window.location.href = redirect_path;
+        else
+          window.location.reload();
       else
         showLoginPrompt(data);
     }

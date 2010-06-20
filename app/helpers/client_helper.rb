@@ -11,8 +11,8 @@ module ClientHelper
     booking ? title += " and Book #{booking.cleaner.first_name}" : title
   end
   
-  def client_modification_subtitle(action)
-    "You need to create an account to get your home cleaned. #{link_to 'Already registered?', '#', :onclick => 'showLoginPrompt()'}" if action == "new" or action == 'create'
+  def client_modification_subtitle(action, after_login_path)
+    "You need to create an account to get your home cleaned. #{link_to 'Already registered?', '#', :onclick => 'showLoginPrompt("", "' + after_login_path + '")'}" if action == "new" or action == 'create'
   end
   
 end
