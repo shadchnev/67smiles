@@ -8,7 +8,7 @@ module ClientHelper
   def client_modification_submit(action, booking)
     return 'Save My Profile' if action == "edit" or action == 'update'
     title = 'Create My Account' if action == "new" or action == 'create'
-    title += " and Book #{booking.cleaner.first_name}" if booking
+    booking ? title += " and Book #{booking.cleaner.first_name}" : title
   end
   
   def client_modification_subtitle(action)
