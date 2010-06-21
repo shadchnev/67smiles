@@ -60,12 +60,12 @@ ActionMailer::Base.default_charset = "utf-8"
 ActionMailer::Base.raise_delivery_errors = true
 
 ActionMailer::Base.smtp_settings = {
-   :address        => 'localhost',
-   :port           => 25,
+   :address        => 'mail.authsmtp.com',
+   :port           => 2525,
    :domain         => 'varsitycleaners.co.uk',
-   :authentication => :plain,
-   :user_name      => 'mailer',
-   :password       => 'mail67',
+   :authentication => :login,
+   :user_name      => 'ac50735',
+   :password       => 'cjzzdfj7gnynxy',
  }
 
 
