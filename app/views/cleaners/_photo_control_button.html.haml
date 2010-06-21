@@ -2,5 +2,6 @@
   - if @cleaner.photo.exists?
     = render :partial => 'shared/button', :locals => {:text => "Delete photo", :onclick => '$.post("' + delete_photo_cleaner_url(@cleaner) + '"); window.location.reload()', :confirm => "Are you sure you want to delete your photo?"}
   - else
+    %h2 Upload your photo
     #upload-picture
       = render 'upload_picture'
