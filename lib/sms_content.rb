@@ -28,7 +28,7 @@ class SmsContent
   end
   
   def self.new_user(user)
-    "Aaaaaaaa! New user! (#{user.login})"
+    "Aaaaaaaa! New user! (#{user.owner.contact_details.email})"
   end
   
   def self.cleaner_reminder(booking)
@@ -36,7 +36,7 @@ class SmsContent
   end
   
   def self.missed_booking(booking)
-    "We're sorry but #{booking.cleaner.first_name} did not reply to confirm the booking. Please feel free to choose another cleaner on the website!"
+    "We're sorry but #{booking.cleaner.first_name} did not reply to confirm the booking, so do not expect #{booking.cleaner.first_name} to come. Please feel free to choose another cleaner on the website!"
   end
   
   def self.confirmation_code(code)
