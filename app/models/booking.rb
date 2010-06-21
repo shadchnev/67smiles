@@ -114,6 +114,7 @@ class Booking < ActiveRecord::Base
     missed_run_at = CLEANER_REPLY_TIMEOUT.from_now
     Delayed::Job.enqueue(CleanerReminderJob.new(id), priority, reminder_run_at) if reminder_run_at.future?
     Delayed::Job.enqueue(MissedBookingJob.new(id), priority, missed_run_at)
+    NewBookingEvent.create(:booking => self)
   end
   
   def to_partial_hash

@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  test "creates a review event" do
+    assert_equal 0, NewReviewEvent.count
+    Review.build!
+    assert_equal 1, NewReviewEvent.count
   end
 end

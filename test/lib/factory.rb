@@ -94,6 +94,14 @@ module Factory
     }
   end
   
+  def factory_review
+    {
+      :client => Client.build,
+      :cleaner => Cleaner.build,
+      :text => "This cleaner is good!"      
+    }
+  end
+  
   def factory_booking
     start_time = Time.parse('10:00') + 2.days
     start_time += 1.day until start_time.wday == 1 # that is Monday

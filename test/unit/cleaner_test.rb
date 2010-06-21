@@ -24,5 +24,12 @@ class CleanerTest < ActiveSupport::TestCase
     cleaner = Cleaner.build!
     assert_equal cleaner, Cleaner.find_by_phone(cleaner.phone)
   end
+  
+  test "new cleaner event is created" do
+    assert_equal 0, NewCleanerEvent.count
+    cleaner = Cleaner.build!
+    assert_equal 1, NewCleanerEvent.count
+    assert_equal cleaner, NewCleanerEvent.first.cleaner
+  end
     
 end

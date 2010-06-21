@@ -10,4 +10,11 @@ class ClientTest < ActiveSupport::TestCase
     [Name, ContactDetails, Address, User, Event].each{|klass| assert_equal 0, klass.count}    
   end
   
+  test "creates the event" do
+    assert_equal 0, NewClientEvent.count
+    client = Client.build!
+    assert_equal 1, NewClientEvent.count
+    assert_equal client, NewClientEvent.first.client
+  end
+  
 end

@@ -40,4 +40,11 @@ class BookingTest < ActiveSupport::TestCase
     assert_equal 2, Delayed::Job.count
   end
   
+  test "new booking event is created" do
+    assert_equal 0, NewBookingEvent.count
+    booking = Booking.build!
+    assert_equal 1, NewBookingEvent.count
+    assert_equal booking, NewBookingEvent.first.booking
+  end
+  
 end

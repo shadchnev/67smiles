@@ -12,4 +12,8 @@ class Review < ActiveRecord::Base
     created_at.localtime.to_formatted_s :short
   end
   
+  def after_create
+    NewReviewEvent.create(:review => self)
+  end
+  
 end

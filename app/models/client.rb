@@ -40,7 +40,7 @@ class Client < ActiveRecord::Base
   end
   
   def after_create
-    NewClientEvent.create!(:client_id => id)
+    NewClientEvent.create!(:client => self)
   end
     
 end
