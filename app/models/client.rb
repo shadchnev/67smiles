@@ -2,12 +2,12 @@ class Client < ActiveRecord::Base
   
   include BookingSelectors
   
-  belongs_to :name
-  belongs_to :contact_details  
-  belongs_to :address
-  has_many :bookings
-  has_many :reviews
-  has_one :user, :as => :owner  
+  belongs_to :name, :dependent => :destroy
+  belongs_to :contact_details, :dependent => :destroy
+  belongs_to :address, :dependent => :destroy
+  has_many :bookings, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
+  has_one :user, :as => :owner, :dependent => :destroy  
   has_many :new_client_events, :dependent => :destroy
   
   accepts_nested_attributes_for :name  
