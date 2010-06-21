@@ -1,14 +1,9 @@
-#upload-picture  
-  #upload-picture-hint
-    You haven't uploaded your picture. Upload your photo to show up higher in searches!
-  #upload-picture-controls
-    Upload a photo!
 :ruby
   print %Q[
     <script type='text/javascript'> 
       //<![CDATA[
         $(document).ready(function() {
-          $('#upload-picture-controls').uploadify({
+          $('#upload-picture').uploadify({
             uploader:       '/flash/uploadify.swf',
             script:         '/cleaners/#{@cleaner.id}/snap',
             cancelImg:      '/images/cancel.png',
@@ -17,13 +12,7 @@
             fileDesc:       'fileDesc text',
             sizeLimit:      10000000,
             onComplete:     function(event, queueId, fileObj, response, data) {
-                              setTimeout(function() {
-                                $('#master-picture #upload-picture').remove();
-                                $('#master-picture').append($('<img id="cleaner-photo"/>'));
-                                $('#master-picture #cleaner-photo').attr('src', response);
-                                $('#master-picture #cleaner-photo').addClass('with_right_border');
-                                $('#delete-photo').css('display', 'inline');
-                              }, 50);
+                              window.location.reload();
                               return true;
                             },
             fileDataName:   'photo[file]',

@@ -756,16 +756,12 @@ div.fieldWithErrors {
 #availability #calendar {
   margin-bottom: 10px; }
 
-#upload-picture {
-  width: 250px;
-  height: 310px;
-  text-align: center;
-  border-right: 1px solid #6fbdfe; }
+#photo-control {
+  padding-top: 12px;
+  text-align: center; }
 
-#upload-picture-hint {
-  padding-top: 100px;
-  margin-bottom: 20px;
-  line-height: 20px; }
+#upload-pictureQueue {
+  margin-left: 55px; }
 
 .floating-button {
   position: absolute;

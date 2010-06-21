@@ -1,4 +1,6 @@
 = content_for :left_block_contents do  
+  - if @cleaner.user == current_user
+    = render :partial => 'photo_control_button'
   = render :partial => 'availability', :locals => {:availability => @cleaner.availability}
 = content_for :right do
   = render :partial => 'summary'

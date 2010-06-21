@@ -67,7 +67,7 @@ class CleanersController < ApplicationController
     content_type = content_type(@cleaner.photo_file_name)
     @cleaner.photo_content_type = content_type if content_type
     @cleaner.save!
-    render :text => @cleaner.photo.url(:medium)
+    render :text => @cleaner.photo.url(:large)
   end
   
   def delete_photo

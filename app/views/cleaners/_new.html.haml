@@ -80,8 +80,8 @@
         Just choose your password
       = render :partial => 'shared/new_account', :locals => {:f => cleaner_form, :ask_for_old_password => (controller.action_name == 'edit' or controller.action_name == 'update')}
       
-      -if controller.action_name == 'new'
-        = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
+      / - if controller.action_name == 'new'
+      /   = render :partial => 'shared/terms_and_conditions', :locals => {:f => cleaner_form}
   
       #submit
         = render :partial => 'shared/button', :locals => {:text => modification_submit(controller.action_name), :onclick => '$("form#new_cleaner").submit()'}
