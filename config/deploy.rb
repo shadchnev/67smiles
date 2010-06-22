@@ -19,8 +19,8 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-    run "#{try_sudo} initctl restart delayed_job"
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "sudo initctl restart delayed_job"
   end
 end
 
