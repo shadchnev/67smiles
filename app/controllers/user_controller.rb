@@ -42,7 +42,8 @@ class UserController < ApplicationController
     Sms.create do |s|
       s.to = user.owner.phone
       s.text = SmsContent.new_password(new_password)
-    end    
+    end
+    sms.dispatch or raise 'Sorry, there was a problem sending your password'    
     flash[:notice] = 'Thank you, you password has been reset. New password was sent to your mobile phone.'
   rescue Exception => e
     logger.error e.message
