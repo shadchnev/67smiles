@@ -31,7 +31,7 @@
 #latest-activity>
   %h4 Latest Activity
   %ul
-    - Event.find(:all, :limit => 20, :order => 'created_at DESC').each do |event|
+    - @events.each do |event|
       %li
         %span= describe event
 

@@ -7,6 +7,7 @@ class HomeController < ApplicationController
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}      
       @lead_photo = 'lead-photo-frontpage.png'
+      @events = recent_events
     rescue Exception => e
       @search = false
       flash.now[:error] = e.message 
@@ -32,6 +33,10 @@ class HomeController < ApplicationController
   end
 
 private
+
+  def recent_events
+    Event.find(:all, :limit => 20, :order => 'created_at DESC').select{|e| e.visible? }
+  end
 
   def instantiate_query_params
     @postcode, @booking_date, @skills = params[:postcode], params[:booking_date], Hash[*Skills.skill_set.map{|s| [s.to_s, !params[s].nil?]}.flatten]

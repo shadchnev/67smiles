@@ -8,7 +8,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :keep_releases, 5
 set :user, "ubuntu"
-set :rails_env, 'production' # that's for delayed_job rake tasks
+# set :rails_env, 'production' # that's for delayed_job rake tasks
 
 role :web, "79.125.56.133"                          # Your HTTP server, Apache/etc
 role :app, "79.125.56.133"                          # This may be the same as your `Web` server
@@ -20,6 +20,7 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "#{try_sudo} initctl restart delayed_job"
   end
 end
 
@@ -34,6 +35,6 @@ end
 after "deploy:symlink","customs:symlink"
 after "deploy:symlink","deploy:cleanup"
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+# after "deploy:stop",    "delayed_job:stop"
+# after "deploy:start",   "delayed_job:start"
+# after "deploy:restart", "delayed_job:restart"
