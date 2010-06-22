@@ -39,7 +39,7 @@ class UserController < ApplicationController
   def reset_password
     user = User.find_using_perishable_token(params[:reset_password_code], 1.week) or (raise 'Sorry, there was an error during password recovery. Please email hello@varsitycleaners.co.uk for assistance')    
     new_password = user.reset_password!
-    Sms.create do |s|
+    sms = Sms.create do |s|
       s.to = user.owner.phone
       s.text = SmsContent.new_password(new_password)
     end
