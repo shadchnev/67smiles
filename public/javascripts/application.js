@@ -348,14 +348,6 @@ function selectRegistrationType() {
 }
 
 function collapseTopPart(delay) {
-  // if (!delay)
-  //   delay = 500;
-  // var callback = function() {
-  //   $('#find-a-cleaner #where').fadeOut().fadeIn();
-  //   $('#find-a-cleaner #where input').focus();    
-  // }
-  // $('#left-column #master-picture-container, #left-column #master-picture').slideUp(delay);
-  // $('#right-column #content #summary-block').slideUp(delay, callback);
 }
 
 function showLoginPrompt(error, redirect_path) {
@@ -376,6 +368,19 @@ function showLoginPrompt(error, redirect_path) {
       $.post('/user_sessions', {login: form.login, password: form.password}, callback);
   }
   $.prompt(text, {buttons:{Ok: true, Cancel: false}, callback: callback});
+  $(".jqicontainer input[type='text']").focus();
+}
+
+function showForgotPassword() {
+  var text = $('body > #forgot-password-form').html();
+  var callback = function(choice, m, form) {
+    if (choice) {
+      $.post('/users/send_password_link', {email: form.email});
+      $.prompt.close();
+      $.prompt("If the account with this email address exists, we have sent password reset instructions there");
+    }
+  }
+  $.prompt(text, {buttons: {Ok: true, Cancel: false}, callback: callback});
   $(".jqicontainer input[type='text']").focus();
 }
 

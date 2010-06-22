@@ -29,6 +29,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.confirm_email '/users/confirm_email/:activation_code', :controller => "user", :action => "confirm_email"
   map.activate '/users/activate/:activation_code', :controller => "user", :action => "activate"
+  map.reset_password '/users/reset_password/:reset_password_code', :controller => "user", :action => "reset_password"
+  map.send_password_link '/users/send_password_link', :controller => "user", :action => "send_password_link"
   
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }

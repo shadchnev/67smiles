@@ -67,7 +67,7 @@ module ApplicationHelper
   end
   
   def missed_jobs(cleaner)
-    cleaner.missed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'missed job')}"
+    cleaner.missed_jobs.empty? ? "" : "#{pluralize(cleaner.completed_jobs.size, 'missed offer')}"
   end
   
   def accepted_jobs(cleaner)

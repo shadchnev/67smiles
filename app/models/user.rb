@@ -35,6 +35,24 @@ class User < ActiveRecord::Base
     save
   end
   
+  def deliver_password_recovery_link!
+    reset_perishable_token!
+    Notifier.deliver_password_recovery_link(self)
+  end
+  
+  def reset_password
+    new_password = random_password
+    self.password = new_password
+    self.password_confirmation = new_password
+    new_password
+  end
+  
+  def reset_password!
+    new_password = reset_password
+    save false # skipping old_password_valid? validation hook
+    new_password
+  end
+  
   def confirm_email!
     owner.contact_details.confirm_email
   end
@@ -62,6 +80,17 @@ class User < ActiveRecord::Base
   end
   
 private
+
+  def random_password(size = 3)    
+    c = %w(b c d f g h j k l m n p qu r s t v w x z ch cr fr nd ng nk nt ph pr rd sh sl sp st th tr lt)
+    v = %w(a e i o u y)
+    f, r = true, ''
+    (size * 2).times do
+      r << (f ? c[rand * c.size] : v[rand * v.size])
+      f = !f
+    end
+    r
+  end
 
   def old_password_valid?
     errors.add(:old_password, "^Old password is invalid") unless valid_password?(@old_password)

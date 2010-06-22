@@ -383,7 +383,7 @@ li span {
 .clearer {
   clear: both; }
 
-body > #login-form {
+body > #login-form, body > #forgot-password-form {
   display: none; }
 
 .fieldWithErrors input {

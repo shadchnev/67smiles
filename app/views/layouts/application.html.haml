@@ -26,6 +26,12 @@
       = text_field_tag :login, '', :onkeypress => 'loginKeyDown(event);'
       %br
       = password_field_tag :password, '', :onkeypress => 'loginKeyDown(event);'
+      %br
+      = link_to "Forgot password?", '#', :onclick => '$.prompt.close(); showForgotPassword();'
+    #forgot-password-form
+      Please enter your email to recover your password
+      %br
+      = text_field_tag :email, '', :onkeypress => 'loginKeyDown(event);'
     #container<>
       #header
         = render 'layouts/navigation'

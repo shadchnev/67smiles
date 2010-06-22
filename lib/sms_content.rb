@@ -43,6 +43,10 @@ class SmsContent
     "Your confirmation code is #{code}. Thank you for registering on Varsity Cleaners!"
   end
   
+  def self.new_password(password)
+    "This is the password that you requested: #{password}"
+  end
+  
 private
 
   def self.booking_date(booking)

@@ -30,5 +30,15 @@ class Notifier < ActionMailer::Base
     body          :root_url => root_url
   end
   
+  def password_recovery_link(user)
+    @headers['Reply-to'] = '"Varsity Cleaners" <hello@varsitycleaners.co.uk>'
+    @headers['Return-path'] = '"Varsity Cleaners" <hello@varsitycleaners.co.uk>'
+    subject       "Varsity Cleaners: Password Recovery"
+    from          '"Varsity Cleaners" <hello@varsitycleaners.co.uk>'
+    recipients    user.owner.email
+    sent_on       Time.now
+    body          :reset_password_url => reset_password_url(:reset_password_code => user.perishable_token), :user => user
+  end
+  
 
 end
