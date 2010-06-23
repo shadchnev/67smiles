@@ -54,7 +54,7 @@ class Cleaner < ActiveRecord::Base
                     :joins => [:skills, :availability, :user], 
                     :order => 'distance',
                     :conditions => conditions.join(" AND "))
-    !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode, selecting fewer skills or changing the date")
+    !cleaners.empty? ? cleaners : raise("Sorry, no cleaners were found in your area. Please try using a different postcode")
   end
   
   def self.find_by_phone(number)
