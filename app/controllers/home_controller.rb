@@ -6,12 +6,12 @@ class HomeController < ApplicationController
       @search = search?      
       @cleaners = suitable_cleaners if search?
       @skills = {:domestic_cleaning => true}      
-      @lead_photo = 'lead-photo-frontpage.png'
-      @events = recent_events
+      @lead_photo = 'lead-photo-frontpage.png'      
     rescue Exception => e
       @search = false
       flash.now[:error] = e.message 
     ensure
+      @events = recent_events
       @cleaners ||= default_selection 
     end
   end
