@@ -38,6 +38,7 @@ module ApplicationHelper
     when /aberdeen.ac.uk$/; 'University of Aberdeen'
     when /lse.ac.uk$/; 'London School of Economics and Political Science'
     when /soton.ac.uk$/; 'University of Southampton'
+    when /aber.ac.uk$/; 'Aberystwyth University'
     else email.split("@").last
     end
   end

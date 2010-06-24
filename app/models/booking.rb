@@ -36,9 +36,10 @@ class Booking < ActiveRecord::Base
   end
   
   def accept!
-    self.accepted = true
+    self.accepted = true        
     send_text(client, SmsContent.booking_accepted_for_client(self))
     send_text(cleaner, SmsContent.booking_accepted_for_cleaner(self))
+    JobAcceptedEvent.create(:booking => self)
     save!
   end
   
