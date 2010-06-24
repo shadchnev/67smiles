@@ -565,6 +565,9 @@ div.fieldWithErrors {
       width: 25px;
       color: white;
       font-weight: bold; }
+      #cleaners #pagination > div a {
+        color: white;
+        text-decoration: none; }
     #cleaners #pagination .active {
       background-color: #ff6600; }
     #cleaners #pagination .page-mdot {

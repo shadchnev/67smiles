@@ -24,14 +24,7 @@
 #cleaners>
   - @cleaners.each do |cleaner|
     = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-  / #pagination
-  /   .page-number 1
-  /   .page-number.active 2
-  /   .page-number 3
-  /   .page-mdot
-  /   .page-mdot
-  /   .page-mdot
-  /   .page-number 9
+  = render :partial => 'pagination'
 #latest-activity>
   %h4 Latest Activity
   %ul

@@ -4,7 +4,7 @@
       #title
         Search to see all cleaners in your area
     #form-container
-      - form_tag '/'  do
+      - form_tag '/search', :method => :get  do
         #search-box>
           = text_field_tag 'postcode', @postcode || "Postcode", :onfocus => 'if (this.value == "Postcode") this.value = ""'
         #submit
@@ -16,5 +16,5 @@
           e.g. W2 1TT, N1 or Westminster
         #cleaners-number
           - if @search
-            = pluralize(@cleaners.size, 'cleaner')
+            = pluralize(@cleaners_total, 'cleaner')
             found

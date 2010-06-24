@@ -1,0 +1,18 @@
+#pagination
+  - dots_shown = false
+  - @cleaners_pages_total.times do |i|
+    - current_page = i + 1
+    - if (@cleaners_page - current_page).abs > 1 and current_page != 1 and (current_page > 2 or @cleaners_page - current_page > 2) and ((current_page < @cleaners_pages_total - 1) or (current_page == @cleaners_pages_total - 1 and dots_shown))
+      - if !dots_shown
+        .page-mdot
+        .page-mdot
+        .page-mdot
+        - dots_shown = true
+      - next
+    .page-number{:class => ('active' if current_page == @cleaners_page)}
+      - if current_page == @cleaners_page
+        = current_page
+      - else
+        = link_to current_page, search_url(:postcode => @postcode, :limit => @limit, :offset => (current_page - 1) * @limit)
+    - if current_page == @cleaners_page
+      - dots_shown = false      
