@@ -31,5 +31,17 @@ class CleanerTest < ActiveSupport::TestCase
     assert_equal 1, NewCleanerEvent.count
     assert_equal cleaner, NewCleanerEvent.first.cleaner
   end
+  
+  test "can assign strings to rate and surcharge" do
+    c = Cleaner.build
+    c.rate = '9.5'
+    assert_equal 9.5, c.rate
+    c.rate = '9,5'
+    assert_equal 9.5, c.rate
+    c.surcharge = '1.5'
+    assert_equal 1.5, c.surcharge
+    c.surcharge = '1,5'
+    assert_equal 1.5, c.surcharge
+  end
     
 end
