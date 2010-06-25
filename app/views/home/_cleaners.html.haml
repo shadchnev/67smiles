@@ -1,0 +1,4 @@
+#cleaners>
+  - @cleaners.each do |cleaner|
+    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
+  = render :partial => 'pagination'

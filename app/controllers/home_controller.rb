@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   
   def search
     @search = true
-    @lead_photo = 'lead-photo-frontpage.png'      
+    @lead_photo = nil
     instantiate_query_params    
     @cleaners = postcode_present? ? suitable_cleaners : default_selection
   rescue Exception => e
@@ -23,7 +23,6 @@ class HomeController < ApplicationController
     @events = recent_events
     @cleaners ||= default_selection 
     prepare_pagination
-    render "index"
   end
   
   def students

@@ -21,15 +21,7 @@
     #cleaner-points
       = render :partial => "welcome_cleaners"
   = render :partial => 'shared/search_form'
-#cleaners>
-  - @cleaners.each do |cleaner|
-    = render :partial => 'cleaner', :locals => {:cleaner => cleaner}
-  = render :partial => 'pagination'
-#latest-activity>
-  %h4 Latest Activity
-  %ul
-    - @events.each do |event|
-      %li
-        %span= describe event
 
+= render :partial => 'cleaners'  
+= render :partial => 'latest_activity'
   

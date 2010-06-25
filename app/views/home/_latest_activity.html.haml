@@ -1,0 +1,6 @@
+#latest-activity>
+  %h4 Latest Activity
+  %ul
+    - @events.each do |event|
+      %li
+        %span= describe event

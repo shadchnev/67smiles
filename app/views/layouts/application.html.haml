@@ -45,12 +45,13 @@
             .error= flash[:error]        
         = render 'layouts/tabs'
       #content<>        
-        #two-columns
+        #two-columns<>
           #left-block<>
             = render 'layouts/leading_photo'
-            #left-block-contents<>
-              = yield :left_block_contents
-          #right-block
+            - if yield :left_block_contents
+              #left-block-contents<>
+                = yield :left_block_contents
+          #right-block<>
             = yield :right
         #main-block
           = yield

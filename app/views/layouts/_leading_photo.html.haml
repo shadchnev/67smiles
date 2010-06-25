@@ -1,2 +1,3 @@
-#photo<>
-  = image_tag @lead_photo || 'lead-photo-student.png'
+- if @lead_photo
+  #photo<>
+    = image_tag @lead_photo

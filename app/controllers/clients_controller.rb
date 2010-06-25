@@ -7,12 +7,14 @@ class ClientsController < ApplicationController
     @client.address.postcode = Postcode.new
     @client.contact_details = ContactDetails.new
     @client.user = User.new
+    @lead_photo = 'lead-photo-student.png'
     check_attempted_booking
   end
     
   def create
     postcode = find_or_create_postcode
     preprocess_params
+    @lead_photo = 'lead-photo-student.png'
     @client = Client.new(params[:client])
     @client.address.postcode = postcode
     return if redirect_due_to_confirmation_code    
@@ -37,6 +39,7 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     @client.address.postcode = find_or_create_postcode
+    @lead_photo = 'lead-photo-student.png'
     preprocess_params
     if @client.update_attributes(params[:client])
       flash[:notice] = "Your profile has been updated."
@@ -47,6 +50,7 @@ class ClientsController < ApplicationController
   end
   
   def edit
+    @lead_photo = 'lead-photo-student.png'
     @client = Client.find(params[:id])
     render :action => :new
   end
