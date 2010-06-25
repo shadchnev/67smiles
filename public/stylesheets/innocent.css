@@ -291,13 +291,12 @@ li span {
         #form-area-container #form-area #form-container #submit * {
           vertical-align: middle; }
       #form-area-container #form-area #form-container #text {
-        *position: relative; }
+        position: relative; }
         #form-area-container #form-area #form-container #text #cleaners-number {
-          float: right;
           color: #ff6600;
-          *top: 0px;
-          *position: absolute;
-          *right: 0px; }
+          top: 15px;
+          position: absolute;
+          right: 0px; }
     #form-area-container #form-area #text {
       width: 619px;
       padding-top: 8px; }
