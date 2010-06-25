@@ -1,6 +1,6 @@
 class CleanersController < ApplicationController
   
-  before_filter :find_logged_in_cleaner, :only => [:snap, :delete_photo]
+  before_filter :find_logged_in_cleaner, :only => [:snap, :delete_photo, :edit, :update]
   
   def create
     params[:cleaner].delete(:postcode_attributes) if existing_postcode = Postcode.find_by_normalized_value(params[:cleaner][:postcode_attributes][:value]) # to prevent it from being created
@@ -22,7 +22,6 @@ class CleanersController < ApplicationController
     raise "The postcode is invalid" unless existing_postcode
     params[:cleaner].delete(:postcode_attributes) 
     params[:cleaner][:user_attributes][:login] = params[:cleaner][:contact_details_attributes][:phone]
-    @cleaner = Cleaner.find(params[:id])
     @cleaner.postcode = existing_postcode
     @cleaner.update_attributes!(params[:cleaner]) 
     flash[:notice] = 'Your profile has been updated.'
@@ -33,7 +32,6 @@ class CleanersController < ApplicationController
   end
   
   def edit
-    @cleaner = Cleaner.find(params[:id])
     @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'lead-photo-student.png'
     render :action => :new
   end
@@ -87,7 +85,7 @@ private
   end
   
   def find_logged_in_cleaner
-    raise "The user is not logged in" unless current_user
+    raise "You must be logged in" unless current_user
     raise "Logged in user is #{current_user.owner.class}, not a cleaner" unless current_user.cleaner?
     @cleaner = current_user.owner
   end
