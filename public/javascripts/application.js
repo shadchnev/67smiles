@@ -375,9 +375,25 @@ function showForgotPassword() {
   var text = $('body > #forgot-password-form').html();
   var callback = function(choice, m, form) {
     if (choice) {
-      $.post('/users/send_password_link', {email: form.email});
-      $.prompt.close();
-      $.prompt("If the account with this email address exists, we have sent password reset instructions there");
+      $.post('/users/send_password_link', {email: form.email}, function(data, status, xhr) {
+        $.prompt.close();      
+        switch(data) {
+          case 'success':
+            $.prompt("We have sent password reset instructions to your email, please check it");
+            break;
+          case 'not activated':
+            $.prompt("Your email address is not confirmed yet, so the password cannot be recovered. Please check your mailbox and follow the instructions there or email hello@varsitycleaners.co.uk")
+            break;
+          case 'no email found in the db':
+            $.prompt("Your email was not found in the database. If you feed this is a mistake, please email hello@varsitycleaners.co.uk")
+            break;
+          case 'no email provided':
+            $.prompt("Sorry, no email was provided")
+            break
+          default:
+            $.prompt("Please check your email for password reset instructions or email hello@varsitycleaners.co.uk if you need assistance")
+        }
+      });
     }
   }
   $.prompt(text, {buttons: {Ok: true, Cancel: false}, callback: callback});

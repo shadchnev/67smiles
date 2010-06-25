@@ -31,9 +31,10 @@ class UserController < ApplicationController
     logger.info("Found ContactDetails #{cd.id}")
     person = Client.find_by_contact_details_id(cd.id) || Cleaner.find_by_contact_details_id(cd.id)
     logger.info("Found #{person.class} id=#{person.id}")
+    render :text => 'not activated' and return unless person.user.active?
     person.user.deliver_password_recovery_link!
     logger.info("Sent password recovery link")
-    render :text => ''
+    render :text => 'success'
   end
   
   def reset_password
