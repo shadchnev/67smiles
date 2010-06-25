@@ -3,7 +3,12 @@
   #links>
     - if current_user
       #welcome-line
-        Welcome, #{current_user.owner.first_name}!
+        Welcome,
+        - if current_user.client?
+          #{current_user.owner.first_name}!
+        - else
+          #profile-link
+            #{link_to current_user.owner.first_name, cleaner_url(current_user.owner)}!
     - navigation_elements.each do |element|
       = navigational_link element
       = '|' unless element == navigation_elements.last

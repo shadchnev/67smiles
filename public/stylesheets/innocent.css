@@ -438,6 +438,14 @@ div.fieldWithErrors {
     height: 20px;
     *margin-bottom: 0; }
 
+#profile-link {
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+  #profile-link a {
+    margin: 0 !important;
+    text-decoration: underline !important; }
+
 #hints-container {
   padding: 12px; }
 
