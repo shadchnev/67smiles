@@ -45,7 +45,7 @@ class HomeController < ApplicationController
 private
 
   def recent_events
-    Event.find(:all, :limit => 20, :order => 'created_at DESC').select{|e| e.visible? }
+    Event.find(:all, :limit => 30, :order => 'created_at DESC').select{|e| e.visible? }
   end
 
   def instantiate_query_params
