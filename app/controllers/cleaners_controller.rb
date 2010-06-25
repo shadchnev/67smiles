@@ -33,8 +33,8 @@ class CleanersController < ApplicationController
   end
   
   def edit
-    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'lead-photo-student.png'
     @cleaner = Cleaner.find(params[:id])
+    @lead_photo = @cleaner.photo.file? ? @cleaner.photo.url(:large) : 'lead-photo-student.png'
     render :action => :new
   end
   
